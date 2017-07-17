@@ -40,8 +40,8 @@
 *.layout
 
 
-# Gnu G++ Stuff.
-bin/*
+# Gnu G++ Stuff from CodeBlocks.
+rwapWiki/bin/
 
 #Other non-essential stuff.
 *.pdf
