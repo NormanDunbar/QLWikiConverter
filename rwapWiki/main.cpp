@@ -83,7 +83,12 @@ using namespace std;
 #define CONV_PARAGRAPH_PREAMBLE "<p>"
 #define CONV_PARAGRAPH_POSTAMBLE "</p>"
 
-
+// Watch these! In LaTeX, a backslash is acceptable, but in C++
+// "\ref" becomes "linefeed ef"! We can double up here, but in
+// the conversion file, we might get away with it!
+// In HTML, it's "<a href="page_name#">text for link></a>"
+#define CONV_WIKI_LINK "<a href=\"%PAGE_NAME%#\">%PAGE_NAME%</a>"
+#define CONV_URL_LINK "<a href=\"%URL%\" title=\"%TITLE_TEXT%\">%LINK_TEXT%</a>"
 
 //------------------------------------------------------------------
 // Globals.
@@ -290,6 +295,10 @@ void doLineIncludes(string *aLine) {
 
     if (aLine->find("%%%") != string::npos) {
         doForcedLineFeed(aLine);
+    }
+
+    if (aLine->find("[") != string::npos) {
+        doLinks(aLine);
     }
 
 }
@@ -756,13 +765,15 @@ void doForcedLineFeed(string *aLine) {
 void doLinks(string *aLine) {
 
     string::size_type linkStart = aLine->find('[');
-    string::size_type linkEnd = aLine->find(']',linkStart);
+    string::size_type linkEnd = aLine->find(']', linkStart);
 
+    // Links should all be on the same line.
     if (linkEnd == string::npos) {
         cerr << "Missing link terminator ']' on line " << lineNumber
              << "of input file." << endl;
         return;
     }
+
 
     if (linkStart != string::npos) {
         // Do we have a pipe (|) or not? If not, this is
@@ -772,25 +783,56 @@ void doLinks(string *aLine) {
         if (pipeStart != string::npos) {
             // We have a URL, HTTP Link.
             doUrl(aLine, pipeStart);
-            return;
         } else {
-            // Wiki Page links need manual fixing.
-            cerr << "WikiPage link " << "detected at line " << lineNumber
-                 << " of the input file." << endl
-                 << "Requires **manual fixing** in the output file." << endl << endl;
+            // Wiki age links [page_name].
+            doWikiPageLink(aLine);
         }
     }
 }
 
 
 //------------------------------------------------------------------
+// Process a Wiki page link (a link to another Wiki page). The format
+// is:
+//
+// [ page name ]
+//------------------------------------------------------------------
+void doWikiPageLink(string *aLine) {
+
+    string::size_type linkStart = aLine->find('[');
+    string::size_type linkEnd = aLine->find(']', linkStart);
+
+    while ((linkStart != string::npos) &&
+           (linkEnd != string::npos)) {
+
+        // Extract the page_name.
+        string pageName = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
+        string newLink = CONV_WIKI_LINK;
+
+        // Replace all occurrences of %PAGE_NAME% with the page name.
+        string::size_type nameStart = newLink.find("%PAGE_NAME%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 11, pageName);
+            nameStart = newLink.find("%PAGE_NAME%");
+        }
+
+        // Now we can do the actual replacement.
+        aLine->replace(linkStart, linkEnd - linkStart + 1, newLink);
+
+        // Any more links?
+        linkStart = aLine->find('[');
+        linkEnd = aLine->find(']', linkStart);
+    }
+}
+
+//------------------------------------------------------------------
 // Process an HTTP URL. The format is:
 //
-// [ linktext | URL | Language (ignored) | titleText ]
+// [ linktext | URL | Language | titleText ]
 //
-// Which becomes:
+// Which, in HTML, becomes:
 //
-// <a href="URL" title="titleText">linkText</a>, for HTML anyway.
+// <a href="URL" title="titleText">linkText</a>.
 //------------------------------------------------------------------
 /*
 std::stringstream test("this_is_a_test_string");
@@ -806,20 +848,74 @@ while(std::getline(test, segment, '_'))
 
 void doUrl(string *aLine, string::size_type pipeStart) {
 
-    // Get the link text.
-    string linkText = aLine->substr(0, pipeStart -1);
-    string::size_type nextPipe = aLine->find('|', pipeStart + 1);
-    int pipeCount = count(aLine->begin(), aLine->end(), '|');
+    // #define CONV_URL_LINK ""<a href=\"%URL%\" title=\"%TITLE_TEXT%\">%LINK_TEXT%</a>
 
-    // Get the URL.
-    string url;
-    if (nextPipe == string::npos) {
-        // Not found, URL to end of string.
-        url = aLine->substr(pipeStart + 1);
-    } else {
-        url = aLine->substr(pipeStart + 1, nextPipe - pipeStart +1);
+    vector<string> linkStuff;
+
+    string::size_type linkStart = aLine->find('[');
+    string::size_type linkEnd = aLine->find(']', linkStart);
+
+    while ((linkStart != string::npos) &&
+           (linkEnd != string::npos)) {
+
+        // Extract the link text.
+        string linkText = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
+
+        // Stream it.
+        stringstream oldLinkText(linkText);
+        string segment;
+
+        // Read back from the stream and split at the '|' character.
+        while (getline(oldLinkText, segment, '|')) {
+            linkStuff.push_back(segment);
+        }
+
+        // At this point, we have:
+        //
+        // linkStuff[0] = Link text.
+        // linkStuff[1] = URL.
+        // linkStuff[2] = Language.
+        // linkStuff[3] = Title text.
+
+        // Now we need to stuff it into the replacement text.
+        string newLink = CONV_URL_LINK;
+
+        // Replace all occurrences of %LINK_TEXT% with the correct text.
+        string::size_type textStart = newLink.find("%LINK_TEXT%");
+        while (textStart != string::npos) {
+            newLink.replace(textStart, 11, linkStuff[0]);
+            textStart = newLink.find("%LINK_TEXT%");
+        }
+
+        // Replace all occurrences of %URL% with the correct text.
+        textStart = newLink.find("%URL%");
+        while (textStart != string::npos) {
+            newLink.replace(textStart, 5, linkStuff[1]);
+            textStart = newLink.find("%URL%");
+        }
+
+        // Replace all occurrences of %LINK_TEXT% with the correct text.
+        textStart = newLink.find("%LANGUAGE%");
+        while (textStart != string::npos) {
+            newLink.replace(textStart, 10, linkStuff[2]);
+            textStart = newLink.find("%LANGUAGE%");
+        }
+
+        // Replace all occurrences of %LINK_TEXT% with the correct text.
+        textStart = newLink.find("%TITLE_TEXT%");
+        while (textStart != string::npos) {
+            newLink.replace(textStart, 12, linkStuff[3]);
+            textStart = newLink.find("%TITLE_TEXT%");
+        }
+
+
+        // Now we can do the actual replacement.
+        aLine->replace(linkStart, linkEnd - linkStart + 1, newLink);
+
+        // Any more links?
+        linkStart = aLine->find('[');
+        linkEnd = aLine->find(']', linkStart);
     }
-
 }
 
 
