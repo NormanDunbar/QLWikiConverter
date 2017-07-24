@@ -89,6 +89,11 @@ using namespace std;
 // In HTML, it's "<a href="page_name#">text for link></a>"
 #define CONV_WIKI_LINK "<a href=\"%PAGE_NAME%#\">%PAGE_NAME%</a>"
 #define CONV_URL_LINK "<a href=\"%URL%\" title=\"%TITLE_TEXT%\">%LINK_TEXT%</a>"
+#define CONV_YOUTUBE_LINK "<iframe width=\"560\" height=\"315\" src=\"%URL%\" frameborder=\"0\" allowfullscreen></iframe>"
+#define CONV_REFERENCE_LINK "|%REFERENCE%|"
+#define CONV_ACRONYM_LINK "<abbr title=\"%TITLE_TEXT%\">%ACRONYM%</abbr>"
+#define CONV_CITATION_LINK "<abbr title=\"%SOURCE%\">%CITATION%</abbr>"
+#define CONV_ANCHOR_LINK "<abbr title=\"%TITLE_TEXT%\">%ANCHOR%</abbr>"
 
 //------------------------------------------------------------------
 // Globals.
@@ -281,6 +286,7 @@ bool doLineStarts(string *aLine) {
 // WARNING: Some of these might wrap onto subsequent lines. Hmmm.
 //------------------------------------------------------------------
 void doLineIncludes(string *aLine) {
+
     if (aLine->find("__") != string::npos) {
         doBold(aLine);
     }
@@ -297,10 +303,30 @@ void doLineIncludes(string *aLine) {
         doForcedLineFeed(aLine);
     }
 
-    if (aLine->find("[") != string::npos) {
+    if ((aLine->find("[") != string::npos) ||
+        (aLine->find("(vid)") != string::npos)){
         doLinks(aLine);
     }
 
+    if (aLine->find("??") != string::npos) {
+        doAcronyms(aLine);
+    }
+
+    if (aLine->find("{{") != string::npos) {
+        doReferences(aLine);
+    }
+
+    if (aLine->find("^^") != string::npos) {
+        doCitations(aLine);
+    }
+
+    if (aLine->find("~~") != string::npos) {
+        doAnchors(aLine);
+    }
+
+    if (aLine->find("%%") != string::npos) {
+        doImageGallery(aLine);
+    }
 }
 
 
@@ -464,7 +490,7 @@ void doDefinitionList(string *aLine, char aChar) {
     bool definitionList = (aChar == ';');
 
     if (!definitionList) {
-        cerr << "Invalid list nesting in doDefinitionList." << endl;
+        cerr << "DoDefinitionList(): Invalid list nesting detected." << endl;
         return;
     }
 
@@ -570,12 +596,217 @@ bool doBlockQuotes(string *aLine) {
 
 
 //------------------------------------------------------------------
-// Check linestart stuff for embedded formatting.
+// Check linestart stuff for embedded formatting. This is used when
+// lines that start with an identifier that extends until the final
+// LF opn the line, *may* have embedded "stuff" in them. All that
+// stuff is sorted out here. It can ge very weird indeed! But it
+// works!
 //------------------------------------------------------------------
 void doEmbeddedFormats(string *aLine) {
     doBold(aLine);
     doItalic(aLine);
     doInlineCode(aLine);
+    doLinks(aLine);
+    doForcedLineFeed(aLine);
+    doCitations(aLine);
+    doReferences(aLine);
+    doAnchors(aLine);
+    doAcronyms(aLine);
+}
+
+
+//------------------------------------------------------------------
+// Citations are "^^citation|source link^^" but what the hell does
+// the Wiki do with them I have you to determine. Playing in the
+// sandbox doesn't give many clues. Still...
+//------------------------------------------------------------------
+void doCitations(string *aLine) {
+
+    string::size_type linkStart = aLine->find("^^");
+    string::size_type linkEnd = aLine->find("^^", linkStart + 2);
+
+    while ((linkStart != string::npos) &&
+           (linkEnd != string::npos)) {
+
+        // Extract the citation & source.
+        string refName = aLine->substr(linkStart + 2, linkEnd - linkStart - 2);
+        string::size_type pipeStart = refName.find('|');
+        if (pipeStart == string::npos) {
+            cerr << "DoCitations(): Cannot locate '|' in citation in input file on line "
+                 << lineNumber << endl;
+            return;
+        }
+
+        // Split out the citation and text.
+        string citation = refName.substr(0, pipeStart);
+        string sourceText = refName.substr(pipeStart + 1, string::npos);
+
+        string newLink = CONV_CITATION_LINK;
+
+
+        // Replace all occurrences of %CITATION% with the citation text.
+        string::size_type nameStart = newLink.find("%CITATION%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 10, citation);
+            nameStart = newLink.find("%CITATION%");
+        }
+
+        // Replace all occurrences of %SOURCE% with the sourcetext.
+        nameStart = newLink.find("%SOURCE%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 8, sourceText);
+            nameStart = newLink.find("%SOURCE%");
+        }
+
+        // Now we can do the actual replacement.
+        aLine->replace(linkStart, linkEnd - linkStart + 2, newLink);
+
+        // Any more links?
+        linkStart = aLine->find("^^");
+        linkEnd = aLine->find("^^", linkStart);
+    }
+
+}
+
+
+//------------------------------------------------------------------
+// References are "{{reference}}" but what the hell does
+// the Wiki do with them I have you to determine. Playing in the
+// sandbox doesn't give many clues. Still...
+//------------------------------------------------------------------
+void doReferences(string *aLine) {
+
+    string::size_type linkStart = aLine->find("{{");
+    string::size_type linkEnd = aLine->find("}}", linkStart + 2);
+
+    while ((linkStart != string::npos) &&
+           (linkEnd != string::npos)) {
+
+        // Extract the page_name.
+        string refName = aLine->substr(linkStart + 2, linkEnd - linkStart - 2);
+        string newLink = CONV_REFERENCE_LINK;
+
+        // Replace all occurrences of %REFERENCE% with the page name.
+        string::size_type nameStart = newLink.find("%REFERENCE%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 11, refName);
+            nameStart = newLink.find("%REFERENCE%");
+        }
+
+        // Now we can do the actual replacement.
+        aLine->replace(linkStart, linkEnd - linkStart + 2, newLink);
+
+        // Any more links?
+        linkStart = aLine->find("{{");
+        linkEnd = aLine->find("}}", linkStart);
+    }
+
+}
+
+
+//------------------------------------------------------------------
+// Anchors are "~~anchor|title~~" - see above! I have no idea what
+// they are for in the Wiki. C'est la vie.
+//------------------------------------------------------------------
+void doAnchors(string *aLine) {
+
+    string::size_type linkStart = aLine->find("~~");
+    string::size_type linkEnd = aLine->find("~~", linkStart + 2);
+
+    while ((linkStart != string::npos) &&
+           (linkEnd != string::npos)) {
+
+        // Extract the anchor & title.
+        string refName = aLine->substr(linkStart + 2, linkEnd - linkStart - 2);
+        string::size_type pipeStart = refName.find('|');
+        if (pipeStart == string::npos) {
+            cerr << "DoAnchors(): Cannot locate '|' in anchor in input file on line "
+                 << lineNumber << endl;
+            return;
+        }
+
+        // Split out the anchor and title.
+        string anchor = refName.substr(0, pipeStart);
+        string titleText = refName.substr(pipeStart + 1, string::npos);
+
+        string newLink = CONV_ANCHOR_LINK;
+
+
+        // Replace all occurrences of %CITATION% with the citation text.
+        string::size_type nameStart = newLink.find("%ANCHOR%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 8, anchor);
+            nameStart = newLink.find("%ANCHOR%");
+        }
+
+        // Replace all occurrences of %SOURCE% with the sourcetext.
+        nameStart = newLink.find("%TITLE_TEXT%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 12, titleText);
+            nameStart = newLink.find("%TITLE_TEXT%");
+        }
+
+        // Now we can do the actual replacement.
+        aLine->replace(linkStart, linkEnd - linkStart + 2, newLink);
+
+        // Any more links?
+        linkStart = aLine->find("~~");
+        linkEnd = aLine->find("~~", linkStart);
+    }
+
+}
+
+
+//------------------------------------------------------------------
+// Acronyms are "??acronym|Explanation Text??" and should be one a
+// single line.
+//------------------------------------------------------------------
+void doAcronyms(string *aLine) {
+
+    string::size_type linkStart = aLine->find("??");
+    string::size_type linkEnd = aLine->find("??", linkStart + 2);
+
+    while ((linkStart != string::npos) &&
+           (linkEnd != string::npos)) {
+
+        // Extract the Acronym & explanation.
+        string refName = aLine->substr(linkStart + 2, linkEnd - linkStart - 2);
+        string::size_type pipeStart = refName.find('|');
+        if (pipeStart == string::npos) {
+            cerr << "DoAcronyms(): Cannot locate '|' in acronym in input file on line "
+                 << lineNumber << endl;
+            return;
+        }
+
+        // Split out the acronym and text.
+        string acronym = refName.substr(0, pipeStart);
+        string explanationText = refName.substr(pipeStart + 1, string::npos);
+
+        string newLink = CONV_ACRONYM_LINK;
+
+
+        // Replace all occurrences of %ACRONYM% with the page name.
+        string::size_type nameStart = newLink.find("%ACRONYM%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 9, acronym);
+            nameStart = newLink.find("%ACRONYM%");
+        }
+
+        // Replace all occurrences of %TITLE_TEXT% with the page name.
+        nameStart = newLink.find("%TITLE_TEXT%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 12, explanationText);
+            nameStart = newLink.find("%TITLE_TEXT%");
+        }
+
+        // Now we can do the actual replacement.
+        aLine->replace(linkStart, linkEnd - linkStart + 2, newLink);
+
+        // Any more links?
+        linkStart = aLine->find("??");
+        linkEnd = aLine->find("??", linkStart);
+    }
+
 }
 
 
@@ -764,31 +995,82 @@ void doForcedLineFeed(string *aLine) {
 //------------------------------------------------------------------
 void doLinks(string *aLine) {
 
+    string::size_type youTubeLinkStart = aLine->find("(vid)");
+    string::size_type youTubeLinkEnd = aLine->find("(/vid)");
+
+    if (youTubeLinkStart != string::npos) {
+        // We have a You Tube video link.
+        doYouTubeLink(aLine);
+        return;
+    }
+
+    // We don't have a You Tube video link - try other links.
     string::size_type linkStart = aLine->find('[');
     string::size_type linkEnd = aLine->find(']', linkStart);
 
     // Links should all be on the same line.
+    if (linkStart != string::npos) {
+        if (linkEnd == string::npos) {
+            cerr << "DoLinks(): Missing link terminator ']' on line " << lineNumber
+                 << "of input file." << endl;
+            return;
+        }
+    }
+
+    // Do we have a pipe (|) or not? If not, this is
+    // a Wiki Page link.
+    string::size_type pipeStart = aLine->find('|', linkStart);
+
+    if (pipeStart != string::npos) {
+        // We have a URL, HTTP Link.
+        doUrl(aLine, pipeStart);
+    } else {
+        // Wiki age links [page_name].
+        doWikiPageLink(aLine);
+    }
+}
+
+
+//------------------------------------------------------------------
+// Embed? a You Tube Video link.
+//
+// (vid) URL (/vid)
+//------------------------------------------------------------------
+void doYouTubeLink(string *aLine) {
+
+    string::size_type linkStart = aLine->find("(vid)");
+    string::size_type linkEnd = aLine->find("(/vid)", linkStart);
+
+    // We need the end on the same line please.
     if (linkEnd == string::npos) {
-        cerr << "Missing link terminator ']' on line " << lineNumber
+        cerr << "DoYouTubeLink(): Missing You Tube link terminator ']' on line " << lineNumber
              << "of input file." << endl;
         return;
     }
 
+    while ((linkStart != string::npos) &&
+           (linkEnd != string::npos)) {
 
-    if (linkStart != string::npos) {
-        // Do we have a pipe (|) or not? If not, this is
-        // a Wiki Page link.
-        string::size_type pipeStart = aLine->find('|', linkStart);
+        // Extract the vide URL.
+        string urlName = aLine->substr(linkStart + 5, linkEnd - linkStart -5);
+        string newLink = CONV_YOUTUBE_LINK;
 
-        if (pipeStart != string::npos) {
-            // We have a URL, HTTP Link.
-            doUrl(aLine, pipeStart);
-        } else {
-            // Wiki age links [page_name].
-            doWikiPageLink(aLine);
+        // Replace all occurrences of %URL% with the page name.
+        string::size_type urlStart = newLink.find("%URL%");
+        while (urlStart != string::npos) {
+            newLink.replace(urlStart, 5, urlName);
+            urlStart = newLink.find("%URL%");
         }
+
+        // Now we can do the actual replacement.
+        aLine->replace(linkStart, urlName.length() + 11, newLink);
+
+        // Any more links?
+        linkStart = aLine->find("(vid)");
+        linkEnd = aLine->find("(/vid)", linkStart);
     }
 }
+
 
 
 //------------------------------------------------------------------
@@ -916,6 +1198,16 @@ void doUrl(string *aLine, string::size_type pipeStart) {
         linkStart = aLine->find('[');
         linkEnd = aLine->find(']', linkStart);
     }
+}
+
+
+//------------------------------------------------------------------
+// Image Gallery - cannot cope. Just barf!
+//------------------------------------------------------------------
+void doImageGallery(string *aLine) {
+    cerr << "OOPS! Image Gallery set up found at line " << lineNumber
+         << " of the input file. I can't cope with those, sorry."
+         << endl;
 }
 
 
