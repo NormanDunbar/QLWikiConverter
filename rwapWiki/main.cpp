@@ -14,12 +14,14 @@
 #include <cstdint>
 #include <algorithm>
 #include <sstream>
+#include <map>
 
 #include "version.h"
 #include "main.h"
 
 using namespace std;
 
+/*
 //------------------------------------------------------------------
 // TEMPORARY Stuff. Testing with a conversion to HTML.
 //------------------------------------------------------------------
@@ -97,13 +99,14 @@ using namespace std;
 // In HTML, it's "<a href="page_name#">text for link></a>"
 #define CONV_WIKI_LINK "<a href=\"%PAGE_NAME%.html\">%PAGE_NAME%</a>"
 #define CONV_URL_LINK "<a href=\"%URL%\" title=\"%TITLE_TEXT%\">%LINK_TEXT%</a>"
-#define CONV_YOUTUBE_LINK "<iframe width=\"560\" height=\"315\" src=\"%URL%\" frameborder=\"1\" allowfullscreen></iframe>"
+//#define CONV_YOUTUBE_LINK "<iframe width=\"30%\" height=\"30%\" src=\"%URL%\" frameborder=\"1\" allowfullscreen></iframe>"
+#define CONV_YOUTUBE_LINK "<iframe width=\"30%\" height=\"30%\" src=\"https://youtube.com/embed/%VIDEO_ID%\" frameborder=\"1\" allowfullscreen></iframe>"
 #define CONV_REFERENCE_LINK "<u>%REFERENCE%</u>"
 #define CONV_ACRONYM_LINK "<abbr title=\"%TITLE_TEXT%\">%ACRONYM%</abbr>"
 #define CONV_CITATION_LINK "<abbr title=\"%SOURCE%\">%CITATION%</abbr>"
 #define CONV_ANCHOR_LINK "<abbr title=\"%TITLE_TEXT%\">%ANCHOR%</abbr>"
 #define CONV_IMAGE_LINK "<a href=\"%SRC%\" title=\"%TITLE_TEXT%\"><img src=\"%SRC%\" alt=\"%ALT_TEXT%\" width=\"%WIDTH%\" height=\"%HEIGHT%\" border=\"0\" align=\"%ALIGN%\"></a>"
-
+*/
 //------------------------------------------------------------------
 // Globals.
 // Yes, I know! Don't start! Otherwise I'll use a GOTO as well!
@@ -120,6 +123,10 @@ bool inParagraph;           // Are we in a paragraph?
 const int ERR_OK = 0;       // No errors.
 const int ERR_BP = 1;       // Bad Parameter error.
 const int ERR_BC = 2;       // Bad conversion error.
+
+// Variables table - for conversion.
+map <string, string> variableMap;
+map<string, string>::iterator variableEntry;
 
 //------------------------------------------------------------------
 // It all kicks off here.
@@ -139,21 +146,31 @@ int main(int argc, char *argv[])
 
     // Looks good, let's go!
 
+    // Get the conversion file.
+    mCfs = new ifstream(argv[2]);
+    if (!mCfs->good()) {
+        cerr << "File: '" << argv[2] << "' not found." << endl
+             << "Cannot continue." << endl;
+        return ERR_BP;
+    } else {
+        // Read the conversion parameters.
+        if (!readConversionFile()) {
+            cerr << "File: '" << argv[2] << "' cannot be read." << endl
+                 << "Cannot continue." << endl;
+            return ERR_BP;
+        }
+    }
+
     // Get the input file first.
+    lineNumber = 0;
     mIfs = new ifstream(argv[1]);
     if (!mIfs->good()) {
-        cout << "File: '" << argv[1] << "' not found." << endl
+        cerr << "File: '" << argv[1] << "' not found." << endl
              << "Cannot continue." << endl;
         return ERR_BP;
     }
 
-    // Get the conversion file.
-    mCfs = new ifstream(argv[2]);
-    if (!mCfs->good()) {
-        cout << "File: '" << argv[2] << "' not found." << endl
-             << "Cannot continue." << endl;
-        return ERR_BP;
-    }
+
 
 
     return jfdi();
@@ -169,7 +186,7 @@ int jfdi()
 {
     string *aLine = new string();
 
-    cout << CONV_PREAMBLE << endl;
+    cout <<  findVariable("CONV_PREAMBLE");
 
     // Preload the "parser" with the first line of text.
     readInputFile(aLine);
@@ -223,7 +240,7 @@ int jfdi()
                 // We didn't do any line starts, so we need to open a new
                 // paragraph here.
                 if (!inParagraph) {
-                    cout << CONV_PARAGRAPH_PREAMBLE;
+                    cout << findVariable("CONV_PARAGRAPH_PREAMBLE");
                     inParagraph = true;
                 }
                 doLineIncludes(aLine);
@@ -247,10 +264,10 @@ int jfdi()
 
     // The input file is exhausted, were we still in a paragraph?
     if (inParagraph) {
-        cout << CONV_PARAGRAPH_POSTAMBLE << endl;
+        cout << findVariable("CONV_PARAGRAPH_POSTAMBLE") << endl;
     }
 
-    cout << CONV_POSTAMBLE << endl;
+    cout << findVariable("CONV_POSTAMBLE");
 
     if (aLine) {
         delete aLine;
@@ -360,8 +377,8 @@ bool doHeadings(string *aLine) {
     // Heading level 1.
     if (aLine->find("!!!") == 0) {
         *aLine = aLine->substr(3);
-        aLine->insert(0, CONV_H1_PREAMBLE);
-        aLine->append(CONV_H1_POSTAMBLE);
+        aLine->insert(0, findVariable("CONV_H1_PREAMBLE"));
+        aLine->append(findVariable("CONV_H1_POSTAMBLE"));
         return true;
 
     }
@@ -369,15 +386,15 @@ bool doHeadings(string *aLine) {
     // Heading level 2.
     if (aLine->find("!!") == 0) {
         *aLine = aLine->substr(2);
-        aLine->insert(0, CONV_H2_PREAMBLE);
-        aLine->append(CONV_H2_POSTAMBLE);
+        aLine->insert(0, findVariable("CONV_H2_PREAMBLE"));
+        aLine->append(findVariable("CONV_H2_POSTAMBLE"));
         return true;
     }
 
     // Heading level 3.
     *aLine = aLine->substr(1);
-    aLine->insert(0, CONV_H3_PREAMBLE);
-    aLine->append(CONV_H3_POSTAMBLE);
+    aLine->insert(0, findVariable("CONV_H3_PREAMBLE"));
+    aLine->append(findVariable("CONV_H3_POSTAMBLE"));
     return true;
 }
 
@@ -386,8 +403,8 @@ bool doHeadings(string *aLine) {
 // the entire line. Always returns true, it just works!
 //------------------------------------------------------------------
 bool doHR(string *aLine) {
-    aLine->assign(CONV_HR_ON);
-    aLine->append(CONV_HR_OFF);
+    aLine->assign(findVariable("CONV_HR_ON"));
+    aLine->append(findVariable("CONV_HR_OFF"));
     return true;
 }
 
@@ -420,23 +437,23 @@ void doList(string *aLine, char aChar) {
 
     // The remaining list types are similar enough to be done together.
     if (unorderedList) {
-        listItemBegin = CONV_LIST_ON;
-        listItemEnd = CONV_LIST_OFF;
+        listItemBegin = findVariable("CONV_LIST_ON");
+        listItemEnd = findVariable("CONV_LIST_OFF");
     }
 
     if (orderedList) {
-        listItemBegin = CONV_NUM_LIST_ON;
-        listItemEnd = CONV_NUM_LIST_OFF;
+        listItemBegin = findVariable("CONV_NUM_LIST_ON");
+        listItemEnd = findVariable("CONV_NUM_LIST_OFF");
     }
 
 
     // First item in this list, do the list preamble.
     if (orderedList) {
-        cout << CONV_NUM_LIST_PREAMBLE << endl;
+        cout << findVariable("CONV_NUM_LIST_PREAMBLE") << endl;
     }
 
     if (unorderedList) {
-        cout << CONV_LIST_PREAMBLE << endl;
+        cout << findVariable("CONV_LIST_PREAMBLE") << endl;
     }
 
 
@@ -470,11 +487,11 @@ void doList(string *aLine, char aChar) {
 
             // We are done herr, close the list.
             if (orderedList) {
-                cout << CONV_NUM_LIST_POSTAMBLE << endl;
+                cout << findVariable("CONV_NUM_LIST_POSTAMBLE") << endl;
             }
 
             if (unorderedList) {
-                cout << CONV_LIST_POSTAMBLE << endl;
+                cout << findVariable("CONV_LIST_POSTAMBLE") << endl;
             }
             // We also need to consider definition lists too.
             return;
@@ -517,7 +534,7 @@ void doDefinitionList(string *aLine, char aChar) {
     }
 
     // First item in this list, do the list preamble.
-    cout << CONV_DEFN_LIST_PREAMBLE << endl;
+    cout << findVariable("CONV_DEFN_LIST_PREAMBLE") << endl;
 
     // Loop around and do the list items.
     while (mIfs->good()) {
@@ -548,7 +565,7 @@ void doDefinitionList(string *aLine, char aChar) {
         if (currentLevel < nestLevel) {
 
             // We are done here, close the list.
-            cout << CONV_DEFN_LIST_POSTAMBLE << endl;
+            cout << findVariable("CONV_DEFN_LIST_POSTAMBLE") << endl;
             return;
         }
 
@@ -556,11 +573,11 @@ void doDefinitionList(string *aLine, char aChar) {
         // looks like ';term:definition'.
         string::size_type colon = aLine->find(':', currentLevel);
         if (colon != string::npos) {
-            aLine->replace(colon, 1, string(CONV_DEFN_LIST_TERM_OFF) + string(CONV_DEFN_LIST_DESC_ON));
+            aLine->replace(colon, 1, findVariable("CONV_DEFN_LIST_TERM_OFF") + findVariable("CONV_DEFN_LIST_DESC_ON"));
         }
-        aLine->replace(0, nestLevel, CONV_DEFN_LIST_TERM_ON);
+        aLine->replace(0, nestLevel, findVariable("CONV_DEFN_LIST_TERM_ON"));
 
-        aLine->append(CONV_DEFN_LIST_DESC_OFF);
+        aLine->append(findVariable("CONV_DEFN_LIST_DESC_OFF"));
         cout << *aLine << endl;
 
         // And read the next line.
@@ -577,7 +594,7 @@ void doDefinitionList(string *aLine, char aChar) {
 void doCodeBlock(string *aLine) {
 
     // Preamble first.
-    cout << CONV_CODE_BLOCK_PREAMBLE << endl;
+    cout << findVariable("CONV_CODE_BLOCK_PREAMBLE") << endl;
 
     // Loop to write out code lines.
     while (mIfs->good() &&
@@ -585,9 +602,9 @@ void doCodeBlock(string *aLine) {
            aLine->at(0) == ' ') {
         // We can lose the leading space. But keep
         // all other leading spaces as they are significant.
-        cout << CONV_CODE_LINE_ON
+        cout << findVariable("CONV_CODE_LINE_ON")
              << aLine->substr(1)
-             << CONV_CODE_LINE_OFF
+             << findVariable("CONV_CODE_LINE_OFF")
              << endl;
 
         // Get the next line.
@@ -596,7 +613,7 @@ void doCodeBlock(string *aLine) {
 
 
     // Postamble last.
-    cout << CONV_CODE_BLOCK_POSTAMBLE << endl;
+    cout << findVariable("CONV_CODE_BLOCK_POSTAMBLE") << endl;
 }
 
 
@@ -608,11 +625,11 @@ bool doBlockQuotes(string *aLine) {
 
     // Lose the leading '>' and add the preamble stuff.
     *aLine = aLine->substr(1);
-    aLine->insert(0, CONV_BLOCK_QUOTE_LINE_ON);
-    aLine->insert(0, CONV_BLOCK_QUOTE_PREAMBLE);
+    aLine->insert(0, findVariable("CONV_BLOCK_QUOTE_LINE_ON"));
+    aLine->insert(0, findVariable("CONV_BLOCK_QUOTE_PREAMBLE"));
 
-    aLine->append(CONV_BLOCK_QUOTE_LINE_OFF);
-    aLine->append(CONV_BLOCK_QUOTE_POSTAMBLE);
+    aLine->append(findVariable("CONV_BLOCK_QUOTE_LINE_OFF"));
+    aLine->append(findVariable("CONV_BLOCK_QUOTE_POSTAMBLE"));
     return true;
 }
 
@@ -627,7 +644,7 @@ bool doTableRow(string *aLine) {
     vector<string>::iterator cell;
 
     // Preamble first.
-    cout << endl << CONV_TABLE_PREAMBLE << endl;
+    cout << endl << findVariable("CONV_TABLE_PREAMBLE") << endl;
 
     // Loop to write out code lines.
     while (mIfs->good() &&
@@ -645,7 +662,7 @@ bool doTableRow(string *aLine) {
         }
 
         // Row Preamble first.
-        cout << CONV_TABLE_ROW_PREAMBLE;
+        cout << findVariable("CONV_TABLE_ROW_PREAMBLE");
 
         // Process each cell in the row.
         for (cell = cellStuff.begin(); cell < cellStuff.end(); cell++) {
@@ -655,11 +672,11 @@ bool doTableRow(string *aLine) {
             doEmbeddedFormats(&(*cell));
 
 
-            cout << CONV_TABLE_CELL_PREAMBLE
+            cout << findVariable("CONV_TABLE_CELL_PREAMBLE")
                  << *cell
-                 << CONV_TABLE_CELL_POSTAMBLE;
+                 << findVariable("CONV_TABLE_CELL_POSTAMBLE");
         }
-        cout << CONV_TABLE_ROW_POSTAMBLE << endl;
+        cout << findVariable("CONV_TABLE_ROW_POSTAMBLE") << endl;
 
         // Get the next line.
         readInputFile(aLine);
@@ -667,7 +684,7 @@ bool doTableRow(string *aLine) {
 
 
     // Postamble last.
-    cout << CONV_TABLE_POSTAMBLE << endl;
+    cout << findVariable("CONV_TABLE_POSTAMBLE") << endl;
     return true;
 }
 
@@ -719,7 +736,7 @@ void doCitations(string *aLine) {
         string citation = refName.substr(0, pipeStart);
         string sourceText = refName.substr(pipeStart + 1, string::npos);
 
-        string newLink = CONV_CITATION_LINK;
+        string newLink = findVariable("CONV_CITATION_LINK");
 
 
         // Replace all occurrences of %CITATION% with the citation text.
@@ -762,7 +779,7 @@ void doReferences(string *aLine) {
 
         // Extract the page_name.
         string refName = aLine->substr(linkStart + 2, linkEnd - linkStart - 2);
-        string newLink = CONV_REFERENCE_LINK;
+        string newLink = findVariable("CONV_REFERENCE_LINK");
 
         // Replace all occurrences of %REFERENCE% with the page name.
         string::size_type nameStart = newLink.find("%REFERENCE%");
@@ -807,7 +824,7 @@ void doAnchors(string *aLine) {
         string anchor = refName.substr(0, pipeStart);
         string titleText = refName.substr(pipeStart + 1, string::npos);
 
-        string newLink = CONV_ANCHOR_LINK;
+        string newLink = findVariable("CONV_ANCHOR_LINK");
 
 
         // Replace all occurrences of %CITATION% with the citation text.
@@ -860,7 +877,7 @@ void doAcronyms(string *aLine) {
         string acronym = refName.substr(0, pipeStart);
         string explanationText = refName.substr(pipeStart + 1, string::npos);
 
-        string newLink = CONV_ACRONYM_LINK;
+        string newLink = findVariable("CONV_ACRONYM_LINK");
 
 
         // Replace all occurrences of %ACRONYM% with the page name.
@@ -915,8 +932,8 @@ void doBold(string *aLine) {
 
             inBold = false;
 
-            aLine->replace(boldOff, 2, CONV_BOLD_OFF);
-            aLine->replace(boldOn, 2, CONV_BOLD_ON);
+            aLine->replace(boldOff, 2, findVariable("CONV_BOLD_OFF"));
+            aLine->replace(boldOn, 2, findVariable("CONV_BOLD_ON"));
 
             // Any more? Which we only need check if we got both previously.
             boldOn = aLine->find("__");
@@ -929,11 +946,11 @@ void doBold(string *aLine) {
         // until we set it explicitly of course!
         if (inBold) {
             // Then boldOn is the end of a multi-line bold.
-            aLine->replace(boldOn, 2, CONV_BOLD_OFF);
+            aLine->replace(boldOn, 2, findVariable("CONV_BOLD_OFF"));
             inBold = false;
         } else {
             // Otherwise, boldOn is the start of a multi-line bold.
-            aLine->replace(boldOn, 2, CONV_BOLD_ON);
+            aLine->replace(boldOn, 2, findVariable("CONV_BOLD_ON"));
             inBold = true;
         }
 
@@ -969,8 +986,8 @@ void doItalic(string *aLine) {
 
             inItalic = false;
 
-            aLine->replace(italicOff, 2, CONV_ITALIC_OFF);
-            aLine->replace(italicOn, 2, CONV_ITALIC_ON);
+            aLine->replace(italicOff, 2, findVariable("CONV_ITALIC_OFF"));
+            aLine->replace(italicOn, 2, findVariable("CONV_ITALIC_ON"));
 
             // Any more? Which we only need check if we got both previously.
             italicOn = aLine->find("''");
@@ -983,11 +1000,11 @@ void doItalic(string *aLine) {
         // until we set it explicitly of course!
         if (inItalic) {
             // Then boldOn is the end of a multi-line italic.
-            aLine->replace(italicOn, 2, CONV_ITALIC_OFF);
+            aLine->replace(italicOn, 2, findVariable("CONV_ITALIC_OFF"));
             inItalic = false;
         } else {
             // Otherwise, boldOn is the start of a multi-line italic.
-            aLine->replace(italicOn, 2, CONV_ITALIC_ON);
+            aLine->replace(italicOn, 2, findVariable("CONV_ITALIC_ON"));
             inItalic = true;
         }
 
@@ -1022,8 +1039,8 @@ void doInlineCode(string *aLine) {
 
             inCode = false;
 
-            aLine->replace(codeOff, 2, CONV_INLINE_CODE_OFF);
-            aLine->replace(codeOn, 2, CONV_INLINE_CODE_ON);
+            aLine->replace(codeOff, 2, findVariable("CONV_INLINE_CODE_OFF"));
+            aLine->replace(codeOn, 2, findVariable("CONV_INLINE_CODE_ON"));
 
             // Any more? Which we only need check if we got both previously.
             codeOn = aLine->find("@@");
@@ -1034,11 +1051,11 @@ void doInlineCode(string *aLine) {
         // We can only ever have codeOn and not codeOff.
         if (inCode) {
             // Then codeOn is the end of a multi-line italic.
-            aLine->replace(codeOn, 2, CONV_INLINE_CODE_OFF);
+            aLine->replace(codeOn, 2, findVariable("CONV_INLINE_CODE_OFF"));
             inCode = false;
         } else {
             // Otherwise, codeOn is the start of a multi-line italic.
-            aLine->replace(codeOn, 2, CONV_INLINE_CODE_ON);
+            aLine->replace(codeOn, 2, findVariable("CONV_INLINE_CODE_ON"));
             inCode = true;
         }
 
@@ -1056,8 +1073,8 @@ void doForcedLineFeed(string *aLine) {
 
     while (lf != string::npos) {
         // Do it backwards.
-        aLine->insert(lf + 3, CONV_FORCE_LINE_FEED_OFF);
-        aLine->replace(lf, 3, CONV_FORCE_LINE_FEED_ON);
+        aLine->insert(lf + 3, findVariable("CONV_FORCE_LINE_FEED_OFF"));
+        aLine->replace(lf, 3, findVariable("CONV_FORCE_LINE_FEED_ON"));
 
         // Anymore?
         lf = aLine->find("%%%");
@@ -1112,7 +1129,8 @@ void doLinks(string *aLine) {
 //------------------------------------------------------------------
 // Embed? a You Tube Video link.
 //
-// (vid) URL (/vid)
+// (vid) URL (/vid) eg http://youtube.com/watch?v=XXXXX   (URL)    or
+// (vid) URL (/vid) eg http://youtube.com/embed/XXXXX     (VIDEO_ID)
 //------------------------------------------------------------------
 void doYouTubeLink(string *aLine) {
 
@@ -1129,15 +1147,32 @@ void doYouTubeLink(string *aLine) {
     while ((linkStart != string::npos) &&
            (linkEnd != string::npos)) {
 
-        // Extract the vide URL.
+        // Extract the video URL.
         string urlName = aLine->substr(linkStart + 5, linkEnd - linkStart -5);
-        string newLink = CONV_YOUTUBE_LINK;
+        string newLink = findVariable("CONV_YOUTUBE_LINK");
 
-        // Replace all occurrences of %URL% with the page name.
+        // Extract the Video Id, in case we need it.
+        string videoId = "";
+        string::size_type idStart = urlName.find("?v=");
+
+        // Do we have a valid ID? If so, it's everything to the end
+        // of the link URL.
+        if (idStart != string::npos) {
+            videoId = urlName.substr(idStart + 3);
+        }
+
+        // Replace all occurrences of %URL% with the video URL.
         string::size_type urlStart = newLink.find("%URL%");
         while (urlStart != string::npos) {
             newLink.replace(urlStart, 5, urlName);
             urlStart = newLink.find("%URL%");
+        }
+
+        // also, replace all occurrences of %VIDEO_ID% with the video name.
+        urlStart = newLink.find("%VIDEO_ID%");
+        while (urlStart != string::npos) {
+            newLink.replace(urlStart, 10, videoId);
+            urlStart = newLink.find("%VIDEO_ID%");
         }
 
         // Now we can do the actual replacement.
@@ -1167,7 +1202,7 @@ void doWikiPageLink(string *aLine) {
 
         // Extract the page_name.
         string pageName = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
-        string newLink = CONV_WIKI_LINK;
+        string newLink = findVariable("CONV_WIKI_LINK");
 
         // Replace all occurrences of %PAGE_NAME% with the page name.
         string::size_type nameStart = newLink.find("%PAGE_NAME%");
@@ -1220,7 +1255,7 @@ void doUrl(string *aLine, string::size_type pipeStart) {
         // linkStuff[3] = Title text. (optional)
 
         // Now we need to stuff it into the replacement text.
-        string newLink = CONV_URL_LINK;
+        string newLink = findVariable("CONV_URL_LINK");
 
         // How many chunks of the link did we get?
         uint8_t chunks = linkStuff.size();
@@ -1335,7 +1370,7 @@ void doImages(string *aLine) {
         }
 
         // Now we need to stuff it into the replacement text.
-        string newLink = CONV_IMAGE_LINK;
+        string newLink = findVariable("CONV_IMAGE_LINK");
 
         // Output the Image URL in case we need to download it.
         cerr << "IMAGE LINK: " << linkStuff[0] << endl;
@@ -1443,7 +1478,7 @@ void doImageGallery(string *aLine) {
 void closeParagraph() {
 
     if (inParagraph) {
-        cout << CONV_PARAGRAPH_POSTAMBLE << endl;
+        cout << findVariable("CONV_PARAGRAPH_POSTAMBLE") << endl;
         inParagraph = false;
     }
 }
@@ -1458,9 +1493,109 @@ bool readInputFile(string *aLine) {
     if (mIfs->good()) {
         getline(*mIfs, *aLine);
         lineNumber++;
-
-        cerr << lineNumber << ": " << *aLine << endl;
     }
 
     return mIfs->good();
 }
+
+
+//------------------------------------------------------------------
+// Process the conversion file and returns a bool indicating success
+// or not of the processing.
+//
+// Each line is a comment (#...) or not. If not a comment then it is
+// a variable name, in upper case and equals and the rest is the
+// replacement text.
+//------------------------------------------------------------------
+bool readConversionFile() {
+
+    string cLine = "";
+
+    while (mCfs->good()) {
+        readConvertLine(&cLine);
+
+        // Strip out comments.
+        if ((cLine.empty() ||
+            (cLine.at(0) == '#'))) {
+                continue;
+        }
+
+        // Process a valid line.
+        // Split into two parts, the variable and the value.
+        string::size_type equals = cLine.find('=');
+        if (equals == string::npos) {
+            // We have an invalid line.
+            cerr << "ReadConversionFile(): Invalid line. No '=' found, at line "
+                 << lineNumber << " in conversion file." << endl;
+            return false;
+        }
+
+        // Extract the variable and value.
+        string variableName = cLine.substr(0, equals);
+        string variableValue = cLine.substr(equals + 1);
+
+        //cerr << "Name : '" << variableName << "'" << endl;
+        //cerr << "Value: '" << variableValue << "'" << endl;
+
+        // Build a pair, for insertion into the variables list.
+        // Overwrite value if variable name already there.
+        pair<map<string, string>::iterator, bool> exists;
+        exists = variableMap.insert(pair<string, string>(variableName, variableValue));
+
+        // If the bool is false, the insert failed, already there, so overwire
+        // the value.
+        //
+        // Exists is a pair<mBinds::iterator, bool>. It indexes the map at the
+        // position of the newly inserted or already existing variable name.
+        //
+        // Exists.second is the bool. True=inserted, False=already exists.
+        // Exists.first is an iterator (pseudo pointer) to a pair <string, string>.
+        // Exists.first->first is the first string, aka the variableName.
+        // Exists.first->second is the second string, aka the variableValue.
+        //
+        // Phew!
+        if (!exists.second) {
+            // Overwrite the current setting.
+            exists.first->second = variableValue;
+            cerr << "ReadConversionFile(): Overwriting " << variableName
+                 << " with new value. Already exists." << endl;
+        }
+    }
+
+    return true;
+}
+
+
+//
+// Search the variables map for a given variable name.
+// Returns a valid iterator if all ok, otherwise returns mVariables.end().
+string findVariable(const string variableName) {
+
+    map<string, string>::iterator i = variableMap.find(variableName);
+
+    if (i == variableMap.end()) {
+        // Not found.
+        cerr << "FindVariable(): VariableName: " << variableName
+              << " not found." << endl;
+    }
+
+    return (*i).second;
+}
+
+
+
+//------------------------------------------------------------------
+// Reads the convert file and returns a bool indicating success or not
+// however it happens.
+//------------------------------------------------------------------
+bool readConvertLine(string *cLine) {
+
+    if (mCfs->good()) {
+        getline(*mCfs, *cLine);
+        lineNumber++;
+    }
+
+    return mCfs->good();
+}
+
+
