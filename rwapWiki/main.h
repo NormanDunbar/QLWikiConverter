@@ -14,7 +14,7 @@ void doList(string *aLine, char aChar); // Does unordered and ordered lists.
 void doDefinitionList(string *aLine, char aChar); // Does definition lists.
 void doCodeBlock(string *aLine);        // Code block.
 bool doBlockQuotes(string *aLine);      // Block quotes.
-
+bool doTableRow(string *aLine);         // Table row(s).
 void doLineIncludes(string *aLine);     // Checks for special chars at the start of a line.
 void doBold(string *aLine);             // Processes Bold text.
 void doItalic(string *aLine);           // Processes Italic text.
@@ -28,6 +28,7 @@ void doCitations(string *aLine);        // Citations.
 void doReferences(string *aLine);       // References, whatever they are.
 void doAnchors(string *aLine);          // Anchors, likewise!
 void doAcronyms(string *aLine);         // I can do these!
+void doImages(string *aLine);            // Guess!
 void doImageGallery(string *aLine);     // I can't do these though!
 
 void doEmbeddedFormats(string *aLine);  // Checks line start stuff for embedded codes.

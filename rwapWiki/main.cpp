@@ -83,17 +83,26 @@ using namespace std;
 #define CONV_PARAGRAPH_PREAMBLE "<p>"
 #define CONV_PARAGRAPH_POSTAMBLE "</p>"
 
+#define CONV_TABLE_PREAMBLE "<table border=\"1\">"
+#define CONV_TABLE_POSTAMBLE "</table>"
+#define CONV_TABLE_ROW_PREAMBLE "<tr>"
+#define CONV_TABLE_ROW_POSTAMBLE "</tr>"
+#define CONV_TABLE_CELL_PREAMBLE "<td>"
+#define CONV_TABLE_CELL_POSTAMBLE "</td>"
+
+
 // Watch these! In LaTeX, a backslash is acceptable, but in C++
 // "\ref" becomes "linefeed ef"! We can double up here, but in
 // the conversion file, we might get away with it!
 // In HTML, it's "<a href="page_name#">text for link></a>"
-#define CONV_WIKI_LINK "<a href=\"%PAGE_NAME%#\">%PAGE_NAME%</a>"
+#define CONV_WIKI_LINK "<a href=\"%PAGE_NAME%.html\">%PAGE_NAME%</a>"
 #define CONV_URL_LINK "<a href=\"%URL%\" title=\"%TITLE_TEXT%\">%LINK_TEXT%</a>"
-#define CONV_YOUTUBE_LINK "<iframe width=\"560\" height=\"315\" src=\"%URL%\" frameborder=\"0\" allowfullscreen></iframe>"
-#define CONV_REFERENCE_LINK "|%REFERENCE%|"
+#define CONV_YOUTUBE_LINK "<iframe width=\"560\" height=\"315\" src=\"%URL%\" frameborder=\"1\" allowfullscreen></iframe>"
+#define CONV_REFERENCE_LINK "<u>%REFERENCE%</u>"
 #define CONV_ACRONYM_LINK "<abbr title=\"%TITLE_TEXT%\">%ACRONYM%</abbr>"
 #define CONV_CITATION_LINK "<abbr title=\"%SOURCE%\">%CITATION%</abbr>"
 #define CONV_ANCHOR_LINK "<abbr title=\"%TITLE_TEXT%\">%ANCHOR%</abbr>"
+#define CONV_IMAGE_LINK "<a href=\"%SRC%\" title=\"%TITLE_TEXT%\"><img src=\"%SRC%\" alt=\"%ALT_TEXT%\" width=\"%WIDTH%\" height=\"%HEIGHT%\" border=\"0\" align=\"%ALIGN%\"></a>"
 
 //------------------------------------------------------------------
 // Globals.
@@ -175,10 +184,10 @@ int jfdi()
         // once we have identified the first line here.
         if (!aLine->empty()) {
             // Lists get special treatment, they loop around.
-            if (aLine->find('-') == 0 ||
-                aLine->find('*') == 0 ||
-                aLine->find(';') == 0 ||
-                aLine->find('#') == 0) {
+            if (aLine->at(0) == '-'||
+                aLine->at(0) == '*' ||
+                aLine->at(0) == ';' ||
+                aLine->at(0) == '#') {
                 closeParagraph();
                 doList(aLine, aLine->at(0));
 
@@ -187,10 +196,20 @@ int jfdi()
                 continue;
             }
 
-            // Code Blocks also loop around
-            if (aLine->find(' ') == 0) {
+            // Code Blocks also loop around.
+            if (aLine->at(0) == ' ') {
                 closeParagraph();
                 doCodeBlock(aLine);
+
+                // Because we have read the first line past the code block
+                // we don't need to read the next line.
+                continue;
+            }
+
+            // Table Rows also loop around.
+            if (aLine->at(0) == '|') {
+                closeParagraph();
+                doTableRow(aLine);
 
                 // Because we have read the first line past the code block
                 // we don't need to read the next line.
@@ -249,18 +268,18 @@ bool doLineStarts(string *aLine) {
     // Headings? These can contain bold and Italic.
     bool result = false;
 
-    if (aLine->find('!') == 0) {
+    if (aLine->at(0) == '!') {
         result |= doHeadings(aLine);
     }
 
     // Horozontal Rule? 4 or more '='?
-    if (aLine->find("====") == 0) {
+    if (aLine->substr(0, 4) == "====") {
         result |= doHR(aLine);
     }
 
     // Block Quotes - one per line.
     // These can contain bold and Italic.
-    if (aLine->find('>') == 0) {
+    if (aLine->at(0) == '>') {
         result |= doBlockQuotes(aLine);
     }
 
@@ -324,6 +343,9 @@ void doLineIncludes(string *aLine) {
         doAnchors(aLine);
     }
 
+    if (aLine->find("((") != string::npos) {
+        doImages(aLine);
+    }
     if (aLine->find("%%") != string::npos) {
         doImageGallery(aLine);
     }
@@ -596,6 +618,61 @@ bool doBlockQuotes(string *aLine) {
 
 
 //------------------------------------------------------------------
+// Does table rows. Repeats the reading of the input file until we
+// find a line that exits from the table.
+//------------------------------------------------------------------
+bool doTableRow(string *aLine) {
+
+    vector<string> cellStuff;
+    vector<string>::iterator cell;
+
+    // Preamble first.
+    cout << endl << CONV_TABLE_PREAMBLE << endl;
+
+    // Loop to write out code lines.
+    while (mIfs->good() &&
+           !aLine->empty() &&
+           aLine->at(0) == '|') {
+
+        // Split this line into cells at the '|' character.
+        stringstream tableCells(aLine->substr(1));
+        string segment;
+
+        // Read back from the stream and split at the '|' character.
+        cellStuff.clear();
+        while (getline(tableCells, segment, '|')) {
+            cellStuff.push_back(segment);
+        }
+
+        // Row Preamble first.
+        cout << CONV_TABLE_ROW_PREAMBLE;
+
+        // Process each cell in the row.
+        for (cell = cellStuff.begin(); cell < cellStuff.end(); cell++) {
+
+            // Not sure about this. Do we need to check for
+            // Bold etc in table cells? I suppose so.
+            doEmbeddedFormats(&(*cell));
+
+
+            cout << CONV_TABLE_CELL_PREAMBLE
+                 << *cell
+                 << CONV_TABLE_CELL_POSTAMBLE;
+        }
+        cout << CONV_TABLE_ROW_POSTAMBLE << endl;
+
+        // Get the next line.
+        readInputFile(aLine);
+    }
+
+
+    // Postamble last.
+    cout << CONV_TABLE_POSTAMBLE << endl;
+    return true;
+}
+
+
+//------------------------------------------------------------------
 // Check linestart stuff for embedded formatting. This is used when
 // lines that start with an identifier that extends until the final
 // LF opn the line, *may* have embedded "stuff" in them. All that
@@ -612,6 +689,7 @@ void doEmbeddedFormats(string *aLine) {
     doReferences(aLine);
     doAnchors(aLine);
     doAcronyms(aLine);
+    doImages(aLine);
 }
 
 
@@ -1108,29 +1186,10 @@ void doWikiPageLink(string *aLine) {
 }
 
 //------------------------------------------------------------------
-// Process an HTTP URL. The format is:
-//
-// [ linktext | URL | Language | titleText ]
-//
-// Which, in HTML, becomes:
-//
-// <a href="URL" title="titleText">linkText</a>.
+// Split a URL into (up to) 4 parts at the '|' character, and build
+// them into an output format for a link in the output file.
 //------------------------------------------------------------------
-/*
-std::stringstream test("this_is_a_test_string");
-std::string segment;
-std::vector<std::string> seglist;
-
-while(std::getline(test, segment, '_'))
-{
-   seglist.push_back(segment);
-}
-*/
-//------------------------------------------------------------------
-
 void doUrl(string *aLine, string::size_type pipeStart) {
-
-    // #define CONV_URL_LINK ""<a href=\"%URL%\" title=\"%TITLE_TEXT%\">%LINK_TEXT%</a>
 
     vector<string> linkStuff;
 
@@ -1148,21 +1207,32 @@ void doUrl(string *aLine, string::size_type pipeStart) {
         string segment;
 
         // Read back from the stream and split at the '|' character.
+        linkStuff.clear();
         while (getline(oldLinkText, segment, '|')) {
             linkStuff.push_back(segment);
         }
 
         // At this point, we have:
         //
-        // linkStuff[0] = Link text.
-        // linkStuff[1] = URL.
-        // linkStuff[2] = Language.
-        // linkStuff[3] = Title text.
+        // linkStuff[0] = Link text. (mandatory)
+        // linkStuff[1] = URL. (mandatory)
+        // linkStuff[2] = Language. (optional)
+        // linkStuff[3] = Title text. (optional)
 
         // Now we need to stuff it into the replacement text.
         string newLink = CONV_URL_LINK;
 
+        // How many chunks of the link did we get?
+        uint8_t chunks = linkStuff.size();
+        if (chunks < 2) {
+            // Illegal link.
+            cerr << "DoURL(): Invalid link on line " << lineNumber
+                 << " of input file. The invalid link is '"
+                 << linkText << "'" << endl;
+        }
+
         // Replace all occurrences of %LINK_TEXT% with the correct text.
+        // MANDATORY.
         string::size_type textStart = newLink.find("%LINK_TEXT%");
         while (textStart != string::npos) {
             newLink.replace(textStart, 11, linkStuff[0]);
@@ -1170,6 +1240,7 @@ void doUrl(string *aLine, string::size_type pipeStart) {
         }
 
         // Replace all occurrences of %URL% with the correct text.
+        // MANDATORY.
         textStart = newLink.find("%URL%");
         while (textStart != string::npos) {
             newLink.replace(textStart, 5, linkStuff[1]);
@@ -1177,17 +1248,23 @@ void doUrl(string *aLine, string::size_type pipeStart) {
         }
 
         // Replace all occurrences of %LINK_TEXT% with the correct text.
-        textStart = newLink.find("%LANGUAGE%");
-        while (textStart != string::npos) {
-            newLink.replace(textStart, 10, linkStuff[2]);
+        // OPTIONAL.
+        if (chunks > 2) {
             textStart = newLink.find("%LANGUAGE%");
+            while (textStart != string::npos) {
+                newLink.replace(textStart, 10, linkStuff[2]);
+                textStart = newLink.find("%LANGUAGE%");
+            }
         }
 
         // Replace all occurrences of %LINK_TEXT% with the correct text.
-        textStart = newLink.find("%TITLE_TEXT%");
-        while (textStart != string::npos) {
-            newLink.replace(textStart, 12, linkStuff[3]);
+        // OPTIONAL.
+        if (chunks > 3) {
             textStart = newLink.find("%TITLE_TEXT%");
+            while (textStart != string::npos) {
+                newLink.replace(textStart, 12, linkStuff[3]);
+                textStart = newLink.find("%TITLE_TEXT%");
+            }
         }
 
 
@@ -1202,10 +1279,158 @@ void doUrl(string *aLine, string::size_type pipeStart) {
 
 
 //------------------------------------------------------------------
+// Split an image into (up to) 7 parts at the '|' character, and
+// build them into an output format for images in the output file.
+// The image link format is:
+//
+//      ((source|alt|align|long description|width|height|???))
+//
+// SOURCE = URL of image. Always web address.
+// ALT = Alt Text for image.
+// ALIGN = the text align="X" where x in 'LlgGRrDd' for left/right.
+// LONG DESCRIPTION = Couold be used for title= in <A> links in html.
+// WIDTH = Image Width in pixels.
+// HEIGHT = Image height in pixels.
+// ??? = POPUP. Pops up a big image if clicked. (default)
+//------------------------------------------------------------------
+void doImages(string *aLine) {
+
+    vector<string> linkStuff;
+
+    string::size_type linkStart = aLine->find("((");
+    string::size_type linkEnd = aLine->find("))", linkStart + 2);
+
+    while ((linkStart != string::npos) &&
+           (linkEnd != string::npos)) {
+
+        // Extract the image link text.
+        string linkText = aLine->substr(linkStart + 2, linkEnd - linkStart -1);
+
+        // Stream it.
+        stringstream oldLinkText(linkText);
+        string segment;
+
+        // Read back from the stream and split at the '|' character.
+        while (getline(oldLinkText, segment, '|')) {
+            linkStuff.push_back(segment);
+        }
+
+        // At this point, we have:
+        //
+        // linkStuff[0] = Image source URL. (%SRC%) MANDATORY.
+        // linkStuff[1] = ALT Text. (%ALT_TEXT%) OPTIONAL.
+        // linkStuff[2] = Align. (%ALIGN%) OPTIONAL.
+        // linkStuff[3] = Title text. (%TITLE_TEXT%) OPTIONAL.
+        // linkStuff[4] = Width. (%WIDTH%) OPTIONAL.
+        // linkStuff[5] = Height (%HEIGHT%) OPTIONAL.
+        // linkStuff[6] = Null or POPUP. (Not Used) OPTIONAL.
+
+        uint8_t chunks = linkStuff.size();
+        if (chunks < 1) {
+            // We have a duff link.
+            cerr << "DoImages(): Invalid link on line " << lineNumber
+                 << " of the input file. The invalid image link is '"
+                 << linkText << "'" << endl;
+            return;
+        }
+
+        // Now we need to stuff it into the replacement text.
+        string newLink = CONV_IMAGE_LINK;
+
+        // Output the Image URL in case we need to download it.
+        cerr << "IMAGE LINK: " << linkStuff[0] << endl;
+
+        // Replace all occurrences of %SRC% with the correct text.
+        // MANDATORY.
+        string::size_type textStart = newLink.find("%SRC%");
+        while (textStart != string::npos) {
+            newLink.replace(textStart, 5, linkStuff[0]);
+            textStart = newLink.find("%SRC%");
+        }
+
+        // ALL the remainder are optional.
+
+        // Replace all occurrences of %ALT_TEXT% with the correct text.
+        if (chunks > 1) {
+            textStart = newLink.find("%ALT_TEXT%");
+            while (textStart != string::npos) {
+                newLink.replace(textStart, 10, linkStuff[1]);
+                textStart = newLink.find("%ALT_TEXT%");
+            }
+        }
+
+        // Replace all occurrences of %ALIGN% with the correct text.
+        // The text is in double quotes, and is one character long.
+        if (chunks > 2) {
+            textStart = newLink.find("%ALIGN%");
+            while (textStart != string::npos) {
+                newLink.replace(textStart, 7, linkStuff[2].substr(1, 1));
+                textStart = newLink.find("%ALIGN%");
+            }
+
+            // Replace all occurrences of %ALIGN_EXPAND% with the correct text.
+            // The text is in double quotes, and is one character long but we
+            // expand this to left or right accordingly.
+            string alignText;
+            char alignChar = linkStuff[2].at(1);    // Double quoted.
+            if ((alignChar == 'l') ||
+                (alignChar == 'L') ||
+                (alignChar == 'g') ||
+                (alignChar == 'G')) {
+                alignText = "left";
+            } else {
+                alignText = "right";
+                }
+            textStart = newLink.find("%ALIGN_EXPAND%");
+            while (textStart != string::npos) {
+                newLink.replace(textStart, 14, alignText);
+                textStart = newLink.find("%ALIGN_EXPAND%");
+            }
+        }
+
+
+        // Replace all occurrences of %LINK_TEXT% with the correct text.
+        if (chunks > 3) {
+            textStart = newLink.find("%TITLE_TEXT%");
+            while (textStart != string::npos) {
+                newLink.replace(textStart, 12, linkStuff[3]);
+                textStart = newLink.find("%TITLE_TEXT%");
+            }
+        }
+
+        // Replace all occurrences of %WIDTH% with the correct text.
+        if (chunks > 4) {
+            textStart = newLink.find("%WIDTH%");
+            while (textStart != string::npos) {
+                newLink.replace(textStart, 7, linkStuff[4]);
+                textStart = newLink.find("%WIDTH%");
+            }
+        }
+
+        // Replace all occurrences of %HEIGHT% with the correct text.
+        if (chunks > 5) {
+            textStart = newLink.find("%HEIGHT%");
+            while (textStart != string::npos) {
+                newLink.replace(textStart, 8, linkStuff[5]);
+                textStart = newLink.find("%HEIGHT%");
+            }
+        }
+
+        // Now we can do the actual replacement.
+        aLine->replace(linkStart, linkEnd + 2, newLink);
+
+        // Any more links?
+        linkStart = aLine->find("((");
+        linkEnd = aLine->find("))", linkStart + 2);
+    }
+}
+
+
+//------------------------------------------------------------------
 // Image Gallery - cannot cope. Just barf!
 //------------------------------------------------------------------
 void doImageGallery(string *aLine) {
-    cerr << "OOPS! Image Gallery set up found at line " << lineNumber
+    cerr << "DoImageGallery(): OOPS! Image Gallery set up found at line " << lineNumber
          << " of the input file. I can't cope with those, sorry."
          << endl;
 }
@@ -1233,6 +1458,8 @@ bool readInputFile(string *aLine) {
     if (mIfs->good()) {
         getline(*mIfs, *aLine);
         lineNumber++;
+
+        cerr << lineNumber << ": " << *aLine << endl;
     }
 
     return mIfs->good();
