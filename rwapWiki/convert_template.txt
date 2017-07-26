@@ -1,0 +1,292 @@
+#========================================================================================
+# RWAP Wiki Conversion Utility - Template File.
+#========================================================================================
+#
+# Copy this file to something else. DO NOT edit this one.
+# Edit the copy to make it output the text you want for the Wiki elements.
+# Run rwapWiki input_file edited_file > output_file.
+#
+# The output file will then hold the Wiki source code in the desired format
+# with all your substitutions made.
+#========================================================================================
+#
+#
+#
+# The format of a conversion file is simple. We have comments, like these
+# which are indicated by a '#' at the start of the line. We can't really
+# allow embedded comments as the '#' could be valid in whatever format we
+# are exporting to. Comment markers are allowed at the start of the line only.
+#
+# At present, blank lines are not allowed as they may, in future versions
+# be considered part of multi-line replacement text.
+#
+# Then we simply have a list of VARIABLE_NAME=variable replacement text. At
+# the moment, only a SINGLE LINE of replacement text is allowed. Everything to
+# the end of the line is considered as part of the replacement.
+#
+# Quotes are not needed for strings. If they are present, they will be used
+# in the output text as well.
+#
+#========================================================================================
+# Whole file stuff.
+#----------------------------------------------------------------------------------------
+# These conversions are placed at the start and end of the output file, before
+# (or after) any other text at all. They appears once and once only.
+#
+# The preamble goes at the top of the file.
+# The postamble at the end of the file.
+#----------------------------------------------------------------------------------------
+CONV_PREAMBLE=<html><head><title></title></head><body>
+CONV_POSTAMBLE=</body></html>
+#========================================================================================
+#
+#
+#========================================================================================
+# Headings. There are three heading levels in the Wiki. These are all on a single
+# line and are converted to add a preamble and postamble to the text on that line.
+# For example, HTML would have <h1> and </h1> (or h2, h3).
+#----------------------------------------------------------------------------------------
+CONV_H1_PREAMBLE=<h1>
+CONV_H1_POSTAMBLE=</h1>
+CONV_H2_PREAMBLE=<h2>
+CONV_H2_POSTAMBLE=</h2>
+CONV_H3_PREAMBLE=<h3>
+CONV_H3_POSTAMBLE=</h3>
+#========================================================================================
+#
+#
+#========================================================================================
+# Bold and Italic text next.
+#----------------------------------------------------------------------------------------
+CONV_BOLD_ON=<strong>
+CONV_BOLD_OFF=</strong>
+CONV_ITALIC_ON=<em>
+CONV_ITALIC_OFF=</em>
+#========================================================================================
+#
+#
+#========================================================================================
+# The horizontal rule is next.
+#----------------------------------------------------------------------------------------
+CONV_HR_ON=<br>
+CONV_HR_OFF=
+#========================================================================================
+#
+#
+#========================================================================================
+# List Stuff.
+#========================================================================================
+# Lists have a whole list preamble and postamble as well as each list item having
+# a pre and postamble of their own. Obviously, these can be blank as appropriate.
+#----------------------------------------------------------------------------------------
+CONV_LIST_PREAMBLE=<ul>
+CONV_LIST_POSTAMBLE=</ul>
+CONV_LIST_ON=<li>
+CONV_LIST_OFF=</li>
+#========================================================================================
+#
+#
+#========================================================================================
+# Numeric lists.
+#----------------------------------------------------------------------------------------
+CONV_NUM_LIST_PREAMBLE=<ol>
+CONV_NUM_LIST_POSTAMBLE=</ol>
+CONV_NUM_LIST_ON=<li>
+CONV_NUM_LIST_OFF=</li>
+#========================================================================================
+#
+#
+#========================================================================================
+# Definition Lists, can be defined in the Wiki, but do not work. However, this
+# utility will correctly convert them. :-)
+#----------------------------------------------------------------------------------------
+CONV_DEFN_LIST_PREAMBLE=<dl>
+CONV_DEFN_LIST_POSTAMBLE=</dl>
+CONV_DEFN_LIST_TERM_ON=<dt>
+CONV_DEFN_LIST_TERM_OFF=</dt>
+CONV_DEFN_LIST_DESC_ON=<dd>
+CONV_DEFN_LIST_DESC_OFF=</dd>
+#========================================================================================
+#
+#
+#========================================================================================
+# Code blocks for listings. In the Wiki, these are just a list of lines that start
+# with a space. In some outputs there's a block pre and postamble, but nothing for
+# each individual line, while others may required each line to have a code, but not
+# the whole block. Etc.
+#----------------------------------------------------------------------------------------
+CONV_CODE_BLOCK_PREAMBLE=<pre>
+CONV_CODE_BLOCK_POSTAMBLE=</pre>
+CONV_CODE_LINE_ON=
+CONV_CODE_LINE_OFF=
+#========================================================================================
+#
+#
+#========================================================================================
+# Block Quotes are a bit like code blocks.
+#----------------------------------------------------------------------------------------
+CONV_BLOCK_QUOTE_PREAMBLE=<blockquote>
+CONV_BLOCK_QUOTE_POSTAMBLE=</blockquote>
+CONV_BLOCK_QUOTE_LINE_ON=<p>
+CONV_BLOCK_QUOTE_LINE_OFF=</p>
+#========================================================================================
+#
+#
+#========================================================================================
+# In line code. Again this is not working in the WIki, but can be defined. This program
+# will convert it, if found.
+#----------------------------------------------------------------------------------------
+CONV_INLINE_CODE_ON=<code>
+CONV_INLINE_CODE_OFF=</code>
+#========================================================================================
+#
+#
+#========================================================================================
+# Forced Linefeed.
+#----------------------------------------------------------------------------------------
+CONV_FORCE_LINE_FEED_ON=<br>
+CONV_FORCE_LINE_FEED_OFF=
+#========================================================================================
+#
+#
+#========================================================================================
+# Paragraphs. Some output formats need them wrapped in some form of identifier, while
+# others do not.
+#----------------------------------------------------------------------------------------
+CONV_PARAGRAPH_PREAMBLE=<p>
+CONV_PARAGRAPH_POSTAMBLE=</p>
+#========================================================================================
+#
+#
+#========================================================================================
+# Table Stuff.
+#========================================================================================
+# Tables have CELLS and ROWS.
+# Each line in the Wiki is a full ROW. Each row is split by a '|', and EOL, into CELLs.
+# Cells have a pre and postamble.
+# Rows also have a pre and postamble.
+# As does the whole table.
+#----------------------------------------------------------------------------------------
+CONV_TABLE_PREAMBLE=<table border="1">
+CONV_TABLE_POSTAMBLE=</table>
+CONV_TABLE_ROW_PREAMBLE=<tr>
+CONV_TABLE_ROW_POSTAMBLE=</tr>
+CONV_TABLE_CELL_PREAMBLE=<td>
+CONV_TABLE_CELL_POSTAMBLE=</td>
+#========================================================================================
+#
+#
+#========================================================================================
+# Link Stuff.
+#========================================================================================
+# Wiki links are just a page name wrapped in '[' and ']'. These have a single replacement
+# format where the page name is substituted into the replacement text wherever the words
+# '%PAGE_NAME%' in upper case, is found.
+#----------------------------------------------------------------------------------------
+CONV_WIKI_LINK=<a href=\%PAGE_NAME%.html\>%PAGE_NAME%</a>
+#========================================================================================
+#
+#
+#========================================================================================
+# URLs, have up to 4 sections. Only the first 2 are mandatory.
+#
+# LINK_TEXT - the clickable text that will appear on the page when the Wiki is viewed.
+# URL - where the link will take you , if clicked.
+# TITLE_TEXT - the text that appears as a pop-up hint, when the LINK_TEXT is hovered
+#              over.
+# LANGUAGE - the language code for the linked page. (Probably not used in conversions.)
+#
+# The appropriate part of the Wiki link will be substituted into the replacement text
+# as appropriate. The permitted substitution values are:
+#
+# %LINK_TEXT% MANDATORY
+# %URL% MANDATORY
+# %TITLE_TEXT%
+# %LANGUAGE%
+#
+# All in upper case.
+#
+#----------------------------------------------------------------------------------------
+CONV_URL_LINK=<a href=\%URL%\ title=\%TITLE_TEXT%\>%LINK_TEXT%</a>
+#========================================================================================
+#
+#
+#========================================================================================
+# You Tube video links.
+# These have the URL embedded and substituted whenever the text '%URL%' appears, alternatively,
+# only the video id can be substituted wherever '%VIDEO_ID%' appears.
+#
+# It seems that we have two options for URLs in You Tube:
+#
+# http://youtube.com/watch?v=XXXXXX and
+# https://youtube.com/embed/XXXXXX
+#
+# For the %VIDEO_ID% to be extracted, the former URL must be the video URL in the Wiki Page.
+# The latter format is already correct for embedding videos in a web page, for example.
+#
+#----------------------------------------------------------------------------------------
+CONV_YOUTUBE_LINK=<iframe width="30%" height="30%" src="https://youtube.com/embed/%VIDEO_ID%" frameborder="1" allowfullscreen></iframe>
+#========================================================================================
+#
+#
+#========================================================================================
+# References are weird, and don''t seem to do anything in the WIki, however....
+# There is a single token to be replaced, '%REFERENCE%' whihc will be replaced by everything
+# in the original reference, which is '{{Reference Text here}}'.
+#----------------------------------------------------------------------------------------
+CONV_REFERENCE_LINK=<u>%REFERENCE%</u>
+#========================================================================================
+#
+#
+#========================================================================================
+# Acronyms work quite well. For HTML anyway, they are converted to <abbr> as
+# follows:
+#
+# %TITLE_TEXT is the explanation of the acronym.
+# %ACRONYM% is the actual Acronym/abbreviation.
+#----------------------------------------------------------------------------------------
+CONV_ACRONYM_LINK=<abbr title=\"%TITLE_TEXT%\">%ACRONYM%</abbr>
+#========================================================================================
+#
+#
+#========================================================================================
+# Citations, don't work on the Wiki. However,
+# %CITATION% is the citation text.
+# %SOURCE% is who said it.
+#----------------------------------------------------------------------------------------
+CONV_CITATION_LINK=<abbr title=\"%SOURCE%\">%CITATION%</abbr>
+#========================================================================================
+#
+#
+#========================================================================================
+# Actions, don't work on the Wiki. However,
+# %ANCHOR% is the anchor text.
+# %TITLE_TEXT% is what it supposed references.
+#
+# On the Wiki, they are as follows: '~~anchor|title~~'
+#----------------------------------------------------------------------------------------
+CONV_ANCHOR_LINK=<abbr title=\"%TITLE_TEXT%\">%ANCHOR%</abbr>
+#========================================================================================
+#
+#
+#========================================================================================
+# Images have up to 6 (officially) but 7 (actually) fields. These are:
+#
+#  ((source|alt|align|long description|width|height|???))
+#
+# SOURCE = URL of image. Always web address. MANDATORY.
+# ALT = Alt Text for image.
+# ALIGN = the text align="X" where x in 'LlgGRrDd' for left/right.
+# LONG DESCRIPTION = Couold be used for title= in <a> links in html.
+# WIDTH = Image Width in pixels.
+# HEIGHT = Image height in pixels.
+# ??? = POPUP. Pops up a big image if clicked. (default)
+#
+# When converting, the %ALIGN% text can be a single character, or you can specify
+# %ALIGN_EXPAND% to convert [lLgG] to "left" and [rRdD] to "right".
+#----------------------------------------------------------------------------------------
+CONV_IMAGE_LINK=<a href=\"%SRC%\" title=\"%TITLE_TEXT%\"><img src=\"%SRC%\" alt=\"%ALT_TEXT%\" width=\"%WIDTH%\" height=\"%HEIGHT%\" border=\"0\" align=\"%ALIGN%\"></a>
+#========================================================================================
+
+
+

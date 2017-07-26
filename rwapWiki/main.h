@@ -2,10 +2,12 @@
 #define MAIN_H
 
 using std::string;
+using std::map;
 
 int jfdi();                             // Just does it all.
-int readConversionFile();               // Reads the conversions data.
+bool readConversionFile();              // Reads the conversions data.
 bool readInputFile(string *aLine);      // Reads a line from the input file.
+bool readConvertLine(string *aLine);    // Reads a line from the conversion file.
 
 bool doLineStarts(string *aLine);       // Checks for special chars at the start of a line.
 bool doHeadings(string *aLine);         // Processes Headings lines.
@@ -33,5 +35,8 @@ void doImageGallery(string *aLine);     // I can't do these though!
 
 void doEmbeddedFormats(string *aLine);  // Checks line start stuff for embedded codes.
 void closeParagraph();                  // Closes the current paragraph.
+
+string findVariable(const string variableName);
+
 #endif // MAIN_H
 
