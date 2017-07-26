@@ -665,7 +665,7 @@ bool doTableRow(string *aLine) {
         cout << findVariable("CONV_TABLE_ROW_PREAMBLE");
 
         // Process each cell in the row.
-        for (cell = cellStuff.begin(); cell < cellStuff.end(); cell++) {
+        for (cell = cellStuff.begin(); cell != cellStuff.end(); cell++) {
 
             // Not sure about this. Do we need to check for
             // Bold etc in table cells? I suppose so.
