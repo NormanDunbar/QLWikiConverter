@@ -369,6 +369,10 @@ void doList(string *aLine, char aChar) {
 
     // Loop around and do the list items.
     while (mIfs->good()) {
+
+        // Some lists have embedded formats in them too.
+        doEmbeddedFormats(aLine);
+
         // Has the curent nesting level changed. Only really
         // affects the second and subsequent lines. There can be no
         // leading aChars though, watch out! That's the end of a list.
@@ -448,6 +452,10 @@ void doDefinitionList(string *aLine, char aChar) {
 
     // Loop around and do the list items.
     while (mIfs->good()) {
+
+        // Some lists have embedded formats in them too.
+        doEmbeddedFormats(aLine);
+
         // Has the curent nesting level changed. Only really
         // affects the second and subsequent lines. There can be no
         // leading aChars though, watch out! That's the end of a list.
@@ -509,7 +517,18 @@ void doCodeBlock(string *aLine) {
     // Loop to write out code lines.
     while (mIfs->good() &&
            !aLine->empty() &&
-           aLine->at(0) == ' ') {
+           aLine->at(0) == ' ')
+    {
+        // Some lines of code have line feed (%%%) at the end.
+        // Not required, so lose them.
+        do {
+            string::size_type lineFeed = aLine->find("%%%");
+            if (lineFeed != string::npos) {
+                aLine->replace(lineFeed, 3, "");
+            }
+
+        } while (aLine->find("%%%") != string::npos);
+
         // We can lose the leading space. But keep
         // all other leading spaces as they are significant.
         cout << findVariable("CONV_CODE_LINE_ON")

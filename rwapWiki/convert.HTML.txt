@@ -2,16 +2,6 @@
 # RWAP Wiki Conversion Utility - HTML Output.
 #========================================================================================
 #
-# Copy this file to something else. DO NOT edit this one.
-# Edit the copy to make it output the text you want for the Wiki elements.
-# Run rwapWiki input_file edited_file > output_file.
-#
-# The output file will then hold the Wiki source code in the desired format
-# with all your substitutions made.
-#========================================================================================
-#
-#
-#
 # The format of a conversion file is simple. We have comments, like these
 # which are indicated by a '#' at the start of the line. We can't really
 # allow embedded comments as the '#' could be valid in whatever format we
@@ -36,7 +26,7 @@
 # The preamble goes at the top of the file.
 # The postamble at the end of the file.
 #----------------------------------------------------------------------------------------
-CONV_PREAMBLE=<html><head><title></title></head><body>
+CONV_PREAMBLE=<html><head><title>Sinclair QL Wiki</title> <meta charset="UTF-8"></head><body>
 CONV_POSTAMBLE=</body></html>
 #========================================================================================
 #
