@@ -21,92 +21,6 @@
 
 using namespace std;
 
-/*
-//------------------------------------------------------------------
-// TEMPORARY Stuff. Testing with a conversion to HTML.
-//------------------------------------------------------------------
-#define CONV_PREAMBLE "<html><head><title></title></head><body>"
-#define CONV_POSTAMBLE "</body></html>"
-
-#define CONV_H1_PREAMBLE "<h1>"
-#define CONV_H1_POSTAMBLE "</h1>"
-#define CONV_H2_PREAMBLE "<h2>"
-#define CONV_H2_POSTAMBLE "</h2>"
-#define CONV_H3_PREAMBLE "<h3>"
-#define CONV_H3_POSTAMBLE "</h3>"
-
-#define CONV_BOLD_ON "<strong>"
-#define CONV_BOLD_OFF "</strong>"
-
-#define CONV_ITALIC_ON "<em>"
-#define CONV_ITALIC_OFF "</em>"
-
-#define CONV_HR_ON "<br>"
-#define CONV_HR_OFF ""
-
-#define CONV_LIST_PREAMBLE "<ul>"
-#define CONV_LIST_POSTAMBLE "</ul>"
-
-#define CONV_LIST_ON "<li>"
-#define CONV_LIST_OFF "</li>"
-
-#define CONV_NUM_LIST_PREAMBLE "<ol>"
-#define CONV_NUM_LIST_POSTAMBLE "</ol>"
-
-#define CONV_NUM_LIST_ON "<li>"
-#define CONV_NUM_LIST_OFF "</li>"
-
-#define CONV_DEFN_LIST_PREAMBLE "<dl>"
-#define CONV_DEFN_LIST_POSTAMBLE "</dl>"
-
-#define CONV_DEFN_LIST_TERM_ON "<dt>"
-#define CONV_DEFN_LIST_TERM_OFF "</dt>"
-#define CONV_DEFN_LIST_DESC_ON "<dd>"
-#define CONV_DEFN_LIST_DESC_OFF "</dd>"
-
-#define CONV_CODE_BLOCK_PREAMBLE "<pre>"
-#define CONV_CODE_BLOCK_POSTAMBLE "</pre>"
-
-#define CONV_CODE_LINE_ON ""
-#define CONV_CODE_LINE_OFF ""
-
-#define CONV_BLOCK_QUOTE_PREAMBLE "<blockquote>"
-#define CONV_BLOCK_QUOTE_POSTAMBLE "</blockquote>"
-
-#define CONV_BLOCK_QUOTE_LINE_ON "<p>"
-#define CONV_BLOCK_QUOTE_LINE_OFF "</p>"
-
-#define CONV_INLINE_CODE_ON "<code>"
-#define CONV_INLINE_CODE_OFF "</code>"
-
-#define CONV_FORCE_LINE_FEED_ON "<br>"
-#define CONV_FORCE_LINE_FEED_OFF ""
-
-#define CONV_PARAGRAPH_PREAMBLE "<p>"
-#define CONV_PARAGRAPH_POSTAMBLE "</p>"
-
-#define CONV_TABLE_PREAMBLE "<table border=\"1\">"
-#define CONV_TABLE_POSTAMBLE "</table>"
-#define CONV_TABLE_ROW_PREAMBLE "<tr>"
-#define CONV_TABLE_ROW_POSTAMBLE "</tr>"
-#define CONV_TABLE_CELL_PREAMBLE "<td>"
-#define CONV_TABLE_CELL_POSTAMBLE "</td>"
-
-
-// Watch these! In LaTeX, a backslash is acceptable, but in C++
-// "\ref" becomes "linefeed ef"! We can double up here, but in
-// the conversion file, we might get away with it!
-// In HTML, it's "<a href="page_name#">text for link></a>"
-#define CONV_WIKI_LINK "<a href=\"%PAGE_NAME%.html\">%PAGE_NAME%</a>"
-#define CONV_URL_LINK "<a href=\"%URL%\" title=\"%TITLE_TEXT%\">%LINK_TEXT%</a>"
-//#define CONV_YOUTUBE_LINK "<iframe width=\"30%\" height=\"30%\" src=\"%URL%\" frameborder=\"1\" allowfullscreen></iframe>"
-#define CONV_YOUTUBE_LINK "<iframe width=\"30%\" height=\"30%\" src=\"https://youtube.com/embed/%VIDEO_ID%\" frameborder=\"1\" allowfullscreen></iframe>"
-#define CONV_REFERENCE_LINK "<u>%REFERENCE%</u>"
-#define CONV_ACRONYM_LINK "<abbr title=\"%TITLE_TEXT%\">%ACRONYM%</abbr>"
-#define CONV_CITATION_LINK "<abbr title=\"%SOURCE%\">%CITATION%</abbr>"
-#define CONV_ANCHOR_LINK "<abbr title=\"%TITLE_TEXT%\">%ANCHOR%</abbr>"
-#define CONV_IMAGE_LINK "<a href=\"%SRC%\" title=\"%TITLE_TEXT%\"><img src=\"%SRC%\" alt=\"%ALT_TEXT%\" width=\"%WIDTH%\" height=\"%HEIGHT%\" border=\"0\" align=\"%ALIGN%\"></a>"
-*/
 //------------------------------------------------------------------
 // Globals.
 // Yes, I know! Don't start! Otherwise I'll use a GOTO as well!
@@ -170,11 +84,7 @@ int main(int argc, char *argv[])
         return ERR_BP;
     }
 
-
-
-
     return jfdi();
-
 }
 
 
@@ -282,7 +192,7 @@ int jfdi()
 // them with the desired replacement text, if they are found.
 //------------------------------------------------------------------
 bool doLineStarts(string *aLine) {
-    // Headings? These can contain bold and Italic.
+    // Headings? These can contain bold and Italic etc.
     bool result = false;
 
     if (aLine->at(0) == '!') {
@@ -715,6 +625,10 @@ void doEmbeddedFormats(string *aLine) {
 // the Wiki do with them I have you to determine. Playing in the
 // sandbox doesn't give many clues. Still...
 //------------------------------------------------------------------
+// Bloody Hell! What's the point of standards if the Wiki software
+// doesn't enforce them? Some Citations have no SOURCE part, so the
+// pipe (|) is missing.
+//------------------------------------------------------------------
 void doCitations(string *aLine) {
 
     string::size_type linkStart = aLine->find("^^");
@@ -729,15 +643,26 @@ void doCitations(string *aLine) {
         if (pipeStart == string::npos) {
             cerr << "DoCitations(): Cannot locate '|' in citation in input file on line "
                  << lineNumber << endl;
-            return;
         }
 
-        // Split out the citation and text.
+        // Split out the citation and text. If there's no pipe
+        // citation will be everything.
         string citation = refName.substr(0, pipeStart);
-        string sourceText = refName.substr(pipeStart + 1, string::npos);
 
-        string newLink = findVariable("CONV_CITATION_LINK");
+        // If there's no pipe, we need an empty sourceText.
+        string sourceText;
+        if (pipeStart != string::npos) {
+            sourceText = refName.substr(pipeStart + 1, string::npos);
+        } else {
+            sourceText.clear();
+        }
 
+        string newLink;
+        if (sourceText.empty()) {
+            newLink = findVariable("CONV_CITATION_NOSOURCE_LINK");
+        } else {
+            newLink = findVariable("CONV_CITATION_LINK");
+        }
 
         // Replace all occurrences of %CITATION% with the citation text.
         string::size_type nameStart = newLink.find("%CITATION%");
@@ -747,10 +672,13 @@ void doCitations(string *aLine) {
         }
 
         // Replace all occurrences of %SOURCE% with the sourcetext.
-        nameStart = newLink.find("%SOURCE%");
-        while (nameStart != string::npos) {
-            newLink.replace(nameStart, 8, sourceText);
+        // Assuming we have sourceText of course!
+        if (!sourceText.empty()) {
             nameStart = newLink.find("%SOURCE%");
+            while (nameStart != string::npos) {
+                newLink.replace(nameStart, 8, sourceText);
+                nameStart = newLink.find("%SOURCE%");
+            }
         }
 
         // Now we can do the actual replacement.
@@ -1090,38 +1018,50 @@ void doForcedLineFeed(string *aLine) {
 //------------------------------------------------------------------
 void doLinks(string *aLine) {
 
-    string::size_type youTubeLinkStart = aLine->find("(vid)");
-    string::size_type youTubeLinkEnd = aLine->find("(/vid)");
+    while (true) {
 
-    if (youTubeLinkStart != string::npos) {
-        // We have a You Tube video link.
-        doYouTubeLink(aLine);
-        return;
-    }
+        // Loop around looking for all the You Tube videos.
+        string::size_type youTubeLinkStart = aLine->find("(vid)");
+        string::size_type youTubeLinkEnd = aLine->find("(/vid)");
 
-    // We don't have a You Tube video link - try other links.
-    string::size_type linkStart = aLine->find('[');
-    string::size_type linkEnd = aLine->find(']', linkStart);
+        if (youTubeLinkStart != string::npos) {
+            // We have a You Tube video link.
+            doYouTubeLink(aLine);
+            continue;
+        }
 
-    // Links should all be on the same line.
-    if (linkStart != string::npos) {
-        if (linkEnd == string::npos) {
-            cerr << "DoLinks(): Missing link terminator ']' on line " << lineNumber
-                 << "of input file." << endl;
+        // None, or no more You Tube video links - try WikiPage and URLs.
+        string::size_type linkStart = aLine->find('[');
+        string::size_type linkEnd = aLine->find(']', linkStart);
+
+        // Nothing found? Bale out.
+        if ((linkStart == string::npos) ||
+            (linkEnd == string::npos)) {
             return;
         }
-    }
 
-    // Do we have a pipe (|) or not? If not, this is
-    // a Wiki Page link.
-    string::size_type pipeStart = aLine->find('|', linkStart);
+        // Links should all be on the same line.
+        if (linkStart != string::npos) {
+            if (linkEnd == string::npos) {
+                cerr << "DoLinks(): Missing link terminator ']' on line " << lineNumber
+                     << "of input file." << endl;
+                return;
+            }
+        }
 
-    if (pipeStart != string::npos) {
-        // We have a URL, HTTP Link.
-        doUrl(aLine, pipeStart);
-    } else {
-        // Wiki age links [page_name].
-        doWikiPageLink(aLine);
+        // Do we have a pipe (|) or not? If not, this is
+        // a Wiki Page link. Check the link though!
+        string linkText = aLine->substr(linkStart, linkEnd - linkStart + 1);
+        string::size_type pipeStart = linkText.find('|');
+
+        if (pipeStart != string::npos) {
+            // We have a URL, HTTP Link.
+            doUrl(aLine, pipeStart);
+        } else {
+            // Wiki age links [page_name].
+            doWikiPageLink(aLine);
+        }
+
     }
 }
 
@@ -1139,13 +1079,13 @@ void doYouTubeLink(string *aLine) {
 
     // We need the end on the same line please.
     if (linkEnd == string::npos) {
-        cerr << "DoYouTubeLink(): Missing You Tube link terminator ']' on line " << lineNumber
+        cerr << "DoYouTubeLink(): Missing You Tube link terminator '(/vid)' on line " << lineNumber
              << "of input file." << endl;
         return;
     }
 
-    while ((linkStart != string::npos) &&
-           (linkEnd != string::npos)) {
+    if ((linkStart != string::npos) &&
+        (linkEnd != string::npos)) {
 
         // Extract the video URL.
         string urlName = aLine->substr(linkStart + 5, linkEnd - linkStart -5);
@@ -1197,8 +1137,8 @@ void doWikiPageLink(string *aLine) {
     string::size_type linkStart = aLine->find('[');
     string::size_type linkEnd = aLine->find(']', linkStart);
 
-    while ((linkStart != string::npos) &&
-           (linkEnd != string::npos)) {
+    if ((linkStart != string::npos) &&
+        (linkEnd != string::npos)) {
 
         // Extract the page_name.
         string pageName = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
@@ -1231,8 +1171,8 @@ void doUrl(string *aLine, string::size_type pipeStart) {
     string::size_type linkStart = aLine->find('[');
     string::size_type linkEnd = aLine->find(']', linkStart);
 
-    while ((linkStart != string::npos) &&
-           (linkEnd != string::npos)) {
+    if ((linkStart != string::npos) &&
+        (linkEnd != string::npos)) {
 
         // Extract the link text.
         string linkText = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
@@ -1305,10 +1245,6 @@ void doUrl(string *aLine, string::size_type pipeStart) {
 
         // Now we can do the actual replacement.
         aLine->replace(linkStart, linkEnd - linkStart + 1, newLink);
-
-        // Any more links?
-        linkStart = aLine->find('[');
-        linkEnd = aLine->find(']', linkStart);
     }
 }
 
@@ -1396,7 +1332,14 @@ void doImages(string *aLine) {
 
         // Replace all occurrences of %ALIGN% with the correct text.
         // The text is in double quotes, and is one character long.
+        // EXCEPT, in some pages the align is NOT in quotes. FFS!
         if (chunks > 2) {
+            // Make sure that the alignment is wrapped in quotes.
+            if (linkStuff[2].size() == 1) {
+                linkStuff[2] = '"' + linkStuff[2] + '"';
+            }
+
+
             textStart = newLink.find("%ALIGN%");
             while (textStart != string::npos) {
                 newLink.replace(textStart, 7, linkStuff[2].substr(1, 1));

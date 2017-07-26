@@ -11,7 +11,9 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="/home/norman/SourceCode/RwapWiki/rwapWiki/bin/Debug/test.txt /home/norman/SourceCode/RwapWiki/rwapWiki/bin/Debug/convert.txt &gt;/home/norman/SourceCode/RwapWiki/rwapWiki/bin/Debug/test.html" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -22,6 +24,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++11" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,7 +35,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="convert_template.txt" />
 		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="version.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
