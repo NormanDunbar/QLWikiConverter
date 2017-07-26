@@ -50,4 +50,6 @@ rwapWiki/bin/
 #Except the README.pdf
 !README.pdf
 
+# Ignore the text based export of the MySql database - for now.
+rwapWiki/content.utf8.txt
 

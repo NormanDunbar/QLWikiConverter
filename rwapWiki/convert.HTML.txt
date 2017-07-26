@@ -1,5 +1,5 @@
 #========================================================================================
-# RWAP Wiki Conversion Utility - Template File.
+# RWAP Wiki Conversion Utility - HTML Output.
 #========================================================================================
 #
 # Copy this file to something else. DO NOT edit this one.
@@ -183,7 +183,7 @@ CONV_TABLE_CELL_POSTAMBLE=</td>
 # format where the page name is substituted into the replacement text wherever the words
 # '%PAGE_NAME%' in upper case, is found.
 #----------------------------------------------------------------------------------------
-CONV_WIKI_LINK=<a href=\%PAGE_NAME%.html\>%PAGE_NAME%</a>
+CONV_WIKI_LINK=<a href="%PAGE_NAME%.html">%PAGE_NAME%</a>
 #========================================================================================
 #
 #
@@ -207,7 +207,7 @@ CONV_WIKI_LINK=<a href=\%PAGE_NAME%.html\>%PAGE_NAME%</a>
 # All in upper case.
 #
 #----------------------------------------------------------------------------------------
-CONV_URL_LINK=<a href=\%URL%\ title=\%TITLE_TEXT%\>%LINK_TEXT%</a>
+CONV_URL_LINK=<a href="%URL%" title="%TITLE_TEXT%">%LINK_TEXT%</a>
 #========================================================================================
 #
 #
@@ -257,8 +257,6 @@ CONV_ACRONYM_LINK=<abbr title="%TITLE_TEXT%">%ACRONYM%</abbr>
 # OOPS! It seems that in the Wiki source code, citations are allowed without the second
 # part - who said it (or a ref link etc). The following won't work and we need to just
 # sort it out. Sigh.
-#
-# So the solution is to have a variable for a citation with no SOURCE part. Hmm.
 #----------------------------------------------------------------------------------------
 CONV_CITATION_LINK=<abbr title="%SOURCE%">%CITATION%</abbr>
 CONV_CITATION_NOSOURCE_LINK=<blockquote>%CITATION%</blockquote>
