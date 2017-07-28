@@ -1,0 +1,21 @@
+In this folder you will find:
+
+MySQL - contains a script (and another README) that extracts the Wiki pages from the database, 
+RwapWiki - contains a utility which reads a single page file, created by WikiPager, and converts it to
+almost any output format you desire - provided you tell it which conversion format you need it to be in
+when complete.
+
+There's an example, convbert.html.txt file provided and a blank template to allow you to create your own.
+
+The utility can hopefully be used to output text formats for other Wikis, or whatever format you need the 
+Wiki Pages to be - text? LaTeX? XML? etc. It's up to you to provide the (printer.dat!) type file to make
+the conversions.
+
+*** It cannot handle Image Galleries, if a Wiki page has one of these, you get a warning to the standard error channel.
+
+*** Because you need to download images used in the Wiki pages, there is a list of all images found, and 
+their URL, produced on the standard erro channel as well. The desired output is written to the standard 
+output channel and should be redirected to a suitable output file at your heart's desire.
+
+
+

@@ -1,0 +1,15 @@
+In this folder you will find:
+
+WikiPager - contains a utility, or at least, the C++ copurse code for same, which reads the
+file created by the MySQL script and creates IN THE CURRENT FOLDER a single page of text
+for EACH and EVERY Wiki page found in the file created by the afore mentioned script. Run it thus:
+
+	cd <wherever the wikipager executable lives>
+	mkdir pages
+	cd pages
+	../wikipager path/to/content.out
+
+The pages folder will now be filled with one file named "Page Title"."language".txt for each of the Wiki
+pages found in the content.out file. The filenames are slightly massaged to remove punctuation and spaces
+which is handy as it will then match up to what the following utility creates.
+
