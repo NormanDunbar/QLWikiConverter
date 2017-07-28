@@ -1,5 +1,5 @@
 #========================================================================================
-# RWAP Wiki Conversion Utility - HTML Output.
+# RWAP Wiki Conversion Utility - HTML Output (in UTF8).
 #========================================================================================
 #
 # The format of a conversion file is simple. We have comments, like these
@@ -25,8 +25,10 @@
 #
 # The preamble goes at the top of the file.
 # The postamble at the end of the file.
+#
+# Because of accented characters, the HTML must be in UTF8 format.
 #----------------------------------------------------------------------------------------
-CONV_PREAMBLE=<html><head><title>Sinclair QL Wiki</title> <meta charset="UTF-8"></head><body>
+CONV_PREAMBLE=<html><head><title>Sinclair QL Wiki</title><meta charset="UTF-8"></head><body>
 CONV_POSTAMBLE=</body></html>
 #========================================================================================
 #
@@ -169,11 +171,14 @@ CONV_TABLE_CELL_POSTAMBLE=</td>
 #========================================================================================
 # Link Stuff.
 #========================================================================================
-# Wiki links are just a page name wrapped in '[' and ']'. These have a single replacement
+# Wiki links are just a page name wrapped in '[' and ']'. These have a replacement
 # format where the page name is substituted into the replacement text wherever the words
 # '%PAGE_NAME%' in upper case, is found.
+#
+# Some comnversions might not like spaces in page names, so, for those we have the
+# %COMPRESSED_NAME% replacement, where the spaces are replaced by hyphens.
 #----------------------------------------------------------------------------------------
-CONV_WIKI_LINK=<a href="%PAGE_NAME%.html">%PAGE_NAME%</a>
+CONV_WIKI_LINK=<a href="%COMPRESSED_NAME%.html">%PAGE_NAME%</a>
 #========================================================================================
 #
 #
@@ -220,7 +225,7 @@ CONV_YOUTUBE_LINK=<iframe width="30%" height="30%" src="https://youtube.com/embe
 #
 #
 #========================================================================================
-# References are weird, and don''t seem to do anything in the WIki, however....
+# References are weird, and don't seem to do anything in the WIki, however....
 # There is a single token to be replaced, '%REFERENCE%' whihc will be replaced by everything
 # in the original reference, which is '{{Reference Text here}}'.
 #----------------------------------------------------------------------------------------
@@ -240,7 +245,8 @@ CONV_ACRONYM_LINK=<abbr title="%TITLE_TEXT%">%ACRONYM%</abbr>
 #
 #
 #========================================================================================
-# Citations, don't work on the Wiki. However,
+# Citations.
+#
 # %CITATION% is the citation text.
 # %SOURCE% is who said it.
 #
@@ -272,7 +278,7 @@ CONV_ANCHOR_LINK=<abbr title="%TITLE_TEXT%">%ANCHOR%</abbr>
 # SOURCE = URL of image. Always web address. MANDATORY.
 # ALT = Alt Text for image.
 # ALIGN = the text align="X" where x in 'LlgGRrDd' for left/right.
-# LONG DESCRIPTION = Couold be used for title= in <a> links in html.
+# LONG DESC = A text file with details of the image.
 # WIDTH = Image Width in pixels.
 # HEIGHT = Image height in pixels.
 # ??? = POPUP. Pops up a big image if clicked. (default)
@@ -280,7 +286,7 @@ CONV_ANCHOR_LINK=<abbr title="%TITLE_TEXT%">%ANCHOR%</abbr>
 # When converting, the %ALIGN% text can be a single character, or you can specify
 # %ALIGN_EXPAND% to convert [lLgG] to "left" and [rRdD] to "right".
 #----------------------------------------------------------------------------------------
-CONV_IMAGE_LINK=<a href="%SRC%" title="%TITLE_TEXT%"><img src="%SRC%" alt="%ALT_TEXT%" width="%WIDTH%" height="%HEIGHT%" border="0" align="%ALIGN%"></a>
+CONV_IMAGE_LINK=<a href="%SRC%" title="%LONG_DESC%"><img src="%SRC%" alt="%ALT_TEXT%" width="%WIDTH%" height="%HEIGHT%" border="0" align="%ALIGN%"></a>
 #========================================================================================
 
 

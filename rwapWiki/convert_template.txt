@@ -8,6 +8,8 @@
 #
 # The output file will then hold the Wiki source code in the desired format
 # with all your substitutions made.
+#
+# Because of accented characters, the output must be in UTF8 format.
 #========================================================================================
 #
 #
@@ -36,8 +38,8 @@
 # The preamble goes at the top of the file.
 # The postamble at the end of the file.
 #----------------------------------------------------------------------------------------
-CONV_PREAMBLE=<html><head><title></title></head><body>
-CONV_POSTAMBLE=</body></html>
+CONV_PREAMBLE=
+CONV_POSTAMBLE=
 #========================================================================================
 #
 #
@@ -46,29 +48,29 @@ CONV_POSTAMBLE=</body></html>
 # line and are converted to add a preamble and postamble to the text on that line.
 # For example, HTML would have <h1> and </h1> (or h2, h3).
 #----------------------------------------------------------------------------------------
-CONV_H1_PREAMBLE=<h1>
-CONV_H1_POSTAMBLE=</h1>
-CONV_H2_PREAMBLE=<h2>
-CONV_H2_POSTAMBLE=</h2>
-CONV_H3_PREAMBLE=<h3>
-CONV_H3_POSTAMBLE=</h3>
+CONV_H1_PREAMBLE=
+CONV_H1_POSTAMBLE=
+CONV_H2_PREAMBLE=
+CONV_H2_POSTAMBLE=
+CONV_H3_PREAMBLE=
+CONV_H3_POSTAMBLE=
 #========================================================================================
 #
 #
 #========================================================================================
 # Bold and Italic text next.
 #----------------------------------------------------------------------------------------
-CONV_BOLD_ON=<strong>
-CONV_BOLD_OFF=</strong>
-CONV_ITALIC_ON=<em>
-CONV_ITALIC_OFF=</em>
+CONV_BOLD_ON=
+CONV_BOLD_OFF=
+CONV_ITALIC_ON=
+CONV_ITALIC_OFF=
 #========================================================================================
 #
 #
 #========================================================================================
 # The horizontal rule is next.
 #----------------------------------------------------------------------------------------
-CONV_HR_ON=<br>
+CONV_HR_ON=
 CONV_HR_OFF=
 #========================================================================================
 #
@@ -79,20 +81,20 @@ CONV_HR_OFF=
 # Lists have a whole list preamble and postamble as well as each list item having
 # a pre and postamble of their own. Obviously, these can be blank as appropriate.
 #----------------------------------------------------------------------------------------
-CONV_LIST_PREAMBLE=<ul>
-CONV_LIST_POSTAMBLE=</ul>
-CONV_LIST_ON=<li>
-CONV_LIST_OFF=</li>
+CONV_LIST_PREAMBLE=
+CONV_LIST_POSTAMBLE=
+CONV_LIST_ON=
+CONV_LIST_OFF=
 #========================================================================================
 #
 #
 #========================================================================================
 # Numeric lists.
 #----------------------------------------------------------------------------------------
-CONV_NUM_LIST_PREAMBLE=<ol>
-CONV_NUM_LIST_POSTAMBLE=</ol>
-CONV_NUM_LIST_ON=<li>
-CONV_NUM_LIST_OFF=</li>
+CONV_NUM_LIST_PREAMBLE=
+CONV_NUM_LIST_POSTAMBLE=
+CONV_NUM_LIST_ON=
+CONV_NUM_LIST_OFF=
 #========================================================================================
 #
 #
@@ -100,12 +102,12 @@ CONV_NUM_LIST_OFF=</li>
 # Definition Lists, can be defined in the Wiki, but do not work. However, this
 # utility will correctly convert them. :-)
 #----------------------------------------------------------------------------------------
-CONV_DEFN_LIST_PREAMBLE=<dl>
-CONV_DEFN_LIST_POSTAMBLE=</dl>
-CONV_DEFN_LIST_TERM_ON=<dt>
-CONV_DEFN_LIST_TERM_OFF=</dt>
-CONV_DEFN_LIST_DESC_ON=<dd>
-CONV_DEFN_LIST_DESC_OFF=</dd>
+CONV_DEFN_LIST_PREAMBLE=
+CONV_DEFN_LIST_POSTAMBLE=
+CONV_DEFN_LIST_TERM_ON=
+CONV_DEFN_LIST_TERM_OFF=
+CONV_DEFN_LIST_DESC_ON=
+CONV_DEFN_LIST_DESC_OFF=
 #========================================================================================
 #
 #
@@ -115,8 +117,8 @@ CONV_DEFN_LIST_DESC_OFF=</dd>
 # each individual line, while others may required each line to have a code, but not
 # the whole block. Etc.
 #----------------------------------------------------------------------------------------
-CONV_CODE_BLOCK_PREAMBLE=<pre>
-CONV_CODE_BLOCK_POSTAMBLE=</pre>
+CONV_CODE_BLOCK_PREAMBLE=
+CONV_CODE_BLOCK_POSTAMBLE=
 CONV_CODE_LINE_ON=
 CONV_CODE_LINE_OFF=
 #========================================================================================
@@ -125,10 +127,10 @@ CONV_CODE_LINE_OFF=
 #========================================================================================
 # Block Quotes are a bit like code blocks.
 #----------------------------------------------------------------------------------------
-CONV_BLOCK_QUOTE_PREAMBLE=<blockquote>
-CONV_BLOCK_QUOTE_POSTAMBLE=</blockquote>
-CONV_BLOCK_QUOTE_LINE_ON=<p>
-CONV_BLOCK_QUOTE_LINE_OFF=</p>
+CONV_BLOCK_QUOTE_PREAMBLE=
+CONV_BLOCK_QUOTE_POSTAMBLE=
+CONV_BLOCK_QUOTE_LINE_ON=
+CONV_BLOCK_QUOTE_LINE_OFF=
 #========================================================================================
 #
 #
@@ -136,15 +138,15 @@ CONV_BLOCK_QUOTE_LINE_OFF=</p>
 # In line code. Again this is not working in the WIki, but can be defined. This program
 # will convert it, if found.
 #----------------------------------------------------------------------------------------
-CONV_INLINE_CODE_ON=<code>
-CONV_INLINE_CODE_OFF=</code>
+CONV_INLINE_CODE_ON=
+CONV_INLINE_CODE_OFF=
 #========================================================================================
 #
 #
 #========================================================================================
 # Forced Linefeed.
 #----------------------------------------------------------------------------------------
-CONV_FORCE_LINE_FEED_ON=<br>
+CONV_FORCE_LINE_FEED_ON=
 CONV_FORCE_LINE_FEED_OFF=
 #========================================================================================
 #
@@ -153,8 +155,8 @@ CONV_FORCE_LINE_FEED_OFF=
 # Paragraphs. Some output formats need them wrapped in some form of identifier, while
 # others do not.
 #----------------------------------------------------------------------------------------
-CONV_PARAGRAPH_PREAMBLE=<p>
-CONV_PARAGRAPH_POSTAMBLE=</p>
+CONV_PARAGRAPH_PREAMBLE=
+CONV_PARAGRAPH_POSTAMBLE=
 #========================================================================================
 #
 #
@@ -167,23 +169,26 @@ CONV_PARAGRAPH_POSTAMBLE=</p>
 # Rows also have a pre and postamble.
 # As does the whole table.
 #----------------------------------------------------------------------------------------
-CONV_TABLE_PREAMBLE=<table border="1">
-CONV_TABLE_POSTAMBLE=</table>
-CONV_TABLE_ROW_PREAMBLE=<tr>
-CONV_TABLE_ROW_POSTAMBLE=</tr>
-CONV_TABLE_CELL_PREAMBLE=<td>
-CONV_TABLE_CELL_POSTAMBLE=</td>
+CONV_TABLE_PREAMBLE=
+CONV_TABLE_POSTAMBLE=
+CONV_TABLE_ROW_PREAMBLE=
+CONV_TABLE_ROW_POSTAMBLE=
+CONV_TABLE_CELL_PREAMBLE=
+CONV_TABLE_CELL_POSTAMBLE=
 #========================================================================================
 #
 #
 #========================================================================================
 # Link Stuff.
 #========================================================================================
-# Wiki links are just a page name wrapped in '[' and ']'. These have a single replacement
+# Wiki links are just a page name wrapped in '[' and ']'. These have a replacement
 # format where the page name is substituted into the replacement text wherever the words
 # '%PAGE_NAME%' in upper case, is found.
+#
+# Some comnversions might not like spaces in page names, so, for those we have the
+# %COMPRESSED_NAME% replacement, where the spaces are replaced by hyphens.
 #----------------------------------------------------------------------------------------
-CONV_WIKI_LINK=<a href=\%PAGE_NAME%.html\>%PAGE_NAME%</a>
+CONV_WIKI_LINK=
 #========================================================================================
 #
 #
@@ -207,7 +212,7 @@ CONV_WIKI_LINK=<a href=\%PAGE_NAME%.html\>%PAGE_NAME%</a>
 # All in upper case.
 #
 #----------------------------------------------------------------------------------------
-CONV_URL_LINK=<a href=\%URL%\ title=\%TITLE_TEXT%\>%LINK_TEXT%</a>
+CONV_URL_LINK=
 #========================================================================================
 #
 #
@@ -225,7 +230,7 @@ CONV_URL_LINK=<a href=\%URL%\ title=\%TITLE_TEXT%\>%LINK_TEXT%</a>
 # The latter format is already correct for embedding videos in a web page, for example.
 #
 #----------------------------------------------------------------------------------------
-CONV_YOUTUBE_LINK=<iframe width="30%" height="30%" src="https://youtube.com/embed/%VIDEO_ID%" frameborder="1" allowfullscreen></iframe>
+CONV_YOUTUBE_LINK=
 #========================================================================================
 #
 #
@@ -234,7 +239,7 @@ CONV_YOUTUBE_LINK=<iframe width="30%" height="30%" src="https://youtube.com/embe
 # There is a single token to be replaced, '%REFERENCE%' whihc will be replaced by everything
 # in the original reference, which is '{{Reference Text here}}'.
 #----------------------------------------------------------------------------------------
-CONV_REFERENCE_LINK=<u>%REFERENCE%</u>
+CONV_REFERENCE_LINK=
 #========================================================================================
 #
 #
@@ -245,23 +250,22 @@ CONV_REFERENCE_LINK=<u>%REFERENCE%</u>
 # %TITLE_TEXT is the explanation of the acronym.
 # %ACRONYM% is the actual Acronym/abbreviation.
 #----------------------------------------------------------------------------------------
-CONV_ACRONYM_LINK=<abbr title="%TITLE_TEXT%">%ACRONYM%</abbr>
+CONV_ACRONYM_LINK=
 #========================================================================================
 #
 #
 #========================================================================================
-# Citations, don't work on the Wiki. However,
+# Citations.
+#
 # %CITATION% is the citation text.
 # %SOURCE% is who said it.
 #
 # OOPS! It seems that in the Wiki source code, citations are allowed without the second
 # part - who said it (or a ref link etc). The following won't work and we need to just
 # sort it out. Sigh.
-#
-# So the solution is to have a variable for a citation with no SOURCE part. Hmm.
 #----------------------------------------------------------------------------------------
-CONV_CITATION_LINK=<abbr title="%SOURCE%">%CITATION%</abbr>
-CONV_CITATION_NOSOURCE_LINK=<blockquote>%CITATION%</blockquote>
+CONV_CITATION_LINK=
+CONV_CITATION_NOSOURCE_LINK=
 #========================================================================================
 #
 #
@@ -272,7 +276,7 @@ CONV_CITATION_NOSOURCE_LINK=<blockquote>%CITATION%</blockquote>
 #
 # On the Wiki, they are as follows: '~~anchor|title~~'
 #----------------------------------------------------------------------------------------
-CONV_ANCHOR_LINK=<abbr title="%TITLE_TEXT%">%ANCHOR%</abbr>
+CONV_ANCHOR_LINK=
 #========================================================================================
 #
 #
@@ -284,7 +288,7 @@ CONV_ANCHOR_LINK=<abbr title="%TITLE_TEXT%">%ANCHOR%</abbr>
 # SOURCE = URL of image. Always web address. MANDATORY.
 # ALT = Alt Text for image.
 # ALIGN = the text align="X" where x in 'LlgGRrDd' for left/right.
-# LONG DESCRIPTION = Couold be used for title= in <a> links in html.
+# LONG DESC = A text file with details of the image.
 # WIDTH = Image Width in pixels.
 # HEIGHT = Image height in pixels.
 # ??? = POPUP. Pops up a big image if clicked. (default)
@@ -292,7 +296,7 @@ CONV_ANCHOR_LINK=<abbr title="%TITLE_TEXT%">%ANCHOR%</abbr>
 # When converting, the %ALIGN% text can be a single character, or you can specify
 # %ALIGN_EXPAND% to convert [lLgG] to "left" and [rRdD] to "right".
 #----------------------------------------------------------------------------------------
-CONV_IMAGE_LINK=<a href="%SRC%" title="%TITLE_TEXT%"><img src="%SRC%" alt="%ALT_TEXT%" width="%WIDTH%" height="%HEIGHT%" border="0" align="%ALIGN%"></a>
+CONV_IMAGE_LINK=
 #========================================================================================
 
 
