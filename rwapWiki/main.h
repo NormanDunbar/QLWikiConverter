@@ -36,7 +36,8 @@ void doImageGallery(string *aLine);     // I can't do these though!
 void doEmbeddedFormats(string *aLine);  // Checks line start stuff for embedded codes.
 void closeParagraph();                  // Closes the current paragraph.
 
-string findVariable(const string variableName);
+string findVariable(const string variableName); // returns the value of a conversion variable.
+
 
 #endif // MAIN_H
 
