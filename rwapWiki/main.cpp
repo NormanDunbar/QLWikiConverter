@@ -96,7 +96,7 @@ int jfdi()
 {
     string *aLine = new string();
 
-    cout <<  findVariable("CONV_PREAMBLE");
+    cout << findVariable("CONV_PREAMBLE");
 
     // Preload the "parser" with the first line of text.
     readInputFile(aLine);
@@ -369,6 +369,10 @@ void doList(string *aLine, char aChar) {
 
     // Loop around and do the list items.
     while (mIfs->good()) {
+
+        // Some lists have embedded formats in them too.
+        doEmbeddedFormats(aLine);
+
         // Has the curent nesting level changed. Only really
         // affects the second and subsequent lines. There can be no
         // leading aChars though, watch out! That's the end of a list.
@@ -448,6 +452,10 @@ void doDefinitionList(string *aLine, char aChar) {
 
     // Loop around and do the list items.
     while (mIfs->good()) {
+
+        // Some lists have embedded formats in them too.
+        doEmbeddedFormats(aLine);
+
         // Has the curent nesting level changed. Only really
         // affects the second and subsequent lines. There can be no
         // leading aChars though, watch out! That's the end of a list.
@@ -509,7 +517,18 @@ void doCodeBlock(string *aLine) {
     // Loop to write out code lines.
     while (mIfs->good() &&
            !aLine->empty() &&
-           aLine->at(0) == ' ') {
+           aLine->at(0) == ' ')
+    {
+        // Some lines of code have line feed (%%%) at the end.
+        // Not required, so lose them.
+        do {
+            string::size_type lineFeed = aLine->find("%%%");
+            if (lineFeed != string::npos) {
+                aLine->replace(lineFeed, 3, "");
+            }
+
+        } while (aLine->find("%%%") != string::npos);
+
         // We can lose the leading space. But keep
         // all other leading spaces as they are significant.
         cout << findVariable("CONV_CODE_LINE_ON")
@@ -1142,6 +1161,17 @@ void doWikiPageLink(string *aLine) {
 
         // Extract the page_name.
         string pageName = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
+        string compressedName = pageName;
+
+        // Replace spaces with hyphens.
+        for (string::iterator x = compressedName.begin(); x != compressedName.end(); x++) {
+            if ((ispunct(*x)) ||
+                (isspace(*x)))
+            {
+                *x = '-';
+            }
+        }
+
         string newLink = findVariable("CONV_WIKI_LINK");
 
         // Replace all occurrences of %PAGE_NAME% with the page name.
@@ -1149,6 +1179,13 @@ void doWikiPageLink(string *aLine) {
         while (nameStart != string::npos) {
             newLink.replace(nameStart, 11, pageName);
             nameStart = newLink.find("%PAGE_NAME%");
+        }
+
+        // Replace all occurrences of %PAGE_NAME% with the page name.
+        nameStart = newLink.find("%COMPRESSED_NAME%");
+        while (nameStart != string::npos) {
+            newLink.replace(nameStart, 17, compressedName);
+            nameStart = newLink.find("%COMPRESSED_NAME%");
         }
 
         // Now we can do the actual replacement.
@@ -1275,7 +1312,7 @@ void doImages(string *aLine) {
            (linkEnd != string::npos)) {
 
         // Extract the image link text.
-        string linkText = aLine->substr(linkStart + 2, linkEnd - linkStart -1);
+        string linkText = aLine->substr(linkStart + 2, linkEnd - linkStart -2);
 
         // Stream it.
         stringstream oldLinkText(linkText);
@@ -1291,7 +1328,7 @@ void doImages(string *aLine) {
         // linkStuff[0] = Image source URL. (%SRC%) MANDATORY.
         // linkStuff[1] = ALT Text. (%ALT_TEXT%) OPTIONAL.
         // linkStuff[2] = Align. (%ALIGN%) OPTIONAL.
-        // linkStuff[3] = Title text. (%TITLE_TEXT%) OPTIONAL.
+        // linkStuff[3] = Long Description. (%LONG_DESC%) OPTIONAL.
         // linkStuff[4] = Width. (%WIDTH%) OPTIONAL.
         // linkStuff[5] = Height (%HEIGHT%) OPTIONAL.
         // linkStuff[6] = Null or POPUP. (Not Used) OPTIONAL.
@@ -1309,7 +1346,10 @@ void doImages(string *aLine) {
         string newLink = findVariable("CONV_IMAGE_LINK");
 
         // Output the Image URL in case we need to download it.
-        cerr << "IMAGE LINK: " << linkStuff[0] << endl;
+        cerr << "IMAGE LINK at line: " << lineNumber << " " << linkStuff[0] << endl;
+        if (chunks > 3) {
+            cerr << "LONG DESC for image is [" << linkStuff[3] << "]." << endl;
+        }
 
         // Replace all occurrences of %SRC% with the correct text.
         // MANDATORY.
@@ -1367,12 +1407,12 @@ void doImages(string *aLine) {
         }
 
 
-        // Replace all occurrences of %LINK_TEXT% with the correct text.
+        // Replace all occurrences of %LONG_DESC% with the correct text.
         if (chunks > 3) {
-            textStart = newLink.find("%TITLE_TEXT%");
+            textStart = newLink.find("%LONG_DESC%");
             while (textStart != string::npos) {
-                newLink.replace(textStart, 12, linkStuff[3]);
-                textStart = newLink.find("%TITLE_TEXT%");
+                newLink.replace(textStart, 11, linkStuff[3]);
+                textStart = newLink.find("%LONG_DESC%");
             }
         }
 
