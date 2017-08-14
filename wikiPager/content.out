@@ -1766,11 +1766,22 @@ Bandersnatch was to be the first of a series of megagames produced by Imagine, w
 
 A new company called Finchspeed was set-up after Imagine folded which then sold the rights to the game to Sinclair Research Ltd, who were insistent that it should work on the QL from microdrives without extra hardware. It is rumoured that a complete working version was then developed for the Sinclair QL before Finchspeed (or was it called Fireiron?) too folded. 
 
-The directors of Finchspeed, Dave Lawson and Ian Heatherington then went on to form Psygnosis and the game was later released for the Commodore Amiga and Atari ST as Brataccas.
+The directors of Finchspeed, Dave Lawson and Ian Heatherington then went on to form Psygnosis and the game was later released for the Commodore Amiga and Atari ST as [Brataccas|https://en.wikipedia.org/wiki/Brataccas].
+
+Interestingly, over the years, a handful of microdrive cartridges have come to light, labelled Bandersnatch.  QL enthusiasts have been able to recover these cartridges to some extent - there was originally a colourful version which might be either an attempt by a fan to create a new Bandersnatch game (although it crashes), but then a new version came to light amongst a large collection of microdrives from the USA which appears to be closer to the Brataccas game.
+
+((http://www.rwapadventures.com/images/bandersnatch-1-screenshot.gif|Bandersnatch - earlier recovered version|align="l"|Screenshot of Sinclair QL Bandersnatch|240|120|POPUP))
+This is the original version of Bandersnatch which was recovered.  Whilst colourful, the second microdrive cartridge was unreadable and the first cartridge was badly damaged, meaning that the game crashes as soon as you try to leave the first screen.  It is unknown whether this was used as an example of what could be achieved on the QL to try and sell Bandersnatch to Sinclair Research, or whether it was a later version created by a fan.%%%
+   %%%
+   %%%
+
+((http://www.rwapadventures.com/images/bandersnatch-2-screenshot.gif|Bandersnatch - later recovered version|align="l"|Screenshot of Sinclair QL Bandersnatch|240|120|POPUP)) This is the second version of Bandersnatch which came from a large collection of microdrive cartridges purchased from the USA.  It's graphics and layout are much closer to the Amiga version of Brataccas.  Unfortunately, at the moment, the microdrive cartridge contents have not been fully recovered, so the game appears limited to a few screens and may still crash easily.%%%
+   %%%
+   %%%
+
 
 (MISSING IN ACTION)
 
-We wonder whatever happened to the QL sources...
 
 ====
 Title: __Bandersnatch__%%%
@@ -3466,7 +3477,7 @@ Platforms Suitable for: All Sinclair QLs and emulators%%%
 Commercial Status: Commercial
 
 Sources Available from: n/a%%%
-Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Citadel]
+Latest Version available from: Unknown%%%
 *************************** 137. row ***************************
 wikilang: en
 wikipage: Civil Structural Engineering
@@ -4351,6 +4362,8 @@ wikipage: DA Bandoo
 wikitext: DA Bandoo were based in Wembley and according to a comment in the QL User magazine (September 1985) and the entry in the Instant Access section, they produced two programs:
 *Assembler
 *Screen Editor
+
+According to [Home Computing Weekly|https://archive.org/stream/home-computing-weekly-097/Home_Computing_Weekly_097#page/n31/mode/1up], the Assembler program was actually called UAP (Unique Assembler Package).
 
 More details are welcome!
 *************************** 181. row ***************************
@@ -11094,7 +11107,13 @@ wikitext: !!!Minerva
 
 !!Minerva Mk 1
 
-Minerva is a replacement for the QL system ROM, developed originally by the QView team of Jonathan Oakley, Stuart McKnight and Laurence Reeves and more recently programmed by Laurence Reeves and sold by Tony Firshman at [TF Services]. In addition to fixing problems discovered in the Sinclair ROM versions over the years, Minerva also provides multiple SuperBASIC interpreters running concurrently, split output baudrates when used with [Hermes], a warm keyboard reset and improved speeds in many areas of the QL such as graphics and floating point operation.
+Minerva is a replacement for the QL system ROM, developed originally by the QView team of Jonathan Oakley, Stuart McKnight and Laurence Reeves and more recently programmed by Laurence Reeves and sold by Tony Firshman at [TF Services].
+
+In addition to fixing problems discovered in the Sinclair ROM versions over the years, Minerva also provides multiple SuperBASIC interpreters running concurrently, split output baudrates when used with [Hermes], a warm keyboard reset and improved speeds in many areas of the QL such as graphics and floating point operation.
+
+Minerva also offers the ability to easily access the two QL screens (normal screen at $20000 and the second screen at $28000), whilst still retaining access from SuperBASIC and machine code programs, meaning that you could actually use applications on both screen 1 and screen 2, switching between the screens and programs at will (although many early programs could not make use of this facility, as they assumed the screen address was always $20000 (131072).  
+
+Whilst QDOS included dual screens, access to the second screen was only available in Supervisor mode, removing access to the QL system variables and many of the ROM routines, meaning that it could only be used from machine code programs.
 
 ((http://www.rwapadventures.com/images/hardware/minervamk1.jpg|Minerva Mk 1|align="i"|Minerva Mk 1 Board|240|217|POPUP))
 
@@ -11979,7 +11998,7 @@ Upon launch, 68K/OS cost a whopping £99.95.
 
 This was an update to QDOS, produced by the team of Stuart McKnight, Jonathan Oakley and Laurence Reeves at QView. More recently, Minerva has been marketed by Tony Firshman at TF Services. Minerva is a complete rewrite of QDOS, removing a lot of bugs which came to light in QDOS over the years. Indeed, it is so different to QDOS in coding terms that some consider it a different operating system.
 
-Minerva is available in two versions, the original is a straightforward 48K EPROM upgrade for the QL, while the Minerva Mk II is a more complex beast which supports additional facilities like an I²C bus system for connection of external hardware.
+[Minerva] is available in two versions, the original is a straightforward 48K EPROM upgrade for the QL, while the Minerva Mk II is a more complex beast which supports additional facilities like an I²C bus system for connection of external hardware.
 
 !!Argos
 
@@ -13483,13 +13502,17 @@ Q-Liberator is the work of Ian Stewart and Adrian Soundy at [Liberation Software
 
 It is able to compile the full syntax of SuperBASIC quite closely, with a good tolerance of badly written programs.
 
-There are two versions in existence, the original 'Budget' version and the current version 3 (last known version 3.36). It comes with an extensive manual, and may be purchased from [Q-Branch] or [Jochen Merz Software]. The Budget' version is no longer available, but has the advantage of working on unexpanded memory QL systems. 
+There are two versions in existence, the original 'Budget' version 1.0 and the current version 3 (last known version 3.36). It comes with an extensive manual. The Budget' version is no longer available, but has the advantage of working on unexpanded memory QL systems.
 
-QLiberator is also easily able to compile pointer driven programs and those making use of QPTR, something which has only been added to [Turbo] since it was made freeware.
+Q-Liberator from v3.22 onwards was usable with the Pointer Environment through a little extension inbuilt in the compiler. There is also a config block available, same as in [S-Edit]%%%
+
+Q-Liberator is also easily able to compile pointer driven programs and those making use of QPTR, something which has only been added to [Turbo] since it was made freeware.
+
+Ian Stewart and Adrian Soundy were so kind to make the whole Software of Q-Liberator freeware in 2017.
 
 ====
 Title: Q-Liberator SuperBASIC Compiler%%%
-Language: Self-Compiled from BASIC%%%
+Language: Self-Compiled from BASIC with inbuilt Machine Code%%%
 Author: Ian Stewart and Adrian Soundy%%%
 Publisher: [Liberation Software]%%%
 Year of Publication: 1986%%%
@@ -13498,7 +13521,7 @@ Commercial Status: Commercial%%%
 Price in September 1986: £-.--%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
-Latest Version available from: [Jochen Merz Software|http://smsq.j-m-s.com/]
+Latest Version available from: [Dilwyn Jones|http://www.dilwyn.me.uk/qlib/index.html]
 
 *************************** 588. row ***************************
 wikilang: en
@@ -15398,7 +15421,7 @@ Please see [QMON] for more details.
 
 ====
 Title: __QL Monitor__%%%
-Language: SuperBASIC%%%
+Language: 68000 Machine Code%%%
 Author: [QJUMP]%%%
 Publisher: [Sinclair Research Ltd]%%%
 Year of Publication: 1985%%%
@@ -16698,7 +16721,7 @@ wikitext: ((http://www.rwapadventures.com/images/qmon_package.jpg|QJUMP QL QMON 
 
 QMON is a 68000 machine code monitor and disassembler.  It was originally released on the Sinclair label as [QL Monitor].
 
-It supports the usual commands which you would expect, including trace, disassemble, edit an error of memory, set break points and display / change registers.  You can also edit the assembly language listing directly (rather than having to work in opcodes!), as well as calculate numbers in binary, decimal, octal and hexadecimal.
+It supports the usual commands which you would expect, including trace, disassemble, edit an area of memory, set break points and display / change registers.  You can also edit the assembly language listing directly (rather than having to work in opcodes!), as well as calculate numbers in binary, decimal, octal and hexadecimal.
 
 An excellent search function also allows you to search for bytes in memory, assembler language instructions or strings.  You can also specify whether it should trace user level code only, or also supervisor level code.
 
@@ -17064,15 +17087,25 @@ Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co
 *************************** 744. row ***************************
 wikilang: en
 wikipage: Qubide
-wikitext: QubIDE was an AT/IDE hard disc interface for QL systems, designed by [Zeljko Nastasic] and marketed by [Qubbesoft]. Has a through connector for adding memory and disc interfaces.
+wikitext: QubIDE is an AT/IDE hard disk interface for QL systems, designed by [Zeljko Nastasic] and marketed by [Qubbesoft]. The original interface has a through connector for adding memory and floppy disk interfaces.
 
 Version 1.53 ROM added the facility to read 'alien' disk cartridges such as on Syquest removable media.
 
 The version 2 ROM (which needed GAL1 and GAL2 chip updates as well) added a Trashcan facility and the ability to connect Atapi IDE devices such as the Iomega ZIP drives.
 
-Various versions of the ROM and the support utilities are available for download from [the Sinclair QL Homepage|http://www.dilwyn.me.uk/qlrom/index.html]
+Zeljko Nastasic released the project for QubIDE as freeware, which has allowed for further refinement and clones to be developed.
 
-In 2013, José Leandro from Spain, re-designed the QubIDE PCB from the original schematics and also included a 512kB extension on it. Ready-made batches were shipped in January 2015. This is an extension card with no through connector. The software is based on the v1.56A firmware.
+In 2013, José Leandro from Spain, re-designed the QubIDE PCB from the original schematics and also included a 512kB extension on it. Ready-made batches began to be shipped in January 2015. This is an extension card with no through connector. The software is based on the v1.56A firmware (and issue 1 GALs).
+
+The project details together with some excellent Image Editor software for Windows (written by Habi) which allow you to transfer files from various QL formats on the internet onto a QubIDE formatted compact flash card appear at: http://hardware.speccy.org/temp/qubide-i.html
+
+A version of this QubIDE is also made and sold by Zaxon
+
+In 2017, Alain Haoui wrote a new driver for the QubIDE which requires the v2 GALs, but offers much improved start up and drive detection, as well as fixing various bugs and offering new facilities.
+
+The new driver, ROM images, supporting software and more information appear at: http://www.dilwyn.me.uk/qlrom/index.html#Qubide
+
+Alain has also managed to resurrect the long lost v2 GAL code but this is currently (Feb 2017) untested on anything other than the original QubIDE interface, so may not work with the later clones (especially those with built in memory).
 
 ====
 ((http://www.rwapadventures.com/images/hardware/qubide.jpg|QUBIDE IDE Interface|align="L"|QUBIDE IDE Interface|240|208|POPUP))
@@ -17331,7 +17364,9 @@ It was this table-language which led to a lot of criticism over the original v1 
 
 v2.00 of the software was released in March 1985, which was programmed in native 68000 machine code, providing a much needed speed boost and leaving more room in memory.
 
-Some further improvements were added to Quill by third parties, such as [TurboQuill] to enhance its speed, and [Spellbound] and [Qtyp] spellcheckers.
+Some further improvements were added to Quill by third parties, such as [TurboQuill] to enhance its speed, and [Spellbound] and [Qtyp] spellcheckers.  There was even a version written by Keith Murray, which included re-writing the original v2 Quill code to remove direct hardware calls to the display routines and unecessary MODE calls and replacing them with proper QDOS calls, creating the ability to even run the software on [Minerva]'s second screen. 
+
+Quill also became part of the [Xchange] package with variants released for the PC and THOR computers.
 
 ====
 Title: __Quill__%%%
@@ -17921,6 +17956,34 @@ wikipage: sandbox
 wikitext: Just a test to see if I can use & symbol
 *************************** 786. row ***************************
 wikilang: en
+wikipage: Sandbox Test
+wikitext: !!!Heading 1
+!!Heading 2
+!Heading 3
+
+;term:description 
+
+
+The above ''should'' be a definition list entry, but fails to format.  Oh hum!
+
+* ITEM 1
+** ITEM 2
+- Item 3
+-- Item 4
+*** Another item
+**** And another
+
+
+
+^^qdosmsq|http://qdosmsq.dunbar-it.co.uk^^ is a citation, but how do they work?  Do they work?
+
+I refer you to {{qdosmsq}} for any further information. Qdosmsq is a reference, but apart from getting italicised, what else are they good for?
+
+~~anchor|stuff~~ That was an anchor. Didn't seem to do much at all really! And how do I link there?
+
+This code @@CLS #1@@ will clear the screen associated with channel 1. BUT SADLY, IN LINE CODE FORMATTING FAILS. As does my ability to not type in capitals! :-)
+*************************** 787. row ***************************
+wikilang: en
 wikipage: Sandy
 wikitext: Sandy (UK) Personal Computer Products Limited was a company based in Bedford which brought out several hardware products and one software product.  Its products were:
 
@@ -17940,10 +18003,15 @@ Sandy also produced the following software for the Sinclair QL:
 * [CADPAK] (A mouse controlled drawing package - for use with the [SuperQMouse])
 * [CP/Mulator] (A CP/M Emulator for the Sinclair QL)
 
+The Sandy name made a return to the QL scene in 2010 thanks to a former employee, Dave Park, to bring more new hardware to market. The business failed, but he continues as a hobbyist.
 
+Released products to date include:
 
-Sandy made a brief return to the QL scene in 2010, thanks to a former employee (Dave Park) who had permission to trade under the name of Sandy and aimed to bring more new hardware projects to market - unfortunately he only released some replacement felt pads for microdrive cartridges and some Sinclair QL branded memory sticks.
-*************************** 787. row ***************************
+*[Felt pads] to replace old pads on Microdrive cartridges.
+*[Minerva] ROMs.
+*[Sandy MiniPlane] provides three expansion ports, all internal to a QL.
+*[Sandy Prototyping Board] provided regulated power and a large prototyping area to develop new QL hardware.
+*************************** 788. row ***************************
 wikilang: en
 wikipage: Sandy FUTURA
 wikitext: An unreleased QL successor based on the [QLT] design by [Tony Tebby].
@@ -17963,7 +18031,7 @@ In 2010 [Urs Koenig] visited Italy to open Pandora’s box.%%%
 
 Visit the [Futura - Pandora's box opening web page|http://www.qlvsjaguar.homepage.bluewin.ch/QL_FUTURA.html] for the full story and documents.
 
-*************************** 788. row ***************************
+*************************** 789. row ***************************
 wikilang: en
 wikipage: Sandy QXT-640
 wikitext: The QXT-640 was [Sandy]'s answer to the CST Thor 1 computer. 
@@ -17992,7 +18060,7 @@ Year First Sold: Unknown%%%
 Original Price: From £259%%%
 Download Manual: [Sandy Disk Manual|http://www.dilwyn.me.uk/docs/manuals/sandy.zip|eng|Download Sandy Disk Interface Manual] (QL Quill DOC)%%%
 Accompanying Software: None%%%
-*************************** 789. row ***************************
+*************************** 790. row ***************************
 wikilang: en
 wikipage: Sandy Super Disk
 wikitext: A disc interface supporting one or two disc drives from [Sandy], with microdrive emulation. Included a parallel printer port, but no RAM expansion.
@@ -18008,7 +18076,7 @@ Year First Sold: 1985%%%
 Original Price: £239 (complete with 3.5" floppy disk drive) %%%
 Download Manual: Unknown%%%
 
-*************************** 790. row ***************************
+*************************** 791. row ***************************
 wikilang: en
 wikipage: Sandy Thru-Con 512K RAM Card
 wikitext: A 256K or 512K memory expansion unit with through connector, from [Sandy]. Used fast access D-RAMs (150ns) and said to be compatible with any floppy disc interface card.
@@ -18025,7 +18093,7 @@ Manufacturer: [Sandy]%%%
 Year First Sold: 1985%%%
 Original Price: £129 (256K), £209 (512K)%%%
 Download Manual: Unknown%%%
-*************************** 791. row ***************************
+*************************** 792. row ***************************
 wikilang: en
 wikipage: Sandy Twin Expansion Unit
 wikitext: A black-cased two slot expansion unit for use with a RAM expansion and disc interface card, which got around the problem of some memory expansion interfaces not having a through connector. Originally sold for £39 by [Sandy].
@@ -18041,11 +18109,11 @@ Manufacturer: [Sandy]%%%
 Year First Sold: 1985%%%
 Original Price: £39 %%%
 Download Manual: Unknown%%%
-*************************** 792. row ***************************
+*************************** 793. row ***************************
 wikilang: en
 wikipage: SB Software
 wikitext: SB Software were based in Diss, Norfolk and produced the [Fantasia Adventure].
-*************************** 793. row ***************************
+*************************** 794. row ***************************
 wikilang: en
 wikipage: SBASIC/SuperBASIC Reference Manual
 wikitext: ((http://www.rwapadventures.com/images/books/SBASIC_SuperBASIC_Ref_manual.jpg| was devised in the 1990s by Franz Herrmann |align="I"| was devised in the 1990s by Franz Herrmann  by Franz Herrmann, Peter Jager and Rich Mellor))%%%
@@ -18073,7 +18141,7 @@ Commercial Status: Commercial%%%
 Reviews: Unknown%%%
 Available from: [RWAP Software website|http://www.rwapsoftware.co.uk/programming.html|eng|Purchase SBASIC/SuperBASIC Reference Manual]%%%
 Online Version: [SuperBASIC/SBASIC Reference Manual Online|http://superbasic-manual.readthedocs.io/en/latest/]
-*************************** 794. row ***************************
+*************************** 795. row ***************************
 wikilang: en
 wikipage: SBEXTRAS
 wikitext: SBEXTRAS was published by [Datamanagement] and is a toolkit of procedures and features for use in SuperBASIC.
@@ -18099,7 +18167,7 @@ Price as at March 1985: £6.00%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 795. row ***************************
+*************************** 796. row ***************************
 wikilang: en
 wikipage: SBUTIL
 wikitext: SBUTIL was published by [Datamanagement] and forms a suite of SuperBASIC programming utilities.
@@ -18120,7 +18188,7 @@ Price as at March 1985: £9.00%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 796. row ***************************
+*************************** 797. row ***************************
 wikilang: en
 wikipage: Schön KBL128 QL Case
 wikitext: The KBL 128 was a new case for housing the QL. It consisted of an inner metal chassis, and a strong outer ABS casing.
@@ -18134,7 +18202,7 @@ The project worked in conjunction with the Schön PS/2 style keyboard.
 The KBL 128 originally sold for £65.00
 
 ((http://www.rwapadventures.com/images/hardware/kbl128.jpg|KBL128 System|align="L"|Schön KBL128 QL System Case|240|344|POPUP))
-*************************** 797. row ***************************
+*************************** 798. row ***************************
 wikilang: en
 wikipage: Scuba-Diver
 wikitext: Scuba-Diver was supplied as part of a compilation of 7 games by [Rodent Software], simply entitled 'GAMES 3'.
@@ -18155,7 +18223,7 @@ Price as at June 1985: £7 (on cartridge of 7 programs)%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 798. row ***************************
+*************************** 799. row ***************************
 wikilang: en
 wikipage: SD Microsystems
 wikitext: SD Microsystems were a small company run by Steve Denson, who published a handful of titles for the Sinclair QL Home Computer, including:
@@ -18171,7 +18239,7 @@ The company later moved into the Amstrad market producing versions of their Smal
 In 1999, they took over LocoScript Software, successors to the Locomotive Group who wrote the operating system and BASIC for the CPC range and Mallard BASIC and the LocoScript word processing package bundled with the PCW. LocoScript was the biggest-selling WP in the UK at one time with many users upgrading to the MSDOS version in the 1990s. 
 
 This venerable software package is still supported today with its own website at www.locoscript.co.uk. 
-*************************** 799. row ***************************
+*************************** 800. row ***************************
 wikilang: en
 wikipage: Sector Software
 wikitext: Sector Software was founded in 1985 by David Batty to provide software for the Sinclair QL computer, and based in the North West has continued to provide software and training ever since.
@@ -18191,7 +18259,7 @@ Sector Software continue to trade today and whilst Touch Typist has continued to
 
 
 Go to Sector Software's website: [http://sectorsoftware.co.uk/|http://sectorsoftware.co.uk/|en|]
-*************************** 800. row ***************************
+*************************** 801. row ***************************
 wikilang: en
 wikipage: Sector X
 wikitext: Sector X is a space based shoot 'em up where you are flying from left to right shooting at various fleets of alien ships.
@@ -18211,7 +18279,7 @@ Platforms Suitable for: All Sinclair QLs and emulators%%%
 Commercial Status: Commercial%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Sector X]
-*************************** 801. row ***************************
+*************************** 802. row ***************************
 wikilang: en
 wikipage: Seiko RC-1000
 wikitext: In 1987, Dutch company [Data-Skip] advertised a databank watch made by Seiko, which could connect to the QL via a SER1 link cable. 
@@ -18239,15 +18307,15 @@ Year First Sold: 1987%%%
 Original Price: £49.95%%%
 Download Manual: Unknown%%%
 Accompanying Software: Preserved%%%
-*************************** 802. row ***************************
+*************************** 803. row ***************************
 wikilang: en
 wikipage: Sellasoft
 wikitext: Sellasoft only appear to have produced one program for the Sinclair QL - [Tankbusters] which was a good quality 3D wire frame graphics game.
-*************************** 803. row ***************************
+*************************** 804. row ***************************
 wikilang: en
 wikipage: Serial Mouse
 wikitext: A 2 or 3 button serial mouse could be connected via a little adapter cable to the QL's serial port, and software by Albin Hessler (called SerMouse) was used to ensure it looked like a QIMI mouse to the system. The software needed configuring to the type of mouse used, and some types of mouse required that the left hand mouse button be held down as the QL switched on, so that the mouse was set to the required mode.
-*************************** 804. row ***************************
+*************************** 805. row ***************************
 wikilang: en
 wikipage: Shadow Games
 wikitext: Shadow Games released quite a lot of low cost games for the Sinclair QL in the mid 1980s under the names Shadow Games and Shadow Soft.  They were based in Cheddington, Bedfordshire and the rights to their software were purchased by [Talent Computer Systems] (except for APT which was withdrawn by its author several years previously).
@@ -18264,7 +18332,7 @@ The programs published by Shadow Games are:
 *[Quazimodo] (A classic arcade game - save Esmerelda from the tower)
 *[Space Paranoids] (Another Alien shoot-em up game - Missing in Action)
 
-*************************** 805. row ***************************
+*************************** 806. row ***************************
 wikilang: en
 wikipage: Sheriff of Grisly Gulch
 wikitext: The Sheriff of Grisly Gulch is a text-only adventure based in the old west. 
@@ -18286,7 +18354,7 @@ Price as at December 1990: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Adventures website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Sheriff of Grisly Gulch]
-*************************** 806. row ***************************
+*************************** 807. row ***************************
 wikilang: en
 wikipage: Shoot 'em up
 wikitext: Shoot 'em up was an early release by New Horizons Software of Newport, Gwent.  
@@ -18307,7 +18375,7 @@ Price as at July 1985: £10%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 807. row ***************************
+*************************** 808. row ***************************
 wikilang: en
 wikipage: Shrub Data Bank and Planner
 wikitext: Originally advertised as 'Plant database' by Llangeitho Nurseries, from Llangeitho, Tregaron, Wales in the December 1984 issue of QL User.
@@ -18332,7 +18400,7 @@ Price as at December 1984: £9.95%%%
 Reviews: QL User (November 1985), QL World (December 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 808. row ***************************
+*************************** 809. row ***************************
 wikilang: en
 wikipage: Sideways
 wikitext: ((http://www.rwapadventures.com/images/Sideways_package.jpg|Talent QL Sideways|align="i"|Sinclair QL Sideways by Talent))%%%
@@ -18366,7 +18434,7 @@ Commercial Status: Commercial
 
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Talent Sideways]
-*************************** 809. row ***************************
+*************************** 810. row ***************************
 wikilang: en
 wikipage: Sidewriter
 wikitext: Sidewriter is a program which allows you to print text files or spreadsheets created with Abacus or with Qspread sideways on a printer, thus making it easy to print anything which is wider than 80 letters. A wide range of fonts are supported, and the program works with all Epson compatible 9-pin and 24-pin printers, Epson ESC/P2 printers, plus inkjets which include an Epson compatible mode.
@@ -18387,7 +18455,7 @@ Platforms Suitable for: All Sinclair QLs and emulators%%%
 Commercial Status: Freeware%%%
 Sources Available from: [Download QL Sidewriter Sources|http://www.dilwyn.me.uk/printing/QLSideWriter.zip]%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/printing/index.html|eng|DownloadSidewriter]
-*************************** 810. row ***************************
+*************************** 811. row ***************************
 wikilang: en
 wikipage: Sigma Research
 wikitext: Sigma Research were based in Cambridge and sold three items:
@@ -18396,7 +18464,7 @@ wikitext: Sigma Research were based in Cambridge and sold three items:
 [Sigma Research Parallel Printer Interface] - A Centronics interface%%%
 [Sketch Pad] - A graphics drawing program%%%
 
-*************************** 811. row ***************************
+*************************** 812. row ***************************
 wikilang: en
 wikipage: Sigma Research Joystick Adaptor
 wikitext: The Sigma Research Joystick Adaptor was a simple device which plugged into the QL's BT style joystick ports and allowed you to plug a standard Atari (9 pin DIN) joystick into the end of the adaptor.
@@ -18413,7 +18481,7 @@ Year First Sold: 1984%%%
 Original Price: £8.95%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 812. row ***************************
+*************************** 813. row ***************************
 wikilang: en
 wikipage: Sigma Research Parallel Printer Interface
 wikitext: The Sigma Research Parallel Printer Interface was a serial to parallel printer interface, which was very similar to the first version of the [Miracle Centronics Interface].
@@ -18432,7 +18500,7 @@ Year First Sold: 1984%%%
 Original Price: £39%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 813. row ***************************
+*************************** 814. row ***************************
 wikilang: en
 wikipage: Silicon Express
 wikitext: Silicon Express were based in Rothley, Leicestershire and produced the following QL hardware:
@@ -18446,7 +18514,7 @@ They also offered a 512K expanderam and a disk drive.
 They also supplied one of the [internal 512K memory upgrade]s at a cost of £150 (although the stop press on their September 1985 QL User advert said £199!)- this appears to have been a version whereby they replaced the QL's RAM chips, providing a total of 512K only, rather than the 640K which you could obtain using other 512K RAM upgrades.
 
 Oddly the internal 512K memory upgrade was first advertised in QL User (September 1985), whereas Sinclair QL World (September 1985) advertised the [512K Memory Insider Board] for £259.95.
-*************************** 814. row ***************************
+*************************** 815. row ***************************
 wikilang: en
 wikipage: Silicon Express Centronics Printer Interface
 wikitext: Amongst their other hardware, Silicon Express produced their own Centronics Printer Interface.
@@ -18463,7 +18531,7 @@ Year First Sold: 1985%%%
 Original Price: £29.95%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 815. row ***************************
+*************************** 816. row ***************************
 wikilang: en
 wikipage: Silicon Express Insider
 wikitext: A very compact disc interface capable of fitting completely within the QL case, connecting to the standard QL expansion slot. Made by Silicon Express of 
@@ -18483,7 +18551,7 @@ Original Price: £99 plus VAT%%%
 Reviews: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 816. row ***************************
+*************************** 817. row ***************************
 wikilang: en
 wikipage: Simon Goodwin
 wikitext: Simon Goodwin (from Warwickshire) is one of the most well known personalities in the Sinclair QL world.  He wrote a large number of articles for Sinclair QL World, including in-depth articles on the QL's operating system ([QDOS]) and the [THOR] computer.
@@ -18498,14 +18566,14 @@ Two [SuperBASIC Compilers] - [Supercharge] and [Turbo]%%%
 [Lightning Compiler] - unreleased%%%
 [Speedscreen]%%%
 [DIY Toolkit]
-*************************** 817. row ***************************
+*************************** 818. row ***************************
 wikilang: en
 wikipage: Simplex Data Logic Limited
 wikitext: Originally called Simplex Data Limited (based in Greenford, Middlesex and run by Mary and Cliff Found), Simplex Data Logic Limited were a company based in Stirling who produced some hardware expansions for the Sinclair QL, including:
 
 [Simplex Q+2]%%%
 [Simplex RAM Expansion]%%%
-*************************** 818. row ***************************
+*************************** 819. row ***************************
 wikilang: en
 wikipage: Simplex Q+2
 wikitext: The Simplex Q+2 Interface was a solution to the range of interfaces available for the Sinclair QL without a through connector.
@@ -18527,7 +18595,7 @@ Year First Sold: 1985%%%
 Original Price: £69.90%%%
 Reviews: QL World (September 1985)%%%
 Download Manual: Unknown%%%
-*************************** 819. row ***************************
+*************************** 820. row ***************************
 wikilang: en
 wikipage: Simplex RAM Expansion
 wikitext: The __Simplex RAM Expansion__ was one of the earliest QL RAM extension cards, first advertised in the October/November 1984 issue of QL User. 
@@ -18559,7 +18627,7 @@ Reviews: QL User April 1985%%%
 Download Manual: Unknown%%%
 
 
-*************************** 820. row ***************************
+*************************** 821. row ***************************
 wikilang: en
 wikipage: Sinclair Floppy Disk
 wikitext: The Sinclair Floppy Disk system was a Sinclair badged disk interface card for the QL and 720K DSDD 3.5" disk drive(s) made my Micro Peripherals Ltd.
@@ -18569,14 +18637,14 @@ Its device driver (FDK) was largely incompatible with the more common FLP device
 Floppy Disks (media) were compatible between all device drivers.
 
 [QJump] released their standard device driver FLP as an upgrade ROM called QFLP for the Micro Peripherals/Sinclair Floppy Disk system.
-*************************** 821. row ***************************
+*************************** 822. row ***************************
 wikilang: en
 wikipage: Sinclair Printer
 wikitext: A Sinclair badged dot-matrix printer for the QL (named QL-1000, black case, QL character set). Made by Seikosha in Japan. Based on their SP-1000 model (white case, ASCII character set).
 
 ((http://www.qlvsjaguar.homepage.bluewin.ch/SinclairQL_Printer_and_Manual-P1080353.JPG|Sinclair Printer QL-1000|align="l"|Sinclair Printer QL-1000|180|240|POPUP))%%%
 
-*************************** 822. row ***************************
+*************************** 823. row ***************************
 wikilang: en
 wikipage: Sinclair QL 128K RAM
 wikitext: An expansion card with 128K DRAM for the QL developed by [Sinclair Research Ltd]. Even a few of those cards have been produced and were used by developers the card was never available to the public (not even on any price lists).
@@ -18584,14 +18652,14 @@ wikitext: An expansion card with 128K DRAM for the QL developed by [Sinclair Res
 ((http://www.qlvsjaguar.homepage.bluewin.ch/SinclairQL_128KB_RAM_Expansion_Issue0_Version2_Prototype-MVC-247F.jpg|Sinclair QL 128K RAM expansion card|align="l"|Sinclair QL 128K RAM expansion card|240|180|POPUP))
 
 
-*************************** 823. row ***************************
+*************************** 824. row ***************************
 wikilang: en
 wikipage: Sinclair QL 128Kbyte ROM
 wikitext: An expansion card with 128K either ROM or EPROM for the QL developed by [Sinclair Research Ltd]. This card was shown at the launch press conference of the QL but was never available to the public (not even on any price lists).
 
 ((http://www.qlvsjaguar.homepage.bluewin.ch/Sinclair_QL_launch_press_conference_on_1984-01-12_machine_on_display_with_128Kbyte_ROM_module-1984-03_SU_no_24_p059_closeup-P1180126-cropped.JPG|Sinclair QL 128K ROM expansion card|align="l"|Sinclair QL 128K ROM expansion card|203|208|POPUP))
 
-*************************** 824. row ***************************
+*************************** 825. row ***************************
 wikilang: en
 wikipage: Sinclair QL Adventures
 wikitext: ((http://www.rwapadventures.com/images/books/0-94640-866-1.jpg|Sinclair QL Adventures|align="I"|Sinclair QL Adventures by Tony Bridge and Richard Williams))%%%
@@ -18607,7 +18675,7 @@ Commercial Status: Commercial%%%
 Price as at May 1985: £5.95%%%
 Reviews: [QL Adventurers Forum 4|http://www.dilwyn.me.uk/mags/qlaf/qlaf4.pdf], QL User (April 1985)%%%
 ISBN: 0-94640-866-1
-*************************** 825. row ***************************
+*************************** 826. row ***************************
 wikilang: en
 wikipage: Sinclair QL Home Computer
 wikitext: !!!Introduction
@@ -18642,7 +18710,7 @@ If you are interested in finding out about the internal workings of the Sinclair
 
 
 
-*************************** 826. row ***************************
+*************************** 827. row ***************************
 wikilang: en
 wikipage: Sinclair QL User Guide
 wikitext: ((http://www.rwapadventures.com/images/books/0-905104-92-7.jpg|The Sinclair QL User Guide|align="i"|The Sinclair QL User Guide by Lionel Fleetwood))%%%
@@ -18658,13 +18726,13 @@ Commercial Status: Unknown%%%
 Price as at October 1984: £7.50%%%
 Reviews: Unknown%%%
 ISBN: 0-905104-92-7
-*************************** 827. row ***************************
+*************************** 828. row ***************************
 wikilang: en
 wikipage: Sinclair QL World
 wikitext: Sinclair QL World was formed by the merger of [QL World] and [QL User] in 1986 and continued to be published (although passing through the hands of several publishers) until just after Christmas 1993 and was edited by [Helen Armstrong] from December 1987.
 
 For more details see [QL World]
-*************************** 828. row ***************************
+*************************** 829. row ***************************
 wikilang: en
 wikipage: Sinclair Research Ltd
 wikitext: Sinclair Research Limited was a company set up by Sir Clive Sinclair to create and promote his computer products.
@@ -18731,7 +18799,7 @@ Sinclair also issued the following tools to help retailers:
 * [Demonstration ROM]
 * [QL Sales Guide]
 
-*************************** 829. row ***************************
+*************************** 830. row ***************************
 wikilang: en
 wikipage: Sinclair Vision QL
 wikitext: A black-cased 12 inch Sinclair badged colour monitor for the QL. Can show the full 85 character QL display. This CRT monitor has 12" Diagonal 90 deg Def. Self Convergence 0.38 pitch display. 
@@ -18751,7 +18819,7 @@ Price as at July 1985: £249 (RRP £299)
 ((http://www.rwapadventures.com/images/hardware/visionql.jpg|Vision-QL Monitor|align="L"|Vision-QL Monitor|240|203|POPUP))
 
 (vid)http://www.youtube.com/watch?v=eYoTSGvWf78(/vid)
-*************************** 830. row ***************************
+*************************** 831. row ***************************
 wikilang: en
 wikipage: Sinclair Wafer RAM Expansion
 wikitext: The Sinclair Wafer RAM Expansion was to be the first product by [Sinclair Research Ltd] which used Wafer Scale Integration.
@@ -18777,7 +18845,7 @@ Original Price: Unknown - expected to be between £200 and £400%%%
 Reviews: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 831. row ***************************
+*************************** 832. row ***************************
 wikilang: en
 wikipage: Sketch Pad
 wikitext: Sketch Pad is a drawing package from Sigma Research of Cambridge which could be used with either the cursor keys or a joystick.
@@ -18805,20 +18873,20 @@ Price in February 1985: £14.90%%%
 Reviews: QL User (June 1985), QL User (November 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 832. row ***************************
+*************************** 833. row ***************************
 wikilang: en
 wikipage: SL Services
 wikitext: SL Services were based in Dunstable, Befordshire, and advertised one program:
 
 *[Home Accounts and Budgets]
 
-*************************** 833. row ***************************
+*************************** 834. row ***************************
 wikilang: en
 wikipage: Slave Software
 wikitext: Slave Software were based in Norfolk. They appear in the Instant Access section of the QL User magazine (September 1985) and are listed as supplying [Arable Farmer Software].
 
 More details are welcome!
-*************************** 834. row ***************************
+*************************** 835. row ***************************
 wikilang: en
 wikipage: Slide-Square
 wikitext: Slide-Square is an implementation of the classic sliding square puzzle game, which included 4 levels of play and the possibility of designing your own puzzles.
@@ -18839,7 +18907,7 @@ Price as at November 1985: £8.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 835. row ***************************
+*************************** 836. row ***************************
 wikilang: en
 wikipage: Smiling Mouse
 wikitext: The Smiling Mouse was an Atari standard mouse hard wired to a small interface card which plugged into the QL EPROM slot, and the mouse movements were converted to QL keypresses. 
@@ -18849,7 +18917,7 @@ Made by a company called Smiling Software, which supplied the mouse complete wit
 The Smiling Mouse cost £40.
 
 ((http://www.rwapadventures.com/images/hardware/smiling_mouse.jpg|Smiling Mouse|align="L"|Smiling Mouse|240|180|POPUP))
-*************************** 836. row ***************************
+*************************** 837. row ***************************
 wikilang: en
 wikipage: Snooker
 wikitext: Snooker was an early release by New Horizons Software of Newport, Gwent.  
@@ -18870,7 +18938,7 @@ Price as at July 1985: £10%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 837. row ***************************
+*************************** 838. row ***************************
 wikilang: en
 wikipage: Snooker Manager
 wikitext: Snooker Manager was supplied as part of a compilation of 7 games by [Rodent Software], simply entitled 'GAMES 2'.
@@ -18893,7 +18961,7 @@ Price as at March 1985: £9 (on cartridge of 7 programs)%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 838. row ***************************
+*************************** 839. row ***************************
 wikilang: en
 wikipage: Snowsoft
 wikitext: Snowsoft was a software company based in Newton Aycliffe, Durham.
@@ -18907,13 +18975,13 @@ They produced a few early titles for the Sinclair QL
 *[Sprite Designer]
 
 An early advert (December 1984) also invited people to telephone for details of a '68008 Tutor Program' for beginners wanting to learn machine code programming.
-*************************** 839. row ***************************
+*************************** 840. row ***************************
 wikilang: en
 wikipage: Soft School
 wikitext: Based in London, Soft School only appear to have released one title for the Sinclair QL:
 
 *[Reversi] - an implementation of the classic board game
-*************************** 840. row ***************************
+*************************** 841. row ***************************
 wikilang: en
 wikipage: Softronic
 wikitext: SOFTRONIC were based in Finland and listed some programs in the back of QL User (April - June 1985).
@@ -18921,7 +18989,7 @@ wikitext: SOFTRONIC were based in Finland and listed some programs in the back o
 I seem to think that this was linked to the well known Timo Salmi - many of his programs are available from [The Garbo Sinclair QL Archives|http://garbo.uwasa.fi/ql/]
 
 The programs listed in the back of QL User were supplied as a bundle which we have named [Softronic Tools] for simplicity.
-*************************** 841. row ***************************
+*************************** 842. row ***************************
 wikilang: en
 wikipage: Softronic Tools
 wikitext: Although not sold under the title Softronic Tools, we have listed these three programs under that name, as they were advertised together on one microdrive cartridge by [Softronic] of Finland, in the back of the QL User magazine (June 1985).
@@ -18950,7 +19018,7 @@ Price in April 1985: £9.95%%%
 Reviewed: Unknown%%%
 Sources Available from: (included with distribution)%%%
 Latest Version available from: n/a
-*************************** 842. row ***************************
+*************************** 843. row ***************************
 wikilang: en
 wikipage: Software
 wikitext: Despite its initial launch as a system designed for the business market, some of the first programs released for the Sinclair QL were games software, which made the most of its screen with 4 colours in 512x256 resolution, or 8 colours in 256 x 256 resolution.  Many of the early games were based on classic games produced for the Sinclair ZX Spectrum, although enhanced ot make full use of the higher screen resolution, with later games software taking advantage of the higher speed, and graphics resolutions available on emulators and the [Aurora] replacement motherboard.
@@ -19011,7 +19079,7 @@ Various programming languages were produced for the Sinclair QL, including many 
 [Emulators]
 
 Various emulators were produced for the Sinclair QL to enable it to emulate other computers, such as the Sinclair ZX81, ZX Spectrum, IBM PC and CP/M based computers.
-*************************** 843. row ***************************
+*************************** 844. row ***************************
 wikilang: en
 wikipage: Software Production Kit
 wikitext: ((http://www.rwapadventures.com/images/Superbasic-Production-Kit.jpg|SuperBASIC Production Kit|align="I"|SuperBASIC Production Kit by Sinclair Research))%%%
@@ -19052,7 +19120,7 @@ Price as at March 1985: £100%%%
 Reviews: Unknown%%%
 Sources Available from: Unknown%%%
 Latest Version available from:  Unknown%%%
-*************************** 844. row ***************************
+*************************** 845. row ***************************
 wikilang: en
 wikipage: Software2000
 wikitext: Software2000 were based in Preston and supplied various utilities for the Sinclair QL.
@@ -19061,7 +19129,7 @@ wikitext: Software2000 were based in Preston and supplied various utilities for 
 * [QL Backup / Restore]
 * [Tektronix / Westward/ VT52 Terminal Emulator]
 * [VT52 Terminal Emulator]
-*************************** 845. row ***************************
+*************************** 846. row ***************************
 wikilang: en
 wikipage: Software87
 wikitext: Software87 produced the [Text87 Plus4] word-processor for the Sinclair QL, plus associated programs.
@@ -19077,18 +19145,22 @@ Their programs included:%%%
 * [Text87 Plus4] - upgraded version of [Text87]%%%
 * [Typeset90-GQ5000] - extra drivers for use with Text87 Plus 4 - aimed at the Epson GQ5000 and GQ3500 printers%%%
 
-*************************** 846. row ***************************
+*************************** 847. row ***************************
 wikilang: en
 wikipage: Space Paranoids
-wikitext: Space Paranoids is another alien shoot 'em up game - with 9 different types of alien and 40 different attack waves.
+wikitext: ((http://www.rwapadventures.com/images/space_paranoids_package.jpg|Space Paranoids for Sinclair QL|align="L"|Packaging for Sinclair QL Space Paranoids))
+((http://www.rwapadventures.com/images/space_paranoids_insert.jpg|Cassette Insert for Space Paranoids for Sinclair QL|align="i"|Insert for Sinclair QL Space Paranoids|360|240|POPUP))%%%
 
-This is one game we have not seen and it may be based on the infamous "Space Paranoids" which you see being developed in the film Tron (1982)
+Space Paranoids is another alien shoot 'em up game - with 9 different types of alien and 40 different attack waves.
+
+Unfortunately, this is not based on the infamous "Space Paranoids" which you see being developed in the film Tron (1982).
 
 A short review in the September 1985 issue of QL User says that it provides a hard challenge, though owes its origins to Arcadia (another classic arcade game).
 
 ====
+((http://www.rwapadventures.com/images/Space_Paranoids_screenshot.png|Space Paranoids|align="l"|Screenshot of Sinclair QL Space Paranoids by Shadow Games|240|120|POPUP))%%%
 Title: __Space Paranoids__%%%
-Language: Unknown%%%
+Language: 68000 Machine Code%%%
 Author: Paul Tuck%%%
 Publisher: [Shadow Games]%%%
 Year of Publication: 1985%%%
@@ -19098,7 +19170,7 @@ Price as at August 1985: £12.95%%%
 Reviews: QL User (September 1985), QL User (December 1985)%%%
 Sources Available from: Unknown%%%
 Latest Version available from: n/a
-*************************** 847. row ***************************
+*************************** 848. row ***************************
 wikilang: en
 wikipage: Space Trek
 wikitext: Space Trek was a text adventure produced by [Swansoft] - a text only and a version with graphics was released.
@@ -19121,7 +19193,7 @@ Price as at April 1985: £7.99 each%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest version available from: Unknown%%%
-*************************** 848. row ***************************
+*************************** 849. row ***************************
 wikilang: en
 wikipage: Spectre Interceptor
 wikitext: We know nothing about this game - it was advertised by [Snowsoft] and the advertising says
@@ -19142,7 +19214,7 @@ Price as at December 1984: £4%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 849. row ***************************
+*************************** 850. row ***************************
 wikilang: en
 wikipage: Speedfreaks
 wikitext: Speedfreaks is an excellent arcade game written by [Damon Chaplin] and originally released under the name [KAOS Software].  It was later re-released by [CGH Services] and then made public domain.
@@ -19166,7 +19238,7 @@ Commercial Status: Public Domain
 
 Sources Available from: [RWAP Software website|http://www.rwapsoftware.co.uk/pdsoftware.html|eng|Download Speedfreaks Sources]%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/pdsoftware.html|eng|Download Speedfreaks]
-*************************** 850. row ***************************
+*************************** 851. row ***************************
 wikilang: en
 wikipage: Speedscreen
 wikitext: ((http://www.rwapadventures.com/images/speedscreen_package.jpg|Sinclair QL Speedscreen|align="i"|Sinclair QL Speedscreen by Simon Goodwin))%%%
@@ -19225,7 +19297,7 @@ Price in October 1987: £20%%%
 Reviewed: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: n/a
-*************************** 851. row ***************************
+*************************** 852. row ***************************
 wikilang: en
 wikipage: SPEM Digitiser
 wikitext: A video digitiser interface which plugged into the EPROM slot on the QL. Produced by Italian company SPEM, this could work on an unexpanded QL, although some memory expansion was preferred. The unit had three slider controls which controlled the level of Red, Green and Blue in the picture.
@@ -19244,7 +19316,7 @@ Original Price: Unknown%%%
 Reviews: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 852. row ***************************
+*************************** 853. row ***************************
 wikilang: en
 wikipage: SPEM Int-Disk
 wikitext: This is a fairly standard Sinclair QL floppy disk interface made by SPEM in Italy.
@@ -19261,7 +19333,7 @@ Original Price: Unknown%%%
 Reviews: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 853. row ***************************
+*************************** 854. row ***************************
 wikilang: en
 wikipage: Spook
 wikitext: ((http://www.rwapadventures.com/images/spook_package.jpg|Spook for Sinclair QL|align="L"|Packaging for Sinclair QL Spook))
@@ -19288,7 +19360,7 @@ Price as at October 1985: £12.95%%%
 Reviews: Unknown%%%
 Sources Available from: [RWAP Software website|http://www.rwapsoftware.co.uk/pdsoftware.html|eng|Download Spook Sources]%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/pdsoftware.html|eng|Download Spook]
-*************************** 854. row ***************************
+*************************** 855. row ***************************
 wikilang: en
 wikipage: Sprite Designer
 wikitext: We know nothing about this program - it was advertised by [Snowsoft] in December 1984.
@@ -19311,7 +19383,7 @@ Price as at December 1984: £15%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 855. row ***************************
+*************************** 856. row ***************************
 wikilang: en
 wikipage: Spy - A QL Adventure
 wikitext: Spy - A QL Adventure is a cold-war based adventure where you have to infiltrate an enemy spy centre and gather top secret information.
@@ -19333,7 +19405,7 @@ Price as at June 2016: £8.00%%%
 Reviews: None%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Adventures website|http://www.rwapadventures.com/QL/spyadventure.html|eng|Purchase Spy - A QL Adventure]
-*************************** 856. row ***************************
+*************************** 857. row ***************************
 wikilang: en
 wikipage: Squadrons
 wikitext: Squadrons is a classic wargame which places you in control of Fighter Command during the Battle of Britain (World War II).
@@ -19364,7 +19436,7 @@ Price as at December 1985: £15.95%%%
 Reviews: Reviews: [QL Adventurers Forum 3|http://www.dilwyn.me.uk/mags/qlaf/qlaf3.pdf]%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/games.html|eng|Purchase Microdeal Squadrons]
-*************************** 857. row ***************************
+*************************** 858. row ***************************
 wikilang: en
 wikipage: Squidgy Round The World
 wikitext: Squidgy Round The World published by CGH Services was a 50 flick screen maze puzzle game. The main character Squidgy travels around the world and has to collect various items before he can reach the exit. 
@@ -19384,7 +19456,7 @@ Sources Available from: n/a%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/games/]
 
 
-*************************** 858. row ***************************
+*************************** 859. row ***************************
 wikilang: en
 wikipage: Star Guard
 wikitext: Star Guard is another shoot 'em up arcade game, which has a type of 3D graphics, where the aliens grow larger as they get closer.
@@ -19403,7 +19475,7 @@ Price as at December 1985: £14.95%%%
 Reviews: QL User (December 1985)%%%
 Sources Available from: Unknown%%%
 Latest Version available from: n/a
-*************************** 859. row ***************************
+*************************** 860. row ***************************
 wikilang: en
 wikipage: Starplod
 wikitext: This is an icon controlled graphic adventure based in space.
@@ -19430,7 +19502,7 @@ Reviews: QL Adventurers Forum #6, QL Leisure Review #1, QL World July 1989%%%
 Sources Available from: Unknown%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/games/starplod.zip|eng|Download Starplod]
 
-*************************** 860. row ***************************
+*************************** 861. row ***************************
 wikilang: en
 wikipage: Statistical Analysis System
 wikitext: The Statistical Analysis System was an American system for PCs and QLs which allows you to perform statistical analysis.  It was designed to take test data and calculate Pearson III statistics of mean, variance, standard deviation and coefficient of skewness in the normal way. 
@@ -19451,7 +19523,7 @@ Commercial Status: Commercial%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 861. row ***************************
+*************************** 862. row ***************************
 wikilang: en
 wikipage: Stenroy Ltd
 wikitext: Based in Hampstead, London, Stenroy Limited were founded by Toby Grist and Roy Whittle and started off by developing hardware and software products for third party companies in conjunction with a small business development unit within the University of London
@@ -19461,7 +19533,7 @@ They appear to have released just one title for the Sinclair QL:
 *[Slide-Square] - a classic sliding square puzzle with 4 other games and a print spooler.
 
 The Company still exists today and continue to provide computer and technology based services - [visit the Stenroy Limited website|http://www.stenroy.com/]
-*************************** 862. row ***************************
+*************************** 863. row ***************************
 wikilang: en
 wikipage: Steve Bak
 wikitext: Steve Bak, a former miner, who started programming at the age of 31 (after an industrial accident cost him the tip of a finger) is well known as being a skilled programmer and having released dozens of games in the 1980s.
@@ -19478,7 +19550,7 @@ He wrote three games for the Sinclair QL:
 *[Lands of Havoc]
 *[QL Hopper]
 
-*************************** 863. row ***************************
+*************************** 864. row ***************************
 wikilang: en
 wikipage: Steve Davis Snooker
 wikitext: ((http://www.rwapadventures.com/images/steve-davis-snooker-package.jpg|Steve Davis Snooker for Sinclair QL|align="I"|Packaging for Sinclair QL Steve Davis Snooker))
@@ -19502,7 +19574,7 @@ Commercial Status: Commercial
 
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Steve Davis Snooker]
-*************************** 864. row ***************************
+*************************** 865. row ***************************
 wikilang: en
 wikipage: Steve Sutton
 wikitext: Steve Sutton (from Woking, Surrey) wrote several programs for the Sinclair QL over the years, which were sold through [Digital Precision Ltd] and [Shadow Games].
@@ -19518,7 +19590,7 @@ Commercial Software written by Steve Sutton includes:%%%
 [Lightning]%%%
 [ACT - the Adventure Creation Tool]%%%
 
-*************************** 865. row ***************************
+*************************** 866. row ***************************
 wikilang: en
 wikipage: Stock Control
 wikitext: Stock Control was published by [Transform] and written to work with the Archive Run Time Package ([ArchDEV/ArchRTM]).
@@ -19540,7 +19612,7 @@ Price as at November 1985: £14.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase QL Stock Control]
-*************************** 866. row ***************************
+*************************** 867. row ***************************
 wikilang: en
 wikipage: Stockmarket Manager
 wikitext: Stockmarket Manager was a program designed to help you keep track of your shares and stockmarket investments.
@@ -19567,7 +19639,7 @@ Price as at March 1985: £39.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 867. row ***************************
+*************************** 868. row ***************************
 wikilang: en
 wikipage: Stone Raider
 wikitext: Stone Raider was a clone of the famous Boulderdash game and was written by Alex J Herbert.  Originally published by [Microdeal], the rights were bought up by [Talent Computer Systems] and it is now sold through [RWAP Software] as Stone Raider II.
@@ -19588,7 +19660,7 @@ Commercial Status: Commercial
 
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/games.html|eng|Purchase Stone Raider]
-*************************** 868. row ***************************
+*************************** 869. row ***************************
 wikilang: en
 wikipage: STOP
 wikitext: STOP (STorage Optimiser) is a program to compress microdrive files to about half of their size, which is mentioned in the news section of the February 1985 edition of QL User.
@@ -19608,7 +19680,7 @@ Price in February 1985: £17.95%%%
 Reviewed: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 869. row ***************************
+*************************** 870. row ***************************
 wikilang: en
 wikipage: SToQL
 wikitext: SToQL is a program which allows you to convert screens designed on the Atari ST computer into the QL screen format.
@@ -19631,7 +19703,7 @@ Platforms Suitable for: All Sinclair QLs and emulators%%%
 Commercial Status: Freeware%%%
 Sources Available from: [Download SToQL Screen Convertor Sources|http://www.dilwyn.me.uk/graphics/SToQL.zip] or [Access Latest SToQL Sources on Github|https://github.com/SinclairQL/SToQL-Screen-Convertor]%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/graphics/index.html|eng|Download  SToQL Screen Convertor]
-*************************** 870. row ***************************
+*************************** 871. row ***************************
 wikilang: en
 wikipage: STQL Emulator
 wikitext: ((http://www.rwapadventures.com/images/hardware/QLST-Emulator_driver.jpg|STQL Emulator Disks by Futura Datasenter for Atari ST|align="I"|Drive Disk for Futura Datasenters STQL Emulator))%%%
@@ -19659,7 +19731,7 @@ Original Price: £Unknown%%%
 Reviews: Unknown%%%
 Download Manual: Unknown%%%
 
-*************************** 871. row ***************************
+*************************** 872. row ***************************
 wikilang: en
 wikipage: Stranded
 wikitext: Stranded was an early release by New Horizons Software of Newport, Gwent.  
@@ -19680,7 +19752,7 @@ Price as at July 1985: £10%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 872. row ***************************
+*************************** 873. row ***************************
 wikilang: en
 wikipage: Strathern Utilities
 wikitext: M. Strathern of Richmond Road, London advertised two utilities sold together in the December 1984 issue of QL User.
@@ -19707,7 +19779,7 @@ Price as at December 1984: £8.50%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 873. row ***************************
+*************************** 874. row ***************************
 wikilang: en
 wikipage: Strip Poker
 wikitext: ((http://www.rwapadventures.com/images/strip-poker_packaging.jpg|Strip Poker for Sinclair QL|align="I"|Packaging for Sinclair QL Strip Poker))
@@ -19729,7 +19801,7 @@ Price as at June 1987: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk|eng|Purchase Strip Poker]
-*************************** 874. row ***************************
+*************************** 875. row ***************************
 wikilang: en
 wikipage: Strong Computers
 wikitext: Strong Computers were based in Carmarthen in Wales and although mainly a third party reseller and repairs company, they did offer some titles which were not available elsewhere.
@@ -19737,13 +19809,13 @@ wikitext: Strong Computers were based in Carmarthen in Wales and although mainly
 The software sold by them exclusively under license, included:
 *[Micro Manager] - an accounting package%%%
 *[QCAD] - a computer aided design program%%%
-*************************** 875. row ***************************
+*************************** 876. row ***************************
 wikilang: en
 wikipage: Stuart McKnight
 wikitext: QView's ringleader who kept Lau Reeves supplied with ethnic takeaway food and beer while he kept musing on the next revisions for Minerva.
 
 In the QView team, Lau did much of the coding, Jonathan was responsible for hardware designs and came up with the I2C board and Stuart frantically tried to keep the documentation up to date and triaged user's questions and bug reports back to be blended into the next release.
-*************************** 876. row ***************************
+*************************** 877. row ***************************
 wikilang: en
 wikipage: Summit Software
 wikitext: Summit Software are listed in the Instant Access section of QL User (September 1985) and traded from Newport, Gwent.
@@ -19753,7 +19825,7 @@ They are listed as having released two games for the QL:
 *[Frogger]
 
 More details are welcome
-*************************** 877. row ***************************
+*************************** 878. row ***************************
 wikilang: en
 wikipage: Super Arcadia
 wikitext: ((http://www.rwapadventures.com/images/Super_Arcadia_Packaging.jpg|Digital Precision Super Arcadia QL Package|align="i"|Sinclair QL Super Arcadia Games Pack by Digital Precision))
@@ -19787,7 +19859,7 @@ Price as at November 1985: £15.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Super Arcadia]
-*************************** 878. row ***************************
+*************************** 879. row ***************************
 wikilang: en
 wikipage: Super Astrologer
 wikitext: ((http://www.rwapadventures.com/images/superastrologer_package.jpg|Super Astrologer for Sinclair QL|align="I"|Packaging for Sinclair QL Super Astrologer))
@@ -19823,7 +19895,7 @@ Price as at November 1985: £21.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Super Astrologer]
-*************************** 879. row ***************************
+*************************** 880. row ***************************
 wikilang: en
 wikipage: Super Backgammon
 wikitext: ((http://www.rwapadventures.com/images/super-backgammon-package.jpg|Super Backgammon for Sinclair QL|align="I"|Packaging for Sinclair QL Super Backgammon))
@@ -19861,7 +19933,7 @@ Price as at April 1985: £15.95%%%
 Reviews: QL User (June 1985), QL User (December 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Super Backgammon]
-*************************** 880. row ***************************
+*************************** 881. row ***************************
 wikilang: en
 wikipage: Super Clone Program
 wikitext: This program was advertised by [Persoft Software] and was intended as a byte by byte cloner of any program on microdrive cartridge.
@@ -19884,7 +19956,7 @@ Price as at November 1985: £18.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 881. row ***************************
+*************************** 882. row ***************************
 wikilang: en
 wikipage: Super Croupier
 wikitext: Super Croupier is a casino based game from the French software house [Pyramide].
@@ -19904,7 +19976,7 @@ Commercial Status: Commercial%%%
 Sources Available from: Unknown%%%
 Manual available from: Unknown%%%
 Latest Version available from: Unknown
-*************************** 882. row ***************************
+*************************** 883. row ***************************
 wikilang: en
 wikipage: Super Gold Card
 wikitext: ((http://www.rwapadventures.com/images/hardware/supergoldcard.jpg|Miracle Systems Super Gold Card|align="i"|Picture of Super Gold Card expansion by Miracle Systems|200|101|POPUP))%%%
@@ -19914,7 +19986,7 @@ The successor to the [Gold Card] from [Miracle Systems]. It has a 68020 processo
 When [Miracle Systems] stopped selling the Super Gold Card, a small second batch was made by Quanta, which soon sold out.
 
 The Super Gold Card is a popular QL expansion for those who prefer to use an original Sinclair QL. Although rare now (once people get hold of one they rarely sell them!), units do occasionally become available through traders like [RWAP Services].
-*************************** 883. row ***************************
+*************************** 884. row ***************************
 wikilang: en
 wikipage: Super Reversi
 wikitext: ((http://www.rwapadventures.com/images/superforth_package.jpg|Digital Precision Super Reversi QL Package|align="i"|Sinclair QL Super Reversi by Digital Precision))%%%
@@ -19942,7 +20014,7 @@ Price in November 1985: £29.95%%%
 Reviewed: Unknown%%%
 Sources Available from: Included with program%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/language/index.html|eng|Download SuperForth and Super Reversi]
-*************************** 884. row ***************************
+*************************** 885. row ***************************
 wikilang: en
 wikipage: Super Sprite Generator
 wikitext: ((http://www.rwapadventures.com/images/SuperSpriteGenerator-packaging.jpg|Super Sprite Generator for Sinclair QL|align="I"|Packaging for Sinclair QL Super Sprite Generator))
@@ -19988,7 +20060,7 @@ Price as at April 1985: £19.95%%%
 Reviews: QL User (June 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Digital Precision's Super Sprite Generator]
-*************************** 885. row ***************************
+*************************** 886. row ***************************
 wikilang: en
 wikipage: SuperBASIC
 wikitext: SuperBASIC is the BASIC programming language devised for the Sinclair QL.  It was written by [Jan Jones|http://www.jan-jones.co.uk/aboutme.html] and was based on the original Sinclair ZX BASIC written for the ZX80, ZX81 and ZX Spectrum home computers.
@@ -19998,7 +20070,7 @@ SuperBASIC has lots of very useful features, including easily controlled loops, 
 The [Minerva Replacement ROM] for the Sinclair QL permits users to run mutliple copies of SuperBASIC at the same time (multitasking).  This feature has also been replicated and enhanced in the [SMSQ/e Replacement Operating System].
 
 There are many guides to programming in SuperBASIC, with probably the most comprehensive guides being the [SBASIC/SuperBASIC Reference Manual] by [RWAP Software] and [QL SuperBASIC (The Definitive Handbook)] by [Jan Jones|http://www.jan-jones.co.uk/aboutme.html].
-*************************** 886. row ***************************
+*************************** 887. row ***************************
 wikilang: en
 wikipage: SuperBASIC Compilers
 wikitext: !!!BASIC Compilers
@@ -20013,7 +20085,7 @@ There are three different SuperBASIC Compilers which were produced for the QL:
 [Supercharge]%%%
 [Lightning Compiler] - never released%%%
 [Turbo]%%%
-*************************** 887. row ***************************
+*************************** 888. row ***************************
 wikilang: en
 wikipage: Superbomber
 wikitext: Superbomber (or simply Bomber) was included as a free game, with both [Basic-Ally] and [RAM disk and Spooler] from [Talent Computer Systems].
@@ -20040,7 +20112,7 @@ Commercial Status: Commercial
 
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 888. row ***************************
+*************************** 889. row ***************************
 wikilang: en
 wikipage: Supercharge
 wikitext: ((http://www.rwapadventures.com/images/supercharge_package.jpg|Digital Precision SuperCharge QL Package|align="i"|Sinclair QL SuperCharge by Digital Precision))%%%
@@ -20119,7 +20191,7 @@ Price in October 1985: £60%%%
 Reviewed: Sinclair User, March 1986%%%
 Sources Available from: n/a%%%
 Latest Version available from: n/a
-*************************** 889. row ***************************
+*************************** 890. row ***************************
 wikilang: en
 wikipage: Superficial Operating System
 wikitext: The Superficial Operating System was mentioned in the Summer Software Survey contained in QL User (September 1985) and was described as a product marketed by [Compware] which was similar to [WD Utilities].
@@ -20140,7 +20212,7 @@ Price as at September 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 890. row ***************************
+*************************** 891. row ***************************
 wikilang: en
 wikipage: SuperForth
 wikitext: ((http://www.rwapadventures.com/images/superforth_package.jpg|Digital Precision SuperForth QL Package|align="i"|Sinclair QL SuperForth by Digital Precision))%%%
@@ -20175,7 +20247,7 @@ Reviewed: Unknown%%%
 Sources Available from: Unknown - some sources included with program%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/language/index.html|eng|Download SuperForth and Super Reversi]
 
-*************************** 891. row ***************************
+*************************** 892. row ***************************
 wikilang: en
 wikipage: superHermes
 wikitext: superHermes from [TF Services] includes all the features of the [Hermes] IPC replacement chip and adds IBM AT keyboard interface, high speed 2-way RS232 at up to 460,800 baud, serial mouse port and 2 other RS232 inputs (i.e. 3 low speed RS232 serial inputs) plus 3 spare I/O lines.   It will also handle a PS/2 keyboard with a standard PS/2 - AT adaptor.
@@ -20214,7 +20286,7 @@ Original Price: Unknown%%%
 Reviews: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: [SuperHermes Support Software|http://tfs.firshman.co.uk/ql/fsh.htm]%%%
-*************************** 892. row ***************************
+*************************** 893. row ***************************
 wikilang: en
 wikipage: superHermes Lite
 wikitext: superHermes Lite is a cheaper version of [superHermes] from [TF Services]. 
@@ -20234,7 +20306,7 @@ Original Price: Unknown%%%
 Reviews: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 893. row ***************************
+*************************** 894. row ***************************
 wikilang: en
 wikipage: Superplant Software
 wikitext: Superplant Software was based in Llangeitho, Tregaron, Wales and were run by the well-known botanist Toby Hodd, who wrote the databases (Toby sadly passed away in 2000).  The software was originally sold under the name of Llangeitho Nurseries.
@@ -20244,7 +20316,7 @@ They produced four very similar titles for the QL:
 *[House Plant Data Bank and Planner]
 *[Shrub Data Bank and Planner]
 *[Wild Flowers for Gardens Planner]
-*************************** 894. row ***************************
+*************************** 895. row ***************************
 wikilang: en
 wikipage: SuperQBoard
 wikitext: The SuperQBoard was a disk interface card from [Sandy] with up to 512K RAM, a centronics parallel printer port and Toolkit 2 on board. The 256K version could be upgraded by a small plug-in RAM card.
@@ -20276,12 +20348,14 @@ Year First Sold: 1985%%%
 Original Price: Unknown%%%
 Download Manual: [Sandy Disk Manual|http://www.dilwyn.me.uk/docs/manuals/sandy.zip|eng|Download Sandy Disk Interface Manual] (QL Quill DOC)%%%
 Accompanying Software: None%%%
-*************************** 895. row ***************************
+*************************** 896. row ***************************
 wikilang: en
 wikipage: SuperQMouse
 wikitext: The Sandy SuperQMouse Interface was an upgraded version of the [SuperQBoard], which contained a disk interface card with up to 512K RAM, a centronics parallel printer port and Toolkit 2 on board.
 
-It also had a QIMI compatible mouse connection - the pointer interface was built into the ROM (although not the windowing interface) and was initiated with the command POINTER. 
+It also had a QIMI compatible mouse connection - the pointer interface was built into the ROM (although not the windowing interface) and was initiated with the command POINTER.
+
+The Sandy SuperQMouse was available either built in, or as a kit of parts to upgrade a version 3 SuperQBoard.
 
 ====
 ((http://www.rwapadventures.com/images/hardware/superqmouse.jpg|Sandy SuperQBoard Mouse|align="i"|Sandy SuperQBoard Mouse|240|186|POPUP))%%%
@@ -20292,10 +20366,10 @@ Through-Connector: NO%%%
 Manufacturer: [Sandy]%%%
 Designer: Arnie Gardner%%%
 Year First Sold: 1985%%%
-Original Price: Unknown%%%
+Original Price: £15%%%
 Download Manual: [Sandy Disk Manual|http://www.dilwyn.me.uk/docs/manuals/sandy.zip|eng|Download Sandy Disk Interface Manual] (QL Quill DOC)%%%
 Accompanying Software: None%%%
-*************************** 896. row ***************************
+*************************** 897. row ***************************
 wikilang: en
 wikipage: SuperToolkit
 wikitext: SuperToolkit is perhaps better known as Toolkit II - it has become the standard toolkit expected by the majority of Sinclair QL programs released since 1987.
@@ -20335,19 +20409,19 @@ Price as at November 1985: £29.90%%%
 Reviews: QL User Jan/Feb 1986%%%
 Sources Available from: Unknown%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/pe/index.html]%%%
-*************************** 897. row ***************************
+*************************** 898. row ***************************
 wikilang: en
 wikipage: Swansoft
 wikitext: Swansoft was a small software producer in the Morriston area of Swansea.  They produced a [Space Trek] adventure, both as a text only adventure and as a text and graphics version.
 
 Early adverts (in 1985) promised a further title - "Protector" we do not know if this ever made it to the market.
-*************************** 898. row ***************************
+*************************** 899. row ***************************
 wikilang: en
 wikipage: Systems 80 Limited
 wikitext: Systems 80 Limited published some educational software for the Sinclair QL in 1985 - [My First Program].
 
 Systems 80 Limited are still in existence and based in Bridgend - their website is [Diamond-Discovery|http://www.diamond-discovery.co.uk]
-*************************** 899. row ***************************
+*************************** 900. row ***************************
 wikilang: en
 wikipage: Systems Software - File Manager
 wikitext: Systems Software - File Manager was a package mentioned in QLUB News (January 1985) as a package by Saltigrade Software of Edinburgh, which simplified and extended microdrive file handling.
@@ -20365,7 +20439,7 @@ Price in January 1985: £10%%%
 Reviewed: Unknown%%%
 Sources Available from: n/a
 Latest Version available from: Unknown
-*************************** 900. row ***************************
+*************************** 901. row ***************************
 wikilang: en
 wikipage: Taking the Quantum Leap
 wikitext: ((http://www.rwapadventures.com/images/books/taking_the_quantum_leap.jpg|Taking the Quantum Leap - The Last Word on the Sinclair QL|align="i"|Taking the Quantum Leap - The Last Word on the Sinclair QL by Mike de Sosa))%%%
@@ -20394,7 +20468,7 @@ Commercial Status: Unknown%%%
 Price as at May 1985: Unknown%%%
 Reviews: Unknown%%%
 ISBN: None
-*************************** 901. row ***************************
+*************************** 902. row ***************************
 wikilang: en
 wikipage: Talent Computer Systems
 wikitext: Talent Computer Systems published a wide range of games and adventures for the Sinclair QL and Atari computers.  They originally used a Wicat, an up market 68000 based machine, running under Unix for software development.  All of their early software was written in Stab, a language developed at Strathclyde University, which is related to C and BCPL.
@@ -20445,7 +20519,7 @@ Software Published by Talent includes:
 *[WIMP] - program to design Windows, Icons and Pictures for use in your own programs%%%
 
 ((http://www.rwapadventures.com/images/talent.png|Talent Computer Systems Logo|align="i"|Logo for Talent Computer Systems of Glasgow)) 
-*************************** 902. row ***************************
+*************************** 903. row ***************************
 wikilang: en
 wikipage: Tally
 wikitext: Tally was an early QL accounts package from [Quest Automation Ltd] which was sold as part of the 'Executive Series'.
@@ -20472,11 +20546,11 @@ Price in December 1984: £115 (Tally I), £59.50 (Tally II)%%%
 Reviewed: Unknown%%%
 Sources Available from: Unknown%%%
 Latest Version available from: Unknown
-*************************** 903. row ***************************
+*************************** 904. row ***************************
 wikilang: en
 wikipage: Tandata Marketing Limited
 wikitext: Tandata Marketing Limited of Malvern, were known for the production of their [Tandata Modem] stack for the Sinclair QL which provided a 1200/75 baud modem, plus fully buffered RS232 interface and auto-dialler / auto-answer module.
-*************************** 904. row ***************************
+*************************** 905. row ***************************
 wikilang: en
 wikipage: Tandata Modem
 wikitext: !!!Tandata Modem
@@ -20526,7 +20600,7 @@ Original Price: £209.85 (complete)%%%
 Reviews: QL User (August 1985), QL World (September 1985) %%%
 Download Manual: Unknown%%%
 Accompanying Software: [Q-Connect]. %%%
-*************************** 905. row ***************************
+*************************** 906. row ***************************
 wikilang: en
 wikipage: Tankbusters
 wikitext: ((http://www.rwapadventures.com/images/tankbusters_package.jpg|Tankbusters for Sinclair QL|align="I"|Packaging for Sinclair QL Tankbusters)) %%%
@@ -20548,7 +20622,7 @@ Commercial Status: Commercial
 
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Tankbusters]
-*************************** 906. row ***************************
+*************************** 907. row ***************************
 wikilang: en
 wikipage: Tascopy QL
 wikitext: ((http://www.rwapadventures.com/images/tascopy_ql_package.jpg|Tasman Software Tascopy QL Package|align="i"|Sinclair QL Tascopy QL by Tasman Software))
@@ -20573,7 +20647,7 @@ Price as at October 1985: £12.90%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/downloads.html]%%%
-*************************** 907. row ***************************
+*************************** 908. row ***************************
 wikilang: en
 wikipage: Taskmaster
 wikitext: Taskmaster started life as a task switcher written by Andrew Pennell for [Medic Datasystems Ltd].
@@ -20607,7 +20681,7 @@ Commercial Status: Commercial%%%
 Price as at September 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: Unknown%%%
-*************************** 908. row ***************************
+*************************** 909. row ***************************
 wikilang: en
 wikipage: Tasman Software Limited
 wikitext: Tasman Software Limited were a small publishing house based in Leeds, who produced a range of business type software and centronics interfaces for the Sinclair QL and the ZX Spectrum home computers.
@@ -20618,7 +20692,7 @@ Tasman Software produced the following software for the Sinclair QL:
 
 *[Tascopy QL] - A screen dump program
 *[Tasprint QL] - A program for printing text documents in a range of fonts to a dot matrix printer.
-*************************** 909. row ***************************
+*************************** 910. row ***************************
 wikilang: en
 wikipage: Tasprint QL
 wikitext: ((http://www.rwapadventures.com/images/tasprint_ql_package.jpg|Tasman Software Tasprint QL Package|align="i"|Sinclair QL Tasprint QL by Tasman Software))
@@ -20650,7 +20724,7 @@ Platforms Suitable for: All Sinclair QLs and emulators%%%
 Commercial Status: Freeware%%%
 Sources Available from: n/a%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/downloads.html]%%%
-*************************** 910. row ***************************
+*************************** 911. row ***************************
 wikilang: en
 wikipage: Taxcalc
 wikitext: ((http://www.rwapadventures.com/images/taxcalc_package.jpg|TAXCalc for Sinclair QL|align="I"|Packaging for Sinclair QL Taxcalc))
@@ -20673,7 +20747,7 @@ Platforms Suitable for: All Sinclair QLs and emulators%%%
 Commercial Status: Commercial%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase QL Taxcalc]
-*************************** 911. row ***************************
+*************************** 912. row ***************************
 wikilang: en
 wikipage: TDI Assembler
 wikitext: The TDI Assembler is mentioned in a 'Summer Software Survey' contained within QL User (September 1985).
@@ -20694,7 +20768,7 @@ Price as at September 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from:  Unknown%%%
-*************************** 912. row ***************************
+*************************** 913. row ***************************
 wikilang: en
 wikipage: TDI Software Limited
 wikitext: TDI Software Limited were based in Bristol and produced programs for writing p-system code for the QL.
@@ -20707,7 +20781,7 @@ On the QL they released:
 *[USCD P-System]
 *[USCD Prolog]
 
-*************************** 913. row ***************************
+*************************** 914. row ***************************
 wikilang: en
 wikipage: Teach Yourself Computer Programming with the Sinclair QL
 wikitext: ((http://www.rwapadventures.com/images/books/0-340377-97-6.jpg|Teach Yourself Computer Programming with the Sinclair QL|align="i"|Teach Yourself Computer Programming with the Sinclair QL by Eric Deeson))%%%
@@ -20723,7 +20797,7 @@ Commercial Status: Unknown%%%
 Price as at May 1985: Unknown%%%
 Reviews: Unknown%%%
 ISBN: 0-340377-97-6
-*************************** 914. row ***************************
+*************************** 915. row ***************************
 wikilang: en
 wikipage: Technikit
 wikitext: Technikit is a support package for the [TechniQL] CAD package.
@@ -20741,7 +20815,7 @@ Price as at January 1987: £24.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk|eng|Purchase Technikit]
-*************************** 915. row ***************************
+*************************** 916. row ***************************
 wikilang: en
 wikipage: TechniQL
 wikitext: TechniQL is a 2-D CAD package which is suitable for general, scientific and engineering applications.
@@ -20776,13 +20850,13 @@ Price as at September 1986: £49.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk|eng|Purchase TechniQL]
-*************************** 916. row ***************************
+*************************** 917. row ***************************
 wikilang: en
 wikipage: Technology Research Limited
 wikitext: Technology Research Limited were a company based in Staines, Middlesex.  The Company appear to have been dissolved in 1990.
 
 They produced a range of 3 in 1 disk interfaces for the Sinclair QL, offering a centronics interface, double density floppy disk interface and extra RAM (with a RAM disk) built into one unit, the [Delta 64 and 128].
-*************************** 917. row ***************************
+*************************** 918. row ***************************
 wikilang: en
 wikipage: Techsoft
 wikitext: Techsoft were based in Barnsley, South Yorkshire and appear to have also traded under the name [Yorkshire Media (Software)].
@@ -20791,7 +20865,7 @@ They appear to have produced only one program for the Sinclair QL:
 
 [QL Poolswinner] - a program to help you win the football pools
 
-*************************** 918. row ***************************
+*************************** 919. row ***************************
 wikilang: en
 wikipage: Tektronix / Westward/ VT52 Terminal Emulator
 wikitext: 3Tektronix / Westward/ VT52 Terminal Emulator was an upgraded version of hte [VT52 Terminal Emulator] published by [Software2000], allowing a QL to be used as a full graphics terminal for use of mainframe graphics programs.
@@ -20815,11 +20889,11 @@ Price as at January 1986: £39.50%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 919. row ***************************
+*************************** 920. row ***************************
 wikilang: en
 wikipage: Telepen Barcoder
 wikitext: A program for use with the Telepen barcoder sold by [TF Services] in the 1980s.  Telepen barcoder prints full 8bit text barcodes so could be used to 'save' QL programs.
-*************************** 920. row ***************************
+*************************** 921. row ***************************
 wikilang: en
 wikipage: TERMINAL
 wikitext: TERMINAL was published by [Datamanagement] and is a fully featured terminal program - it implemented the Xmodem Ward-Christerpherson data transfer protocols needed to access Datamanagement's own QL bulletin board 'Citadel'.
@@ -20844,7 +20918,7 @@ Price as at March 1985: £12.50%%%
 Reviews: QL User (October 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 921. row ***************************
+*************************** 922. row ***************************
 wikilang: en
 wikipage: Terminal Emulator
 wikitext: There appear to have been at least two programs called __Terminal Emulator__ for the Sinclair QL.
@@ -20888,11 +20962,11 @@ Price as at April 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 922. row ***************************
+*************************** 923. row ***************************
 wikilang: en
 wikipage: Tesseract Software
 wikitext: Tesseract Software produced Concept 3D for the Sinclair QL computer - no more details are available.
-*************************** 923. row ***************************
+*************************** 924. row ***************************
 wikilang: en
 wikipage: Text Adventures
 wikitext: The following Adventure games were available for the Sinclair QL and can often be found second hand.  If you have an original program and would like to get a working copy on microdrive or disk, or to use with a QL emulator, [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Working Copies of old QL favourites] may be able to help.
@@ -20971,7 +21045,7 @@ W%%%
 [West]- A realtime text adventure where you play the role of a sheriff.%%% 
 ====
 
-*************************** 924. row ***************************
+*************************** 925. row ***************************
 wikilang: en
 wikipage: Text87
 wikitext: Text87 is a word processor for the Sinclair QL, which was a first for the QL, in that instead of being based around the QL's fonts and graphics, had custom drivers which were based on the fonts and printing capabilities of certain supported printers.
@@ -21005,7 +21079,7 @@ Commercial Status: Commercial%%%
 Sources Available from: Unknown%%%
 Manual available from: Unknown%%%
 Latest Version available from: Unknown
-*************************** 925. row ***************************
+*************************** 926. row ***************************
 wikilang: en
 wikipage: Text87 Plus4
 wikitext: Text87 Plus4 is an upgraded version of the original [Text87] word processor for the Sinclair QL.
@@ -21029,7 +21103,7 @@ Commercial Status: Commercial%%%
 Sources Available from: Unknown%%%
 Manual available from: Unknown%%%
 Latest Version available from: Unknown
-*************************** 926. row ***************************
+*************************** 927. row ***************************
 wikilang: en
 wikipage: Text87 Plus4 Patch
 wikitext: Text87 Plus4 Patch applies a patch to [Text87 Plus4] to support the 16 bit display mode of QPC/QXL (mode32) and the Q40/Q60 (mode33), as well as Aurora's 8 bit mode (mode 16).
@@ -21049,7 +21123,7 @@ Commercial Status: Commercial%%%
 Sources Available from: n/a%%%
 Manual available from: Unknown%%%
 Latest Version available from: [Quo Vadis Design|http://www.ql-qvd.com/products.html]
-*************************** 927. row ***************************
+*************************** 928. row ***************************
 wikilang: en
 wikipage: TF Services
 wikitext: TF Services was run by Tony Firshman and was based in Tring, Hertfordshire.
@@ -21077,7 +21151,7 @@ Products include
 
 
 
-*************************** 928. row ***************************
+*************************** 929. row ***************************
 wikilang: en
 wikipage: The Abacus User's Reference Manual
 wikitext: ((http://www.rwapadventures.com/images/books/0-907792-76-6.jpg|The Abacus User's Reference Manual|align="I"|The Abacus User's Reference Manual by Stephen Morris))%%%
@@ -21095,7 +21169,7 @@ Year of Publication: 1986%%%
 Commercial Status: Commercial%%%
 Price as at May 1986: £14.95%%%
 ISBN: 0-907792-76-6
-*************************** 929. row ***************************
+*************************** 930. row ***************************
 wikilang: en
 wikipage: The Adventure
 wikitext: ((http://www.rwapadventures.com/images/classic_package.jpg|QL Classic Adventures|align="I"|Packaging for Sinclair QL Classic Adventures))%%%
@@ -21124,7 +21198,7 @@ Price as at December 1985: £9.95%%%
 Reviews: QL World (December 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase QL Classic Adventures]
-*************************** 930. row ***************************
+*************************** 931. row ***************************
 wikilang: en
 wikipage: The Archive User's Reference Manual
 wikitext: ((http://www.rwapadventures.com/images/books/0-907792-77-4.jpg|The Archive User's Reference Manual|align="I"|The Archive User's Reference Manual by Stephen Morris))%%%
@@ -21143,7 +21217,7 @@ Commercial Status: Commercial%%%
 Price as at May 1986: £14.95%%%
 Reviews: Unknown%%%
 ISBN: 0-907792-77-4
-*************************** 931. row ***************************
+*************************** 932. row ***************************
 wikilang: en
 wikipage: The Designer
 wikitext: The Designer is a CAD package from the French software house [Pyramide], it can be driven by cursor keys, a joystick or mouse.  
@@ -21167,7 +21241,7 @@ Commercial Status: Commercial%%%
 Sources Available from: Unknown%%%
 Manual available from: Unknown%%%
 Latest Version available from: Unknown
-*************************** 932. row ***************************
+*************************** 933. row ***************************
 wikilang: en
 wikipage: The Fugitive
 wikitext: The Fugitive was a text adventure set in Russia, where you are thought to be a spy.  You have to make your way to the British Embassy in Poland undetected, as quickly as possible.
@@ -21194,7 +21268,7 @@ Price as at October 1989: £9.95%%%
 Reviews: Sinclair QL World (January 1990)%%%
 Sources Available from: Unknown%%%
 Latest Version available from: Unknown
-*************************** 933. row ***************************
+*************************** 934. row ***************************
 wikilang: en
 wikipage: The King
 wikitext: ((http://www.rwapadventures.com/images/TheKing-package.jpg|The King for Sinclair QL|align="L"|Packaging for Sinclair QL The King))
@@ -21221,7 +21295,7 @@ Price as at December 1986: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: Unknown%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/games.html|eng|Purchase The King]
-*************************** 934. row ***************************
+*************************** 935. row ***************************
 wikilang: en
 wikipage: The Lonely Joker
 wikitext: The Lonely Joker is a collection of six different patience card games - Echelon, Napoleon, Cascade, Spine, Crapaud and Four in Hand.
@@ -21244,7 +21318,7 @@ Commercial Status: Commercial
 
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/games.html|eng|Purchase The Lonely Joker]
-*************************** 935. row ***************************
+*************************** 936. row ***************************
 wikilang: en
 wikipage: The Lost Pharaoh
 wikitext: ((http://www.rwapadventures.com/images/lostpharaoh_package.jpg|The Lost Pharaoh for Sinclair QL|align="I"|Packaging for Sinclair QL The Lost Pharaoh))%%%
@@ -21271,7 +21345,7 @@ Price as at August 1986: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/games.html|eng|Purchase The Lost Pharaoh]
-*************************** 936. row ***************************
+*************************** 937. row ***************************
 wikilang: en
 wikipage: The Prawn
 wikitext: The Prawn is a spoof text-only adventure based on the original Sinclair QL adventure [QL Pawn] written by [Magnetic Scrolls].
@@ -21293,7 +21367,7 @@ Price as at June 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Adventures website|http://www.rwapadventures.com/QL/prawn.html|eng|Purchase the Prawn]
-*************************** 937. row ***************************
+*************************** 938. row ***************************
 wikilang: en
 wikipage: The QL Book of Games
 wikitext: ((http://www.rwapadventures.com/images/books/0-7447-0022-1.jpg|The QL Book of Games|align="I"|The QL Book of Games by Richard G Hurley and David D Virgo))%%%
@@ -21311,7 +21385,7 @@ Commercial Status: Commercial%%%
 Price as at October 1984: £5.95%%%
 Reviews: QL User (Feb '85)%%%
 ISBN: 0-7447-0022-1
-*************************** 938. row ***************************
+*************************** 939. row ***************************
 wikilang: en
 wikipage: The QL Epic Adventure
 wikitext: The QL Epic Adventure is a sci-fi text adventure boasting excellent real time digitised graphics. 
@@ -21333,7 +21407,7 @@ Price as at December 1991: £12.00%%%
 Reviews: Sinclair QL World (December 1991)%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Adventures website|http://www.rwapadventures.com/QL/qlepicadventure.html|eng|Purchase QL Epic Adventure]
-*************************** 939. row ***************************
+*************************** 940. row ***************************
 wikilang: en
 wikipage: The Quill
 wikitext: ((http://www.rwapadventures.com/images/The_Quill_packaging.jpg|Inlay for The Quill Adventure Writer for Sinclair QL|align="i"|Insert for Sinclair QL The Quill))%%%
@@ -21369,7 +21443,7 @@ Price as at June 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 940. row ***************************
+*************************** 941. row ***************************
 wikilang: en
 wikipage: The Quill User's Reference Manual
 wikitext: ((http://www.rwapadventures.com/images/books/0-907792-75-8.jpg|The Quill User's Reference Manual|align="I"|The Quill User's Reference Manual by Stephen Morris))%%%
@@ -21387,7 +21461,7 @@ Year of Publication: 1986%%%
 Commercial Status: Commercial%%%
 Price as at May 1986: £14.95%%%
 ISBN: 0-907792-75-8
-*************************** 941. row ***************************
+*************************** 942. row ***************************
 wikilang: en
 wikipage: The Real Thing? Microcomputer Simulations On The Sinclair QL
 wikitext: The book contains 20 simulation programs, described in considerable detail. A progressive, modular style is used, and a wider range of themes is covered. All algorithms are carefully explained, with few assumptions about any mathematical knowledge. 
@@ -21403,7 +21477,7 @@ Commercial Status: Unknown%%%
 Price as at May 1985: Unknown%%%
 Reviews: Unknown%%%
 ISBN: 185-0580-227
-*************************** 942. row ***************************
+*************************** 943. row ***************************
 wikilang: en
 wikipage: The Simulator
 wikitext: ((http://www.rwapadventures.com/images/The_Simulator_packaging.jpg|Ekotek Datasystems The Simulator|align="i"|Sinclair QL The Simulator by Ekotek Datasystems))%%%
@@ -21438,7 +21512,7 @@ Platforms Suitable for: All Sinclair QLs and emulators.%%%
 Commercial Status: Freeware%%%
 Sources Available from: n/a%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/games/index.html|eng|Download The Simulator by Ekotek Datasystems]
-*************************** 943. row ***************************
+*************************** 944. row ***************************
 wikilang: en
 wikipage: The Sinclair QDOS Companion
 wikitext: ((http://www.rwapadventures.com/images/books/0-94640-869-6.jpg|The Sinclair QDOS Companion|align="I"|The Sinclair QDOS Companion by Andrew Pennell))%%%
@@ -21457,7 +21531,7 @@ Commercial Status: Commercial%%%
 Price as at July 1985: £6.95%%%
 Reviews: QL User (July 1985)%%%
 ISBN: 0-94640-869-6
-*************************** 944. row ***************************
+*************************** 945. row ***************************
 wikilang: en
 wikipage: The Sinclair QL
 wikitext: ((http://www.rwapadventures.com/images/books/0-27302244-X.jpg|The Sinclair QL|align="i"|The Sinclair QL by Guy Langdon and David Heckingbottom))%%%
@@ -21481,7 +21555,7 @@ Commercial Status: Unknown%%%
 Price as at November 1985: £3.95%%%
 Reviews: QL User (November 1985)%%%
 ISBN: 0-27302244-X
-*************************** 945. row ***************************
+*************************** 946. row ***************************
 wikilang: en
 wikipage: The Sinclair QL Companion
 wikitext: ((http://www.rwapadventures.com/images/books/0-27302-187-7.jpg|The Sinclair QL Companion|align="I"|The Sinclair QL Companion by Boris Allan))%%%
@@ -21497,7 +21571,7 @@ Year of Publication: 1984%%%
 Commercial Status: Commercial%%%
 Price as at July 1985: £6.95%%%
 ISBN: 0-27302-187-7 
-*************************** 946. row ***************************
+*************************** 947. row ***************************
 wikilang: en
 wikipage: The Sinclair QL in Business
 wikitext: ((http://www.rwapadventures.com/images/books/0-408-01559-4.jpg|The Sinclair QL in Business|align="i"|The Sinclair QL in Business by Arnold Handley))%%%
@@ -21515,7 +21589,7 @@ Commercial Status: Unknown%%%
 Price as at March 1985: £7.95%%%
 Reviews: QL User (August 1985)%%%
 ISBN: 0-408-01559-4
-*************************** 947. row ***************************
+*************************** 948. row ***************************
 wikilang: en
 wikipage: The SuperBASIC Extensions EPROM
 wikitext: The SuperBASIC Extensions EPROM is first mentioned in the Summer Software Survey contained in QL User (September 1985) and accredited to Logical Operators with a price quoted of £29.95.   
@@ -21544,7 +21618,7 @@ Price as at October 1985: £34.95%%%
 Reviews: QL User (September 1985), Sinclair User (October 1985), QL User Jan/Feb 1986%%%
 Sources Available from: Unknown%%%
 Latest Version available from: Unknown%%%
-*************************** 948. row ***************************
+*************************** 949. row ***************************
 wikilang: en
 wikipage: The Talisman
 wikitext: The Talisman is a graphical adventure where you work your way through a series of underground caves, fighting numerous types of creatures, collecting different magical aids and weapons to help you in your quest.
@@ -21557,7 +21631,7 @@ Platforms Suitable for: Original Sinclair QL and Compatibles%%%
 Commercial Status: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 949. row ***************************
+*************************** 950. row ***************************
 wikilang: en
 wikipage: The Voyage of the Beano
 wikitext: The Voyage of the Beano is an engrossing large text adventure by Alan Pemberton with graphics for most locations (drawn by Francis O'Brien). 
@@ -21569,7 +21643,7 @@ Lots of humour make this a classic game.
 (vid)http://www.youtube.com/watch?v=QKqqEJ07F5k(/vid)
 
 ====
-Title: The Voyage of the Beano%%%
+Title: __The Voyage of the Beano__%%%
 Language: Written with [The Quill] Adventure Writer, converted to SuperBASIC and compiled with [Q-Liberator]%%%
 Author: Alan Pemberton and Francis O'Brien%%%
 Publisher: [CGH Services]%%%
@@ -21579,8 +21653,8 @@ Commercial Status: Public Domain%%%
 Price as at June 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
-Latest Version available from: (RWAP Adventures Website|http://www.rwapadventures.com/QL/pdsoftware.html)
-*************************** 950. row ***************************
+Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/games/adventures/index.html]
+*************************** 951. row ***************************
 wikilang: en
 wikipage: The Working Sinclair QL
 wikitext: ((http://www.rwapadventures.com/images/books/0-94640-846-7.jpg|The Working Sinclair QL|align="I"|The Working Sinclair QL by David Lawrence))%%%
@@ -21599,7 +21673,7 @@ Commercial Status: Commercial%%%
 Price as at February 1985: £6.85%%%
 Reviews: QL User (Feb '85)%%%
 ISBN: 0-94640-846-7
-*************************** 951. row ***************************
+*************************** 952. row ***************************
 wikilang: en
 wikipage: The Wreck
 wikitext: The Wreck is a combined text and graphics adventure mentioned in an interview with Chris Scheybeler, manager of the Systems Software Group at [GST Computer Systems], in the July/August 1985 edition of QL World.
@@ -21619,19 +21693,19 @@ Price in January 1985: Unknown%%%
 Reviewed: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 952. row ***************************
+*************************** 953. row ***************************
 wikilang: en
 wikipage: THOR Datensysteme GmbH
 wikitext: THOR Datensysteme GmbH was a German legal company headed by [Stephan Michels]. Located in Darmstadt they were founded in the hype about the CST Thor XVI professional computer and acted as reseller of [CST] and later of [Thor International] for Germany. Their software label was called [THORNADO-SYSTEMS]. After their closure [COWO Electronic] purchased the remaining stock and all rights in their software. In January 1998 [Urs Koenig] declared all their software as freeware. The software was then submitted as is to [Gerhard Plavec] for inclusion on the QL-PD/CD-R, the first of many QL related [CD-ROMs].
-*************************** 953. row ***************************
+*************************** 954. row ***************************
 wikilang: en
 wikipage: Thor-Desk
 wikitext: In May 1988 [Urs Koenig] bought his [CST Thor] XVI. Due to the fact that his two major used system utilities ([QJump]'s [QRAM] and [Ultrasoft]'s [QKick]) did not run under the Thor XVI's operating system [ARGOS] at that time, Urs decided to reinvent the wheel and write his own user interface/desktop system for the Thor range of computers. During 1988 alpha and beta version were sent to individuals (Thor XVI owners), [QJump], [THOR International] ([CST], [Dansoft]). In autumn 1989 the package was eventually launched at the “European Microfair for Sinclair Users” in Brussels. The package was RTM in June 1990 and got renamed to [QTop] in spring 1991.
-*************************** 954. row ***************************
+*************************** 955. row ***************************
 wikilang: en
 wikipage: THORNADO-SYSTEMS
 wikitext: THORNADO-SYSTEMS was a software label of [THOR Datensysteme GmbH], a German legal company headed by [Stephan Michels]. After their closure [COWO Electronic] purchased the remaining stock and all rights in their software. In January 1998 [Urs Koenig] declared all their software as freeware. The software was then submitted as is to [Gerhard Plavec] for inclusion on the QL-PD/CD-R, the first of many QL related [CD-ROMs].
-*************************** 955. row ***************************
+*************************** 956. row ***************************
 wikilang: en
 wikipage: TK Computerware
 wikitext: Company ran by Tom and Kv Dolezal. Reseller of Sinclair QL related products. Their company address was:
@@ -21639,7 +21713,7 @@ TK Computerware
 Stone Street
 North Stanford
 UK - ASHFORD, KENT TN25 6DF, England
-*************************** 956. row ***************************
+*************************** 957. row ***************************
 wikilang: en
 wikipage: Tony Tebby
 wikitext: Tony Tebby is the designer of the QDOS operating system used in the QL.
@@ -21651,7 +21725,7 @@ Tony left Sinclair supposedly in protest at the premature launch of the QL, to f
 His operating system was also ported to other machines through Tony's work - including [SMS2] (developed for the Atari ST) and Stella, an embedded operating system for 68000-series and ColdFire processors.
 
 Ironically, QJump's first program, [QL Toolkit] was launched by Sinclair.
-*************************** 957. row ***************************
+*************************** 958. row ***************************
 wikilang: en
 wikipage: Toolkit II
 wikitext: Toolkit II was a toolkit written by [Tony Tebby] for the Sinclair QL.
@@ -21661,7 +21735,7 @@ It originally started life as [QL Toolkit] and then evolved into [SuperToolkit].
 Toolkit II was actually never sold under that name, but this has become the more common name associated with the product.
 
 See [SuperToolkit] for more details.
-*************************** 958. row ***************************
+*************************** 959. row ***************************
 wikilang: en
 wikipage: Top Team
 wikitext: Top Team was a football management game sold by Arunsoft of Arundel, West Sussex.
@@ -21686,7 +21760,7 @@ Price as at February 1985: £7.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 959. row ***************************
+*************************** 960. row ***************************
 wikilang: en
 wikipage: Tortue-LOGO
 wikitext: LOGO is mentioned in the QL World profile on the French software house [Pyramide] in its October 1986 issue.
@@ -21708,12 +21782,12 @@ Commercial Status: Commercial%%%
 Sources Available from: Unknown%%%
 Manual available from:  [Speccy.org|http://sinclairql.speccy.org/archivo/docs/prog/Tortue-Logo_Pyramide.pdf]%%%
 Latest Version available from: Unknown
-*************************** 960. row ***************************
+*************************** 961. row ***************************
 wikilang: en
 wikipage: Total Computability Ltd
 wikitext: Total Computability Ltd were based in Brighton, and appear to have only released one title for the Sinclair QL:
 *[Expresso Coppee]
-*************************** 961. row ***************************
+*************************** 962. row ***************************
 wikilang: en
 wikipage: Toto 13
 wikitext: Toto 13 was a program sold by JceSoftware in Italy designed to help you to win the Italian Football Pools.
@@ -21730,7 +21804,7 @@ Price in February 1989: Unknown%%%
 Reviewed: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 962. row ***************************
+*************************** 963. row ***************************
 wikilang: en
 wikipage: Touch Typist
 wikitext: Touch Typist is a well respected typing tutor package which was written in 1985 specifically for the Sinclair QL.
@@ -21760,7 +21834,7 @@ Platforms Suitable for: All Sinclair QLs and emulators%%%
 Commercial Status: Commercial%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Touch Typist]
-*************************** 963. row ***************************
+*************************** 964. row ***************************
 wikilang: en
 wikipage: TR Computer Systems
 wikitext: TR Computer Systems were based near Shrewsbury, Shropshire and produced some hardware and software for the Sinclair QL, including the following:
@@ -21770,7 +21844,7 @@ wikitext: TR Computer Systems were based near Shrewsbury, Shropshire and produce
 Their advert in the June 1985 issue of QL User referred to 'other packages for Stock, Accounts, etc.
 
 It is unknown whether they released any other titles.
-*************************** 964. row ***************************
+*************************** 965. row ***************************
 wikilang: en
 wikipage: Traders and Personalities
 wikitext: This is a list of traders, hard- & software houses and personalities which have supported the Sinclair QL over the years.
@@ -22059,7 +22133,7 @@ Z%%%
 [Urs Koenig]%%%
 
 
-*************************** 965. row ***************************
+*************************** 966. row ***************************
 wikilang: en
 wikipage: Trading Accounts
 wikitext: The history of the program Trading Accounts is closely tied to that of [QL Cash Trader].
@@ -22085,7 +22159,7 @@ Price as at July ???: £125%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 966. row ***************************
+*************************** 967. row ***************************
 wikilang: en
 wikipage: Transact
 wikitext: Transact was originally published by [Dialog Software] in 1985 and was heralded as a book-keeping system and nominal ledger package.
@@ -22121,7 +22195,7 @@ Price as at June 1985: £34.95%%%
 Reviews: QL User (November 1985), QL World (November 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 967. row ***************************
+*************************** 968. row ***************************
 wikilang: en
 wikipage: Transform
 wikitext: Transform Limited (Transform) were based in Beckenham, Kent.
@@ -22138,7 +22212,7 @@ Transform also produced some of its own software:
 *[QL Mail List] - A program to maintain a mailing list
 *[QL-Switch] - A program to switch between the four Psion programs [Quill],[Archive], [Easel] and [Abacus].
 *[Stock Control] - A program to keep a record of stock
-*************************** 968. row ***************************
+*************************** 969. row ***************************
 wikilang: en
 wikipage: Transformer
 wikitext: Transformer was advertised in the April 1989 edition of Sinclair QL World, by [Schön] Personal Computer Products as an alternative full blown IBM PC/MS-DOS emulator for the QL.
@@ -22150,7 +22224,7 @@ The wording of the advert was part of the emulator wars at the time, and was des
 By June 1989, the description of the product had changed and it was marketed as "to be the fastest PC/MS-DOS emulator for the QL" and this time being supplied as a piece of hardware providing both the software and CGA emulation.
 
 Unfortunately, we cannot find any reference to this post July 1989 and it may therefore never have been released.
-*************************** 969. row ***************************
+*************************** 970. row ***************************
 wikilang: en
 wikipage: Tridim
 wikitext: Tridim is mentioned in the QL World profile on the French software house [Pyramide] in its October 1986 issue.
@@ -22174,7 +22248,7 @@ Commercial Status: Commercial%%%
 Sources Available from: Unknown%%%
 Manual available from: [Speccy.org|http://sinclairql.speccy.org/archivo/docs/soft/Tridim_Pyramide.pdf]%%%
 Latest Version available from: Unknown
-*************************** 970. row ***************************
+*************************** 971. row ***************************
 wikilang: en
 wikipage: Triptych
 wikitext: Triptych (or Triptych Publishing) was founded by Duncan Baird, David Juster and Stuart Armstrong in 1983 and originally launched a 'Brainpower' series of tutorial / application programs for a variety of computers in 1984.
@@ -22185,7 +22259,7 @@ They launched three packages for the Sinclair QL:
 *[QL Project Planner] - Teaches and applies the principles of critical path analysis.
 
 
-*************************** 971. row ***************************
+*************************** 972. row ***************************
 wikilang: en
 wikipage: Trivia-QLUE
 wikitext: ((http://www.rwapadventures.com/images/trivia-qlue_package.jpg|Trivia-QLUEfor Sinclair QL|align="I"|Packaging for Sinclair QL Trivia-QLUE))%%%
@@ -22216,7 +22290,7 @@ Price as at December 1986: $19.95 USD%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Trivia-QLUE]
-*************************** 972. row ***************************
+*************************** 973. row ***************************
 wikilang: en
 wikipage: Troll
 wikitext: Troll is a package to help you write role-playing adventure games on the Sinclair QL produced by the French software house [Pyramide].
@@ -22237,13 +22311,13 @@ Platforms Suitable for: Unknown%%%
 Commercial Status: Freeware%%%
 Sources Available from: Included%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/games/index.html|eng|Download QL Troll]
-*************************** 973. row ***************************
+*************************** 974. row ***************************
 wikilang: en
 wikipage: Tropic Software Co
 wikitext: Tropic Software Co were based in Northwood Middlesex and appear to have only released one title for the Sinclair QL:
 
 [Bongolia Escape] - a three part challenge
-*************************** 974. row ***************************
+*************************** 975. row ***************************
 wikilang: en
 wikipage: Trump Card
 wikitext: The QL Trump Card from [Miracle Systems] soon became the standard expansion interface for the Sinclair QL, incorporating [Toolkit II], a floppy disk interface and breaking through the 512K memory barrier on the QL, providing an additional 768K memory.
@@ -22270,7 +22344,7 @@ Original Price: £199%%%
 Reviews: Unknown%%%
 Download Manual: [Trump Card Manual - PDF|http://www.dilwyn.me.uk/docs/manuals/Miracle%20Systems%20Trump%20Card.pdf]%%%
 Accompanying Software: None%%%
-*************************** 975. row ***************************
+*************************** 976. row ***************************
 wikilang: en
 wikipage: Turbo
 wikitext: After [Supercharge] came Turbo, produced by a team including Gerry Jackson, Chas Dillon and [Simon Goodwin]. A huge effort went into producing this compiler, which produced faster code than either Supercharge or [Q-Liberator].
@@ -22316,7 +22390,7 @@ Reviewed: Unknown%%%
 Commercial Status: Public Domain%%%
 Sources Available from: [www.jms1.supanet.com|http://www.jms1.supanet.com/SQLUG/gwilt/gwilt.htm]%%%
 Latest Version available from: [www.jms1.supanet.com|http://www.jms1.supanet.com/SQLUG/gwilt/gwilt.htm]
-*************************** 976. row ***************************
+*************************** 977. row ***************************
 wikilang: en
 wikipage: TurboQuill
 wikitext: TurboQuill and TurboQuill+ is a third party program which modifies [Quill] to improve its speed, adding around 8K of code to the main Quill program.
@@ -22344,7 +22418,7 @@ Commercial Status: Freeware%%%
 Sources Available from: n/a%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/utils/index.html]%%%
 
-*************************** 977. row ***************************
+*************************** 978. row ***************************
 wikilang: en
 wikipage: Tycoon
 wikitext: ((http://www.rwapadventures.com/images/tycoon_packaging.jpg|Tycoon for Sinclair QL|align="I"|Packaging for Sinclair QL Tycoon))%%%
@@ -22367,7 +22441,7 @@ Commercial Status: Commercial%%%
 Reviews: QL User (June 1985), QL World (September 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Sinclair QL Tycoon]
-*************************** 978. row ***************************
+*************************** 979. row ***************************
 wikilang: en
 wikipage: Type-22
 wikitext: ((http://www.rwapadventures.com/images/type-22_package.jpg|Type-22 for Sinclair QL|align="I"|Packaging for Sinclair QL Type 22))%%%
@@ -22393,7 +22467,7 @@ Commercial Status: Commercial%%%
 Price as at September 1987: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/wargames.html|eng|Purchase Type-22]
-*************************** 979. row ***************************
+*************************** 980. row ***************************
 wikilang: en
 wikipage: Typeset90-GQ5000
 wikitext: Typeset90-GQ5000 is an additional set of printer drivers for the [Text87 Plus4] word-processor.
@@ -22419,7 +22493,7 @@ Commercial Status: Commercial%%%
 Sources Available from: Unknown%%%
 Manual available from: Unknown%%%
 Latest Version available from: Unknown
-*************************** 980. row ***************************
+*************************** 981. row ***************************
 wikilang: en
 wikipage: Typeset93 (ESC/P2)
 wikitext: Typeset93 (ESC/P2) is an additional set of printer drivers for the [Text87 Plus4] word-processor.
@@ -22445,7 +22519,7 @@ Commercial Status: Commercial%%%
 Sources Available from: Unknown%%%
 Manual available from: Unknown%%%
 Latest Version available from: Unknown
-*************************** 981. row ***************************
+*************************** 982. row ***************************
 wikilang: en
 wikipage: U+5
 wikitext: The U+5 Expansion Cage is a buffered 5 port extension backplane device, from [Ultrasoft], originally available in the UK from DS Enterprises.
@@ -22463,7 +22537,7 @@ Year First Sold: Unknown%%%
 Original Price: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 982. row ***************************
+*************************** 983. row ***************************
 wikilang: en
 wikipage: UCSD Fortran-77
 wikitext: UCSD Fortran-77 was developed to be totally compatible with UCSD Fortran-77 developed for a range of machines by the Regents of the University of California.
@@ -22492,7 +22566,7 @@ Price as at April 1985: £99.95%%%
 Reviews: QL User (August 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from:  Unknown%%%
-*************************** 983. row ***************************
+*************************** 984. row ***************************
 wikilang: en
 wikipage: UCSD Pascal
 wikitext: UCSD Pascal was developed to be totally compatible with UCSD Pascal developed for a range of machines by the Regents of the University of California.
@@ -22524,7 +22598,7 @@ Reviews: QL User (August 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from:  Unknown%%%
 
-*************************** 984. row ***************************
+*************************** 985. row ***************************
 wikilang: en
 wikipage: UltraCard
 wikitext: The UltraCard is a romport extension card which allows you to connect up to six eproms to the QL.
@@ -22543,7 +22617,7 @@ Year First Sold: Unknown%%%
 Original Price: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 985. row ***************************
+*************************** 986. row ***************************
 wikilang: en
 wikipage: UltraKey
 wikitext: A keyboard conversion for the QL, from German company [Ultrasoft]. Originally available in the UK from [DS Enterprises].
@@ -22559,7 +22633,7 @@ Year First Sold: Unknown%%%
 Original Price: Unknown%%%
 Download Manual: Unknown%%%
 Accompanying Software: None%%%
-*************************** 986. row ***************************
+*************************** 987. row ***************************
 wikilang: en
 wikipage: Ultrasoft
 wikitext: There appear to have been two traders under the name of Ultrasoft.
@@ -22582,7 +22656,7 @@ The German Ultrasoft also manufactured various hardware items for the Sinclair Q
 *[U+5] - Buffered expansion backplane
 *[UltraCard] - Connect up to 6 EPROMs to the QL
 *[UltraKey] - Keyboard conversion
-*************************** 987. row ***************************
+*************************** 988. row ***************************
 wikilang: en
 wikipage: Uncle Loonie's Legacy
 wikitext: Uncle Loonie's Legacy was a form of text-only adventure written in the Adventure Creation Tool.
@@ -22603,7 +22677,7 @@ Price as at December 1990: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 988. row ***************************
+*************************** 989. row ***************************
 wikilang: en
 wikipage: Urs Koenig
 wikitext: Urs König (born 1968) is Swiss and lives in Lucerne, Switzerland.
@@ -22619,7 +22693,7 @@ Nowadays Urs maintains QLing as a hobby with different activities such the Sincl
 
 In April 2010 Urs founded a new legal company called [COWO Enterprises GmbH|http://www.cowo.ch]. His new company focuses on consulting and software engineering on the Microsoft platform.
 
-*************************** 989. row ***************************
+*************************** 990. row ***************************
 wikilang: en
 wikipage: USCD P-System
 wikitext: USCD P-System is mentioned in the Instant Access pages of QL User (September 1985).
@@ -22640,7 +22714,7 @@ Price as at September 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from:  Unknown%%%
-*************************** 990. row ***************************
+*************************** 991. row ***************************
 wikilang: en
 wikipage: USCD Prolog
 wikitext: UCSD Prolog is mentioned in the Instant Access pages of QL User (September 1985).
@@ -22661,7 +22735,7 @@ Price as at September 1985: Unknown%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from:  Unknown%%%
-*************************** 991. row ***************************
+*************************** 992. row ***************************
 wikilang: en
 wikipage: Using Graphics on the Sinclair QL
 wikitext: ((http://www.rwapadventures.com/images/books/0-09160-521-0.jpg|Using Graphics on the Sinclair QL|align="I"|Using Graphics on the Sinclair QL by Garry Marshall))%%%
@@ -22679,7 +22753,7 @@ Commercial Status: Commercial%%%
 Price as at August 1985: £6.95%%%
 Reviews: QL User (October 1985)%%%
 ISBN: 0-09160-521-0
-*************************** 992. row ***************************
+*************************** 993. row ***************************
 wikilang: en
 wikipage: Using Your Sinclair QL
 wikitext: ((http://www.rwapadventures.com/images/books/0-34-037630-9.jpg|Using Your Sinclair QL|align="i"|Using Your Sinclair QL by Eric Deeson))%%%
@@ -22695,7 +22769,7 @@ Commercial Status: Unknown%%%
 Price as at May 1985: Unknown%%%
 Reviews: Unknown%%%
 ISBN: 0-34-037630-9
-*************************** 993. row ***************************
+*************************** 994. row ***************************
 wikilang: en
 wikipage: Utilities
 wikitext: This is a list of the wide ranging utilities produced for the Sinclair QL home computer.
@@ -23099,7 +23173,7 @@ X%%%
 Z%%%
 [Z88 Transfer]%%%
 [Zappit!] - A sprite editor
-*************************** 994. row ***************************
+*************************** 995. row ***************************
 wikilang: en
 wikipage: Utility Pack
 wikitext: Utility Pack offers a package of 12 functions, procedures and programs to help with programming.
@@ -23127,7 +23201,7 @@ Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
 
-*************************** 995. row ***************************
+*************************** 996. row ***************************
 wikilang: en
 wikipage: Victory Software
 wikitext: Victory Software was a small software producer in Staines, Middlesex.  It originally traded under the name 'Blain Software'.
@@ -23141,7 +23215,7 @@ The games were
 
 By July 1985, this had increased to also include a fourth game on the same cartridge:
 *[Pirate Island]
-*************************** 996. row ***************************
+*************************** 997. row ***************************
 wikilang: en
 wikipage: Video Library
 wikitext: Video Library was advertised by Cam Mawr Products with a release date of January 1986.
@@ -23162,7 +23236,7 @@ Price as at January 1986: £30%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 997. row ***************************
+*************************** 998. row ***************************
 wikilang: en
 wikipage: Viewpoint
 wikitext: ((http://www.rwapadventures.com/images/viewpoint_package.jpg|Rubicon Computer Systems Viewpoint|align="i"|Sinclair QL Viewpoint by Rubicon Computer Systems))%%%
@@ -23188,7 +23262,7 @@ Commercial Status: Commercial%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Rubicon Computer Systems Viewpoint]
 
-*************************** 998. row ***************************
+*************************** 999. row ***************************
 wikilang: en
 wikipage: Vroom
 wikitext: ((http://www.rwapadventures.com/images/vroom_package.jpg|Vroom for Sinclair QL|align="I"|Packaging for Sinclair QL Vroom))%%%
@@ -23231,7 +23305,7 @@ Reviews: Unknown%%%
 Sources Available from: Unknown%%%
 Manual available from: [Download QL Vroom Manual|http://www.rwapadventures.com/ql_wiki/manuals/vroom.pdf|eng|QL Vroom Manual]%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/games.html|eng|Purchase Vroom]
-*************************** 999. row ***************************
+*************************** 1000. row ***************************
 wikilang: en
 wikipage: VT52 Terminal Emulator
 wikitext: VT52 Terminal Emulator was published by [Software2000] as a terminal program to allow you to connect a QL to a mainframe host computer, such as a Digital VAX or PDP.
@@ -23254,7 +23328,7 @@ Price as at January 1986: £19.50%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 1000. row ***************************
+*************************** 1001. row ***************************
 wikilang: en
 wikipage: War in the East
 wikitext: ((http://www.rwapadventures.com/images/WarInTheEast_packaging.jpg|Inlay for War in the East by Sharps Inc for Sinclair QL|align="i"|Insert for Sinclair QL War in the East))
@@ -23290,7 +23364,7 @@ Price as at June 1986: $49.95 per module%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/wargames.html|eng|Purchase War in the East MKII]
-*************************** 1001. row ***************************
+*************************** 1002. row ***************************
 wikilang: en
 wikipage: Warlock Piracy
 wikitext: Warlock Piracy is one of three programs which formed part of the 'Master of the Universe' series of games which were said to be linked together to form the largest epic in the history of games, taking you in stages from the dawn of man to the ultimate destination in time and space.
@@ -23324,7 +23398,7 @@ Price as at November 1987: £19.95%%%
 Reviews: Unknown%%%
 Sources Available from: Unknown%%%
 Latest Version available from: Unknown%%%
-*************************** 1002. row ***************************
+*************************** 1003. row ***************************
 wikilang: en
 wikipage: WD Morse Tutor
 wikitext: WD Morse Tutor was sold by [WDSoftware] and provided a program to teach you how to understand Morse Code at up to 18 words per minute.  
@@ -23351,7 +23425,7 @@ Price as at April 1985: £8 on disk, £6 on microdrive%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 1003. row ***************************
+*************************** 1004. row ***************************
 wikilang: en
 wikipage: WD Utilities
 wikitext: WD Utilities was sold by [WDSoftware] and was released in three versions:
@@ -23379,7 +23453,7 @@ Price as at October 1984: £10%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 1004. row ***************************
+*************************** 1005. row ***************************
 wikilang: en
 wikipage: WDSoftware
 wikitext: WDSoftware were based in Jersey and released a selection of utilities for the Sinclair QL:
@@ -23389,7 +23463,7 @@ wikitext: WDSoftware were based in Jersey and released a selection of utilities 
 *[WD Morse Tutor] (Learn how to read Morse Code)
 *[WD Utilities] (File handling utilities)
 
-*************************** 1005. row ***************************
+*************************** 1006. row ***************************
 wikilang: en
 wikipage: West
 wikitext: ((http://www.rwapadventures.com/images/west_package.jpg|QL West Adventure|align="I"|Packaging for Sinclair QL West Adventure))%%%
@@ -23419,7 +23493,7 @@ Reviews: QL User (December 1984/January 1985), QL User (December 1985)%%%
 Sources Available from: n/a%%%
 Manual available from: [Download QL West Manual|http://www.rwapadventures.com/ql_wiki/manuals/west.pdf|eng|QL West Manual]%%%
 Latest Version available from: [RWAP Adventures website|http://www.rwapadventures.com/QL/west.html|eng|Purchase West]
-*************************** 1006. row ***************************
+*************************** 1007. row ***************************
 wikilang: en
 wikipage: Westmonster Palace
 wikitext: Westmonster Palace was an early release by Brainstorm from Cramlington, Northumberland.
@@ -23445,17 +23519,17 @@ Price as at April 1985: £8.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 1007. row ***************************
+*************************** 1008. row ***************************
 wikilang: en
 wikipage: Whoopee
 wikitext: So far as we know, Whoopee only released one program for the Sinclair QL, namely:
 
 *[QL Fictionary] (Two word based games)
-*************************** 1008. row ***************************
+*************************** 1009. row ***************************
 wikilang: en
 wikipage: Wiki SandBox
 wikitext: Sandbox - try things out here
-*************************** 1009. row ***************************
+*************************** 1010. row ***************************
 wikilang: en
 wikipage: Wild Flowers for Gardens Planner
 wikitext: This was one of four different data banks / planners sold by [Superplant Software].
@@ -23478,13 +23552,13 @@ Price as at December 1985: £11.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 1010. row ***************************
+*************************** 1011. row ***************************
 wikilang: en
 wikipage: Willden Services Ltd
 wikitext: [Willden Services Ltd] were based in Crowborough, East Sussex and appear to have just published the one program for the Sinclair QL home computer, [QL Paymaster], a payroll program.
 
 It could be that the name of this company was a printing error, as there is a Wilden Services Limited based in Hemel Hempstead who have been in existence since 1973, but they deal in "Plumbing, heat and air-conditioning installation".  There is no sign of a company called Willden Services Limited on Companies House.
-*************************** 1011. row ***************************
+*************************** 1012. row ***************************
 wikilang: en
 wikipage: WN Richardson & Co
 wikitext: W N Richardson & Co was set up by [Bill Richardson] during the 1980s.  He managed to take advantage of [Sinclair Research Ltd] closing down production by taking over the stock of Spectrums and Sinclair QLs returned under warranty for repair - it was easier for Sinclair to simply send a replacement in many cases and the issues could be very minor.
@@ -23492,7 +23566,7 @@ wikitext: W N Richardson & Co was set up by [Bill Richardson] during the 1980s. 
 Bill was well known for attending QL shows with a wide range of hardware, from disk drives, to printers and boxed QLs even when in his 80s!  Over the years he had dealt with many 1000s of sales of Spectrums, ZX Microdrive units, boxed QLs and Cambridge Z88 computers
 
 The last of his stock was passed over to [RWAP Software] when Bill eventually retired in 2008
-*************************** 1012. row ***************************
+*************************** 1013. row ***************************
 wikilang: en
 wikipage: Word Processing on the Sinclair QL
 wikitext: ((http://www.rwapadventures.com/images/books/0-09158-971-1.jpg|Word Processing on the Sinclair QL|align="I"|Word Processing on the Sinclair QL by Mike O'Reilly))%%%
@@ -23512,7 +23586,7 @@ Commercial Status: Commercial%%%
 Price as at October 1984: £6.95%%%
 Reviews: QL User (October 1984)%%%
 ISBN: 0-09158-971-1
-*************************** 1013. row ***************************
+*************************** 1014. row ***************************
 wikilang: en
 wikipage: Word Processing with QL Quill
 wikitext: ((http://www.rwapadventures.com/images/books/0-582-29665-X.jpg|Word Processing with QL Quill|align="I"|Word Processing with QL Quill by David Dempster))%%%
@@ -23530,7 +23604,7 @@ Commercial Status: Commercial%%%
 Price as at May 1985: £7.95%%%
 Reviews: QL World (December 1985), QL User (December 1985)%%%
 ISBN: 0-582-29665-X
-*************************** 1014. row ***************************
+*************************** 1015. row ***************************
 wikilang: en
 wikipage: World Championship Chess
 wikitext: World Championship Chess was a database of all 24 games from the 1985 Karpov - Kasparov chess match.
@@ -23551,7 +23625,7 @@ Commercial Status: Commercial%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown
-*************************** 1015. row ***************************
+*************************** 1016. row ***************************
 wikilang: en
 wikipage: Wreck Dive
 wikitext: Wreck Dive is a graphic adventure based underwater.
@@ -23572,7 +23646,7 @@ Platforms Suitable for: All Sinclair QLs and emulators%%%
 Commercial Status: Freeware%%%
 Sources Available from: n/a%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/games/|eng|Download Sinclair QL Wreck Dive]
-*************************** 1016. row ***************************
+*************************** 1017. row ***************************
 wikilang: en
 wikipage: Xchange
 wikitext: Xchange was a total business solution package, written by [Psion] and combining their four existing packages, [Quill], [Archive], [Easel] and [Abacus].
@@ -23599,7 +23673,7 @@ Price in October 1984: Unknown%%%
 Reviewed: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/psions/index.html|eng|Download QL Xchange]
-*************************** 1017. row ***************************
+*************************** 1018. row ***************************
 wikilang: en
 wikipage: Xenon
 wikitext: Xenon were based in Barnsley, South Yorkshire and appear to have also traded under the name [Yorkshire Media (Software)].
@@ -23608,7 +23682,7 @@ They appear to have produced only one program for the Sinclair QL:
 
 [QL Poolswinner] - a program to help you win the football pools
 
-*************************** 1018. row ***************************
+*************************** 1019. row ***************************
 wikilang: en
 wikipage: Xpert Software
 wikitext: Xpert Software were based in Somerset and advertised in 1985 that they were planning on the release of 4 integrated accounting programs for the QL before the end of August 1985 - with the Sales Ledger and Stock Control Programs available from mid July and the Purchase Ledger and Nominal Ledger to follow.
@@ -23619,7 +23693,7 @@ Xpert Software stated in their adverts that they already produced specialist pro
 
 It is unknown whether any of this other software was released for the QL.
 
-*************************** 1019. row ***************************
+*************************** 1020. row ***************************
 wikilang: en
 wikipage: XREF
 wikitext: XREF was published by [Datamanagement] as a tool for cross-referencing a SuperBASIC program, to show all occurences of variables against line number and variable type usage.
@@ -23636,7 +23710,7 @@ Price as at December 1985: £5.95%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 1020. row ***************************
+*************************** 1021. row ***************************
 wikilang: en
 wikipage: Yorkshire Media (Software)
 wikitext: Yorkshire Media (Software) were based in Barnsley, South Yorkshire and appear to have also traded under the name [Xenon] and also [Techsoft].
@@ -23645,7 +23719,7 @@ They appear to have produced only one program for the Sinclair QL:
 
 [QL Poolswinner] - a program to help you win the football pools
 
-*************************** 1021. row ***************************
+*************************** 1022. row ***************************
 wikilang: en
 wikipage: Zapper
 wikitext: ((http://www.rwapadventures.com/images/zapper_package-front.jpg|Zapper for Sinclair QL|align="I"|Packaging for Sinclair QL Zapper with Eagle))
@@ -23679,7 +23753,7 @@ Price as at July 1985: £10.95%%%
 Reviews: QL User (October 1985), QL World (October 1985), QL User (December 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from: [RWAP Software website|http://www.rwapsoftware.co.uk/updates.html|eng|Purchase Zapper]
-*************************** 1022. row ***************************
+*************************** 1023. row ***************************
 wikilang: en
 wikipage: Zappit!
 wikitext: __Zappit!__ is a sprite editor from [Quest Automation Ltd] which provided an easy means of creating, editing and adding moving coloured sprites to your own SuperBASIC programs, using in-built machine code functions.
@@ -23710,7 +23784,7 @@ Price as at June 1985: £14.95%%%
 Reviews: QL World (October 1985)%%%
 Sources Available from: n/a%%%
 Latest Version available from:  Unknown%%%
-*************************** 1023. row ***************************
+*************************** 1024. row ***************************
 wikilang: en
 wikipage: Zeataline Projects Limited
 wikitext: Zeataline Projects Limited are a company based in London, who started up in 1983 and are an independent supplier of software products to the piping design and engineering communities. 
@@ -23722,11 +23796,11 @@ They are best known for their [Pipedata-Pro software|http://www.pipedata.com/] d
 They produced the [Pacioli] accounting software for the Sinclair QL in 1987.
 
 Visit the [Zeataline Projects Limited website|http://www.zeataline.com/]
-*************************** 1024. row ***************************
+*************************** 1025. row ***************************
 wikilang: en
 wikipage: ZeXcel
 wikitext: This emulator of the Sinclair ZX Spectrum was written by Marco Ternelli and Davide Santachiara and has been published by [Ergon Development] (aka Ergon Pointer Laboratories) of Italy. It allows your QL to run most of your favorite Spectrum software. It should be a fairly fast QL system, preferably a Gold Card or better. 
-*************************** 1025. row ***************************
+*************************** 1026. row ***************************
 wikilang: en
 wikipage: Zfred
 wikitext: In mid 1986, Sinclair added a Games cartridge containing [Breakout], [Gun], [Hunt], [Pirate] and Zfred to the standard software supplied with the boxed Sinclair QL. 
@@ -23747,7 +23821,7 @@ Commercial Status: Freeware%%%
 Price as at April 1985: £10%%%
 Sources Available from: Included%%%
 Latest Version available from: [Sinclair QL Homepage|http://www.dilwyn.me.uk/games/qlgames.zip|en|Download the QL Games Cartridge]%%%
-*************************** 1026. row ***************************
+*************************** 1027. row ***************************
 wikilang: en
 wikipage: Zitasoft
 wikitext: Zitasoft was a small software company, run by Steve Jones and based in Tooting, London.
@@ -23759,7 +23833,7 @@ It produced a range of small utilities for the Sinclair QL
 * [MSpool]
 * [Toolchest]
 * [Sidewinder]
-*************************** 1027. row ***************************
+*************************** 1028. row ***************************
 wikilang: en
 wikipage: Zombies
 wikitext: Zombies was supplied as part of a compilation of 7 games by [Rodent Software], simply entitled 'GAMES 3'.
@@ -23780,7 +23854,7 @@ Price as at June 1985: £7 (on cartridge of 7 programs)%%%
 Reviews: Unknown%%%
 Sources Available from: n/a%%%
 Latest Version available from: Unknown%%%
-*************************** 1028. row ***************************
+*************************** 1029. row ***************************
 wikilang: fr
 wikipage: DJ Toolkit (DJTK)
 wikitext: DJ Toolkit a ?t? nomm?e ainsi par [Dilwyn Jones] - un auteur prolofique de logiciels pour le Sinclair QL.
@@ -23804,7 +23878,7 @@ Plateformes support?es : Tous les Sinclair QLs et les ?mulateurs%%%
 Statut commercial  : Public Domain%%%
 Disponibilit? du code source : Site web de Dilwyn's ci-dessous, les sources sont incluses dans le fichier zip%%%
 La derni?re version (v1.15) est disponible depuis : [Site Dilwyn Jones|http://www.dilwyn.uk6.net/tk/djtk.zip]
-*************************** 1029. row ***************************
+*************************** 1030. row ***************************
 wikilang: fr
 wikipage: QL2K
 wikitext: QL2K is a ?mulateur gratuit (avec enregistrement) ?crit par Jimmy Montesinos et Rapha?l Zhou pour Microsoft Windows et est bas? sur l'?mulateur [QLAY] de Jan Venema. 
@@ -23842,7 +23916,7 @@ Test? avec succ?s sur : Windows Millenium Edition.%%%
 Statut commercial  : Registerware - Freeware avec enregistrement requis%%%
 Disponibilit? du code source : Acceptation et envoi de l'auteur%%%
 La derni?re version est t?l?chargeable depuis : [QL2K website|http://www.jadiam.org/ql/|fra|T?l?charger QL2k]
-*************************** 1030. row ***************************
+*************************** 1031. row ***************************
 wikilang: fr
 wikipage: QWord
 wikitext: Q-Word est un jeu de vocabulaire et ce situe entre le Tetris et le Scrabble.
@@ -23860,7 +23934,7 @@ Plateformes support?es : [Q40], [Q60], [Aurora] avec [Super Gold Card], [QPC2]%%
 Statut commercial Status : Commercial%%%
 Disponibilit? du code source : n/a%%%
 Derni?re version disponible depuis : [RWAP Software website|http://www.rwapsoftware.co.uk/qword.html|fra|Acheter QWord]
-*************************** 1031. row ***************************
+*************************** 1032. row ***************************
 wikilang: fr
 wikipage: Sinclair QL Home Computer Wiki
 wikitext: L'ordinateur personnel Sinclair QL est né en 1984. C'?tait le successeur des Sinclair ZX80, ZX81 et ZX Spectrum.
@@ -23884,7 +23958,7 @@ Au fil des ans, une large gamme de logiciels professionnels ou de jeux sont sort
 [CD-ROMs|CD-ROMs]... Un grande vari?t? d'informations et de programmes.%%%
 [Liens|Links]... Liens vers d'autres sites relatifs au Sinclair QL.%%%
 
-*************************** 1032. row ***************************
+*************************** 1033. row ***************************
 wikilang: nl
 wikipage: Sinclair QL Home Computer Wiki
 wikitext: De Sinclair QL thuis computer kwam uit in 1984 - de opvolger van de eerdere Sinclair computers, de ZX80, ZX81 en ZX Spectrum.
