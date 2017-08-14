@@ -19,10 +19,10 @@ which creates the file ``content.out`` by reading the database as root. The file
 
 ..  code-block:: none
 
-	cd <wherever the wikipager executable lives>
-	mkdir pages
-	cd pages
-	../wikipager wherever/content.out
+    cd /location/of/content.out
+    mkdir temporaryFiles
+	cd temporaryFiles
+	.path/to/bin/wikipager ../content.out
 
 The pages folder will now be filled with one file named "Page Title"."language".txt for each of the Wiki pages found in the content.out file. The filenames are slightly massaged to remove punctuation and spaces which is handy as it will then match up to what the following utility creates.
 
