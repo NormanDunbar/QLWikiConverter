@@ -104,6 +104,9 @@ int main(int argc, char *argv[])
         return ERR_BP;
     }
 
+    //Show where we are - in case we have lots of files being done.
+    cerr << "Converting '" << argv[1] << "'." << endl;
+
     // Attempt to convert back from a file name to a page title.
     // Convert any hyphens to spaces - which should be ok.
     // Bear in mind that we could have a full path or a relative
