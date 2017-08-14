@@ -27,6 +27,8 @@
 *.exe
 *.out
 *.app
+# But include content.out though, it's not executable.
+!content.out
 
 # CodeBlocks and Borland Compiler stuff
 *.ilc
@@ -52,4 +54,7 @@ rwapWiki/bin/
 
 # Ignore the text based export of the MySql database - for now.
 rwapWiki/content.utf8.txt
+
+#Ignore the Pages folder.
+wikiPager/Pages/*
 
