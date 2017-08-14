@@ -27,8 +27,11 @@
 # The postamble at the end of the file.
 #
 # Because of accented characters, the HTML must be in UTF8 format.
+#
+# There is one replacement macro here %TITLE% which is an attempt to extract the original
+# wiki page title from the text file we are converting. It's not perfect though.
 #----------------------------------------------------------------------------------------
-CONV_PREAMBLE=<html><head><title>Sinclair QL Wiki</title><meta charset="UTF-8"></head><body>
+CONV_PREAMBLE=<html><head><title>Sinclair QL Wiki</title><meta charset="UTF-8"></head><body><h1>%TITLE%</h1>
 CONV_POSTAMBLE=</body></html>
 #========================================================================================
 #

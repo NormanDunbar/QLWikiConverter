@@ -42,6 +42,26 @@ const int ERR_BC = 2;       // Bad conversion error.
 map <string, string> variableMap;
 map<string, string>::iterator variableEntry;
 
+//--------------------------------------------------------------------------------
+// NOTE TO SELF:
+//--------------------------------------------------------------------------------
+// The page title is actually, or normally, the file name minus the
+// language code and .txt extension. So an input file name of
+// Dilwyn-Jones.en.txt would be for the page with the title
+// Dilwyn Jones. Unfortunately, we replace spaces and punctuation
+// with hyphens to make legal file names but can we be sure that
+// we are able to do the reverse? In all cases?
+//
+// No, we cannot do this. There's a page named "ACT - the Adventure Creation Tool"
+// which has multiple spaces and a hyphen already. We cannot really go back. We
+// wouldn't know which hyphen was a space and which should be a hyphen afterwards.
+//
+// However, if we strip out all the multiple hyphens, and replace with a single
+// space, it might just work. Maybe? Perhaps? Hmmm.
+//--------------------------------------------------------------------------------
+
+string pageTitle;
+
 //------------------------------------------------------------------
 // It all kicks off here.
 //------------------------------------------------------------------
@@ -84,6 +104,48 @@ int main(int argc, char *argv[])
         return ERR_BP;
     }
 
+    // Attempt to convert back from a file name to a page title.
+    // Convert any hyphens to spaces - which should be ok.
+    // Bear in mind that we could have a full path or a relative
+    // one and strip out the language code as well.
+    //
+    // "/full/path/Page-Title.language.txt" would become "Page Title".
+    //
+    // And so on. It's crude, but might work for HTML conversions at least.
+    pageTitle = string(argv[1]);
+    for (string::iterator x = pageTitle.begin(); x != pageTitle.end(); x++) {
+        if (*x == '-') {
+            *x = ' ';
+        }
+    }
+
+    // Try Windows separators.
+    string::size_type slashPos;
+    slashPos = pageTitle.find_last_of('\\');
+    if (slashPos != string::npos) {
+        // Strip off the Windows path.
+        pageTitle = pageTitle.substr(slashPos +1, pageTitle.length() - slashPos - 5);
+    } else {
+        // Look for a Unix path separator instead.
+        slashPos = pageTitle.find_last_of('/');
+        if (slashPos != string::npos) {
+            // Strip off the Windows path.
+            pageTitle = pageTitle.substr(slashPos +1, pageTitle.length() - slashPos - 5);
+        }
+    }
+
+    // We have the "filename.language", so locate the dot
+    // before the language which we could just do by slicing off
+    // the last three characters, but someone will use a language
+    // code that differs in length, so let's try to be safe!
+    slashPos = pageTitle.find_last_of('.');
+    if (slashPos != string::npos) {
+        // Strip off the language code and the dot.
+        pageTitle = pageTitle.substr(0, slashPos);
+    }
+
+    // At this point, we should have something resembling a page title.
+
     return jfdi();
 }
 
@@ -96,7 +158,17 @@ int jfdi()
 {
     string *aLine = new string();
 
-    cout << findVariable("CONV_PREAMBLE");
+    // Write out the preamble to the whole translation. Replace
+    // the %TITLE% macro with our current pageTitle variable.
+    //cout << findVariable("CONV_PREAMBLE");
+    string preAmble = findVariable("CONV_PREAMBLE");
+    string::size_type titleStart = preAmble.find("%TITLE%");
+    while (titleStart != string::npos) {
+        preAmble.replace(titleStart, 7, pageTitle);
+        titleStart = preAmble.find("%TITLE%");
+    }
+
+    cout << preAmble;
 
     // Preload the "parser" with the first line of text.
     readInputFile(aLine);
