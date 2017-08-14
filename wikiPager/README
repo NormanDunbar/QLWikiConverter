@@ -1,7 +1,7 @@
 In this folder you will find:
 
-WikiPager - contains a utility, or at least, the C++ copurse code for same, which reads the
-file created by the MySQL script and creates IN THE CURRENT FOLDER a single page of text
+WikiPager - a utility, or at least, the C++ source code for same, which reads the
+file created by the MySQL script 'content.sql' and creates IN THE CURRENT FOLDER an individual text file
 for EACH and EVERY Wiki page found in the file created by the afore mentioned script. Run it thus:
 
 	cd <wherever the wikipager executable lives>

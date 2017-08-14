@@ -109,7 +109,7 @@ int jfdi()
     }
 
     // We have the first record's separator line. From here
-    // until EOF, read the following two lines (lang * title)
+    // until EOF, read the following two lines (lang & title)
     // Create an output file, then write this record's content
     // to it. Finish at the next separator or at EOF.
     while (mIfs->good()) {
@@ -124,7 +124,7 @@ int jfdi()
             return ERR_BF;
         }
 
-        // Get the language code for this page & check it.
+        // Get the page name for this page & check it.
         readInputFile(&pageTitle);
         if (pageTitle.substr(0, 9) != "wikipage:") {
             cerr << "wikiPager: Sync error at line " << lineNumber
