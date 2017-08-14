@@ -20,7 +20,7 @@ The file thus created, ``content.out`` in this case, contains the whole wiki (in
     *************************** 2. row ***************************
     ...
 
-The main page in the Wiki is titled **Sinclair QL Home Computer** and so, will be found in the file named ``Sinclair-QL-Home-Computer.en.txt`` after running the 'wikiPager' utility. All spaces and punctuation in a page name, are cobnevrted to hyphens in the output file - to help Windows users!
+The main page in the Wiki is titled **Sinclair QL Home Computer** and so, will be found in the file named ``Sinclair-QL-Home-Computer.en.txt`` after running the 'wikiPager' utility. All spaces and punctuation in a page name, are converted to hyphens in the output file - to help Windows users!
 
 These pages are the ones that you will be converting to "some other format" using the ``rwapWiki`` utility found elsewhere.
 
