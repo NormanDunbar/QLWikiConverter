@@ -1,0 +1,1266 @@
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/ql_games_zfred_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Games Cartridge - ZFred].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/zapper_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Zapper by Eidersoft].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/zapper_package-inlay.jpg
+LONG DESC for image is [Instructions for Sinclair QL Zapper with Eagle].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/zapper_package-front.jpg
+LONG DESC for image is [Packaging for Sinclair QL Zapper with Eagle].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/wreckdive_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Wreck Dive].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-582-29665-X.jpg
+LONG DESC for image is [Word Processing with QL Quill by David Dempster].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09158-971-1.jpg
+LONG DESC for image is [Word Processing on the Sinclair QL by Mike O'Reilly].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/west.gif
+LONG DESC for image is [Screenshot of Sinclair QL West Text Adventure].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/west_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL West Adventure].
+IMAGE LINK at line: 22 http://www.rwapsoftware.co.uk/images/wite.gif
+LONG DESC for image is [Screenshot of Sinclair QL War in the East MKII].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/war-in-the-east-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL War in the East].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/WarInTheEast_packaging.jpg
+LONG DESC for image is [Insert for Sinclair QL War in the East].
+IMAGE LINK at line: 28 http://www.rwapadventures.com/images/vroom_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Vroom by Pyramide].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/vroom_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Vroom].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/viewpoint_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Viewpoint by Rubicon Computer Systems].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/viewpoint_package.jpg
+LONG DESC for image is [Sinclair QL Viewpoint by Rubicon Computer Systems].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-34-037630-9.jpg
+LONG DESC for image is [Using Your Sinclair QL by Eric Deeson].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09160-521-0.jpg
+LONG DESC for image is [Using Graphics on the Sinclair QL by Garry Marshall].
+IMAGE LINK at line: 4 http://www.rwapadventures.com/images/hardware/abc_keyboard.jpg
+LONG DESC for image is [Ultrasoft's UltraKey Keyboard].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/uplus5.jpg
+LONG DESC for image is [U-Plus5 Expansion Cage].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/type-22_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Type 22 by Talent].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/type-22_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Type 22].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/tycoon_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Tycoon by Newtech Publishing].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/tycoon_packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Tycoon].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/hardware/SinclairQL-TrumpCard2.jpg
+LONG DESC for image is [Trump Card 2].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/hardware/trump_card.jpg
+LONG DESC for image is [Trump Card].
+IMAGE LINK at line: 17 http://www.rwapadventures.com/images/trivia-qlue_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Trivia-QLUE by Executive Workshop].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/trivia-qlue_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Trivia-QLUE].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-94640-846-7.jpg
+LONG DESC for image is [The Working Sinclair QL by David Lawrence].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-27302244-X.jpg
+LONG DESC for image is [The Sinclair QL by Guy Langdon and David Heckingbottom].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-408-01559-4.jpg
+LONG DESC for image is [The Sinclair QL in Business by Arnold Handley].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-27302-187-7.jpg
+LONG DESC for image is [The Sinclair QL Companion by Boris Allan].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-94640-869-6.jpg
+LONG DESC for image is [The Sinclair QDOS Companion by Andrew Pennell].
+IMAGE LINK at line: 21 http://www.rwapadventures.com/images/The_Simulator_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL The Simulator by Ekotek Datasystems].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/The_Simulator_packaging.jpg
+LONG DESC for image is [Sinclair QL The Simulator by Ekotek Datasystems].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/The_Quill_packaging.jpg
+LONG DESC for image is [Insert for Sinclair QL The Quill].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-907792-75-8.jpg
+LONG DESC for image is [The Quill User's Reference Manual by Stephen Morris].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/ql_epic_adventure.gif
+LONG DESC for image is [Screenshot of Sinclair QL Epic Adventure by CGH Services].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-7447-0022-1.jpg
+LONG DESC for image is [The QL Book of Games by Richard G Hurley and David D Virgo].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/prawn.gif
+LONG DESC for image is [Screenshot of Sinclair QL Prawn Adventure].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/lostpharaoh_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL The Lost Pharaoh].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/lostpharaoh_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL The Lost Pharaoh].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/lonely_joker_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL The Lonely Joker by RWAP Software].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/theking_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL The King by Microdeal].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/TheKing-inlay.jpg
+LONG DESC for image is [Reverse Inlay for Sinclair QL The King].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/TheKing-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL The King].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-907792-77-4.jpg
+LONG DESC for image is [The Archive User's Reference Manual by Stephen Morris].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/theadventure_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL The Adventure].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/classic_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Classic Adventures].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-907792-76-6.jpg
+LONG DESC for image is [The Abacus User's Reference Manual by Stephen Morris].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-340377-97-6.jpg
+LONG DESC for image is [Teach Yourself Computer Programming with the Sinclair QL by Eric Deeson].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/taxcalc89_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Taxcalc by the Consumers Association/Which?].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/taxcalc_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Taxcalc].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/taxcalc_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Taxcalc].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/tasprint_ql_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Tasprint QL by Tasman Software].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/tasprint_ql_inlay.jpg
+LONG DESC for image is [Sinclair QL Tasprint QL by Tasman Software].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/tasprint_ql_package.jpg
+LONG DESC for image is [Sinclair QL Tasprint QL by Tasman Software].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/tascopy_ql_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Tascopy QL by Tasman Software].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/tascopy_ql_inlay.jpg
+LONG DESC for image is [Sinclair QL Tascopy QL by Tasman Software].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/tascopy_ql_package.jpg
+LONG DESC for image is [Sinclair QL Tascopy QL by Tasman Software].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/tankbusters_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Tankbusters by Sellasoft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/tankbusters_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Tankbusters].
+IMAGE LINK at line: 37 http://www.rwapadventures.com/images/hardware/tandata_modem.jpg
+LONG DESC for image is [Tandata Modem Stack].
+IMAGE LINK at line: 48 http://www.rwapadventures.com/images/talent.png
+LONG DESC for image is [Logo for Talent Computer Systems of Glasgow].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/taking_the_quantum_leap.jpg
+LONG DESC for image is [Taking the Quantum Leap - The Last Word on the Sinclair QL by Mike de Sosa].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/superqmouse.jpg
+LONG DESC for image is [Sandy SuperQBoard Mouse].
+IMAGE LINK at line: 19 http://www.rwapadventures.com/images/hardware/superqmouse.jpg
+LONG DESC for image is [Sandy SuperQBoard Mouse].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/hardware/superqboard.jpg
+LONG DESC for image is [Sandy SuperQBoard].
+IMAGE LINK at line: 26 http://www.rwapadventures.com/images/hardware/superhermes.jpg
+LONG DESC for image is [superHermes].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/superhermeslite.jpg
+LONG DESC for image is [superHermes Lite].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/superforth_package.jpg
+LONG DESC for image is [Sinclair QL SuperForth by Digital Precision].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/supercharge_package.jpg
+LONG DESC for image is [Sinclair QL SuperCharge by Digital Precision].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/superbomber_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Superbomber by Talent].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/super-sprite-generator-v2-inlay-part1.gif
+LONG DESC for image is [Inlay for Sinclair QL Super Sprite Generator].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/SuperSpriteGenerator-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Super Sprite Generator].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/superforth_package.jpg
+LONG DESC for image is [Sinclair QL Super Reversi by Digital Precision].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/hardware/supergoldcard.jpg
+LONG DESC for image is [Picture of Super Gold Card expansion by Miracle Systems].
+IMAGE LINK at line: 24 http://www.rwapadventures.com/images/ql_super_backgammon.gif
+LONG DESC for image is [Screenshot of Sinclair QL Super Backgammon by Digital Precision Limited].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/super-backgammon-inlay1.jpg
+LONG DESC for image is [Inlay for Sinclair QL Super Backgammon].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/super-backgammon-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Super Backgammon].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/Super_Astrologer_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair Super Astrologer by Digital Precision Limited].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/superastrologer_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Super Astrologer].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/superastrologer_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Super Astrologer].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/Grid_Racer_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair Grid Racer by Digital Precision Limited].
+IMAGE LINK at line: 19 http://www.rwapadventures.com/images/BMX_Burner_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair BMX Burner by Digital Precision Limited].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/Super_Arcadia_Inlay.jpg
+LONG DESC for image is [Sinclair QL Super Arcadia Games Pack by Digital Precision].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/Super_Arcadia_Packaging.jpg
+LONG DESC for image is [Sinclair QL Super Arcadia Games Pack by Digital Precision].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/strip-poker_packaging-reverse.jpg
+LONG DESC for image is [Packaging for Sinclair QL Strip Poker].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/strip-poker_packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Strip Poker].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/hardware/stql.jpg
+LONG DESC for image is [ST-QL Emulator Card].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/hardware/QLST-Emulator_driver.jpg
+LONG DESC for image is [Drive Disk for Futura Datasenters STQL Emulator].
+IMAGE LINK at line: 12 http://www.rwapsoftware.co.uk/images/stoql.gif
+LONG DESC for image is [Screenshot of Sinclair QL SToQL Screen Convertor].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/stoneraider_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Stone Raider by Microdeal].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/stock_control_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Stock Control by Transform Limited].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/davis_snooker_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Steve Davis Snooker by CDS Software].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/steve-davis-snooker-inlay1.jpg
+LONG DESC for image is [Inlay for Sinclair QL Steve Davis Snooker].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/steve-davis-snooker-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Steve Davis Snooker].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/starplod-screenshot.png
+LONG DESC for image is [Screenshot of Sinclair QL Starplod by Alan Pemberton].
+IMAGE LINK at line: 17 http://www.rwapadventures.com/images/Squadrons-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Squadrons].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/ql_spy_adventure.gif
+LONG DESC for image is [Screenshot of Sinclair QL Spy - A QL Adventure by RWAP Adventures].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/spook_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Spook by Eidersoft].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/spook_inlay.jpg
+LONG DESC for image is [Cassette Inlay for Sinclair QL Spook].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/spook_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Spook].
+IMAGE LINK at line: 4 http://www.rwapadventures.com/images/hardware/SPEM_INT-Disk-Interface1.jpg
+LONG DESC for image is [SPEM's QL Int-Disk].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/spemdigitiser.jpg
+LONG DESC for image is [SPEM's QL Video Digitiser].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/speedscreen_package.jpg
+LONG DESC for image is [Sinclair QL Speedscreen by Simon Goodwin].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/speedfreaks_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Speedfreaks by CGH Services].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/Space_Paranoids_screenshot.png
+LONG DESC for image is [Screenshot of Sinclair QL Space Paranoids by Shadow Games].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/space_paranoids_insert.jpg
+LONG DESC for image is [Insert for Sinclair QL Space Paranoids].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/space_paranoids_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Space Paranoids].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/Superbasic-Production-Kit.jpg
+LONG DESC for image is [SuperBASIC Production Kit by Sinclair Research].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/smiling_mouse.jpg
+LONG DESC for image is [Smiling Mouse].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/hardware/visionql.jpg
+LONG DESC for image is [Vision-QL Monitor].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-905104-92-7.jpg
+LONG DESC for image is [The Sinclair QL User Guide by Lionel Fleetwood].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/hardware/sinclair_ql.jpg
+LONG DESC for image is [A Sinclair QL Home Computer].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-94640-866-1.jpg
+LONG DESC for image is [Sinclair QL Adventures by Tony Bridge and Richard Williams].
+IMAGE LINK at line: 3 http://www.qlvsjaguar.homepage.bluewin.ch/Sinclair_QL_launch_press_conference_on_1984-01-12_machine_on_display_with_128Kbyte_ROM_module-1984-03_SU_no_24_p059_closeup-P1180126-cropped.JPG
+LONG DESC for image is [Sinclair QL 128K ROM expansion card].
+IMAGE LINK at line: 3 http://www.qlvsjaguar.homepage.bluewin.ch/SinclairQL_128KB_RAM_Expansion_Issue0_Version2_Prototype-MVC-247F.jpg
+LONG DESC for image is [Sinclair QL 128K RAM expansion card].
+IMAGE LINK at line: 3 http://www.qlvsjaguar.homepage.bluewin.ch/SinclairQL_Printer_and_Manual-P1080353.JPG
+LONG DESC for image is [Sinclair Printer QL-1000].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/hardware/simplex_512k_ram.jpg
+LONG DESC for image is [Simplex 512K RAM Expansion Card].
+IMAGE LINK at line: 17 http://www.rwapadventures.com/images/hardware/simplex_256k_ram.jpg
+LONG DESC for image is [Simplex 256K RAM Expansion Card].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/hardware/Simplex Data Qplus2 Interface2.jpg
+LONG DESC for image is [Simplex Q-Plus-2 Expansion Unit].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/hardware/Simplex Data Qplus2 Interface.jpg
+LONG DESC for image is [Simplex Q-Plus-2 Expansion Unit].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/qplus2.jpg
+LONG DESC for image is [Simplex Q-Plus-2 Expansion Unit].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/silexpress_insider.jpg
+LONG DESC for image is [Silicon Express Insider Disk Interface Card].
+IMAGE LINK at line: 10 http://www.rwapsoftware.co.uk/images/sidewriter.gif
+LONG DESC for image is [Screenshot of Sinclair QL Sidewriter].
+IMAGE LINK at line: 19 http://www.rwapadventures.com/images/sideways_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Sideways by Talent Computer Systems].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/Sideways_package.jpg
+LONG DESC for image is [Sinclair QL Sideways by Talent].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/grislygulch_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Sheriff of Grisly Gulch].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/hardware/seikorc1000.jpg
+LONG DESC for image is [Seiko RC-1000 Watch].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/sectorx_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Sector X by CGH Services].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/hardware/kbl128.jpg
+LONG DESC for image is [Schön KBL128 QL System Case].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/SBASIC_SuperBASIC_Ref_manual.jpg
+LONG DESC for image is [ was devised in the 1990s by Franz Herrmann  by Franz Herrmann, Peter Jager and Rich Mellor].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/sand2exp.jpg
+LONG DESC for image is [Sandy Twin Expansion Unit].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/sandy256kplus256k.jpg
+LONG DESC for image is [Sandy 512K RAM Card].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/sandy256kplus256k.jpg
+LONG DESC for image is [Sandy 512K RAM Card].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/hardware/Sandy_QXT640.jpg
+LONG DESC for image is [Sandy QXT-640 System - Complete].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/hardware/Sandy_QXT640_box.jpg
+LONG DESC for image is [Sandy QXT-640 System Box].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/hardware/qxt640.jpg
+LONG DESC for image is [Sandy QXT-640 System].
+IMAGE LINK at line: 47 http://www.rwapsoftware.co.uk/images/rwapbanner.jpg
+IMAGE LINK at line: 21 http://www.rwapadventures.com/images/rwapadventures_logo.png
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/hardware/romdisq.jpg
+LONG DESC for image is [TFS Romdisq Flash Memory].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/rte.gif
+LONG DESC for image is [Screenshot of Sinclair QL Return to Eden].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/realtime_games_software_limited_logo.jpg
+LONG DESC for image is [Logo for Realtime Games Software Limited].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/RAM-electronics-centronics-interface.jpg
+LONG DESC for image is [RAM Electronics QL Printer Interface].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/hardware/qxl.jpg
+LONG DESC for image is [Miracle QXL Board].
+IMAGE LINK at line: 8 http://www.rwapsoftware.co.uk/images/QWorddemo2.jpg
+LONG DESC for image is [Screenshot of Sinclair QL QWord].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/hardware/qvme.jpg
+LONG DESC for image is [QVME Card].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-94640-855-6.jpg
+LONG DESC for image is [Quill, Easel, Archive & Abacus on the Sinclair QL by Alison McCallum-Varey].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-86161-181-0.jpg
+LONG DESC for image is [Quick QL Machine Language by Alan Giles].
+IMAGE LINK at line: 8 http://www.rwapsoftware.co.uk/images/julia.gif
+LONG DESC for image is [Screenshot of Sinclair QL Quick Mandelbrot III].
+IMAGE LINK at line: 7 http://www.kenmurray.net/images/programs/mandbrot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Quick Mandelbrot].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/hardware/quest_ram.jpg
+LONG DESC for image is [Quest RAM Card].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/hardware/quest_ram.jpg
+LONG DESC for image is [Quest RAM Card].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/quest-for-dragonsword-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Quest for the Dragon Sword by Byteback].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/hardware/qubide.jpg
+LONG DESC for image is [QUBIDE IDE Interface].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/quazimodo_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Quazimodo by Shadow Games].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/quazimodo_packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Quazimodo by Shadow Games].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-7126-0643-2.jpg
+LONG DESC for image is [Quantum Theory by San, Katan and Rockman].
+IMAGE LINK at line: 14 http://www.qlvsjaguar.homepage.bluewin.ch/COWO_QTop121onQL_640.jpg
+LONG DESC for image is [Sinclair QL professional computer running COWO’s QTop version 1.21].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/hardware/qtalk.jpg
+LONG DESC for image is [Maxtronics Q-Talk Unit].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/qsound_qprint.jpg
+LONG DESC for image is [Qsound/Qprint Card].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/qplane.jpg
+LONG DESC for image is [Q-Plane Expansion Card].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/qpede_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL QPEDE by Elaborate Bytes].
+IMAGE LINK at line: 29 http://www.rwapadventures.com/images/qdtdesktop-small.png
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/qcontrol.jpg
+LONG DESC for image is [Q-Control Card].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/qmon_package.jpg
+LONG DESC for image is [Sinclair QL QMON by QJump].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/rom_switcher.jpg
+LONG DESC for image is [QLEA ROM Switcher Card].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/QLacman-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL QLacman].
+IMAGE LINK at line: 22 http://www.jadiam.org/QL/images/SCR02.GIF
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/wanderer_screenshot2.gif
+LONG DESC for image is [Screenshot of Sinclair QL Wanderer by Pyramide].
+IMAGE LINK at line: 17 http://www.rwapadventures.com/images/wanderer_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Wanderer by Pyramide].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/wanderer_3d_glasses.jpg
+LONG DESC for image is [3D Glasses for Sinclair QL Wanderer].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/wanderer_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Wanderer].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/hardware/ql-trackball.jpg
+LONG DESC for image is [QL Trackball by Wico Corporation ].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/touch_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL QL Touch 'n' Go by Harcourt Systems].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/touch_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Touch 'n' Go].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/touch_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Touch 'n' Go].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/QL_Toolkit_2_1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL Toolkit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_toolkit_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Toolkit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_toolkit_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Toolkit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-85016-036-8.jpg
+LONG DESC for image is [QL Technical Guide by David Karlin and Tony Tebby].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-85016-036-8.jpg
+LONG DESC for image is [QL Technical Guide by David Karlin and Tony Tebby].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/ql_system2_case.jpg
+LONG DESC for image is [QL System/2 Case, from SPEM].
+IMAGE LINK at line: 38 http://www.rwapadventures.com/images/qlswitch-psientific-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Switch by Psientific Software].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/qlswitch_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Switch].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/qlswitch_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Switch].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-24612-596-9.jpg
+LONG DESC for image is [QL SuperBASIC by Dr A. A. Berk].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/books/quanta-SuperBASIC Handbook.jpg
+LONG DESC for image is [QL SuperBASIC (The Definitive Handbook) by Jan Jones].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-7084-784-3.jpg
+LONG DESC for image is [QL SuperBASIC (The Definitive Handbook) by Jan Jones].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-7447-0020-5.jpg
+LONG DESC for image is [QL SuperBASIC: A Programmer's Guide by John Wilson].
+IMAGE LINK at line: 27 http://www.rwapadventures.com/images/supermonitor_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Super Monitor by Digital Precision].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/supermonitor_package.jpg
+LONG DESC for image is [Sinclair QL Super Monitor by Digital Precision].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/ql_service_manual.jpg
+LONG DESC for image is [Sinclair QL Service Manual by Thorn (EMI) Datatech Ltd].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/books/ql-sales-guide-intro.gif
+LONG DESC for image is [Sinclair QL Sales Guide by Sinclair Research Ltd].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/ql-sales-guide-cover.jpg
+LONG DESC for image is [Sinclair QL Sales Guide by Sinclair Research Ltd].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/qlreversi_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Reversi].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/reversi_leaflet2.jpg
+LONG DESC for image is [Leaflet for Sinclair QL QL Reversi].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/reversi_leaflet1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL Reversi].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/reversi_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Reversi].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/reversi_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Reversi].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-71260-629-7.jpg
+LONG DESC for image is [QL Quill by Francesca Simon and Clare Spottiswoode of Blueprint].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/quboids_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Quboids by AJS].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/quboids_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Quboids].
+IMAGE LINK at line: 27 http://www.rwapadventures.com/images/qlpoolswinner_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Poolswinner by Yorkshire Media (Software)].
+IMAGE LINK at line: 23 http://www.rwapsoftware.co.uk/images/payroll.gif
+LONG DESC for image is [Screenshot of Sinclair QL Payroll Software from PDQL and RWAP Software].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/TRL_QL_Payroll_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Payroll Software from TR Computer Systems].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/pawn_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Pawn].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/pawn_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Pawn Adventure].
+IMAGE LINK at line: 24 http://www.rwapadventures.com/images/qlpaint_screenshot.jpg
+LONG DESC for image is [Screenshot of Sinclair QL Paint].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/qlpaint_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Paint].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_monitor_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Monitor].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_monitor_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Monitor].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/modaptor.jpg
+LONG DESC for image is [Miracle Modaptor].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/hardware/miracle_midi.jpg
+LONG DESC for image is [Picture of Miracle Systems QL Midi Interface].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/meteorstorm_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Meteor Storm].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/meteorstorm_leaflet1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL Meteor Storm].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/meteorstorm_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Meteor Storm].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/meteorstorm_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Meteor Storm].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/ql_mail_list_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Mail List by Transform Limited].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_mail_list_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Mail List].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_macro_assembler_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Macro Assembler by GST].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/hardware/JFC-Keyboard-90-Interface.jpg
+LONG DESC for image is [QL-Keyboard-90 Close Up].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/hardware/ql_keyboard90.jpg
+LONG DESC for image is [QL-Keyboard-90].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/jabber_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Jabber].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/jabber_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Jabber].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/ql_invoicer_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Invoicer].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/qlinvoicer_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Invoicer].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/ql_integrated_accounts_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Integrated Accounts Software].
+IMAGE LINK at line: 4 http://www.rwapadventures.com/images/QL_IntegratedAccounts_2_1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL QL Integrated Accounts].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_integrated_accounts_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Integrated Accounts].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_integrated_accounts_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Integrated Accounts].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/jfc_qliio.jpg
+LONG DESC for image is [JFC's QL-IIO Card].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/hopper_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Hopper by Microdeal].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_hopper_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Hopper].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/homefinance_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Home Finance].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/QL_HomeFinance_1_1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL Home Finance].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/QL_HomeFinance_1_1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL Home Finance].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-947695-19-2.jpg
+LONG DESC for image is [QL Handbook by Tim Hartnell].
+IMAGE LINK at line: 16 http://www.rwapsoftware.co.uk/images/qltree.gif
+LONG DESC for image is [Screenshot of Sinclair QL Genealogist Family Tree Program].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/gardener_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Gardener by Gordian Computing Services].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/QL_Gardener_2_1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL Gardener].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/gardener_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Gardener].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/gardener_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Gardener].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-00-383066-7.jpg
+LONG DESC for image is [QL Gamesmaster by Kay Ewbank, Mike James and S M Gee].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/books/0-947695-04-4-Portugal.jpg
+LONG DESC for image is [24 Jogos para o Sinclair QL by Tim Hartnell].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-947695-04-4.jpg
+LONG DESC for image is [QL Games Compendium by Tim Hartnell].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/ql_fictionary_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Fictionary].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_fictionary_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Fictionary].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/hardware/QL_expansion_console.jpg
+LONG DESC for image is [Quest QL Expansion Console].
+IMAGE LINK at line: 19 http://www.rwapadventures.com/images/hardware/ASL-EPROM-Programmer.jpg
+LONG DESC for image is [Anglo Services Limited EPROM Programmer].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-71260-630-0.jpg
+LONG DESC for image is [QL Easel by Alison Spottiswoode of Blueprint].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/hardware/disk_card.jpg
+LONG DESC for image is [QL Disk Card].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/defusion_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Defusion by Realtime Software].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/ql_defusion_inlay.JPG
+LONG DESC for image is [Inlay for Sinclair QL Defusion].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_defusion_packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Defusion by Realtime Software].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-246-12595-0.jpg
+LONG DESC for image is [QL Computing by Ian Sinclair].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/cavern_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Cavern].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/QL_Cavern_2_1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL QL Cavern].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/qlcavern_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Cavern].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/qlcavern_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Cavern].
+IMAGE LINK at line: 31 http://www.rwapsoftware.co.uk/images/cash.gif
+LONG DESC for image is [Screenshot of Sinclair QL Cash Trader Business Accounts Software].
+IMAGE LINK at line: 4 http://www.rwapadventures.com/images/QL_CashTrader_2_1.jpg
+LONG DESC for image is [Leaflet for Sinclair QL QL Cash Trader].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_cash_trader_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Cash Trader].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql_cash_trader_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Cash Trader].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/hardware/ql-bus.jpg
+LONG DESC for image is [QL-Bus from JFC].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/bounder_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Bounder by Brian Kelly].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/QLBounder-inlay2.jpg
+LONG DESC for image is [Inlay for Sinclair QL QL Bounder].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/QLBounder-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Bounder].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/QLBEXs4.jpg
+LONG DESC for image is [QL BEXs4 Expansion Card].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/ql-bank-account-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Bank Account].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/ql-bank-account-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Bank Account].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-07084-777-0.jpg
+LONG DESC for image is [QL Assembly Language Programming by Colin Opie].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql-assembler-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Assembler by GST].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-71260-633-5.jpg
+LONG DESC for image is [QL Archive by Ian Murray of Blueprint].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/books/0-94792-900-2-Italy.jpg
+LONG DESC for image is [QL: Guida Advanzata by  Adrian Dickens].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/0-94792-900-2.jpg
+LONG DESC for image is [QL Advanced User Guide by Adrian Dickens].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-71260-631-9.jpg
+LONG DESC for image is [QL Abacus by Clare Spottiswoode of Blueprint].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/ql2000.jpg
+LONG DESC for image is [QL2000 Case From JFC].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/hardware/QIMI-mouse-interface-closeup.jpg
+LONG DESC for image is [QIMI Mouse Interface with bus mouse].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/hardware/qimi_with_battery.jpg
+LONG DESC for image is [QIMI (with battery)].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/hardware/qimi_mouse.jpg
+LONG DESC for image is [QIMI Mouse Interface with bus mouse].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/hardware/QIMI_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL QIMI Mouse Interface by QJump].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/qflp.jpg
+LONG DESC for image is [QFLP Upgrade EPROM From Qjump].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/qepiii.jpg
+LONG DESC for image is [QEPIII Eprom Programmer].
+IMAGE LINK at line: 24 http://www.sinclairql.net/images/QLE_v310_20150509_BOOTed_X61s-PrtScr.png
+LONG DESC for image is [QDT v1.10r installed on QL/E v3.10].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/Q-draw_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL QDraw].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/qdraw_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Psion QDraw].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/QDOS_SMS_Technical_Manual.jpg
+LONG DESC for image is [QDOS & SMS Reference Manual by Jochen Merz].
+IMAGE LINK at line: 23 http://www.rwapsoftware.co.uk/images/qroute.gif
+LONG DESC for image is [Screenshot of Sinclair QL Q-Route Route Finding Program].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/hardware/qpower.jpg
+LONG DESC for image is [Sandy Qpower Regulator].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/hardware/qpower_regulator.jpg
+LONG DESC for image is [Sandy Qpower Regulator].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/Q-Liberator_package.png
+LONG DESC for image is [Packaging for Sinclair QL Q-Liberator].
+IMAGE LINK at line: 35 http://www.rwapadventures.com/images/pyramide_logo.jpg
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/hardware/pyramide_datel_disk.jpg
+LONG DESC for image is [Pyramide Datel QL Disk System].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/puzzlemania-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Puzzle Mania by Chisoft].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/pudge_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Pudge by CGH Services].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/publishing_office_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Publishing Off-ICE by Eidersoft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/publishing_office_disk.jpg
+LONG DESC for image is [Sinclair QL Publishing Off-ICE by Eidersoft].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/psion_logo.JPG
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/psionchess_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Psion Chess].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/psionchess_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Psion Chess].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/psionchess_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Psion Chess].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09160-541-5.jpg
+LONG DESC for image is [Profiting from the Sinclair QL by Barry Miles].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/books/0-00-383005-5_it.jpg
+LONG DESC for image is [QL Quattro Programmi Al Lavoro by Colin Lewis].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-00-383005-5.jpg
+LONG DESC for image is [Professional and Business Uses of the QL by Colin Lewis].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-582-29664-1.jpg
+LONG DESC for image is [Practical Guide to QL Graphics and Sound by Alan Shinwell].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/ql_games_pirate2_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Games Cartridge - Pirate].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/ql_games_pirate1_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Games Cartridge - Pirate].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/pgaskell-rtc.jpg
+LONG DESC for image is [Picture of Phil Gaskell Battery Backed Real Time Clock for the Sinclair QL].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/pengi_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Pengi by RWAP Software].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/peintre_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Peintre by Pyramide].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/peintre_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Peintre].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/pcml_qdisk_iface.jpg
+LONG DESC for image is [PCML Disk Interface].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/paintmaster-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Paint Master].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/paintmaster-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Paint Master].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/QLOthello-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Othello by Pyramide].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/QLOthello-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Othello].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/QLOthello-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Othello by Pyramide].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/hardware/quest-oscard-interface.jpg
+LONG DESC for image is [Quest Automation OSCard].
+IMAGE LINK at line: 10 http://www.rwapsoftware.co.uk/images/golf.gif
+LONG DESC for image is [Screenshot of Sinclair QL The Open Golf].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/omega_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Omega by Caret].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/omega_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Omega by Caret Computers].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/nucleon_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Nucleon - Maestro by Pyramide].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/ql-nucleon-toolkit-cover.jpg
+LONG DESC for image is [Full Cover for Sinclair QL Nucleon utility package].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql-nucleon-toolkit-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Nucleon].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/night-nurse_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Night Nurse by Shadow Games].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/night_nurse-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Night Nurse].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/night_nurse-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Night Nurse by Shadow Games ].
+IMAGE LINK at line: 4 http://www.rwapadventures.com/images/hardware/networkprover.jpg
+LONG DESC for image is [Diren Network Prover].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/nemesis.gif
+LONG DESC for image is [Screenshot of Sinclair QL Nemesis MKII Adventure].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/nemesis_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Nemesis Adventure].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/NebulaII-Intro.png
+LONG DESC for image is [Screenshot of Sinclair QL Nebula II by Pyramide].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/NebulaII-Warp.png
+LONG DESC for image is [Screenshot of Sinclair QL Nebula II by Pyramide].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/NebulaII-Splash.png
+LONG DESC for image is [Screenshot of Sinclair QL Nebula II by Pyramide].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/mplane.jpg
+LONG DESC for image is [Picture of TF Services MPlane low profile expander].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/mortville_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Mortville Manor by Pyramide].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/ql-mortville-manor-cover.jpg
+LONG DESC for image is [Full Cover for Sinclair QL Mortville Manor Adventure].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql-mortville-manor-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Mortville Manor Adventure].
+IMAGE LINK at line: 17 http://www.rwapadventures.com/images/mordonsquest_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Mordon's Quest].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/classic_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Classic Adventures].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/MrSmith-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Mister Smith].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/MrSmith-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Mister Smith by Pyramide].
+IMAGE LINK at line: 28 http://www.rwapadventures.com/images/hardware/miracle_doubledrive.jpg
+LONG DESC for image is [Miracle Systems Dual 3.5" Floppy Disk Drive].
+IMAGE LINK at line: 27 http://www.rwapadventures.com/images/hardware/miracle_singledrive.jpg
+LONG DESC for image is [Miracle Systems Single 3.5" Floppy Disk Drive].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/miracle_modem.jpg
+LONG DESC for image is [Miracle Modem].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/expanderam_512k.jpg
+LONG DESC for image is [Miracle Expanderam 512K RAM Expansion Card].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/miracle_disk-expander.jpg
+LONG DESC for image is [Miracle Disk Expander].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/hardware/miracle_spi3_open.jpg
+LONG DESC for image is [Inside the Miracle Serial-Parallel Interface (Final Version)].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/hardware/miracle_spi3_open.jpg
+LONG DESC for image is [Inside the Miracle Serial-Parallel Interface (Final Version)].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/hardware/miracle_spi3.jpg
+LONG DESC for image is [Miracle Serial-Parallel  Interface (Final Version)].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/hardware/miracle_spi1.jpg
+LONG DESC for image is [Miracle Serial-Parallel Interface (Early Version)].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/hardware/miracle_spi1.jpg
+LONG DESC for image is [Miracle Serial-Parallel Interface (Early Version)].
+IMAGE LINK at line: 19 http://www.rwapadventures.com/images/hardware/minervamk2.jpg
+LONG DESC for image is [Minerva Mk 2 Board].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/hardware/minervamk1.jpg
+LONG DESC for image is [Minerva Mk 1 Board].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/microvitec_cub.jpg
+LONG DESC for image is [Microvitec CUB Monitor].
+IMAGE LINK at line: 4 http://www.rwapadventures.com/images/hardware/Microtek-Greece-QL-Disk-Interface.jpg
+LONG DESC for image is [Microtec's QL Disk Interface].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/MircoP-microface-interface.jpg
+LONG DESC for image is [Micro Peripherals Microface QL Printer Interface].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/microdeal_logo.jpg
+LONG DESC for image is [Logo for Microdeal].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/hardware/direnmpc.jpg
+LONG DESC for image is [Diren MPC Micro Process Controller Unit].
+IMAGE LINK at line: 27 http://www.rwapadventures.com/images/hardware/microp_interface.jpg
+LONG DESC for image is [Micro Peripherals QL Disk Interface].
+IMAGE LINK at line: 24 http://www.rwapadventures.com/images/hardware/mpdiskinterface.jpg
+LONG DESC for image is [Micro Peripherals QL Disk System].
+IMAGE LINK at line: 24 http://www.rwapadventures.com/images/hardware/mpdiskinterface.jpg
+LONG DESC for image is [Micro Peripherals QL Disk System].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/sinclair_disk_box.jpg
+LONG DESC for image is [Sinclair's QL Disk System].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/sinclair_disk.jpg
+LONG DESC for image is [Sinclair's QL Disk System].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/metropolis_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Metropolis by Medic Datasystems Limited].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/metacomco-pascal-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL PASCAL Development Kit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/metacomco-pascal-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL PASCAL Development Kit].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/metacomco-bcpl-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL BCPL Development Kit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/metacomco-bcpl-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL BCPL Development Kit].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/metacomco-assembler-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL ASSEMBLER Development Kit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/metacomco-assembler-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL ASSEMBLER Development Kit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/metacomco_c_package.jpg
+LONG DESC for image is [Sinclair QL C by Metacomco].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/mersey_mouse.jpg
+LONG DESC for image is [Mersey Mouse System].
+IMAGE LINK at line: 41 http://www.rwapadventures.com/images/hardware/QLHardDisk2.jpg
+LONG DESC for image is [Medic Disk and Winchester Hard Disk Advert].
+IMAGE LINK at line: 40 http://www.rwapadventures.com/images/hardware/medic.jpg
+LONG DESC for image is [Medic Disk And Parallel Printer Interface].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/hardware/mcs_multirom.jpg
+LONG DESC for image is [MCS MultiROM].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/mcs_memodisk.jpg
+LONG DESC for image is [MCS Memodisk QL Disk Interface].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-333-38415-6.jpg
+LONG DESC for image is [Maximize Your QL by Susan Curran and Ray Curnow].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/hardware/maurice_qsv400.jpg
+LONG DESC for image is [Maurice QSV400 Sound And Speech Synthesiser].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/maurice_qv200.jpg
+LONG DESC for image is [Maurice Computers QV200 Speech Interface].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-946408-43-2.jpg
+LONG DESC for image is [Mathematics on the Sinclair QL by Czes Kosniowski].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/matchpoint_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Match Point by Psion].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/matchpoint-inlay.jpg
+LONG DESC for image is [Sinclair QL Match Point by Psion].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/matchpoint_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Match Point].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/Master-Warship-Inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Master Warship].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/Master-Warship-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Master Warship].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/masterblaster_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Master Blaster].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/masterblaster_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Master Blaster].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09160-561-X.jpg
+LONG DESC for image is [Making the Most of the Sinclair QL QL SuperBASIC and its Applications by Dick Meadows].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09160-531-8.jpg
+LONG DESC for image is [Machine Code Programming on the Sinclair QL by Martin Gandoff].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/m-treasure_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL M-Treasure by Medic Datasystems].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/m-paint_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL M-Paint by Medic Datasystems Limited].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/m-crunch_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL M-Crunch by Medic Datasystems].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/m-cosmic_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL M-Cosmic by Medic Datasystems].
+IMAGE LINK at line: 27 http://www.rwapadventures.com/images/zkul.gif
+LONG DESC for image is [Screenshot of Sinclair QL Lost Kingdom of Zkul].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/lost_kingdom_zkul_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Lost Kingdom of Zkul Adventure].
+IMAGE LINK at line: 8 http://www.dilwyn.me.uk/gen/launchpad/launchpad2c.gif
+LONG DESC for image is [Screenshot of Sinclair QL Launchpad by Dilwyn Jones].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/lang_digitiser.jpg
+LONG DESC for image is [CL Systems Lang Digitiser].
+IMAGE LINK at line: 24 http://www.rwapadventures.com/images/lands_of_havoc_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Lands of Havoc by Microdeal].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/lands_of_havoc_packaging2.jpg
+LONG DESC for image is [Packaging - cassette case for Sinclair QL Lands of Havoc].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/lands_of_havoc_advert.jpg
+LONG DESC for image is [Advertisement for Sinclair QL Lands of Havoc advert by Microdeal].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/lands_of_havoc_packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Lands of Havoc].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/Spectram.jpg
+LONG DESC for image is [Packaging for Spectram].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/knightflight_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Knight Flight by Realtime Software].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/Knight_Flight_insert.jpg
+LONG DESC for image is [Insert for Sinclair QL Knight Flight].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/knightflight_packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Knight Flight].
+IMAGE LINK at line: 97 http://www.rwapadventures.com/images/hardware/Sandy AT Keyboard Interface3.jpg
+LONG DESC for image is [Sandy QL Keyboard Interface].
+IMAGE LINK at line: 95 http://www.rwapadventures.com/images/hardware/Sandy AT Keyboard Interface2.jpg
+LONG DESC for image is [Sandy QL Keyboard Interface].
+IMAGE LINK at line: 93 http://www.rwapadventures.com/images/hardware/Sandy AT Keyboard Interface.jpg
+LONG DESC for image is [Sandy QL Keyboard Interface].
+IMAGE LINK at line: 85 http://www.rwapadventures.com/images/hardware/superhermeslite.jpg
+LONG DESC for image is [superHermes Lite].
+IMAGE LINK at line: 76 http://www.rwapadventures.com/images/hardware/ql_keyboard90.jpg
+LONG DESC for image is [JFC QL-Keyboard-90 Keyboard Interface].
+IMAGE LINK at line: 57 http://www.rwapadventures.com/images/hardware/diren_kb_iface.jpg
+LONG DESC for image is [Diren Keyboard Interface].
+IMAGE LINK at line: 49 http://www.rwapadventures.com/images/hardware/gigasoft_keyboard_if.jpg
+LONG DESC for image is [Gigasoft Keyboard Interface].
+IMAGE LINK at line: 48 http://www.rwapadventures.com/images/hardware/gigasoft_keyboard.jpg
+LONG DESC for image is [Gigasoft Keyboard].
+IMAGE LINK at line: 36 http://www.rwapadventures.com/images/hardware/abc_keyboard.jpg
+LONG DESC for image is [ABC Elektronik Keyboard].
+IMAGE LINK at line: 29 http://www.rwapadventures.com/images/hardware/rainbow_keyboard.jpg
+LONG DESC for image is [Rainbow Keyboard].
+IMAGE LINK at line: 21 http://www.rwapadventures.com/images/hardware/schoen_pckeyboard_and_case.jpg
+LONG DESC for image is [Schön PC Keyboard and QL Case].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/hardware/schoen_keyboard_ql2.jpg
+LONG DESC for image is [Schön Replacement QL Keyboard].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/hardware/schoen_keyboard_ql.jpg
+LONG DESC for image is [Schön Replacement QL Keyboard].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/hardware/kempston_disk_iface.jpg
+LONG DESC for image is [Kempston Disk Interface].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/Kempston-QL-Centronics-Interface.jpg
+LONG DESC for image is [Kempston Parallel Printer Interface].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/karate_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Karate by Eidersoft].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/karate_reverse.jpg
+LONG DESC for image is [Packaging for Sinclair QL Karate].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/karate_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Karate].
+IMAGE LINK at line: 13 http://www.rwapsoftware.co.uk/images/jungle.jpg
+LONG DESC for image is [Screenshot of Sinclair QL Jungle Eddi].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/jungle_eddi_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Jungle Eddi].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/hardware/jfc_scanner.jpg
+LONG DESC for image is [Falkenberg QL Printhead Scanner].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09158-951-7.jpg
+LONG DESC for image is [Introduction to SuperBASIC on the Sinclair QL by Dick Meadows].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-946408-45-9.jpg
+LONG DESC for image is [Introduction to Simulation Techniques on the Sinclair QL by John Cochrane].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09158-941-X.jpg
+LONG DESC for image is [Introducing the Sinclair QL by Garry Marshall].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-85934-135-6.jpg
+LONG DESC for image is [Into the QL Archive by J.W. Penfold].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/hardware/MP-QMem-Board.jpg
+LONG DESC for image is [MicroPeripherals Q-Mem Internal 512K Memory Upgrade].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/hardware/internal_ram.jpg
+LONG DESC for image is [Unidentified Internal 512K Memory Upgrade].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-946408-40-8.jpg
+LONG DESC for image is [Inside the Sinclair QL by Jeff Naylor and Diane Rogers].
+IMAGE LINK at line: 79 http://www.rwapadventures.com/images/impacct_screenshot.gif
+LONG DESC for image is [Screenshot of Impacct by Xpert Software].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/purchase_ledger_package.jpg
+LONG DESC for image is [Purchase Ledger Module from Impacct Accounts by Xpert Software].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/sales_ledger_package.jpg
+LONG DESC for image is [Sales Ledger Module from Impacct Accounts by Xpert Software].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/nominal_ledger_package.jpg
+LONG DESC for image is [Nominal Ledger Module from Impacct Accounts by Xpert Software].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-521-31517-4.jpg
+LONG DESC for image is [Illustrating SuperBasic on the Sinclair QL by Donald Alcock].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/icicle_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Icicle by Eidersoft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/icicle_package.jpg
+LONG DESC for image is [Sinclair QL Icicle by Eidersoft].
+IMAGE LINK at line: 30 http://www.rwapadventures.com/images/ICE_screenshot.gif
+LONG DESC for image is [Eidersoft ICE Desktop System].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/mice.jpg
+LONG DESC for image is [Eidersoft Mouse System (M-ICE) ].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/ice_system_cartridge.jpg
+LONG DESC for image is [Eidersoft ICE System Cartridge].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ice_packaging.jpg
+LONG DESC for image is [Eidersoft ICE System Packaging].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/ice_toolkit_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL ICE Toolkit by Eidersoft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ice_toolkit_package.jpg
+LONG DESC for image is [Sinclair QL ICE Toolkit by Eidersoft].
+IMAGE LINK at line: 17 http://www.rwapadventures.com/images/hyperdrive_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Hyperdrive by English Software].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/hyperdrive_inlay_reverse.jpg
+LONG DESC for image is [Cassette Inlay - Reverse for Sinclair QL Hyperdrive].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/hyperdrive_inlay.jpg
+LONG DESC for image is [ Cassette Inlay for Sinclair QL Hyperdrive].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/hyperdrive_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Hyperdrive].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/ql_games_hunt_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Games Cartridge - Treasure Hunt].
+IMAGE LINK at line: 11 http://www.rwapsoftware.co.uk/images/hover.gif
+LONG DESC for image is [Screenshot of Sinclair QL Hoverzone by Talent].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/hoverzone-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Hoverzone].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/hoverzone-package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Hoverzone].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/horrorday.gif
+LONG DESC for image is [Screenshot of Sinclair QL Horrorday].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/ql-home-accounts-manager_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Home Accounts Manager].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ql-home-accounts-manager_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Home Accounts Manager].
+IMAGE LINK at line: 32 http://www.rwapadventures.com/images/hardware/transparent_,microdrive.jpg
+LONG DESC for image is [The Inside of a Sinclair Microdrive Cartridge].
+IMAGE LINK at line: 29 http://www.rwapadventures.com/images/hardware/early_sinclair_ql_with_dongle.jpg
+LONG DESC for image is [An early Sinclair QL Home Computer with Kludge].
+IMAGE LINK at line: 27 http://www.rwapadventures.com/images/hardware/sinclairql_inbox.jpg
+LONG DESC for image is [The Inside of a Boxed Sinclair QL].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/hardware/sinclairql_box.jpg
+LONG DESC for image is [The Outside of a Sinclair QL Box].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/ql_production_line_issue6.jpg
+LONG DESC for image is [A production line version of an Issue 6 Sinclair QL Motherboard].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/hardware/sinclair_ql.jpg
+LONG DESC for image is [A Sinclair QL Home Computer].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/hardware/hermes.jpg
+LONG DESC for image is [Hermes Second Processor Chip].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/hardware/harprom.jpg
+LONG DESC for image is [Harprom Eprom Expansion Card].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/hardware/QL_expansion_prototyping_board.jpg
+LONG DESC for image is [A Sinclair QL Home Computer Prototyping Board].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/gwendoline_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Gwendoline].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/gwendoline_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Gwendoline].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/ql_games_gun_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Games Cartridge - Gun].
+IMAGE LINK at line: 16 http://www.rwapsoftware.co.uk/images/wolf.gif
+LONG DESC for image is [Screenshot of Sinclair QL Grey Wolf].
+IMAGE LINK at line: 28 http://www.rwapadventures.com/images/graphiql_screenshot.jpg
+LONG DESC for image is [Screenshot of Sinclair QL GraphiQL+].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/graphiql_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL GraphiQL].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/graphic_toolkit_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Graphic Toolkit - showing zoom function].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/graphic_toolkit_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Graphic Toolkit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-58229-662-5.jpg
+LONG DESC for image is [Good Programming with QL SuperBASIC by Roy Atherton].
+IMAGE LINK at line: 24 http://www.rwapadventures.com/images/hardware/goldcard.jpg
+LONG DESC for image is [Miracle Systems Gold Card].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/gigachrome_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Giga-Chrome by Giga-Soft].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/Giga-Basic_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Giga-BASIC by Giga-Soft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-715618-90-3.jpg
+LONG DESC for image is [Getting to know your Sinclair QL by Stephen Morris].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-86369-078-5.jpg
+LONG DESC for image is [Games for Your Sinclair QL by Peter Shaw].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/frontpage_inlay.jpg
+LONG DESC for image is [Sinclair QL Front Page by GAP Software].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/frontpage_package.jpg
+LONG DESC for image is [Sinclair QL Front Page by GAP Software].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/towerofvalagon_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL From the Tower of Valagon by CGH Services].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/QLF-flugtraining.png
+LONG DESC for image is [Screenshot of Sinclair QL QLF Flugtrainer by Kazim Bahar].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/Flugtrainer_QLF_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Flugtrainer - QLF].
+IMAGE LINK at line: 14 http://www.rwapsoftware.co.uk/images/flight.gif
+LONG DESC for image is [Screenshot of Sinclair QL Flightdeck].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/qlflight_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Microdeal Flight Simulator].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/qlflight_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Microdeal Flight Simulator].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/Fleet_Tactical_Command_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Fleet Tactical Command by Di-Ren].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/firebirds-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Firebirds by Jochen Merz Software].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/financial_climes_package.jpg
+LONG DESC for image is [Sinclair QL Financial Climes by Marshmallow Software].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/Fight-In-The-Dark-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Fight in the Dark by Gigasoft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-907563-84-8.jpg
+LONG DESC for image is [Exploring the QL - An Introduction to SuperBASIC by Andrew Nelson].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-94769-518-4.jpg
+LONG DESC for image is [Exploring Artificial Intelligence on your Sinclair QL by Tim Hartnell].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/exeqtor.jpg
+LONG DESC for image is [COWO ExeQtor Computer].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/ql-eprom-cart.jpg
+LONG DESC for image is [Picture of Sinclair QL EPROM Cartridge].
+IMAGE LINK at line: 76 http://rwapadventures.com/ql_wiki/themes/QL/images/qpc2.jpg
+LONG DESC for image is [http://www.rwapsoftware.co.uk/DOC/qpc2.txt].
+IMAGE LINK at line: 83 http://rwapadventures.com/ql_wiki/themes/QL/images/qpc2.jpg
+LONG DESC for image is [http://www.rwapsoftware.co.uk/DOC/qpc2.txt].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/eagle_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Eagle by Eidersoft].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/zapper_package-inlay.jpg
+LONG DESC for image is [Instructions for Sinclair QL Zapper with Eagle].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/zapper_package-front.jpg
+LONG DESC for image is [Packaging for Sinclair QL Zapper with Eagle].
+IMAGE LINK at line: 23 http://www.rwapadventures.com/images/eva_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL E.V.A. by Westway Limited].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/eva_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL E.V.A.].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/e.a.s.e._screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL E.A.S.E].
+IMAGE LINK at line: 16 http://www.sinclairql.net/images/QL_is_30_2014_The_Distribution_DVD-EPSON976-WLPGopt-res_796x800.jpg 
+LONG DESC for image is [ QL is 30 2014 - The Distribution ].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/droidzone_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair Droidzone by Digital Precision Limited].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/dreamlands_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Dreamlands Adventure].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/drawing_off_ice_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Drawing Off-ICE by Eidersoft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/drawing_off_ice_package.jpg
+LONG DESC for image is [Sinclair QL Drawing Off-ICE by Eidersoft].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/dragonhold_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Dragonhold by Rubicon Computer Systems].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/dragonhold_package.jpg
+LONG DESC for image is [Sinclair QL Dragonhold by Rubicon Computer Systems].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/doubleblock_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Double Block by CGH Services].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/disa3.05.png
+LONG DESC for image is [Screenshot of Sinclair QL DISA].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-946408-63-7.jpg
+LONG DESC for image is [Developing Applications for the Sinclair QL by Mike Grace].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09158-981-9.jpg
+LONG DESC for image is [Desk-Top Computing with the Sinclair QL by Barry Miles].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/Funfear-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Dennis the Dwarf at the Funfear by RWAP Software].
+IMAGE LINK at line: 36 http://www.rwapadventures.com/images/hardware/trl_delta128.jpg
+LONG DESC for image is [Technology Research TRL-128 Interface].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/deathstrike_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Deathstrike by Talent].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/deathstrike_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Deathstrike].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/datalink-spi-printer-interface.jpg
+LONG DESC for image is [Datalink SPI QL Printer Interface].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09160-551-2.jpg
+LONG DESC for image is [Database Management on the Sinclair QL by Mike O'Reilly].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/darkside_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Dark Side of the Moon Adventure].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/darkside of the moon_package_back.jpg
+LONG DESC for image is [Reverse of Packaging for Sinclair QL Dark Side of the Moon Adventure].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/darkside of the moon_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Dark Side of the Moon Adventure].
+IMAGE LINK at line: 19 http://www.rwapsoftware.co.uk/images/dday.gif
+LONG DESC for image is [Screenshot of Sinclair QL D-Day MKII].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/cuthbert_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Cuthbert in Space by Microdeal].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/cuthbert_in_space_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Cuthbert in Space].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/cumana_upgrade_os9_advert.jpg
+LONG DESC for image is [Advertisement for Sinclair QL OS-9 Upgrade by Cumana].
+IMAGE LINK at line: 19 http://www.rwapadventures.com/images/hardware/cumana.jpg
+LONG DESC for image is [Cumana Disk Interface].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/cumana_disk_interface_advert.jpg
+LONG DESC for image is [Advertisement for Sinclair QL Cumana Disk Interface].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/hardware/QLHardDisk1.jpg
+LONG DESC for image is [CST Winchester Hard Disk Advert].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/hardware/cst_qplus4_and_wins.jpg
+LONG DESC for image is [CST Q+4 Expansion System And Drives].
+IMAGE LINK at line: 15 http://www.rwapadventures.com/images/hardware/cst_thor16.jpg
+LONG DESC for image is [CST Thor XVI].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/cst_thor1.jpg
+LONG DESC for image is [CST Thor 1].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/hardware/cst_scsi_bare.jpg
+LONG DESC for image is [CST SCSI Interface].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/cst_scsi.jpg
+LONG DESC for image is [CST SCSI Interface].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/hardware/cst_ramplus.jpg
+LONG DESC for image is [CST RAM-Plus Card].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/hardware/q-pi-interface.jpg
+LONG DESC for image is [CST Q-Pi Printer Interface].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/hardware/cst_iee488_card.jpg
+LONG DESC for image is [CST IEE488 Interface].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/q+4-interface.jpg
+LONG DESC for image is [Picture of CST Q+4 Expansion Unit].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/hardware/cst_qplus4_and_wins.jpg
+LONG DESC for image is [CST Q+4 Expansion System And Drives].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/crazy_painter_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Crazy Painter by Microdeal].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/crazy_painter_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Crazy Painter].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/cpm_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL CP/Mulator by Sandy (UK) PCP Limited].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-85934-136-4.jpg
+LONG DESC for image is [Counting on Abacus by J.W. Penfold].
+IMAGE LINK at line: 11 http://www.rwapsoftware.co.uk/images/cosmos.gif
+LONG DESC for image is [Screenshot of Sinclair QL Cosmos].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/ql-cosmos-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Cosmos].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/cosmos_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Cosmos].
+IMAGE LINK at line: 6 http://www.rwapadventures.com/images/Connexions_printerif.jpg
+LONG DESC for image is [Packaging for Sinclair QL Connexions Printer Interface].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/concept3D_screenshot.PNG
+LONG DESC for image is [Screenshot of Sinclair QL Concept 3D].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/concept3D-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Concept 3D].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/scrabble_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Computer Scrabble].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/scrabble_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Computer Scrabble].
+IMAGE LINK at line: 5 http://www.rwapadventures.com/images/hardware/tfsclean.jpg
+LONG DESC for image is [TFS Computer Cleaner].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/hardware/pyramide_azerty.jpg
+LONG DESC for image is [Picture of Clavier AZERTY kit by Pyramide].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/citadel_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Citadel by Eidersoft].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/citadel_insert.jpg
+LONG DESC for image is [Insert for Sinclair QL Citadel].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/citadel_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Citadel].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/choice_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL CHOice by Eidersoft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/choice_package.jpg
+LONG DESC for image is [Sinclair QL CHOice by Eidersoft].
+IMAGE LINK at line: 48 http://www.sinclairql.net/images/QL-PD_CD-R_COVER-res.gif
+LONG DESC for image is [QL-PD/CD-R cover].
+IMAGE LINK at line: 42 http://www.sinclairql.net/images/QLE_v100_2002_coWo_CD_600a640.jpg
+LONG DESC for image is [QL/E CD].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/cartridgedoctor_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Cartridge Doctor].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-58229-675-7.jpg
+LONG DESC for image is [Calculating with QL Abacus by Malcolm Smith].
+IMAGE LINK at line: 16 http://www.rwapadventures.com/images/cadpak_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL CADPAK by Sandy (UK)].
+IMAGE LINK at line: 17 http://www.rwapadventures.com/images/cadpak_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL CAD PAK by Datalink Systems (Wales)].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/cadpak_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL CAD PAK].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/cadpak_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL CAD PAK].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/c1-monitor_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Computer One Monitor].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/c1-monitor_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Computer One Monitor].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/C1_Forth-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Computer One Forth].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/Byteback-Software-Logo.gif
+LONG DESC for image is [Logo for Byteback of Newark].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/hardware/brightstar.jpg
+LONG DESC for image is [Bright Star QL Modem].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/cpbridge_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Bridge Player by CP Software].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/bridgeplayer_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Bridge Player].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/bridgeplayer2_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Bridge Player II].
+IMAGE LINK at line: 25 http://www.rwapadventures.com/images/ql_games_breakout_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Games Cartridge - Breakout].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/blocklands-warrior_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair Blocklands Warrior by Digital Precision Limited].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/blast_buggy_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Blast Buggy].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/blastbuggy_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Blast Buggy].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/blastbuggy_packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Blast Buggy by Shadow Games].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/the-blag2-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL The Blag2 Adventure].
+IMAGE LINK at line: 8 http://www.rwapadventures.com/images/blackknight_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Black Knight by RWAP Software].
+IMAGE LINK at line: 30 http://www.rwapadventures.com/images/bjreturns_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL BJ Returns by Eidersoft].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/bjreturns_package-inlay.jpg
+LONG DESC for image is [Instructions for Sinclair QL BJ The Return].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/bjreturns_package-front.jpg
+LONG DESC for image is [Packaging for Sinclair QL BJ The Return].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/bj3d_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL BJ in 3D Land by Eidersoft].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/bj_in_3d_land_insert.jpg
+LONG DESC for image is [Cassette Inlay for Sinclair QL BJ in 3D Land].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/bj3d_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL BJ in 3D Land].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-13-066143-0.jpg
+LONG DESC for image is [BASIC Programming on the QL by Neil Cryer and Pat Cryer].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/baronrouge_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Baron Rouge].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/baron-rouge_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Baron Rouge].
+IMAGE LINK at line: 18 http://www.rwapadventures.com/images/bandersnatch-2-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Bandersnatch].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/bandersnatch-1-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Bandersnatch].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/hardware/aurora_motherboard.jpg
+LONG DESC for image is [Aurora Motherboard].
+IMAGE LINK at line: 13 http://www.rwapadventures.com/images/hardware/astracom_1000.jpg
+LONG DESC for image is [Astracom 1000 QL Modem].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-94640-842-4.jpg
+LONG DESC for image is [Assembly Language Programming on the Sinclair QL by Andrew Pennell].
+IMAGE LINK at line: 37 http://www.rwapadventures.com/images/assembler_workbench_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Assembler Workbench].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/assembler_workbench_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Assembler Workbench].
+IMAGE LINK at line: 9 http://www.rwapadventures.com/images/assaultandbattery_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Assault & Battery by CGH Services].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/books/0-946408-41-6 - Italy.jpg
+LONG DESC for image is [Intelligenza Artficiale con il QL Sinclair by Keith e Steven Brain].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/books/0-946408-41-6 - Portugal.jpg
+LONG DESC for image is [A Inteligência Artificial no Sinclair QL by Keith e Steven Brain].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-946408-41-6.jpg
+LONG DESC for image is [Artificial Intelligence on the Sinclair QL by Keith and Steven Brain].
+IMAGE LINK at line: 11 http://www.rwapadventures.com/images/arearadarcontroller_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Area Radar Controller by Shadow Games].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/arearadarcontroller_inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Area Radar Controller].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/arearadarcontroller_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Area Radar Controller].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/archiver_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Eidersoft Archiver].
+IMAGE LINK at line: 27 http://www.rwapadventures.com/images/ArchDEV_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL ArchDev/RTM by Psion Limited].
+IMAGE LINK at line: 22 http://www.rwapadventures.com/images/aquanaut_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Aquanaut 471 by Microdeal].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/aquanaut_471_reverse.jpg
+LONG DESC for image is [Reverse Inlay for Sinclair QL Aquanaut 471].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/aquanaut_471_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Aquanaut 471].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-85934-131-3.jpg
+LONG DESC for image is [An Introduction to QL Machine Code by R.A. and J.W. Penfold].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-85934-125-9.jpg
+LONG DESC for image is [An Introduction to Programming the Sinclair QL by R.A. and J.W. Penfold].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/ambition-inlay.jpg
+LONG DESC for image is [Inlay for Sinclair QL Ambition].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/ambition-packaging.jpg
+LONG DESC for image is [Packaging for Sinclair QL Ambition by Way Ahead].
+IMAGE LINK at line: 27 http://www.rwapadventures.com/images/hardware/AmadeusInterlink.jpg
+LONG DESC for image is [Diren Amadeus Interlink].
+IMAGE LINK at line: 14 http://www.rwapadventures.com/images/alienhijack_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Alien Hijack by Chisoft].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/alien_hijack_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL Alien Hijack].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/adventureplaytime_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Adventure Playtime by CGH Services].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-71561-910-1.jpg
+LONG DESC for image is [Advanced QL Machine Code by Adam Denning].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-09158-961-4.jpg
+LONG DESC for image is [Advanced Programming with the Sinclair QL by Martin Gandoff].
+IMAGE LINK at line: 21 http://www.rwapadventures.com/images/adder-assembler-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL Adder Assembler].
+IMAGE LINK at line: 1 http://www.zen70509.zen.co.uk/act/act06.jpg
+LONG DESC for image is [Starting menu screen].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/abersoft_logo.jpg
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/books/0-201-15438-2.jpg
+LONG DESC for image is [A QL Compendium by Martin Gandoff and Robin Kinge].
+IMAGE LINK at line: 7 http://www.rwapadventures.com/images/hardware/ipc2.jpg
+LONG DESC for image is [Schön 8750 Second Processor Chip].
+IMAGE LINK at line: 20 http://www.rwapadventures.com/images/hardware/68k-os.jpg
+LONG DESC for image is [Picture of Sinclair QL 68K/OS by GST Computer Systems].
+IMAGE LINK at line: 10 http://www.rwapadventures.com/images/hardware/expanderam_512k.jpg
+LONG DESC for image is [Miracle Expanderam 512K RAM Expansion Card].
+IMAGE LINK at line: 90 http://www.rwapadventures.com/images/3d-terrain-us-screenshot.png
+LONG DESC for image is [Screenshot of Sinclair QL 3D Terrain by Mike James].
+IMAGE LINK at line: 76 http://www.rwapadventures.com/images/3d-terrain-screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair QL 3D Terrain by Ian Thompson and Rich Mellor].
+IMAGE LINK at line: 12 http://www.rwapadventures.com/images/3dslime_screenshot.gif
+LONG DESC for image is [Screenshot of Sinclair 3D Slime by Datalink Systems].
+IMAGE LINK at line: 3 http://www.rwapadventures.com/images/3d_slime_alternative_package.jpg
+LONG DESC for image is [Alternative Packaging for Sinclair QL 3D Slime by Datalink Systems].
+IMAGE LINK at line: 2 http://www.rwapadventures.com/images/3d_slime_reverse.jpg
+LONG DESC for image is [Packaging for Sinclair QL 3D Slime by Datalink Systems].
+IMAGE LINK at line: 1 http://www.rwapadventures.com/images/3d_slime_package.jpg
+LONG DESC for image is [Packaging for Sinclair QL 3D Slime by Datalink Systems].
+
