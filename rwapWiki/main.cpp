@@ -15,6 +15,7 @@
 #include <algorithm>
 #include <sstream>
 #include <map>
+#include <vector>
 
 #include "version.h"
 #include "main.h"
