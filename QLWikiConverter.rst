@@ -6,6 +6,19 @@ Converting the QL Wiki to Other Formats
 Introduction
 ============
 
+For full details, see `this topic <http://qlforum.co.uk/viewtopic.php?f=12&t=1832>`_ on `The QL Forum <http://qlforum.co.uk>`_.
+
+Currently the QL Wiki, amongst others, is hosted and maintained by Rich of RWAP Services. It has been noted that other Wikis etc have foundered on the basis of "something" happening to the one single maintainer. Rich wants to avoid this happening.
+
+To this end, a number of suggestions have been put forward on the matter (read the whole topic at the link above) and conversion to another format was suggested. Where and how (or who) would be hosting the converted Wiki is/was/has yet to be decided, as has the format - there are Wikis aplenty out there!
+
+To make the task of converting the existing, and not really well known, *WiClear* Wiki (`http://wiclear.free.fr/ <http://wiclear.free.fr/>_`) source code from the format used by WiClear to some other format, I wrote this utility. It is possibly more important as the WiClear software has not been updated since 2007 and who knows what bugs or security problems exist?
+
+*What other format* being the question. There have been a few suggested and a couple of trials have seemingly taken place. The utility, ``rwapWiki`` attempts to solve this problem by allowing ahem, *almost* any other format you desire - provided a translation file can be created for it.
+
+This document attempts to explain how the system works, what it converts and how. This might make writing new translation files a little easier. The utility is supplied with a single, text, HTML translation file which works *reasonably* well - see the section on *Problem Areas Identified* below.
+
+
 WorkFlow
 ========
 
@@ -16,8 +29,8 @@ Briefly
 
 The workflow is simple:
 
--   Drop the existing wiki database.
--   Import the latest dumpfile.
+-   Drop the existing wiki database, if it exists. It is a standard MySQL database.
+-   Import the latest database dumpfile.
 -   Export the content in a specific format.
 -   Split the output into page files - one per Wiki Topic.
 -   Convert the required page files to the desired format.
@@ -170,17 +183,19 @@ On Linux, where filenames are case sensitive, some of the links in the QL Wiki, 
 Pages with Accented Characters
 ------------------------------
 
-Page names which have accented characters cause no problems on Linux, where such characters are permitted in file names (Assuming UTF8 is in use, which is usually is by default). The filename generated on Windows, however, is different as it doesn't seem to be able to cope with the accented characters. For example, the page entitled *Jurgen Falkenberg* has the 'u' with an umlaut above it. On Linux this is fine, on Windows it generates a file named 'JA1/4rgen-Falkenberg.html' instead where the 'A' has a tilde (~) above it and the '1/4' is a single character (and not 3 as shown here). Links in the generated files correctly go to the file with the accented 'u' as per Linux, but the page cannot be found as it doesn't exist with that name.
+Page names which have accented characters cause no problems on Linux, as such characters are permitted in file names (Assuming UTF8 is in use, which is *usually* the case by default). 
 
-The problem exists for the following pages (accented characters removed!):
+The filenames generated on Windows, however, are different as it doesn't seem to be able to cope with some of the the accented characters. For example, the page entitled *Jürgen Falkenberg* has the 'u' with an umlaut above it. On Linux this is fine, on Windows it generates a file named 'JÃ¼rgen-Falkenberg.html' instead where the 'A' has a tilde (~) above it and the '1/4' is a single character. Links in the generated files correctly go to the file with the accented 'u' as per Linux, but the page cannot be found as it doesn't exist with that name.
 
--   Huthig Verlag
--   Jurgen Falkenberg
--   Janko Mrisc-Flogel
--   Schon
--   Schon KBL128 QL Case
+The problem exists for the following pages:
 
-There may be others.
+-   Hüthig-Verlag
+-   Jürgen Falkenberg
+-   Janko Mrsic-Flögel
+-   Schön (although there are numerous links to this page in the Wiki, the page itself is not actually present.)
+-   Schön KBL128 QL Case
+
+There *may* be others.
 
 Image Galleries
 ---------------
@@ -190,7 +205,7 @@ These cannot be converted. Sorry. However, as there are none in the QL Wiki, it'
 Images
 ------
 
-The original Wiki required that images were set up as a URL linking to images that existed *somewhere on the internet*, there was no apparent ability to load images from local files. The conversion will list all the images it finds, but will not (can not) download them. Image links in the converted files will still refer to the original locations - or as decreed by the conversion requirements.
+The original Wiki required that images were set up as a URL linking to images that existed *somewhere on the internet*, there was no apparent ability to load images from local files. The conversion process will list all the images it finds, but will not (can not) download them. Image links in the converted files will refer to the original locations - or as decreed by the conversion's translation file.
 
 Equally, the description for an image (the text that appears when you hover over it) will either be some descriptive text, or, a link to a text file *somewhere on the internet* where the descriptive text can be found in the named file. Again, the conversion program will list the descriptive text or filenames as appropriate as part of the conversion.
 
@@ -202,7 +217,7 @@ If you decide to download the individual images locally, you will obviously need
     cd Images
     wget -i /path/to/wget_list.txt
     
-When completed, there should be a whole lot of images in the ``Images`` directory. In testing, I've had a few problems as I'm at work and the proxy server filters out a lot of files, leaving me with a lot of JPEG image files (``*.jpg``) containing a 2 by 1 white pixel in GIF format! Coincidentally, I get a similar image for a lot of the Wiki pages when I attempt to open the image URL directly from my browser, so it's definitely a work problem!   
+When completed, there should be a number of images - around 600 - in the ``Images`` directory. In testing, I've had a few problems as I'm at work and the proxy server filters out a lot of files, leaving me with a lot of JPEG image files (``*.jpg``) containing a 2 by 1 white pixel in GIF format! Coincidentally, I get a similar image for a lot of the Wiki pages when I attempt to open the image URL directly from my browser, so it's definitely a work problem!   
 
 
 How it Works
@@ -269,7 +284,7 @@ What Gets Converted
 Line Starts
 -----------
 
-The following features of the Wiki have special characters at the start of a line to indicate what the line is to be used as. ``RwapWiki`` deals with these line starts, and when done, tries to process any embedded features left in the translated line. These are covered below in the *Embedded Formatting* section.
+The following features of the Wiki have special characters at the start of a line - hence *Line Starts* - to indicate what the line is to be used as. ``RwapWiki`` deals with these line starts, and when done, then tries to process any (valid) embedded features left in the translated line. These are covered below in the *Embedded Formatting* section.
 
 When a line start is processed, we cannot be in a paragraph any longer, so if we were in one, we close it
 
@@ -278,7 +293,7 @@ Headings
 
 Heading lines start with one, two or three exclamation marks (!). These indicate the heading level, with '!!!' indicating level 1 and '!' indicating level 3. Only three levels of heading are permitted. There may be embedded formatting such as bold or italic, so after conversion here, the line is processed for any valid embedded formatting. (See below for details).
 
-A heading from the input file will resemble the following:
+A heading from the input file will resemble the following, but note that I have added spaces to make the reading easier:
 
 ..  code-block:: none
 
@@ -303,7 +318,7 @@ No special processing is required for horizontal rules, we simply discard the in
 
     <CONV_HR_ON><CONV_HR_OFF>
     
-For the example HTML conversion, this will be blank for 'CONV_HR_OFF' and ``<br>`` for 'CONV_HR_ON'.
+For the example HTML conversion, this will be blank for ``CONV_HR_OFF`` and ``<br>`` for ``CONV_HR_ON``.
 
 Block Quotes
 ~~~~~~~~~~~~
@@ -337,7 +352,130 @@ We have two prefix variables and two suffix variables to content with as some ou
 Line Includes
 -------------
 
-**YOU ARE HERE**
+Any line that is not processed as a *Line Start* line, is then checked for and processed according to whether or not it contains embedded formatting. Some of the valid embedded formatting that can occur is detailed below in the section entitled *Embedded Formatting*.
+
+Paragraphs
+~~~~~~~~~~
+
+Paragraphs are simply lines of text, terminated by a pair of end of line sequences as appropriate for the Operating System used to create the page of text in the Wiki. For Windows this will be ``crlf crlf``, while Linux (and Mac?) will have ``lf lf``. (Without any spaces of course.)
+
+Code Blocks
+~~~~~~~~~~~
+
+Code blocks, as opposed to *Inline Code* which is dealt with elsewhere, are indicated as follows:
+
+..  code-block:: none
+
+    <space> Line of code <EOL>
+    <space> Another line of code <EOL>
+    <space> A further line of code <EOL>
+    ...
+    
+One leading space is all it takes to start a code block in the Wiki source. Further spaces at the start of a line will simply be considered part of the code line.
+
+There are 4 separate translation variables for a code block. These are:
+
+..  code-block:: none
+
+    CONV_CODE_BLOCK_PREAMBLE
+    CONV_CODE_BLOCK_POSTAMBLE
+    
+    CONV_CODE_LINE_ON
+    CONV_CODE_LINE_OFF
+    
+The first two start and stop a block of code, while the latter two start and stop a single line within the code block. This is required for those output formats which require such things. In the example HTML translation, the latter two are not required while the former two are set to ``<pre>`` and ``</pre>`` respectively.
+
+When the first line of a code block is detected in the Wiki source, The translation begins by writing out the ``CONV_CODE_BLOCK_PREAMBLE`` variable. It then processes each line and writes out something resembling  the following:
+
+..  code-block:: none
+
+    <CONV_CODE_LINE_ON> Line of code <CONV_CODE_LINE_OFF>
+
+The next line will be read from the input file, and processed as above until a line is read that does not constitute a code line. On this detection, the ``CONV_CODE_BLOCK_POSTAMBLE`` variable is written out to the translated file.
+
+In the example HTML translation, this code:
+
+..  code-block:: none
+
+    <space>1000 CLS <EOL>
+    <space>1005 REPeat Madness<EOL>
+    <space>1010 PRINT !'Hello World! '!<EOL>
+    <space>1015 END REPeat Madness<EOL>
+
+will be translated to the following HTML:
+
+..  code-block:: none
+
+    <pre>
+    1000 CLS
+    1005 REPeat Madness
+    1010 PRINT !'Hello World! '!
+    1015 END REPeat Madness
+    </pre>
+
+Individual lines of code in HTML do not need a start and stop tag.
+    
+Table Rows
+~~~~~~~~~~
+
+Table rows are found in the Wiki source, and resemble the following:
+
+..  code-block:: none
+
+    | Cell 1 | Cell 2 | Cell 3 <EOL>
+    | Cell 4 | Cell 5 | Cell 6 <EOL>
+    | Cell 7 | Cell 8 | Cell 9 <EOL>
+    ...
+    
+One leading pipe character is all it takes to start a table row in the Wiki source. It is unknown how the Wiki handles two or more consecutive pipe characters in a page's source, but ``rwapWiki`` creates a blank cell as if that is what the author of the Wiki page intended.
+
+There are 6 separate translation variables for table rows. These are:
+
+..  code-block:: none
+
+    CONV_TABLE_PREAMBLE
+    CONV_TABLE_POSTAMBLE
+
+    CONV_TABLE_ROW_PREAMBLE
+    CONV_TABLE_ROW_POSTAMBLE
+
+    CONV_TABLE_CELL_PREAMBLE
+    CONV_TABLE_CELL_POSTAMBLE
+    
+The first two start and stop a full table in the output file. The middle two start and stop a single row in the table, while the latter two, define the start and end of a single cell within a table row.
+
+When the first line of a table row is detected in the Wiki source, The translation begins by writing out the ``CONV_TABLE_PREAMBLE`` variable. It then processes each line, parses it into separate cells, processes each cell's text for any of the *Embedded Formatting* characters, and writes out something resembling  the following:
+
+..  code-block:: none
+
+    <CONV_TABLE_ROW_PREAMBLE> <CONV_TABLE_CELL_PREAMBLE> Cell 1 <CONV_TABLE_CELL_POSTAMBLE>  <CONV_TABLE_CELL_PREAMBLE> Cell 2 <CONV_TABLE_CELL_POSTAMBLE> ... <CONV_TABLE_ROW_POSTAMBLE>
+
+The next line will be read from the input file, and processed as above until a line is read that does not constitute a table row. On this detection, the ``CONV_TABLE_POSTAMBLE`` variable is written out to the translated file.
+
+In the HTML example translation, the following code:
+
+..  code-block:: none
+
+    | Cell 1 | Cell 2 | Cell 3 <EOL>
+    | Cell 4 | Cell 5 | Cell 6 <EOL>
+    | Cell 7 | Cell 8 | Cell 9 <EOL>
+
+Will be translated to this HTML:
+
+..  code-block:: none
+
+    <table border="1">
+    <tr><td>Cell 1</td><td>Cell 2</td><td>Cell 3</td></tr>
+    <tr><td>Cell 4</td><td>Cell 5</td><td>Cell 6</td></tr>
+    <tr><td>Cell 7</td><td>Cell 8</td><td>Cell 9</td></tr>
+    </table>
+
+
+Other Line Includes
+~~~~~~~~~~~~~~~~~~~
+
+The remainder of the potential *Line Includes* codes and processing are also valid for those lines which have been processed as *Line Starts*, so those are discussed below in the *Embedded Formatting* section.
+
 
 Embedded Formatting
 -------------------
@@ -358,7 +496,7 @@ Lines with special characters at the beginning, see *Line Starts* above, may als
 Not all are valid for all types of line start lines, horizontal lines don't have any embedded formatting for example, but they are checked for anyway. Each type of embedded formatting is discussed below.
 
 Bold
-----
+~~~~
 
 Bold text is created as follows:
 
@@ -375,7 +513,7 @@ Bold text is converted to the following:
     ... <CONV_BOLD_ON> bold stuff <CONV_BOLD_OFF> ...
     
 Italic
-------
+~~~~~~
 
 Italic text is created as follows:
 
@@ -392,7 +530,7 @@ Italic text is converted to the following:
     ... <CONV_ITALIC_ON> italic stuff <CONV_ITALIC_OFF> ...
     
 Inline Code
------------
+~~~~~~~~~~~
 
 Inline code text is created as follows:
 
@@ -400,7 +538,7 @@ Inline code text is created as follows:
 
     Normal text @@ Some code stuff @@ normal text again.
 
-This can occur anywhere in the line. In addition, code text may start on one line of a paragraph, extend over one or more lines, and then end on a subsequent line later on in the paragraph.  There may also be multiple code text on a line.``RwapWiki`` correctly handles these situations.    
+This can occur anywhere in the line. In addition, code text may start on one line of a paragraph, extend over one or more lines, and then end on a subsequent line later on in the paragraph.  There may also be multiple embedded code sections on a single line. ``RwapWiki`` correctly handles these situations.    
 
 Inline code text is converted to the following:
 
@@ -409,19 +547,91 @@ Inline code text is converted to the following:
     ... <CONV_INLINE_CODE_ON> Some code stuff <CONV_INLINE_CODE_OFF> ...
     
 Links
------
+~~~~~
+
+There are three types of link in a Wiki page. These are:
+
+-   Links to other Wiki Pages;
+-   Links to the Internet;
+-   Links to allow embedding of You Tube videos.
+
+These are discussed below.
+
+Be aware that there can be more than one link on a single line of text from the input file. However, links must be fully contained within the same line - they cannot wrap onto subsequent lines.
 
 Wiki Page Links
-~~~~~~~~~~~~~~~
+"""""""""""""""
+
+These are the simplest links to process. The format is:
+
+..  code-block:: none
+
+    [Page Name]
+    
+There is of course a problem here. Page titles which have any punctuation or spaces in might not be valid of some output formats, so the translation file allows two substitution texts to be defined, these are:
+
+-   %PAGE_NAME% which is the page name exactly as defined in the Wiki source.
+-   %COMPRESSED_NAME% which is the same as %PAGE_NAME% but with all punctuation and spaces replaced by hyphens. 
+
+Either, or both, can be used in the translation variable used, which is ``CONV_WIKI_LINK``.
+
+In the translation, all occurrences of the text '%PAGE_NAME%' will be replaced by the actual page name, punctuation and spaces included, as is, while all occurrences of '%COMPRESSED_NAME%' will be replaced by the slightly massaged page title, where hyphens abound.
+
+The example HTML translation file for the following text:
+
+..  code-block:: none
+
+    [Dilwyn Jones]
+    
+Will output the following HTML:
+
+..  code-block:: HTML
+  
+    <a href="Dilwyn-Jones.html">Dilwyn Jones</a>
+
+Thus creating a link to the page with the title 'Dilwyn Jones'. The file that the 'Dilwyn Jones' page lives in is assumed to be 'Dilwyn-Jones.html' in *exactly* that letter case. However, some pages in the Wiki have interesting characters in their titles, so the generated filenames are a bit off, at least in Windows. 
+
+Also problematical is the fact that some page links in the Wiki source assume case insensitivity, and as filenames on Linux are case sensitive, that can cause links not to work.
+
+See the section on *Problem Areas Identified* for more details.
+
+See also, the section on *WikiPager* for details of how that utility splits the database content into separate page files, each named after the page name in the database.
 
 URL Links
-~~~~~~~~~
+"""""""""
 
 You Tube Video Links
-~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""
+
+A You Tube video can be embedded in a Wiki page by using the following text in a page:
+
+..  code-block:: none
+
+    (vid) URL of Video (/vid)
+    
+The entire link must fit on one line, no continuation is permitted.
+
+Translation of the above format into the desired output is done using the ``CONV_YOUTUBE_LINK`` variable, which permits two separate substitution variables:
+
+-   %URL% which is the full URL to the full text of the video's URL as per the Wiki page. Basically, everything between ``(vid)`` and ``(/vid)``.
+-   %VIDEO_ID% which is populated with everything in the URL that occurs *after* the text ``?v=`` in the URL, if it is found, otherwise it is blank.
+
+So far, all the video links in the Wiki are of the format:
+
+..  code-block:: none
+
+    (vid)http://www.youtube.com/watch?v=AO5BUIKykMM(/vid)
+
+And these are converted to the following, by the translation variable named ``CONV_YOUTUBE_LINK``:
+
+..  code-block:: HTML
+
+    <iframe width="30%" height="30%" src="https://youtube.com/embed/%VIDEO_ID%" frameborder="1" allowfullscreen></iframe>
+    
+You can see that the full URL text is not used in the above substitution, however, it is available for use if desired. The above code is based pretty much 100%, on what You Tube generates for you when you click on the "get embed code" for a particular video.
 
 Forced Line Feed
-----------------
+~~~~~~~~~~~~~~~~
 
 A forced line feed, in the Wiki, is created thus:
 
@@ -436,34 +646,68 @@ and is converted to the following:
 
     yada yada <CONV_FORCE_LINE_FEED_ON><CONV_FORCE_LINE_FEED_OFF> text after the linefeed ...
     
-There may be more than one forced line in a single Wiki source line, so all of them are replaced. In the example HTML conversion file, 'CONV_FORCE_LINE_FEED_ON' is set to ``<br>`` and 'CONV_FORCE_LINE_FEED_OFF' is blank.
+There may be more than one forced line in a single Wiki source line, so all of them are replaced. In the example HTML conversion file, ``CONV_FORCE_LINE_FEED_ON`` is set to ``<br>`` and ``CONV_FORCE_LINE_FEED_OFF`` is blank.
 
 Citations
----------
+~~~~~~~~~
 
-#========================================================================================
-#
-#
-#========================================================================================
-# Citations.
-#
-# %CITATION% is the citation text.
-# %SOURCE% is who said it.
-#
-# OOPS! It seems that in the Wiki source code, citations are allowed without the second
-# part - who said it (or a ref link etc). The following won't work and we need to just
-# sort it out. Sigh.
-#----------------------------------------------------------------------------------------
-CONV_CITATION_LINK=<abbr title="%SOURCE%">%CITATION%</abbr>
-CONV_CITATION_NOSOURCE_LINK=<blockquote>%CITATION%</blockquote>
+Citations are identified in the Wiki source as follows:
+
+..  code-block:: none
+
+    ^^citation|source link^^
+
+or this:
+
+..  code-block:: none
+
+    ^^citation^^
+
+
+``RwapWiki`` treats this as one or two separate parts, '%CITATION%' and, optionally, '%SOURCE%'. Hopefully, it is obvious from the above as to which is which. The utility allows each part to be substituted into the translated line, if required.
+
+The utility processes these and converts them by reading the variables ``CONV_CITATION_LINK``  and ``CONV_CITATION_NOSOURCE_LINK`` and scanning both for the text '%CITATION%' and, optionally, '%SOURCE%', and for each occurrence found, replaces the substitution text with the appropriate part of the Wiki source line's citation text.  
+
+The example HTML conversion uses the following as the ``CONV_CITATION_LINK`` and ``CONV_CITATION_NOSOURCE_LINK`` translation variables, for the two permitted translation options:
+
+..  code-block:: none
+
+    CONV_CITATION_LINK=<abbr title="%SOURCE%">%CITATION%</abbr>
+    CONV_CITATION_NOSOURCE_LINK=<blockquote>%CITATION%</blockquote>
+    
+And so, decrees that a citation in the Wiki shall be created as an abbreviation in the HTML if it has a source, or it will be a block quote if not. This is easily changed of course. 
+
+The reason for having two different citation translation variables is down to the fact that the Wiki code (written in PHP) allows citations to have either just a citation part, or to have both citation and source parts - although this is not documented. The QL Wiki uses both forms of citation.
+
+Obviously, if a citation in the Wiki is found to have no source part, then the ``CONV_CITATION_NOSOURCE_LINK`` will be used in the output, otherwise the ``CONV_CITATION_LINK`` translation will be used. 
+
+There can be more than one citation per line, but they must fully exist on a single line - continuations are not permitted.
 
 References
-----------
+~~~~~~~~~~
+
+References are created in the Wiki as follows:
+
+..  code-block:: none
+
+    ... {{reference}} ...
+    
+There is, as can be seen, one part to a reference. ``RwapWiki`` processes this as '%REFERENCE%' and converts it by reading the variable ``CONV_REFERENCE_LINK`` and scanning it for the text '%REFERENCE%', and for each occurrence found, replaces the text '%REFERENCE%' with the appropriate part of the Wiki source's reference code. 
+
+The example HTML conversion uses the following as the ``CONV_REFERENCE_LINK`` replacement text:
+
+..  code-block:: none
+
+    CONV_REFERENCE_LINK=<u>%REFERENCE%</u>
+    
+And so, decrees that a reference in the Wiki shall be created simply as underlined text in the generated HTML. This is easily changed of course.  
+
+There can be more than one reference per line, but they must fully exist on a single line as continuations are not permitted.
 
 Anchors
--------
+~~~~~~~
 
-I could never seem to get an anchor to work in a Wiki sandbox page! MAybe they don't. They certainly didn't seem to do much. However ...
+I could never seem to get an anchor to work in a Wiki sandbox page! Maybe they don't. They certainly didn't seem to do much. However ``rwapWiki`` will attempt to translate them.
 
 Anchors are created in the Wiki as follows:
 
@@ -473,7 +717,7 @@ Anchors are created in the Wiki as follows:
     
 There are, as can be seen, two parts to an anchor, the anchor text and the title text. The conversion utility, ``rwapWiki`` processes these and converts them by reading the variable ``CONV_ANCHOR_LINK`` and scanning it for the text '%ANCHOR%' and '%TITLE_TEXT%', and for each occurrence, replaces the found text with the appropriate part of the Wiki source's anchor code. 
 
-The example HTML conversion uses the following as the ''CONV_ANCHOR_LINK'' replacement text:
+The example HTML conversion uses the following as the ``CONV_ANCHOR_LINK`` replacement text:
 
 ..  code-block:: none
 
@@ -481,423 +725,348 @@ The example HTML conversion uses the following as the ''CONV_ANCHOR_LINK'' repla
     
 And so, decrees that an anchor in the Wiki shall be created as an abbreviation in the HTML. This is easily changed of course.  
 
-There can be more than one anchor per line, but anchors must fully exists on a single line, continuations are not permitted.
+There can be more than one anchor per line, but they must fully exist on a single line as continuations are not permitted.
 
 If the replacement text does not have one, or both, of the replacement text "macros", then those parts of the anchor text from the input file will be missing from the output.    
 
 Acronyms
---------
-CONV_ACRONYM_LINK=<abbr title="%TITLE_TEXT%">%ACRONYM%</abbr>
+~~~~~~~~
+
+Acronyms are used in the Wiki to display some text, normally underlined, and when that text is hovered over with the cursor, some explanatory text is displayed in a pop-up window.
+
+This translates nicely to the HTML``<abbr>`` (abbreviation) tag, which has exactly the same purpose.
+
+Acronyms are created in the Wiki as follows:
+
+..  code-block:: none
+
+    ... ??acronym|Explanation Text?? ...
+    
+There are, as can be seen, two parts to a acronym. ``RwapWiki`` processes this as '%ACRONYM%' and '%TITLE_TEXT%' and converts them by reading the variable ``CONV_ACRONYM_LINK`` and scanning it for the text '%ACRONYM%' and '%TITLE_TEXT%', and for each occurrence found, replaces it with the appropriate part of the Wiki source's acronym code. 
+
+The example HTML conversion uses the following as the ``CONV_REFERENCE_LINK`` replacement text:
+
+..  code-block:: none
+
+    CONV_ACRONYM_LINK=<abbr title="%TITLE_TEXT%">%ACRONYM%</abbr>
+    
+And so, decrees that an acronym in the Wiki shall be created simply as an HTML abbreviation.  
+
+There can be more than one acronym per line, but acronyms must fully exist on a single line, continuations are not permitted.
 
 Images
-------
+~~~~~~
 
 
 Lists
 -----
 
+There are three different types of lists available in the Wiki, however, only two of them actually work! ``RwapWiki`` on the other hand, will convert the three different types correctly, even if the Wiki itself cannot.
+
+Because of the way that the Wiki does not have a "here is a list" indicator, List processing is carried out differently from everything else which assumes that a single line will be processed. List processing repeats the required processing for as long as it reads another line from the input file that starts with a list entry indicator character.
+
+These characters are:
+
+-   ``*`` or ``-`` for unordered lists;
+-   ``#`` for orderd lists;
+-   ``;`` for definition lists.
+
+The definition list is the non-working one on the Wiki.
+
+Ordered and unordered lists can be nested, and the nesting level is indicated by the number of *consecutive* list indicator characters found at the start of the line.
+
+Lists, in many other formats *do* have a "here is a list" indicator, HTML for example, has ``<ul>`` for an unordered list. They also have an "end of list" indicator too, in HTML this is ``</ul>`` for the unordered list. Because of this, ``rwapWiki`` also has a list begin and list end variable in case the output format requires one.
+
+Each *item* in a list also has a preamble and postamble, so that individual list items can be delimited. These can be different for each list type.
+
+The list start and end variables for unordered, ordered and definition lists are:
+
+..  code-block:: none
+
+    CONV_LIST_ON
+    CONV_LIST_OFF
+
+    CONV_NUM_LIST_ON
+    CONV_NUM_LIST_OFF
+
+    CONV_DEFN_LIST_PREAMBLE
+    CONV_DEFN_LIST_POSTAMBLE        
+
+Yes, I know, it *would* have been a good idea to keep the naming convention the same for all three list types wouldn't it?        
+
+List processing starts by writing out the list start variable, as above, depending on the list type. There are no substitution variables in these that will be processed.
+
+Once the list processing code has read an input line that is not part of a list, it completes list processing by writing out the list end variable, as above, depending again on the list type.
+
+The list processing for each list *item* is explained below. It should be noted that list items can contain embedded formatting, so these are checked for in each list item line, and processed accordingly.
+
+Nesting of lists is correctly handled by the simple task of going recursive in the code and calling  the list processing code again, from within itself.       
+        
 Unordered List
 ~~~~~~~~~~~~~~
+
+The format of the lines in the Wiki source, which make up an unordered list, are as follows:
+
+..  code-block:: none
+
+    * List Item Text <EOL>
+    
+or:
+
+..  code-block:: none
+
+    - List Item Text <EOL>
+
+Each line representing a list item is converted to remove the list item start character(s) - depending on the nesting level, and writing out something like the following:
+
+..  code-block:: none
+
+    <CONV_LIST_PREAMBLE> List Item Text <CONV_LIST_POSTAMBLE>
+    
+The next line is read from the input file, and the processing starts again but without writing out a list start variable, unless the list item is found to be nested.
+    
 
 Ordered List
 ~~~~~~~~~~~~
 
+The format of the lines in the Wiki source, which make up an ordered list, are as follows:
+
+..  code-block:: none
+
+    # List Item Text <EOL>
+    
+Each line representing an ordered list item is converted to remove the list item start character(s) - depending on the nesting level, and writing out something like the following:
+
+..  code-block:: none
+
+    <CONV_NUM_LIST_PREAMBLE> List Item Text <CONV_NUM_LIST_POSTAMBLE>
+    
+The next line is read from the input file, and the processing starts again but without writing out a list start variable, unless the list item is found to be nested.
+
 Definition List
 ~~~~~~~~~~~~~~~
 
-Citations
----------
+Definition lists come it two parts. There's a term and a definition. Again, each item in a definition list might have embedded formatting, so this is catered for.
 
-References
-----------
+Definition lists cannot be nested.
 
-Anchors
--------
+A definition list item is found in the Wiki source as follows:
 
-Acronyms
---------
+..  code-block:: none
 
-
-Code Blocks
------------
-
-Table Rows
-----------
-
-
-Building a Conversion File
-==========================
-
-
-
-
-********************
-OLD SHIT BELOW HERE!
-********************
-
-
-
-Introduction & Disclaimer
-=========================
-
-The following information has been extracted from the raw database data for Rich's Sinclair QL Wiki. The Wiki system is WiClear, French\ [#]_, and appears not to have been updated since 2007\ [#]_.
-
-Any errors or mistakes are mine. As they say! I've extracted this on my work computer which is not allowed, nor has access to the WiClear software, or even to the web site! I'm floundering around, a little more blindly than usual, in the dark! Be gentle with me - I don't even have access to a MySQL database, or, to the Sinclair QL Wiki on Rich's domain as it's classified as "games" by our internet "thought police" system. :-(
-
-
-Formatting Characters
-=====================
-
-Line Feed
----------
-
-The line feeds in the Sinclair QL Wiki pages seem to be in Windows format. Thus, a carriage return followed by a line feed. 
-
-::
-
-    CHR$(13); CHR$(10);
+    ; Term Text : Definition Text <EOL>
     
-However, looking in the Wiki's source code, it is seen that a linefeed is either:
+The two parts are separated by a colon. The definition text extends to the end of the line.
 
--   ``CHR$(13)`` for Mac users;
--   ``CHR$(10)`` for Unix/Linux users;
--   ``CHR$(13); CHR$(10)`` for Windows users;
+Each line representing a definition list item is converted to remove the list item start character(s) - depending on the nesting level, and writing out something like the following:
+
+..  code-block:: none
+
+    <CONV_DEFN_LIST_TERM_ON> Term Text <CONV_DEFN_LIST_TERM_OFF><CONV_DEFN_LIST_DESC_ON> Definition Text <CONV_DEFN_LIST_DESC_OFF>
     
-
-Single line feeds are used to terminate titles etc, double line feeds are used to separate paragraphs.
-
-
-Smilies
--------
-
-The text ``:-)`` will be rendered into an inline graphic 
-
-
-Paragraph
----------
-
-Simply a lump of text, with or without embedded formatting, followed by 2 line feeds.
-
-
-Horizontal Line
----------------
-
-Four, or more, equal signs '=' plus a line feed.
-
-*Possibly* requires to be on a line of it's own?
-
-
-Lists
------
-
-Simple Lists
-~~~~~~~~~~~~
-
-One or more '*' or '-' per item plus a line feed. For example::
-
-    * Item 1
-    * Item 2
-    - Item 3
-    - Item 4
-
-The more '*' or '-'there are, the more nested the list is. Mixing and matching the special characters, as above, makes no difference, you still hget a list with the same bullet characters on rendering the page.
-
-I suspect most sensible people would use the same character throughout the list!
-
-
-Numbered Lists
-~~~~~~~~~~~~~~
-
-One or more '#' per item, plus a line feed.
-
-::
-
-    # Item 1, numbered 1.
-    # Item 2, numbered 2.
-    # Item 3, numbered 3.
-    
--   Nesting?
--   How to start a list from a specific number?
--   How to reset a list numbering part way through?
--   Only ASCII digits permitted?
-
-
-Definition Lists
-----------------
-
-The format is:
-
-A semi-colon ';' followed by the term, a colon followed by the definition plus a line feed::
-
-    ;Glossary:Something that explains things
-    
-However, this doesn't appear to render correctly in generating the page. Even the Wiki's own help page shows a failure to render these things. The source code for the 2007 release, does show that the format is accepted, and that it should render as an HTML ``<dl>..</dl>`` set of tags, but in the rendered page, you just get the semi-colon etc.
-
-
-Tables
-------
-
-A pipe symbol, '|' followed by the text of the cell. Multiple cells per line are permitted. A line feed indicates the end of the table row. For example::
-
-    | Cell 1 | Cell 2 | Cell 3 
-    | Cell 4 | Cell 5 | Cell 6 
-    | Cell 7 | Cell 8 | Cell 9 
-    
--   Is a trailing '|' necessary in each row? Or is the trailing linefeed sufficient
--   How do we get heading cells? 
--   Can we have rowspans and/or colspans? If so, how? 
--   What about alignment of cell data?
-
-
-Titles/Headings
----------------
-
-!!!Heading_text plus a line feed = Heading level 1. For example::
-
-    !!!This Is Heading Level 1
-    
-!!Heading_text plus a line feed = Heading level 2. For example::
-
-    !!This Is Heading Level 2
-    
-!Heading_text plus a line feed = Heading level 3. For example::
-
-    !This Is Heading Level 3
-    
-
-Preformatted Text/Code Listings
---------------------------------
-
-A space, (Just one? What if there are more?) plus the text, plus a line feed. For example::
-
-     1000 CLS
-     1005 REPeat Madness
-     1010   PRINT !'Hello World! '!
-     1015 END REPeat Madness
-
-Ok, so it's hard to see the single leading space in the above, but trust me, it's there! Just in front of the line numbers.
-
-
-Block Quotes
-------------
-
-A '>' followed by the text, followed by a line feed.
-
-::
-
-    >The boy stood on the burning deck,
-    >His hands were all in blisters,
-    >Feel free to fill in all the rest,
-    >But don't dare mention sisters!
-
-
-Text Formatting
----------------
-
-Bold/Strong
-~~~~~~~~~~~
-
-Two underscores '_' followed by the text to be emboldened, then two terminating underscores. No spaces between the text and the leading or trailing underscores.
-
-::
-
-    This text is __BOLD__ if I got this correct!
-
-Italic
-~~~~~~
-
-Two single quotes, followed by the text, then two terminating single quotes. No spaces between the text and the leading or trailing single quotes.
-
-::
-
-    This text is ''ITALIC'' if I got this correct!
-
-
-Inline Code
-~~~~~~~~~~~
-
-Inline code appears, from the Wiki's source code, to be defined as a pair of 'at' signs - ``@@`` - then the code to be inlined, and then another pair of 'at' signs. For example:
-
-::
-
-    The statement @@CLS #1@@ will clear the screen associated with channel 1.
-    
-However, trying it out in the Wiki sandbox has no effect, so it doesn't actually work. :-(
-    
-
-Forced line feed
-~~~~~~~~~~~~~~~~
-
-Three percent signs '%%%' together will force a line break at that point. It appears that this doesn't need to be on a line of its own. Embedded works just as well.
-
-
-Links
------
-
-HTTP Links
-~~~~~~~~~~
-
-A link is an open square bracket '[' followed by up to? 4 fields each separated by a pipe character '|', followed by a closing square bracket ']'. The first field is mandatory, the remainder are optional, and define the following::
-
-    [linkname|link|language|description(title)]
-    
--   Linkname: The clickable text that appears in the Wiki page.
--   Link: The URL that the link points to.
--   Language: Language code. Should be a two character language code, as defined in the ``WC_LANG`` table in the database, wrapped in double quotes.
-
-    The following are allowed:
-
-    -   en: English;
-    -   fr: French;
-    -   de: German;
-    -   ru: Russian;
-    -   sl: Slovene;
-    -   nl: Dutch;
-    -   it: Italy;
-    -   es: Spanish.
-    
-    Some of the actual wiki pages appear to have an 'illegal' language code, "eng-uk" for example, I *suspect* those are simply ignored.
--   Description: Pop up text when the link text is hovered over.
-    
-Examples::
-
-    [Quanta|http://www.quanta.org.uk|eng-uk|Quanta User Group]
-    
-    [web based forum|http://www.qlforum.co.uk]
-    
-The latter only has two of the four fields supplied.    
-    
-
-Wiki Links
-~~~~~~~~~~
-
-Cross page Wiki Links appear to only require the first field in the above. For example::
-
-    [Psion]
-    
-Will take you to the wiki page with the title of 'Psion'.
-
-Images
-------
-
-::
-
-    ((source|alt|align|long description|width|height|???)) 
-        
--   A pair of opening round brackets '(('
--   Followed by the source URL for the image and then a pipe character '|' 
--   The 'alt' text for the image and another pipe
--   The text "align=" followed by the double quoted alignment character (see below), then another pipe
--   The long descriptive text for the image and yet another pipe character
--   The image width in pixels as it will be displayed on the wiki page and yet another pipe 
--   Then the image height in pixels as it will be displayed 
--   Finally, a pair of closing brackets '))'.
-
-Except it's not quite 'finally' as some of the examples in the database have shown to have an extra attribute! See below.
-
-
-Alignment
-~~~~~~~~~
-
-Alignment is the word "align" followed by an equal sign '=' followed by a double quoted single character as follows:
-
--   "r", "R", "d" or "D" = Right/Droit.
--   "l", "L", "g" or "G" = Left/Gauche\ [#]_.
-
-The following example, extracted from the data, shows however an additional attribute, 'POPUP' tagged on at the end. I assume this means that clicking on the image will pop up a full sized image?
-
-::
-
-    ((http://www.rwapadventures.com/images/hardware/sinclair_ql.jpg|Sinclair QL Home Computer|align="L"|A Sinclair QL Home Computer|240|180|POPUP))
-    
-
-Videos
-------
-
-Only You Tube videos can be linked to, from the Wiki's pages. The format of a video link as as follows::
-    
-    (vid)youtube_webpage_address(/vid)
-    
-It's almost looking sort of like perhaps XML or HTML now!    
-
-
-Image Gallery
--------------
-
-::
-
-    %%dir|title|width|height%%
-
-*UNTESTED*
-
-It appears that a folder full of images can be displayed as an image gallery using the above format. One assumes, or at least I assume, that the directory is named, a title is used on the page, and the images are all displayed in the same width and height, assumed to be in pixels? I wonder what happens with a mixture of portrait and landscape images in the same folder?
-
-    
-Citations & References
+The next line is read from the input file, and the processing starts again but without writing out a list start variable.
+
+
+Building a Translation File
+===========================
+
+Translation Variables
+---------------------
+
+In order to convert the Wiki source code from one format, WiClear, to the desired output, a translation file is used. These files contain a number of translation variables, each holding specific translation text to be used when writing the output file.
+
+The following table lists all the currently used translation variables and gives a brief description of each.
+
++-----------------------------+-------------------------------------------------------+
+| Variable Name               | Description                                           |
++=============================+=======================================================+
+| CONV_ACRONYM_LINK           | Converts an acronym.                                  |
++-----------------------------+-------------------------------------------------------+
+| CONV_ANCHOR_LINK            | Converts an anchor.                                   |
++-----------------------------+-------------------------------------------------------+
+| CONV_BLOCK_QUOTE_LINE_OFF   | Starts a line of block quoted text.                   |
++-----------------------------+-------------------------------------------------------+
+| CONV_BLOCK_QUOTE_LINE_ON    | Ends  a line of block quoted text.                    |
++-----------------------------+-------------------------------------------------------+
+| CONV_BLOCK_QUOTE_POSTAMBLE  | Ends a block quoted text section/block.               |
++-----------------------------+-------------------------------------------------------+
+| CONV_BLOCK_QUOTE_PREAMBLE   | Starts a block quoted text section/block.             |
++-----------------------------+-------------------------------------------------------+
+| CONV_BOLD_OFF               | Turns bold off.                                       |
++-----------------------------+-------------------------------------------------------+
+| CONV_BOLD_ON                | Turns bold on.                                        |
++-----------------------------+-------------------------------------------------------+
+| CONV_CITATION_LINK          | Converts a citation with a source present.            |
++-----------------------------+-------------------------------------------------------+
+| CONV_CITATION_NOSOURCE_LINK | Converts a citation with no source present.           |
++-----------------------------+-------------------------------------------------------+
+| CONV_CODE_BLOCK_POSTAMBLE   | Ends a code block section/block.                      |
++-----------------------------+-------------------------------------------------------+
+| CONV_CODE_BLOCK_PREAMBLE    | Starts a code block section/block.                    |
++-----------------------------+-------------------------------------------------------+
+| CONV_CODE_LINE_OFF          | Ends a single line of a code block.                   |
++-----------------------------+-------------------------------------------------------+
+| CONV_CODE_LINE_ON           | Starts a single line of a code block.                 |
++-----------------------------+-------------------------------------------------------+
+| CONV_DEFN_LIST_DESC_OFF     | Ends the definition part of a definition list item.   |
++-----------------------------+-------------------------------------------------------+
+| CONV_DEFN_LIST_DESC_ON      | Starts the definition part of a definition list item. |
++-----------------------------+-------------------------------------------------------+
+| CONV_DEFN_LIST_POSTAMBLE    | Ends a definition list.                               |
++-----------------------------+-------------------------------------------------------+
+| CONV_DEFN_LIST_PREAMBLE     | Starts a definition list.                             |
++-----------------------------+-------------------------------------------------------+
+| CONV_DEFN_LIST_TERM_OFF     | Ends the term part of a definition list item.         |
++-----------------------------+-------------------------------------------------------+
+| CONV_DEFN_LIST_TERM_ON      | Starts the term part of a definition list item.       |
++-----------------------------+-------------------------------------------------------+
+| CONV_FORCE_LINE_FEED_OFF    | Ends a forced line feed.                              |
++-----------------------------+-------------------------------------------------------+
+| CONV_FORCE_LINE_FEED_ON     | Starts a forced line feed.                            |
++-----------------------------+-------------------------------------------------------+
+| CONV_H1_POSTAMBLE           | Ends a level 1 header.                                |
++-----------------------------+-------------------------------------------------------+
+| CONV_H1_PREAMBLE            | Starts a level 1 header.                              |
++-----------------------------+-------------------------------------------------------+
+| CONV_H2_POSTAMBLE           | Ends a level 2 header.                                |
++-----------------------------+-------------------------------------------------------+
+| CONV_H2_PREAMBLE            | Starts a level 2 header.                              |
++-----------------------------+-------------------------------------------------------+
+| CONV_H3_POSTAMBLE           | Ends a level 3 header.                                |
++-----------------------------+-------------------------------------------------------+
+| CONV_H3_PREAMBLE            | Starts a level 3 header.                              |
++-----------------------------+-------------------------------------------------------+
+| CONV_HR_OFF                 | Ends a horizontal rule.                               |
++-----------------------------+-------------------------------------------------------+
+| CONV_HR_ON                  | Starts a horizontal rule.                             |
++-----------------------------+-------------------------------------------------------+
+| CONV_IMAGE_LINK             | Converts an image link.                               |
++-----------------------------+-------------------------------------------------------+
+| CONV_INLINE_CODE_OFF        | Ends an inline code section.                          |
++-----------------------------+-------------------------------------------------------+
+| CONV_INLINE_CODE_ON         | Starts an inline code section.                        |
++-----------------------------+-------------------------------------------------------+
+| CONV_ITALIC_OFF             | Turns italic off.                                     |
++-----------------------------+-------------------------------------------------------+
+| CONV_ITALIC_ON              | Turns italic on.                                      |
++-----------------------------+-------------------------------------------------------+
+| CONV_LIST_OFF               | Ends an unordered list item.                          |
++-----------------------------+-------------------------------------------------------+
+| CONV_LIST_ON                | Starts an unordered list item.                        |
++-----------------------------+-------------------------------------------------------+
+| CONV_LIST_POSTAMBLE         | Ends an unordered list.                               |
++-----------------------------+-------------------------------------------------------+
+| CONV_LIST_PREAMBLE          | Starts an unordered list.                             |
++-----------------------------+-------------------------------------------------------+
+| CONV_NUM_LIST_OFF           | Ends an ordered list item.                            |
++-----------------------------+-------------------------------------------------------+
+| CONV_NUM_LIST_ON            | Starts an ordered list item.                          |
++-----------------------------+-------------------------------------------------------+
+| CONV_NUM_LIST_POSTAMBLE     | Ends an ordered list.                                 |
++-----------------------------+-------------------------------------------------------+
+| CONV_NUM_LIST_PREAMBLE      | Starts an ordered list.                               |
++-----------------------------+-------------------------------------------------------+
+| CONV_PARAGRAPH_POSTAMBLE    | Ends a single paragraph.                              |
++-----------------------------+-------------------------------------------------------+
+| CONV_PARAGRAPH_PREAMBLE     | Starts a single paragraph.                            |
++-----------------------------+-------------------------------------------------------+
+| CONV_POSTAMBLE              | Ends the entire file.                                 |
++-----------------------------+-------------------------------------------------------+
+| CONV_PREAMBLE               | Starts the entire file.                               |
++-----------------------------+-------------------------------------------------------+
+| CONV_REFERENCE_LINK         | Converts a reference.                                 |
++-----------------------------+-------------------------------------------------------+
+| CONV_TABLE_CELL_POSTAMBLE   | Ends a single table cell.                             |
++-----------------------------+-------------------------------------------------------+
+| CONV_TABLE_CELL_PREAMBLE    | Starts a single table cell.                           |
++-----------------------------+-------------------------------------------------------+
+| CONV_TABLE_POSTAMBLE        | Ends an entire table.                                 |
++-----------------------------+-------------------------------------------------------+
+| CONV_TABLE_PREAMBLE         | Starts an entire table.                               |
++-----------------------------+-------------------------------------------------------+
+| CONV_TABLE_ROW_POSTAMBLE    | Ends a single table row.                              |
++-----------------------------+-------------------------------------------------------+
+| CONV_TABLE_ROW_PREAMBLE     | Starts a single table row.                            |
++-----------------------------+-------------------------------------------------------+
+| CONV_URL_LINK               | Converts an http link.                                |
++-----------------------------+-------------------------------------------------------+
+| CONV_WIKI_LINK              | Converts a wiki page link.                            |
++-----------------------------+-------------------------------------------------------+
+| CONV_YOUTUBE_LINK           | Converts a link to a You Tube video.                  |
++-----------------------------+-------------------------------------------------------+
+
+
+
+Substitution Variables
 ----------------------
 
-*UNTESTED*
+Some, but not all, translation variables allow certain parts of the Wiki source text to be extracted and used in the translation text, perhaps in a different place or order. The following table lists all current substitution variables and shows the translation variables that are permitted to use them.
 
-A citation has the following format::
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| Variable Name     | Used in                     | Description                                                         |
++===================+=============================+=====================================================================+
+| %ACRONYM%         | CONV_ACRONYM_LINK           | The acronym part of a Wiki acronym.                                 |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %ALIGN%           | CONV_IMAGE_LINK             | Alignment code for an image, one letter from 'lLgG' or 'rRdD'.      |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %ALIGN_EXPAND%    | CONV_IMAGE_LINK             | Expanded alignment for an image, left, right.                       |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %ALT_TEXT%        | CONV_IMAGE_LINK             | ALT text for an image.                                              |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %ANCHOR%          | CONV_ANCHOR_LINK            | The anchor text for a Wiki anchor.                                  |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %CITATION%        | CONV_CITATION_LINK          | The citation text in a citation with source text.                   |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %CITATION%        | CONV_CITATION_NOSOURCE_LINK | The citation text in a citation with no source text.                |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %COMPRESSED_NAME% | CONV_WIKI_LINK              | The Wiki page name with spaces and punctuation replaced by hyphens. |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %HEIGHT%          | CONV_IMAGE_LINK             | Height of an image.                                                 |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %LANGUAGE%        | CONV_URL_LINK               | The language code, two letters, for a URL. Not likely to be used.   |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %LINK_TEXT%       | CONV_URL_LINK               | The text to be displayed as a clickable link in a URL.              |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %LONG_DESC%       | CONV_IMAGE_LINK             | Popup text when image hovered over. Long description of an image.   |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %PAGE_NAME%       | CONV_WIKI_LINK              | The Wiki page name.                                                 |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %REFERENCE%       | CONV_REFERENCE_LINK         | The text of a Wiki reference.                                       |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %SOURCE%          | CONV_CITATION_LINK          | The source of a citation. May not always be present.                |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %SRC%             | CONV_IMAGE_LINK             | Source URL of an image.                                             |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %TITLE%           | CONV_PREAMBLE               | The title of a Wiki Page file. Taken from the input filename.       |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %TITLE_TEXT%      | CONV_ACRONYM_LINK           | The explanation text of a Wiki acronym.                             |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %TITLE_TEXT%      | CONV_ANCHOR_LINK            | The title text for a Wiki anchor.                                   |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %TITLE_TEXT%      | CONV_URL_LINK               | The popup text for a hovered URL link.                              |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %URL%             | CONV_URL_LINK               | The web address to be linked to in a URL.                           |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %URL%             | CONV_YOUTUBE_LINK           | The URL for a You Tube video.                                       |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %VIDEO_ID%        | CONV_YOUTUBE_LINK           | The video id extracted from a You Tube URL after ``?v=``.           |
++-------------------+-----------------------------+---------------------------------------------------------------------+
+| %WIDTH%           | CONV_IMAGE_LINK             | Width of an image.                                                  |
++-------------------+-----------------------------+---------------------------------------------------------------------+
 
-    ^^sentence|source link^^
 
-While a reference will have the following format::    
-    
-    {{reference}}
-
-What, exactly, is the reference referencing? If it's a citation, how does the reference reference the citation? By the sentence part?    
-
-Maybe it's referring to an anchor? See below.
-
-
-Acronyms
---------
-
-*UNTESTED*
-
-Acromyms have the following format::
-
-    ??acronym|signification??
-    
-How one uses them in a Wiki page is as yet, unclear. I assume something like::
-
-    ??SQL|Structured Query Language?? is an unstructured query language that allows us to interrogate relational databases.
-
-I suspect that the text of the acronym, 'SQL' in this case, is inserted into the sentence on the wiki page, but the text 'Structured Query language' will only appear when 'SQL' is hovered over. That's how it works on other wikis anyway.
++-------------------+---------------------------------------------------------------------+
+| Variable Name     | Description,                                                        |
++===================+=====================================================================+
+| %ACRONYM%         | The acronym part of a Wiki acronym. Used in                         |
+|                   | CONV_ACRONYM_LINK.                                                  |
++-------------------+---------------------------------------------------------------------+
+| %WIDTH%           | Width of an image. Used in CONV_ACRONYM_LINK.                       |
++-------------------+---------------------------------------------------------------------+
 
 
-Anchors
--------
-
-*UNTESTED*
-
-Anchors have the following format::
-
-    ~~anchor|title~~
-
-How one uses them in a Wiki page is as yet, unclear, perhaps a reference is used to reference the anchor?
 
 
-Redirection
------------
 
 
-*UNTESTED*
 
-A redirection is simply this::
-
-    &url&
-
-
-Raw HTML
---------
-
-Raw HTML can be included in a wiki page simply 'as is':
-
-    <b>This is bold HTML text</b>
-
-    
-..  [#] Not that that's a bad thing!
-..  [#] This might be a bad thing as there *must surely* have been security problems since 2007 that should be fixed?
-..  [#] The author of WiClear is French, hence the use of 'Droit' and 'Gauche' for Left and Right! At least he allowed us English speakers to use 'L' and 'R'!
