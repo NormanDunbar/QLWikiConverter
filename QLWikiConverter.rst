@@ -116,7 +116,7 @@ Linux
 
 It is assumed that you are located in the directory where you have the ``Pages`` and the ``HTML`` directories. Type the following at the prompt to convert everything in ``Pages`` in the English language to an HTML file in the ``HTML`` directory:
 
-..  code-block:: none
+..  code-block:: bash
 
     for x in `ls Pages/*.en.txt`
     do
@@ -135,7 +135,7 @@ This is definitely not as simple as it is on Linux!
 
 First we need a small batch file to do the conversion for a single file, this is ``PageIt.cmd``:
 
-..  code-block:: none
+..  code-block:: batch
 
     @echo off
     
@@ -147,7 +147,7 @@ We need this file because a ``FOR /F`` loop in Windows doesn't seem to be able t
 
 Now we need a loop to read the files from the ``Pages`` directory, and convert each one by calling the ``PageIt.cmd`` file created above. **Warning**: The following *only* works if you are typing directly into a command window:
 
-..  code-block:: none
+..  code-block:: batch
 
     for /F "usebackq tokens=1" %F in (`dir /B Pages\*.en.txt`) do (PageIt.cmd %F)
 
@@ -157,7 +157,7 @@ Did I mention that ``%F`` above is case sensitive? You must use the same case ea
     
 If you want to do the above in a command file, then create one, ``PageAll.cmd`` for example, with the following command in it:
 
-..  code-block:: none
+..  code-block:: batch
 
     for /F "usebackq tokens=1" %%F in (`dir /B Pages\*.en.txt`) do (PageIt.cmd %%F)
     
@@ -211,7 +211,7 @@ Equally, the description for an image (the text that appears when you hover over
 
 If you decide to download the individual images locally, you will obviously need to edit the generated HTML files to change the "src=" attribute on the "<img>" tags accordingly. Please look in the IMAGES/wget_list.txt file for a full list of all the images that are linked to in the QL Wiki (as of 28th July 2017.) This file can be used as follows:
 
-..  code-block:: none
+..  code-block:: bash
 
     mkdir Images
     cd Images
@@ -336,7 +336,7 @@ All we do with each of the lines is to strip off the leading '>' and convert it 
 
 ..  code-block:: none
 
-    <CONV_BLOCK_QUOTE_PREAMBLE><CONV_BLOCK_QUOTE_LINE_ON> ... <CONV_BLOCK_QUOTE_LINE_OFF><CONV_BLOCK_QUOTE_POSTAMBLE>
+    <CONV_BLOCK_QUOTE_PREAMBLE> <CONV_BLOCK_QUOTE_LINE_ON> ... <CONV_BLOCK_QUOTE_LINE_OFF> <CONV_BLOCK_QUOTE_POSTAMBLE>
     
 Where '...' represents the block quoted text.
 
@@ -344,7 +344,7 @@ Where '...' represents the block quoted text.
 
 We have two prefix variables and two suffix variables to content with as some output formats may require an prefix/suffix for the block quote, and an prefix/suffix for each line of text within. HTML requires this, as follows:
 
-..  code-block:: none
+..  code-block:: html
 
     <blockquote><p> Your text </p></blockquote>
 
@@ -404,7 +404,7 @@ In the example HTML translation, this code:
 
 will be translated to the following HTML:
 
-..  code-block:: none
+..  code-block:: html
 
     <pre>
     1000 CLS
@@ -462,7 +462,7 @@ In the HTML example translation, the following code:
 
 Will be translated to this HTML:
 
-..  code-block:: none
+..  code-block:: html
 
     <table border="1">
     <tr><td>Cell 1</td><td>Cell 2</td><td>Cell 3</td></tr>
@@ -585,7 +585,7 @@ The example HTML translation file for the following text:
     
 Will output the following HTML:
 
-..  code-block:: HTML
+..  code-block:: html
   
     <a href="Dilwyn-Jones.html">Dilwyn Jones</a>
 
@@ -597,8 +597,50 @@ See the section on *Problem Areas Identified* for more details.
 
 See also, the section on *WikiPager* for details of how that utility splits the database content into separate page files, each named after the page name in the database.
 
-URL Links
-"""""""""
+HTTP Links
+""""""""""
+
+An HTTP link, in the Wiki source, is defined as follows:
+
+..  code-block:: none
+
+    [link_text | url | language | title_text]
+    
+Of these, only the first two fields are mandatory, the rest are optional. The link_text is what will appear in the Wiki page and can be clicked on to open the link specified in the url field. Language is used by the Wiki itself and is not normally used on "normal" web pages and the title_text is what appears in a pop-up when you hover over the link_text.  
+
+The translation variable used to convert the above into the output format is named ``CONV_URL_LINK`` and the following substitution variables are permitted:
+
+-   %LINK_TEXT% which is the link_text on the generated page.
+-   %URL% which is the url to be opened when the link_text is clicked.
+-   %LANGUAGE% which is the language code, and unlikely to be useful.
+-   %TITLE_TEXT% which is the pop-up text when hovered over.
+
+
+The following link in the Wiki source:
+
+..  code-block:: none
+
+    [Quanta|http://www.quanta.org.uk|en|Quanta User Group]
+
+will be output as follows by the example HTML translation file:
+
+..  code-block:: html
+
+    <a href="http://www.quanta.org.uk" title="Quanta User Group">Quanta</a>
+    
+While the following source text, which only has two of the four fields:
+
+..  code-block:: none
+
+    [QL Forum|http://www.qlforum.co.uk]
+    
+Will be output as:
+
+..  code-block:: html
+
+    <a href="http://www.qlforum.co.uk" title="%TITLE_TXT%">QL Forum</a>
+
+Which is not exactly wonderful, but does work.  (Just don't hover over the link too long!)  
 
 You Tube Video Links
 """"""""""""""""""""
@@ -624,7 +666,7 @@ So far, all the video links in the Wiki are of the format:
 
 And these are converted to the following, by the translation variable named ``CONV_YOUTUBE_LINK``:
 
-..  code-block:: HTML
+..  code-block:: html
 
     <iframe width="30%" height="30%" src="https://youtube.com/embed/%VIDEO_ID%" frameborder="1" allowfullscreen></iframe>
     
@@ -756,7 +798,41 @@ There can be more than one acronym per line, but acronyms must fully exist on a 
 
 Images
 ~~~~~~
+An image, in the Wiki source, is defined as follows:
 
+..  code-block:: none
+
+    ((source | alt | align | long_description | width | height | ???))
+    
+Of these, only the first field is mandatory, the rest are optional. 
+
+The source is the URL, somewhere on the internet, where the actual image file can be found. Images in the Wiki are all links to a URL and are not loaded from local (to the server) storage. Alt is the alt text for the image, align is a single character that defines left or right alignment, case is ignored and valid values are taken from 'lLgG' for left and 'rRdD' for right. The Wiki author is French and allows French 'Droit' and 'Gauche' as well as English.
+
+The long_description is either some text the describes the image, or the URL of a text file, somewhere on the internet, where the descriptive text is to be found. Width and height define how the image will be displayed on the Wiki page, when viewed in a browser, and ??? is an undocumented field that appears to accept the text "POPUP" and opens the image, if clicked, in a separate window. This field is unused in ``rwapWiki``.
+
+The translation variable used to convert the above into the output format is named ``CONV_IMAGE_LINK`` and the following substitution variables are permitted:
+
+-   %SRC% which is the url where the actual image file is found.
+-   %ALT_TEXT% which is the alt text for the image, if present.
+-   %ALIGN% which is the single character alignment text, if present. 
+-   %LONG_DESC% which is the URL or the actual text for the long_description of the image, if present.
+-   %WIDTH% which is the requested width of the image, if present.
+-   %HEIGHT% which is the requested height of the image, if present.
+-   %ALIGN_EXPAND% which is the expansion of the %ALIGN% into "left" or "right" as appropriate.
+
+The following link in the Wiki source:
+
+..  code-block:: none
+
+    ((http://www.rwapadventures.com/images/hardware/sinclair_ql.jpg|Sinclair QL Home Computer|align="L"|A Sinclair QL Home Computer|240|180|POPUP))
+
+will be output as follows by the example HTML translation file:
+
+..  code-block:: html
+
+    <a href="http://www.rwapadventures.com/images/hardware/sinclair_ql.jpg" title="A Sinclair QL Home Computer"><img src="http://www.rwapadventures.com/images/hardware/sinclair_ql.jpg" alt="A Sinclair QL Home Computer" width="240" height="180" border="0" align="L"></a>
+
+You can hopefully see that in the example translation file, the image in the Wiki is translated into an HTML ``<IMG>`` tag, embedded within an ``<A>`` tag, to give a clickable image in the generated HTML, which simply displays the image on a page of it's own if clicked.    
 
 Lists
 -----
@@ -995,78 +1071,530 @@ The following table lists all the currently used translation variables and gives
 | CONV_YOUTUBE_LINK           | Converts a link to a You Tube video.                  |
 +-----------------------------+-------------------------------------------------------+
 
+In order to create (or edit) a translation file, you must define all of the above. To make life easier for you, there is a blank template file which has all of these present, and has brief explanations of each one.
 
+The substitution text must follow an equal sign, and must (currently) be all on a single line, as per the following examples:
+
+..  code-block:: none
+
+    CONV_PREAMBLE=<html><head><title>Sinclair QL Wiki</title><meta charset="UTF-8"></head><body><h1>%TITLE%</h1>
+    CONV_POSTAMBLE=</body></html>
+    
+These examples are used at the very beginning of a translation, and at the very end. They are taken from the HTML translation file which needs all of these fields to be present in a page. You can see that the preamble uses a substitution variable named ``%TITLE%`` which gets created by ``rwapWiki`` from the input file name by replacing all hyphens in the file name with spaces - which is the opposite (almost) of how the file was created from the original page title anyway. (It works - *most* of the time!)
 
 Substitution Variables
 ----------------------
 
 Some, but not all, translation variables allow certain parts of the Wiki source text to be extracted and used in the translation text, perhaps in a different place or order. The following table lists all current substitution variables and shows the translation variables that are permitted to use them.
 
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| Variable Name     | Used in                     | Description                                                         |
-+===================+=============================+=====================================================================+
-| %ACRONYM%         | CONV_ACRONYM_LINK           | The acronym part of a Wiki acronym.                                 |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %ALIGN%           | CONV_IMAGE_LINK             | Alignment code for an image, one letter from 'lLgG' or 'rRdD'.      |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %ALIGN_EXPAND%    | CONV_IMAGE_LINK             | Expanded alignment for an image, left, right.                       |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %ALT_TEXT%        | CONV_IMAGE_LINK             | ALT text for an image.                                              |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %ANCHOR%          | CONV_ANCHOR_LINK            | The anchor text for a Wiki anchor.                                  |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %CITATION%        | CONV_CITATION_LINK          | The citation text in a citation with source text.                   |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %CITATION%        | CONV_CITATION_NOSOURCE_LINK | The citation text in a citation with no source text.                |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %COMPRESSED_NAME% | CONV_WIKI_LINK              | The Wiki page name with spaces and punctuation replaced by hyphens. |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %HEIGHT%          | CONV_IMAGE_LINK             | Height of an image.                                                 |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %LANGUAGE%        | CONV_URL_LINK               | The language code, two letters, for a URL. Not likely to be used.   |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %LINK_TEXT%       | CONV_URL_LINK               | The text to be displayed as a clickable link in a URL.              |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %LONG_DESC%       | CONV_IMAGE_LINK             | Popup text when image hovered over. Long description of an image.   |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %PAGE_NAME%       | CONV_WIKI_LINK              | The Wiki page name.                                                 |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %REFERENCE%       | CONV_REFERENCE_LINK         | The text of a Wiki reference.                                       |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %SOURCE%          | CONV_CITATION_LINK          | The source of a citation. May not always be present.                |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %SRC%             | CONV_IMAGE_LINK             | Source URL of an image.                                             |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %TITLE%           | CONV_PREAMBLE               | The title of a Wiki Page file. Taken from the input filename.       |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %TITLE_TEXT%      | CONV_ACRONYM_LINK           | The explanation text of a Wiki acronym.                             |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %TITLE_TEXT%      | CONV_ANCHOR_LINK            | The title text for a Wiki anchor.                                   |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %TITLE_TEXT%      | CONV_URL_LINK               | The popup text for a hovered URL link.                              |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %URL%             | CONV_URL_LINK               | The web address to be linked to in a URL.                           |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %URL%             | CONV_YOUTUBE_LINK           | The URL for a You Tube video.                                       |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %VIDEO_ID%        | CONV_YOUTUBE_LINK           | The video id extracted from a You Tube URL after ``?v=``.           |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-| %WIDTH%           | CONV_IMAGE_LINK             | Width of an image.                                                  |
-+-------------------+-----------------------------+---------------------------------------------------------------------+
-
+In the following table, please be aware that the substitution variables are surrounded by percent signs (%) when used in the translation files. The percent signs are not shown below.
 
 +-------------------+---------------------------------------------------------------------+
-| Variable Name     | Description,                                                        |
+| Variable Name     | Description                                                         |
 +===================+=====================================================================+
-| %ACRONYM%         | The acronym part of a Wiki acronym. Used in                         |
-|                   | CONV_ACRONYM_LINK.                                                  |
+| ACRONYM           | The acronym part of a Wiki acronym. Used in CONV_ACRONYM_LINK.      |
 +-------------------+---------------------------------------------------------------------+
-| %WIDTH%           | Width of an image. Used in CONV_ACRONYM_LINK.                       |
+| ALIGN             | Alignment code for an image, one letter from 'lLgG' or 'rRdD'.      |
+|                   | Used in CONV_IMAGE_LINK.                                            |
++-------------------+---------------------------------------------------------------------+
+| ALIGN_EXPAND      | Expanded alignment for an image, left, right.                       |
+|                   | Used in CONV_IMAGE_LINK.                                            |
++-------------------+---------------------------------------------------------------------+
+| ALT_TEXT          | ALT text for an image. Used in CONV_IMAGE_LINK.                     |
++-------------------+---------------------------------------------------------------------+
+| ANCHOR            | The anchor text for a Wiki anchor. Used in CONV_ANCHOR_LINK.        |
++-------------------+---------------------------------------------------------------------+
+| CITATION          | The citation text in a citation with source text. Used in           |
+|                   | CONV_CITATION_LINK and CONV_CITATION_NOSOURCE_LINK.                 |
++-------------------+---------------------------------------------------------------------+
+| COMPRESSED_NAME   | The Wiki page name with spaces and punctuation replaced by hyphens. |
+|                   | Used in CONV_WIKI_LINK.                                             |
++-------------------+---------------------------------------------------------------------+
+| HEIGHT            | Height of an image. Used in CONV_IMAGE_LINK.                        |
++-------------------+---------------------------------------------------------------------+
+| LANGUAGE          | The language code, two letters, for a URL. Not likely to be used.   |
+|                   | Used in CONV_URL_LINK.                                              |
++-------------------+---------------------------------------------------------------------+
+| LINK_TEXT         | The text to be displayed as a clickable link in a URL. Used in      |
+|                   | CONV_URL_LINK.                                                      |
++-------------------+---------------------------------------------------------------------+
+| LONG_DESC         | Popup text when image hovered over. Long description of an image.   |
+|                   | Used in CONV_IMAGE_LINK.                                            |
++-------------------+---------------------------------------------------------------------+
+| PAGE_NAME         | The Wiki page name. Used in CONV_WIKI_LINK.                         |
++-------------------+---------------------------------------------------------------------+
+| REFERENCE         | The text of a Wiki reference. Used in CONV_REFERENCE_LINK.          |
++-------------------+---------------------------------------------------------------------+
+| SOURCE            | The source of a citation. May not always be present. Used in        |
+|                   | CONV_CITATION_LINK.                                                 |
++-------------------+---------------------------------------------------------------------+
+| SRC               | Source URL of an image. Used in CONV_IMAGE_LINK.                    |
++-------------------+---------------------------------------------------------------------+
+| TITLE             | The title of a Wiki Page file. Taken from the input filename. Used  |
+|                   | in CONV_PREAMBLE.                                                   |
++-------------------+---------------------------------------------------------------------+
+| TITLE_TEXT        | The explanation text of a Wiki acronym. Used in CONV_ACRONYM_LINK.  |
++-------------------+---------------------------------------------------------------------+
+| TITLE_TEXT        | The title text for a Wiki anchor. Used in CONV_ANCHOR_LINK.         |
++-------------------+---------------------------------------------------------------------+
+| TITLE_TEXT        | The popup text for a hovered URL link. Used in CONV_URL_LINK.       |
++-------------------+---------------------------------------------------------------------+
+| URL               | The web address to be linked to in a URL.  Used in CONV_URL_LINK.   |
++-------------------+---------------------------------------------------------------------+
+| URL               | The URL for a You Tube video.  Used in CONV_YOUTUBE_LINK.           |
++-------------------+---------------------------------------------------------------------+
+| VIDEO_ID          | The video id extracted from a You Tube URL after ``?v=``. Used in   |
+|                   | CONV_YOUTUBE_LINK.                                                  |
++-------------------+---------------------------------------------------------------------+
+| WIDTH             | Width of an image. Used in CONV_IMAGE_LINK.                         |
 +-------------------+---------------------------------------------------------------------+
 
 
+Wiki Source Formatting
+----------------------
+
+So that you can relate the above variables to what the code in the Wiki source requires, the following table should make things clear. It shows the actual formatting required by the Wiki source code in order to generate a particular feature of the rendered Wiki pages when viewed in your browser. Where permitted, the substitution variables in the table above, will be shown.
+
+In the following:
+
+-   The text ``'(*)'`` indicates an optional repetition of the previous character. ``'===(*)='`` means a minimum of 3 equal signs, then zero or more equal signs, followed by one equal sign, giving, a minimum of 4 and a maximum of however many you like. 
+-   <EOL> indicates the end of the line.
+-   Anything that does not have <EOL> implies that the feature can wrap onto subsequent lines. Bold text, for example.
+-   Forced linefeeds obviously cannot wrap!
+-   Image Galleries and redirections are not able to be converted, at present, but do not exist in the Wiki anyway.
+-   Table rows can have as many cells as required, the final cell is terminated by <EOL> and not by a '|' character.
+-   Where multiple fields exists for a feature, and some fields are optional, those are marked as :sup:`OPT`. Where optional fields exists, the separator character preceding that field must not be present if the field is missing. All following fields are missing too, where more than one exist. (there is no option for positional fields, only in-line.)
+-   Where multiple fields are available, but some are unused by the translation utility, these are marked as :sup:`unused`.
+-   Wiki Features that are not supported by the utility are marked as :sup:`NS`\ .
+-   Images also have an additional variable named ``%ALIGN_EXPAND%`` which is not shown below.
+-   Wiki Pages also have an additional variable named ``%COMPRESSED_NAME%`` which is not shown below.
+
+..  COMMENT TO SELF. In the following table, I'm able to use pipe characters (|) even though they are required by the table formatting text. This can be done by escaping only the FIRST one on a line of table text, which seems to work, but it also works if I escape all of the ones that should not be deemed to be cell separators. Just to be explicit though, I escaped them all! If you miss one, it throws the table formatting right out the window in PDF output from Pandoc.
+    
+
++--------------------------+-------------------------------------------------------------+
+| Wiki Feature             | Usage in Wiki Source                                        |
++==========================+=============================================================+
+| Acronym                  | ?? %ACRONYM% \| %TITLE_TEXT% ??                             |
++--------------------------+-------------------------------------------------------------+
+| Anchor                   | --- %ANCHOR% \| %TITLE_TEXT% --- (Two hyphens)              |
++--------------------------+-------------------------------------------------------------+
+| Block Quote              | > Text line <EOL>                                           |
++--------------------------+-------------------------------------------------------------+
+| Bold Text                | __ Text to embolden __                                      |
++--------------------------+-------------------------------------------------------------+
+| Citation                 | ^^ %CITATION% \| %SOURCE%\ :sup:`OPT` ^^                    |
++--------------------------+-------------------------------------------------------------+
+| Code Block               | <SPACE> One code line <EOL>                                 |
++--------------------------+-------------------------------------------------------------+
+| Definition List          | ; term : definition <EOL>                                   |
++--------------------------+-------------------------------------------------------------+
+| Forced Linefeed          | Text before linefeed %%% Text after                         |
++--------------------------+-------------------------------------------------------------+
+| HTTP Link                | [%LINK_TEXT% \| %URL% \| %LANGUAGE%\ :sup:`OPT`             |
+|                          | \| %TITLE_TEXT%\ :sup:`OPT`]                                |
++--------------------------+-------------------------------------------------------------+
+| Heading 1                | !!! Heading text <EOL>                                      |
++--------------------------+-------------------------------------------------------------+
+| Heading 2                | !! Heading text <EOL>                                       |
++--------------------------+-------------------------------------------------------------+
+| Heading 3                | ! Heading text <EOL>                                        |
++--------------------------+-------------------------------------------------------------+
+| Horizontal Rule          | ====(*)= <EOL>                                              |
++--------------------------+-------------------------------------------------------------+
+| Image                    | ((%SRC% \| %ALT_TEXT%\ :sup:`OPT` \| %ALIGN%\ :sup:`OPT` \| |
+|                          | %LONG_DESC%\ :sup:`OPT` \| %WIDTH%\ :sup:`OPT` \|           |
+|                          | %HEIGHT%\ :sup:`OPT` \| popup\ :sup:`unused`))              |
++--------------------------+-------------------------------------------------------------+
+| Image Gallery\ :sup:`NS` | %% folder \| title \| width \| height %%                    |
++--------------------------+-------------------------------------------------------------+
+| Inline Code              | @@ code text @@                                             |
++--------------------------+-------------------------------------------------------------+
+| Italic Text              | __ Text to italicise __                                     |
++--------------------------+-------------------------------------------------------------+
+| Ordered List             | #(*) List Item <EOL>                                        |
++--------------------------+-------------------------------------------------------------+
+| Paragraph                | Lines of text, separated by a double <EOL>.                 |
++--------------------------+-------------------------------------------------------------+
+| Redirection\ :sup:`NS`   | & url &                                                     |
++--------------------------+-------------------------------------------------------------+
+| Reference                | {{ %REFERENCE% }}                                           |
++--------------------------+-------------------------------------------------------------+
+| Table Row                | \| Cell Text \| Cell Text \| ... \| Cell Text <EOL>         |
++--------------------------+-------------------------------------------------------------+
+| Unordered List           | \*(*) List Item <EOL>                                       |
++--------------------------+-------------------------------------------------------------+
+| Unordered List           | -(*) List Item <EOL>                                        |
++--------------------------+-------------------------------------------------------------+
+| Wiki Page Link           | [%PAGE_NAME%]                                               |
++--------------------------+-------------------------------------------------------------+
+| You Tube Video           | (vid) %URL% (/vid)                                          |
++--------------------------+-------------------------------------------------------------+
+
+A Worked Example - DokuWiki
+---------------------------
+
+`DokuWiki <https://www.dokuwiki.org/>`_ is a well known, and supported, Wiki system that uses plain text files as it's "database". These files contain different features to those in WiClear, but may of them are similar. Let's create a file named convert.DOKUWIKI.txt to translate our WiClear page files to (hopefully) DokuWiki format.
+
+DokuWiki's syntax is documented, on a DokuWiki wiki of course, `here <https://www.dokuwiki.org/wiki:syntax>`_.
+
+Page Preamble & Postamble
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DokuWiki pages do not normally need any preamble or postamble, so these can be left blank, as follows:
+
+..  code-block:: none
+
+    CONV_PREAMBLE=
+    CONV_POSTAMBLE=
+    
+However, any page with more than three headings in it, will generate a small table of contents at the top of the page. If you do not want these TOCs to be created, there is a special code to disable them, and this can be set in ``CONV_PREAMBLE`` as follows:
+
+..  code-block:: none
+
+    CONV_PREAMBLE=~~NOTOC~~ 
+    
+Acronym
+~~~~~~~
+
+..  code-block:: none
+
+Anchor
+~~~~~~
+
+..  code-block:: none
+
+Block Quote
+~~~~~~~~~~~
+Block quote text is the same in DokuWiki as it is in WiClear. The following will allow translation to take place:
+
+..  code-block:: none
+
+    CONV_BLOCK_QUOTE_PREAMBLE=
+    CONV_BLOCK_QUOTE_POSTAMBLE=
+    CONV_BLOCK_QUOTE_LINE_ON=>
+    CONV_BLOCK_QUOTE_LINE_OFF=
+    
+You should just about be able to see a '>' at the end of the third line.    
+
+Bold Text
+~~~~~~~~~
+Italic text simply wraps the text to be emboldened in a pair of asterisks. We can define our bold text settings as follows:
+
+..  code-block:: none
+
+    CONV_BOLD_ON=**
+    CONV_BOLD_OFF=**
+
+Citation
+~~~~~~~~
+
+..  code-block:: none
+
+Code Block
+~~~~~~~~~~
+For best results, use the DokuWiki ``<code>`` and ``</code>`` tags to delimit code blocks. You only need one of each, the code lines themselves do not need any special formatting. This gives us the following in our translation file:
+
+..  code-block:: none
+
+    CONV_CODE_BLOCK_PREAMBLE=<code>
+    CONV_CODE_BLOCK_POSTAMBLE=</code>
+    CONV_CODE_LINE_ON=
+    CONV_CODE_LINE_OFF=
+
+You can also use a pair of spaces on each code line to format them as a code block, so in that case, your translation file would need the following, where the spaces are replaced by underscores to make them visible:
+
+..  code-block:: none
+
+    CONV_CODE_BLOCK_PREAMBLE=
+    CONV_CODE_BLOCK_POSTAMBLE=
+    CONV_CODE_LINE_ON=__
+    CONV_CODE_LINE_OFF=
+
+The underscores, representing spaces, are on the third line only, the rest are blank.
+
+Having used DokuWiki for many years, I can thoroughly recommend the use of ``CONV_CODE_BLOCK_PREAMBLE`` and ``CONV_CODE_BLOCK_POSTAMBLE`` instead of doing things with leading spaces.
+
+DokuWiki can also highlight source code when you use the ``<code>`` form of rendering code lines. There are a lot of supported highlighting styles as listed on the `syntax page <https://www.dokuwiki.org/wiki:syntax#syntax_highlighting>`_. You might wish to edit t he generated file(s) to add highlighting, or if you know that all code examples are the same, just set something like this:
+
+..  code-block:: none
+
+    CONV_CODE_BLOCK_PREAMBLE=<code cobol>
+    CONV_CODE_BLOCK_POSTAMBLE=</code>
+    CONV_CODE_LINE_ON=
+    CONV_CODE_LINE_OFF=
+
+Yes, I know, COBOL! Well, it's what I started my IT professional life doing and it's still in use - just not much on the QL Wiki! There are 257 different languages that can be styled at the time of writing, and there is even one for 'zxbasic'.
+
+Definition List
+~~~~~~~~~~~~~~~
+
+..  code-block:: none
+
+Forced Linefeed
+~~~~~~~~~~~~~~~
+
+DokuWiki uses a double backslash to force a linefeed, but this has a foible in that it must be either:
+
+-   At the end of a line; or
+-   Followed by at least one whitespace character. (space, tab etc).
 
 
+..  code-block:: none
+
+    CONV_FORCE_LINE_FEED_ON=\\
+    CONV_FORCE_LINE_FEED_OFF=_
+
+There's a single space at the end of the ``CONV_FORCE_LINE_FEED_OFF``, however, I'm showing it above as an underscore to make it visible.  That should make sure that all our forced linefeeds do, at least, have a following space.
+    
+HTTP Link
+~~~~~~~~~
+External links, which are links to other web pages, are similar in DokuWiki to the WiClear syntax. The only difference is that DokuWiki uses '[[' and ']]' rather than '[' and ']'. In addition, only the URL and the link text are permitted in DokuWiki. The following will set up external links correctly:
+
+..  code-block:: none
+
+    CONV_URL_LINK=[[%URL%"|%LINK_TEXT%]]
+
+Heading 1
+~~~~~~~~~
+Level 1 headings appear on a line surrounded by 6 equals signs, so we need to set up the following:
+
+..  code-block:: none
+
+    CONV_H1_PREAMBLE=======
+    CONV_H1_POSTAMBLE=======
+    
+Yes, it looks like there are 7 equals signs, but the first will be used as the separator. You can add spaces if you wish, as follows:
+
+..  code-block:: none
+
+    CONV_H1_PREAMBLE= ======
+    CONV_H1_POSTAMBLE= ======
+    
+Heading 2
+~~~~~~~~~
+Level 2 headings appear on a line surrounded by 5 equals signs, so we need to set up the following:
+
+..  code-block:: none
+
+    CONV_H2_PREAMBLE======
+    CONV_H2_POSTAMBLE======
+    
+Yes, it looks like there are 6 equals signs, but the first will be used as the separator.  You can add spaces if you wish, as follows:
+
+..  code-block:: none
+
+    CONV_H2_PREAMBLE= =====
+    CONV_H2_POSTAMBLE= =====
+
+Heading 3
+~~~~~~~~~
+Level 1 headings appear on a line surrounded by 4 equals signs, so we need to set up the following:
+
+..  code-block:: none
+
+    CONV_H3_PREAMBLE======
+    CONV_H3_POSTAMBLE======
+    
+Yes, it looks like there are 5 equals signs, but the first will be used as the separator.  You can add spaces if you wish, as follows:
+
+..  code-block:: none
+
+    CONV_H3_PREAMBLE= ====
+    CONV_H3_POSTAMBLE= ====
 
 
+Horizontal Rule
+~~~~~~~~~~~~~~~
+DokuWiki uses 4 (or more) hyphens at the start of a line to create a horizontal rule. This means that we simply do the following to get a valid translation:
+
+..  code-block:: none
+
+    CONV_HR_ON=----
+    CONV_HR_OFF=
+
+As with headings, a leading space is permitted, so the above could be specified as follows, to make reading easier on the eye:
+
+..  code-block:: none
+
+    CONV_HR_ON= ----
+    CONV_HR_OFF=
+    
+Image
+~~~~~
+Images in DokuWiki can be embedded as actual images - but these need to be uploaded first, or as links in a manner similar to the WiClear wiki. Sadly, however, alignment of images is a little difficult in DokuWiki as it uses spaces to align left, right or centre (which WiClear doesn't appear to do). The following methods are available for embedding an image:
+
+..  code-block:: none
+
+    {{URL}}
+    {{URL|Tooltip Text}}
+    {{URL?width x height|Tooltip Text}}
+    
+There are others, you can read about them on the `DokuWiki syntax page <https://www.dokuwiki.org/wiki:syntax>`_ if you need additional features.
+
+The first option simply embeds the image and if hovered over, will display the URL of the image. The second does the same, but when hovered over, displays a descriptive text in a pop-up tooltip window. The final option does the same, but resizes the image to the supplied width and height. Note, there should be no spaces between the width, the 'x' and the height.
+
+To set those up in our translation file, we would use the following three options, to correspond to the above:
+
+..  code-block:: none
+
+    CONV_IMAGE_LINK={{%SRC%}}
+    CONV_IMAGE_LINK={{%SRC%|%LONG_DESC%}}
+    CONV_IMAGE_LINK={{%SRC%?%WIDTH%x%HEIGHT%|%LONG_DESC%}}
+    
+As mentioned, image alignment is done using whitespace before and/or after the '{{' or '}}' characters. As with table cells (See below), the image is aligned by putting the spaces on the side the image should be 'padded' on. So add spaces on the left to aligne right, add  spaces on the right to align left, and add them on both sides to align centrally.
+
+..  code-block:: none
+
+    CONV_IMAGE_LINK={{%SRC%?%WIDTH%x%HEIGHT%|Left Aligned Image  }}
+    CONV_IMAGE_LINK={{  %SRC%?%WIDTH%x%HEIGHT%|Right Aligned Image}}
+    CONV_IMAGE_LINK={{  %SRC%?%WIDTH%x%HEIGHT%|Centred Image  }}
+
+However, from testing, it appears that a centrally aligned image, which has a tooltip present, will actually align on the right. Scaling and sizing still work though.Perchance, a bug! The following works to centre an image, but loses the tooltip text:
+
+..  code-block:: none
+
+    CONV_IMAGE_LINK={{  %SRC%?%WIDTH%x%HEIGHT% }}
+
+Image Gallery
+~~~~~~~~~~~~~
+Image galleries are permitted in DokuWiki, but as ``rwapWiki`` currently doesn't support them, and they are not used in the QL Wiki, this is not a valid option for a translation file.
+
+Inline Code
+~~~~~~~~~~~
+
+..  code-block:: none
+
+Italic Text
+~~~~~~~~~~~
+Italic text simply wraps the text to be italicised in double slashes. We can define our italic text settings as follows:
+
+..  code-block:: none
+
+    CONV_ITALIC_ON=//
+    CONV_ITALIC_OFF=//
+
+Ordered List
+~~~~~~~~~~~~
+An ordered list, in DokuWiki, is defined by a two spaces and a hyphen (-) rather than a hash (#) as in WiClear. So the following will permit unordered lists to be translated:
+
+..  code-block:: none
+
+    CONV_NUM_LIST_PREAMBLE=
+    CONV_NUM_LIST_POSTAMBLE=
+    CONV_NUM_LIST_ON=__-
+    CONV_NUM_LIST_OFF=
+    
+You should be able to see the spaces - which I've shown as underscores - and the hyphen on the third line above. None of the others have anything after the equal sign as we do not need them.    
+
+And here we find a problem, WiClear allows indented lists, and so does DokuWiki, but while WiClear uses a number of hash characters to indicate the indent level, DokuWiki needs two spaces for each additional indent. Hmmm, I feel a program amendment coming on!
+
+Paragraph
+~~~~~~~~~
+
+..  code-block:: none
+
+Redirection
+~~~~~~~~~~~
+Redirection does not appear possible in DokuWiki. This is not a problem, really, as ``rwapWiki`` also doesn't support them!
+
+
+Reference
+~~~~~~~~~
+DokuWiki doesn't support references, but WiClear does. You could, I suppose, set the translation file to use underlining (or strike-through text) if you need to cater for these.
+
+To use underlined text, you would configure ``CONV_REFERENCE_LINK`` as follows:
+
+..  code-block:: none
+
+    CONV_REFERENCE_LINK=__%REFERENCE%__
+    
+or, to use strike-through text instead:
+
+..  code-block:: none
+
+    CONV_REFERENCE_LINK=<del>%REFERENCE%</del>
+    
+Or, perhaps, references could have a multiple set of formatting styles applied, say bold, italic and underlined:
+
+..  code-block:: none
+
+    CONV_REFERENCE_LINK=**__//%REFERENCE%//__**
+    
+
+Table Row
+~~~~~~~~~
+DokuWiki uses a similar syntax for tables as WiClear, however, while WiClear terminates the final cell on a row with an <EOL>, DokuWiki requires a closing pipe character. In addition, DockuWiki does not require any table or row indicators, so the syntax to convert a WiClear table to a DokuWiki one is as follows:
+
+..  code-block:: none
+
+    CONV_TABLE_PREAMBLE=
+    CONV_TABLE_POSTAMBLE=
+    CONV_TABLE_ROW_PREAMBLE=
+    CONV_TABLE_ROW_POSTAMBLE=
+    CONV_TABLE_CELL_PREAMBLE=|
+    CONV_TABLE_CELL_POSTAMBLE=|
+    
+There's a pipe character (|) at the end of the two final lines above - only the cells are indicated and DokuWiki works out the rest.
+
+WiClear doesn't have any ability to indicate which cells span rows or columns, nor can it show table headings in bold text, for example. DokuWiki can do all of these and also, it allows the cell contents to be aligned left, right or centred. See the `DokuWiki syntax page <https://www.dokuwiki.org/wiki:syntax>`_ for details. 
+
+For cell alignment, you use two or more of additional spaces on the side you want to "pad" the text. Left aligned text is padded on the right. In the following examples, I'm using underscores (_) to make them visible, they should be spaces in the actual translation file.
+
+-   To left align (aka padded right) you would use:
+
+    ..  code-block:: none
+
+        # No spaces before the cell text.
+        CONV_TABLE_CELL_PREAMBLE=|
+        # Two spaces after the cell text.
+        CONV_TABLE_CELL_POSTAMBLE=|__
+
+-   To right align (aka padded left) you would use:
+
+    ..  code-block:: none
+
+        # Two spaces before the cell text.
+        CONV_TABLE_CELL_PREAMBLE=|__
+        # No spaces after the cell text.
+        CONV_TABLE_CELL_POSTAMBLE=|
+
+-   To centre align (aka padded left and right) you would use:
+
+    ..  code-block:: none
+
+        # Two spaces before the cell text.
+        CONV_TABLE_CELL_PREAMBLE=|__
+        # Two spaces after the cell text.
+        CONV_TABLE_CELL_POSTAMBLE=__|  
+
+Unordered List
+~~~~~~~~~~~~~~
+An unordered list, in DokuWiki, is defined by two spaces and an asterisk as in WiClear, but the WiClear hyphen (-) is not permitted here. So the following will permit unordered lists to be translated:
+
+..  code-block:: none
+
+    CONV_LIST_PREAMBLE=
+    CONV_LIST_POSTAMBLE=
+    CONV_LIST_ON=__*
+    CONV_LIST_OFF=
+    
+You should be able to see the asterisk and the two spaces, displayed above as underscores, on the third line above. None of the others have anything after the equal sign as we do not need them.    
+
+And here we find a problem, WiClear allows indented lists, and so does DokuWiki, but while WiClear uses a number of asterisk or hyphen characters to indicate the indent level, DokuWiki needs two spaces for each additional indent.
+
+Wiki Page Link
+~~~~~~~~~~~~~~
+Internal page links, which are links to other wiki pages, are very similar in DokuWiki to the WiClear syntax. The only difference is that DokuWiki uses '[[' and ']]' rather than just '[' and ']'. The following will set up internal links correctly:
+
+..  code-block:: none
+
+    CONV_WIKI_LINK=[[%PAGE_NAME%]]
+    
+The bonus feature of DokuWiki here is that the page name is converted to lower case and spaces etc, are replaced by underscores. This means that, hopefully, page links should work regardless of the Operating System in use.    
+
+You Tube Video
+~~~~~~~~~~~~~~
+
+..  code-block:: none
 
