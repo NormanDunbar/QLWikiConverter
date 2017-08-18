@@ -172,7 +172,7 @@ int jfdi()
         titleStart = preAmble.find("%TITLE%");
     }
 
-    cout << preAmble;
+    cout << preAmble << endl;
 
     // Preload the "parser" with the first line of text.
     readInputFile(aLine);
@@ -253,7 +253,7 @@ int jfdi()
         cout << findVariable("CONV_PARAGRAPH_POSTAMBLE") << endl;
     }
 
-    cout << findVariable("CONV_POSTAMBLE");
+    cout << findVariable("CONV_POSTAMBLE") << endl;
 
     if (aLine) {
         delete aLine;
@@ -1113,11 +1113,19 @@ void doForcedLineFeed(string *aLine) {
 //------------------------------------------------------------------
 void doLinks(string *aLine) {
 
-    while (true) {
+    // Hmm, watch out for substitutions where the character
+    // being replaced, is itself, replaced by itself!
+    // For example WiClear links are [link stuff ...] and
+    // DokuWiki links are [[ link stuff ..]] - so we can
+    // get an endless loop, or an out of memory if we leave it
+    // running!
+    string::size_type startPos = 0;
+    string::size_type deltaSize = 0;
 
+    while (true) {
         // Loop around looking for all the You Tube videos.
-        string::size_type youTubeLinkStart = aLine->find("(vid)");
-        string::size_type youTubeLinkEnd = aLine->find("(/vid)");
+        string::size_type youTubeLinkStart = aLine->find("(vid)", startPos);
+        string::size_type youTubeLinkEnd = aLine->find("(/vid)", youTubeLinkStart);
 
         if (youTubeLinkStart != string::npos) {
             // We have a You Tube video link.
@@ -1126,7 +1134,9 @@ void doLinks(string *aLine) {
         }
 
         // None, or no more You Tube video links - try WikiPage and URLs.
-        string::size_type linkStart = aLine->find('[');
+        // We need a sentinel here to avoid looping, so,
+
+        string::size_type linkStart = aLine->find('[', startPos);
         string::size_type linkEnd = aLine->find(']', linkStart);
 
         // Nothing found? Bale out.
@@ -1151,12 +1161,17 @@ void doLinks(string *aLine) {
 
         if (pipeStart != string::npos) {
             // We have a URL, HTTP Link.
-            doUrl(aLine, pipeStart);
+            //doUrl(aLine);
+            doUrl(&linkText);
         } else {
-            // Wiki age links [page_name].
-            doWikiPageLink(aLine);
+            // Wiki page links [page_name].
+            doWikiPageLink(&linkText);
         }
 
+        // Replace the link text and adjust the sentinel.
+        deltaSize = linkText.length();
+        aLine->replace(linkStart, linkEnd - linkStart + 1, linkText);
+        startPos = linkStart + deltaSize + 1;
     }
 }
 
@@ -1275,90 +1290,90 @@ void doWikiPageLink(string *aLine) {
 
 //------------------------------------------------------------------
 // Split a URL into (up to) 4 parts at the '|' character, and build
-// them into an output format for a link in the output file.
+// them into an output format for a link in the output file. We only
+// come here if there is an opening '[' and a '|' on the same line.
 //------------------------------------------------------------------
-void doUrl(string *aLine, string::size_type pipeStart) {
+void doUrl(string *aLine) {
 
     vector<string> linkStuff;
 
     string::size_type linkStart = aLine->find('[');
     string::size_type linkEnd = aLine->find(']', linkStart);
 
-    if ((linkStart != string::npos) &&
-        (linkEnd != string::npos)) {
+    // Extract the link text.
+    string linkText = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
 
-        // Extract the link text.
-        string linkText = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
+    // Stream it.
+    stringstream oldLinkText(linkText);
+    string segment;
 
-        // Stream it.
-        stringstream oldLinkText(linkText);
-        string segment;
-
-        // Read back from the stream and split at the '|' character.
-        linkStuff.clear();
-        while (getline(oldLinkText, segment, '|')) {
-            linkStuff.push_back(segment);
-        }
-
-        // At this point, we have:
-        //
-        // linkStuff[0] = Link text. (mandatory)
-        // linkStuff[1] = URL. (mandatory)
-        // linkStuff[2] = Language. (optional)
-        // linkStuff[3] = Title text. (optional)
-
-        // Now we need to stuff it into the replacement text.
-        string newLink = findVariable("CONV_URL_LINK");
-
-        // How many chunks of the link did we get?
-        uint8_t chunks = linkStuff.size();
-        if (chunks < 2) {
-            // Illegal link.
-            cerr << "DoURL(): Invalid link on line " << lineNumber
-                 << " of input file. The invalid link is '"
-                 << linkText << "'" << endl;
-        }
-
-        // Replace all occurrences of %LINK_TEXT% with the correct text.
-        // MANDATORY.
-        string::size_type textStart = newLink.find("%LINK_TEXT%");
-        while (textStart != string::npos) {
-            newLink.replace(textStart, 11, linkStuff[0]);
-            textStart = newLink.find("%LINK_TEXT%");
-        }
-
-        // Replace all occurrences of %URL% with the correct text.
-        // MANDATORY.
-        textStart = newLink.find("%URL%");
-        while (textStart != string::npos) {
-            newLink.replace(textStart, 5, linkStuff[1]);
-            textStart = newLink.find("%URL%");
-        }
-
-        // Replace all occurrences of %LINK_TEXT% with the correct text.
-        // OPTIONAL.
-        if (chunks > 2) {
-            textStart = newLink.find("%LANGUAGE%");
-            while (textStart != string::npos) {
-                newLink.replace(textStart, 10, linkStuff[2]);
-                textStart = newLink.find("%LANGUAGE%");
-            }
-        }
-
-        // Replace all occurrences of %LINK_TEXT% with the correct text.
-        // OPTIONAL.
-        if (chunks > 3) {
-            textStart = newLink.find("%TITLE_TEXT%");
-            while (textStart != string::npos) {
-                newLink.replace(textStart, 12, linkStuff[3]);
-                textStart = newLink.find("%TITLE_TEXT%");
-            }
-        }
-
-
-        // Now we can do the actual replacement.
-        aLine->replace(linkStart, linkEnd - linkStart + 1, newLink);
+    // Read back from the stream and split at the '|' character.
+    linkStuff.clear();
+    while (getline(oldLinkText, segment, '|')) {
+        linkStuff.push_back(segment);
     }
+
+    // At this point, we have:
+    //
+    // linkStuff[0] = Link text. (mandatory)
+    // linkStuff[1] = URL. (mandatory)
+    // linkStuff[2] = Language. (optional)
+    // linkStuff[3] = Title text. (optional)
+
+    // Now we need to stuff it into the replacement text.
+    string newLink = findVariable("CONV_URL_LINK");
+
+    // How many chunks of the link did we get?
+    uint8_t chunks = linkStuff.size();
+    if (chunks < 2) {
+        // Illegal link.
+        cerr << "DoURL(): Invalid link on line " << lineNumber
+             << " of input file. The invalid link is '"
+             << linkText << "'" << endl;
+    }
+
+    // Replace all occurrences of %LINK_TEXT% with the correct text.
+    // MANDATORY.
+    string::size_type textStart = newLink.find("%LINK_TEXT%");
+    while (textStart != string::npos) {
+        newLink.replace(textStart, 11, linkStuff[0]);
+        textStart = newLink.find("%LINK_TEXT%");
+    }
+
+    // Replace all occurrences of %URL% with the correct text.
+    // MANDATORY.
+    textStart = newLink.find("%URL%");
+    while (textStart != string::npos) {
+        newLink.replace(textStart, 5, linkStuff[1]);
+        textStart = newLink.find("%URL%");
+    }
+
+    // Replace all occurrences of %LINK_TEXT% with the correct text.
+    // OPTIONAL.
+    if (chunks > 2) {
+        textStart = newLink.find("%LANGUAGE%");
+        while (textStart != string::npos) {
+            newLink.replace(textStart, 10, linkStuff[2]);
+            textStart = newLink.find("%LANGUAGE%");
+        }
+    }
+
+    // Replace all occurrences of %LINK_TEXT% with the correct text.
+    // OPTIONAL.
+    if (chunks > 3) {
+        textStart = newLink.find("%TITLE_TEXT%");
+        while (textStart != string::npos) {
+            newLink.replace(textStart, 12, linkStuff[3]);
+            textStart = newLink.find("%TITLE_TEXT%");
+        }
+    }
+
+
+    // Now we can do the actual replacement.
+    aLine->replace(linkStart, linkEnd - linkStart + 1, newLink);
+
+    // Return the new startPosition to scan for further links.
+    //return linkStart + 1 + newLink.length();
 }
 
 

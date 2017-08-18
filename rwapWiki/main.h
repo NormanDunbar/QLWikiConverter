@@ -24,7 +24,7 @@ void doInlineCode(string *aLine);       // Process inline code chunks.
 void doForcedLineFeed(string *aLine);   // Process forced line feeds.
 void doLinks(string *aLine);            // Looks for links. All kinds of links.
 void doWikiPageLink(string *aLine);     // Do a Wiki Page Link.
-void doUrl(string *aLine, string::size_type pipeStart); // Looks for HTTP links.
+void doUrl(string *aLine);              // Looks for HTTP links.
 void doYouTubeLink(string *aLine);      // Do a Wiki Page Link.
 void doCitations(string *aLine);        // Citations.
 void doReferences(string *aLine);       // References, whatever they are.
