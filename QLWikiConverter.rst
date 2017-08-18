@@ -1256,13 +1256,25 @@ However, any page with more than three headings in it, will generate a small tab
     
 Acronym
 ~~~~~~~
+DokuWiki Acronyms are interesting beasts as they are not embedded in the text of a Wiki page as WiClear's are, they are instead held in a configuration file located in your web server's document root directory, under ``conf/acronyms.conf``. The acronym itself is still required in the Wiki page, but the description is not, so the following configuration:
 
 ..  code-block:: none
+
+    CONV_ACRONYM_LINK=%ACRONYM%
+    
+will suffice to make sure that the acronym is still present in the output file. You will, however, need to make sure that your acronym and it's description are added to the configuration file for DokuWiki to make the acronym's work.  
 
 Anchor
 ~~~~~~
+In WiClear, an anchor is made up of two parts, the anchor and the title part. In WiClear, all I can see on a page is that the anchor part is written with a red font, and there's no sign of the title part - very weird!
+
+This behaviour can be reproduced in DokuWiki with a little fiddling about using direct HTML, which gets embedded in the generated page when viewed in the browser, so:
 
 ..  code-block:: none
+
+    CONV_ANCHOR_LINK=<html><span style="color:red;">%ANCHOR%</span></html>
+
+Please note that DokuWiki does not allow embedded HTML by default as it can pose a security risk by allowing cross site scripting attacks, however, if your Wiki is private, then you are safe to use the *admin* section of DokuWiki to enable Direct HTML. If direct HTML is not enabled, the HTML code will simply be listed in your wiki page as plain text.
 
 Block Quote
 ~~~~~~~~~~~
@@ -1288,8 +1300,12 @@ Italic text simply wraps the text to be emboldened in a pair of asterisks. We ca
 
 Citation
 ~~~~~~~~
+Citations in WiClear are interesting - for certain values of interesting! They have two parts, a citation and a source and the generated page appears only to wrap the citation in double quotes, while apparently doing nothing with  the source part - very strange. This behaviour can be replicated in a DokuWiki page as follows:
 
 ..  code-block:: none
+
+    CONV_CITATION_LINK="%CITATION%"
+    CONV_CITATION_NOSOURCE_LINK="%CITATION%"
 
 Code Block
 ~~~~~~~~~~
@@ -1328,8 +1344,22 @@ Yes, I know, COBOL! Well, it's what I started my IT professional life doing and 
 
 Definition List
 ~~~~~~~~~~~~~~~
+Definition Lists are not supported by DokuWiki in the default install, however, there is a plugin named `definitions <https://www.dokuwiki.org/plugin:definitionlist>`_ which can be downloaded and installed. 
+
+If you have this plugin, then the syntax is almost exactly the same as WiClear's, so the following will suffice:
 
 ..  code-block:: none
+
+    CONV_DEFN_LIST_PREAMBLE=
+    CONV_DEFN_LIST_POSTAMBLE=
+    CONV_DEFN_LIST_TERM_ON=__;
+    CONV_DEFN_LIST_TERM_OFF=:
+    CONV_DEFN_LIST_DESC_ON=
+    CONV_DEFN_LIST_DESC_OFF=
+
+Spaces are displayed above as underscores, to make them visible. The third line turns on a definition by introducing the term part with two spaces and a semi-colon. It is turned off in the fourth line by a colon. The definition part has no settings as it is simply the text from the colon to the end of the line, similar to WiClear.
+
+As with the You Tube 'vshare' plugin - see below - I do not have the 'definitions' plugin installed, so I'm unable to test it.
 
 Forced Linefeed
 ~~~~~~~~~~~~~~~
@@ -1337,7 +1367,7 @@ Forced Linefeed
 DokuWiki uses a double backslash to force a linefeed, but this has a foible in that it must be either:
 
 -   At the end of a line; or
--   Followed by at least one whitespace character. (space, tab etc).
+-   Followed by at least one white space character. (space, tab etc).
 
 
 ..  code-block:: none
@@ -1442,7 +1472,7 @@ To set those up in our translation file, we would use the following three option
     CONV_IMAGE_LINK={{%SRC%|%LONG_DESC%}}
     CONV_IMAGE_LINK={{%SRC%?%WIDTH%x%HEIGHT%|%LONG_DESC%}}
     
-As mentioned, image alignment is done using whitespace before and/or after the '{{' or '}}' characters. As with table cells (See below), the image is aligned by putting the spaces on the side the image should be 'padded' on. So add spaces on the left to aligne right, add  spaces on the right to align left, and add them on both sides to align centrally.
+As mentioned, image alignment is done using white space before and/or after the '{{' or '}}' characters. As with table cells (See below), the image is aligned by putting the spaces on the side the image should be 'padded' on. So add spaces on the left to align right, add  spaces on the right to align left, and add them on both sides to align centrally.
 
 ..  code-block:: none
 
@@ -1456,14 +1486,28 @@ However, from testing, it appears that a centrally aligned image, which has a to
 
     CONV_IMAGE_LINK={{  %SRC%?%WIDTH%x%HEIGHT% }}
 
+If, as in the HTML example translation file, you want to embed an image as a link to a page displaying the image at its full size, then 
+
+..  code-block:: none
+
+    CONV_IMAGE_LINK={{  %SRC%?%WIDTH%x%HEIGHT%&direct }}
+
 Image Gallery
 ~~~~~~~~~~~~~
 Image galleries are permitted in DokuWiki, but as ``rwapWiki`` currently doesn't support them, and they are not used in the QL Wiki, this is not a valid option for a translation file.
 
 Inline Code
 ~~~~~~~~~~~
+DokuWiki has supposedly got the '%%' markers for inline code, which is supposed to format in a mono-spaced font and ignore any further formatting on the enclosed text, but doesn't! 
+
+It also has a pair of single quotes (''), to format the text following in a mono-spaced font, which *does* work, but will still interpret italic, bold etc in whatever is between the two pairs of quotes. 
+
+In order to get our inline code mono-spaced and not to be interpreted as Wiki markup, if the code resembles that, we have to use both of the above, as follows:
 
 ..  code-block:: none
+
+    CONV_INLINE_CODE_ON=''%%
+    CONV_INLINE_CODE_OFF=%%''
 
 Italic Text
 ~~~~~~~~~~~
@@ -1491,8 +1535,12 @@ And here we find a problem, WiClear allows indented lists, and so does DokuWiki,
 
 Paragraph
 ~~~~~~~~~
+Paragraphs don't need any special handling in DokuWiki, they are lines of text, separated by linefeeds, as in WiClear. The following code will work fine:
 
 ..  code-block:: none
+
+    CONV_PARAGRAPH_PREAMBLE=
+    CONV_PARAGRAPH_POSTAMBLE=
 
 Redirection
 ~~~~~~~~~~~
@@ -1520,7 +1568,13 @@ Or, perhaps, references could have a multiple set of formatting styles applied, 
 ..  code-block:: none
 
     CONV_REFERENCE_LINK=**__//%REFERENCE%//__**
-    
+ 
+If you want a reference in DokuWiki to resemble one in WiClear, then the matter is quite simple, you wrap the reference text in italics, as follows:
+
+..  code-block:: none
+
+    CONV_REFERENCE_LINK=//%REFERENCE%//
+ 
 
 Table Row
 ~~~~~~~~~
@@ -1591,10 +1645,98 @@ Internal page links, which are links to other wiki pages, are very similar in Do
 
     CONV_WIKI_LINK=[[%PAGE_NAME%]]
     
-The bonus feature of DokuWiki here is that the page name is converted to lower case and spaces etc, are replaced by underscores. This means that, hopefully, page links should work regardless of the Operating System in use.    
+The bonus feature of DokuWiki here is that the page name is converted to lower case and spaces etc, are replaced by underscores. This means that, hopefully, page links should work regardless of the Operating System in use. Additionally, when a non-existent page is linked to in a DokuWiki setup, the link appears red until the page is create, whereupon it becomes green. This can help identify problems and/or missing pages.    
 
 You Tube Video
 ~~~~~~~~~~~~~~
+Video embedding in a DokuWiki page is, by default, only supported for the following video formats:
+
+-   webm
+-   ogv
+-   mp4
+
+Which means that You Tube videos cannot be embedded in a DokuWiki page. Therefore it's probably best to simply embed the ``%VIDEO_ID%`` of the ``%URL%`` of the You Tube video, in the URL of You Tube's "play a video" page (https://youtu.be/), as follows:
 
 ..  code-block:: none
+
+    CONV_YOUTUBE_LINK={{https://youtu.be/%VIDEO_ID%|Watch this video on You Tube}}
+
+You should note that the full URL is not valid here, so don't use ``%URL%`` if you do, all that will happen is that you will get a link that opens http://youtube.com rather than playing  the video.
+    
+Having said that, by default, DokuWiki cannot embed a You Tube video, `the vshare plugin <https://www.dokuwiki.org/plugin:vshare>`_ looks very promising *and* is up to date with the latest version of DokuWiki. If you have this plugin downloaded and installed, then the following might be of use:
+
+..  code-block:: none
+
+    CONV_YOUTUBE_LINK={{youtube>%VIDEO_ID%?medium|Watch this video on You Tube}}   
+    
+Which *should* display the embedded video in a medium sized frame - but as I do not have the plugin installed, I have not been able to test this. Other values are 'small' and 'large'.
+
+The Final DokuWiki Translation File
+-----------------------------------
+
+Pulling all of the above together, we have ended up with the following translation file which is set up to use a default DokuWiki installation, with no plugins for You Tube or Definition Lists. The former is easily worked around, but the latter is not, however, as definition lists do not work on WiClear anyway, it's not a huge problem.
+
+..  code-block:: none
+
+    CONV_PREAMBLE=
+    CONV_POSTAMBLE=
+    CONV_ACRONYM_LINK=%ACRONYM%
+    CONV_ANCHOR_LINK=<html><span style="color:red;">%ANCHOR%</span></html>
+    CONV_BLOCK_QUOTE_PREAMBLE=
+    CONV_BLOCK_QUOTE_POSTAMBLE=
+    CONV_BLOCK_QUOTE_LINE_ON=>
+    CONV_BLOCK_QUOTE_LINE_OFF=
+    CONV_BOLD_ON=**
+    CONV_BOLD_OFF=**
+    CONV_CITATION_LINK="%CITATION%"
+    CONV_CITATION_NOSOURCE_LINK="%CITATION%"
+    CONV_CODE_BLOCK_PREAMBLE=<code>
+    CONV_CODE_BLOCK_POSTAMBLE=</code>
+    CONV_CODE_LINE_ON=
+    CONV_CODE_LINE_OFF=
+    CONV_DEFN_LIST_PREAMBLE=
+    CONV_DEFN_LIST_POSTAMBLE=
+    # There's two spaces and a semi-colon on the next line.
+    CONV_DEFN_LIST_TERM_ON=  ;
+    CONV_DEFN_LIST_TERM_OFF=:
+    CONV_DEFN_LIST_DESC_ON=
+    CONV_DEFN_LIST_DESC_OFF=
+    CONV_FORCE_LINE_FEED_ON=\\
+    # There's a space at the end of the next line.
+    CONV_FORCE_LINE_FEED_OFF= 
+    CONV_URL_LINK=[[%URL%"|%LINK_TEXT%]]
+    CONV_H1_PREAMBLE= ======
+    CONV_H1_POSTAMBLE= ======
+    CONV_H2_PREAMBLE= =====
+    CONV_H2_POSTAMBLE= =====
+    CONV_H3_PREAMBLE= ====
+    CONV_H3_POSTAMBLE= ====
+    CONV_HR_ON= ----
+    CONV_HR_OFF=
+    CONV_IMAGE_LINK={{%SRC%?%WIDTH%x%HEIGHT%|%LONG_DESC%}}
+    CONV_INLINE_CODE_ON=''%%
+    CONV_INLINE_CODE_OFF=%%''
+    CONV_ITALIC_ON=//
+    CONV_ITALIC_OFF=//
+    CONV_NUM_LIST_PREAMBLE=
+    CONV_NUM_LIST_POSTAMBLE=
+    # There's two spaces and a hyphen on the next line.
+    CONV_NUM_LIST_ON=  -
+    CONV_NUM_LIST_OFF=
+    CONV_PARAGRAPH_PREAMBLE=
+    CONV_PARAGRAPH_POSTAMBLE=
+    CONV_REFERENCE_LINK=//%REFERENCE%//
+    CONV_TABLE_PREAMBLE=
+    CONV_TABLE_POSTAMBLE=
+    CONV_TABLE_ROW_PREAMBLE=
+    CONV_TABLE_ROW_POSTAMBLE=
+    CONV_TABLE_CELL_PREAMBLE=|
+    CONV_TABLE_CELL_POSTAMBLE=|
+    CONV_LIST_PREAMBLE=
+    CONV_LIST_POSTAMBLE=
+    # There's two spaces and an '*' on the next line.
+    CONV_LIST_ON=  *
+    CONV_LIST_OFF=
+    CONV_WIKI_LINK=[[%PAGE_NAME%]]
+    CONV_YOUTUBE_LINK={{https://youtu.be/%VIDEO_ID%|Watch this video on You Tube}}
 

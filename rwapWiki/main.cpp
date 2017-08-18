@@ -414,7 +414,7 @@ void doList(string *aLine, char aChar) {
     bool orderedList = (aChar == '#');
     bool definitionList = (aChar == ';');
 
-    // Definition Lists doen't wwork in the Wiki, but we can
+    // Definition Lists doesn't work in the Wiki, but we can
     // make them work here. However, they need different handling.
     if (definitionList) {
         doDefinitionList(aLine, aChar);
@@ -449,7 +449,7 @@ void doList(string *aLine, char aChar) {
         // Some lists have embedded formats in them too.
         doEmbeddedFormats(aLine);
 
-        // Has the curent nesting level changed. Only really
+        // Has the current nesting level changed. Only really
         // affects the second and subsequent lines. There can be no
         // leading aChars though, watch out! That's the end of a list.
         string::size_type currentLevel = aLine->find_first_not_of(aChar);
@@ -475,7 +475,7 @@ void doList(string *aLine, char aChar) {
         // If so, exit  from this nested level.
         if (currentLevel < nestLevel) {
 
-            // We are done herr, close the list.
+            // We are done here, close the list.
             if (orderedList) {
                 cout << findVariable("CONV_NUM_LIST_POSTAMBLE") << endl;
             }
