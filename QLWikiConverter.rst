@@ -1254,6 +1254,14 @@ However, any page with more than three headings in it, will generate a small tab
 
     CONV_PREAMBLE=~~NOTOC~~ 
     
+I have noticed that *most* of the pages in the QL Wiki do not have a heading that explains the page name. The WiClear software presumably took care of this. DokuWiki won't display any headings if there are none in the original QL Wiki, so, in order to see something, we can use the ``%TITLE%%`` substitution variable for each page. To do this, configure as follows:
+
+..  code-block:: none
+
+    CONV_PREAMBLE= ====== %TITLE% ======
+
+This will give each page a level 1 heading with the original QL Wiki page name.
+
 Acronym
 ~~~~~~~
 DokuWiki Acronyms are interesting beasts as they are not embedded in the text of a Wiki page as WiClear's are, they are instead held in a configuration file located in your web server's document root directory, under ``conf/acronyms.conf``. The acronym itself is still required in the Wiki page, but the description is not, so the following configuration:
@@ -1645,7 +1653,18 @@ Internal page links, which are links to other wiki pages, are very similar in Do
 
     CONV_WIKI_LINK=[[%PAGE_NAME%]]
     
-The bonus feature of DokuWiki here is that the page name is converted to lower case and spaces etc, are replaced by underscores. This means that, hopefully, page links should work regardless of the Operating System in use. Additionally, when a non-existent page is linked to in a DokuWiki setup, the link appears red until the page is create, whereupon it becomes green. This can help identify problems and/or missing pages.    
+The bonus feature of DokuWiki here is that the page name is converted to lower case and spaces etc, are replaced by underscores. This means that, hopefully, page links should work regardless of the Operating System in use. Additionally, when a non-existent page is linked to in a DokuWiki setup, the link appears red until the page is create, whereupon it becomes green. This can help identify problems and/or missing pages.  
+
+However, rather than having all your pages in one place, DokuWiki allows the use of 'namespaces' to allow some separation of your Wiki topics. You could have a Linux namespace as well as a Qdos one. Obviously all the pages from the QL Wiki would go into a namespace of QL Wiki - wouldn't they?
+
+All you need to do there is set up the following for a Wiki Page Link:
+
+..  code-block:: none
+
+    CONV_WIKI_LINK=[[qlwiki:%PAGE_NAME%]]
+
+And that's all there is to it. All your Wiki pages are now deemed to live in the 'qlwiki' namespace.    
+
 
 You Tube Video
 ~~~~~~~~~~~~~~
@@ -1674,11 +1693,14 @@ Which *should* display the embedded video in a medium sized frame - but as I do 
 The Final DokuWiki Translation File
 -----------------------------------
 
+The File Contents
+~~~~~~~~~~~~~~~~~
+
 Pulling all of the above together, we have ended up with the following translation file which is set up to use a default DokuWiki installation, with no plugins for You Tube or Definition Lists. The former is easily worked around, but the latter is not, however, as definition lists do not work on WiClear anyway, it's not a huge problem.
 
 ..  code-block:: none
 
-    CONV_PREAMBLE=
+    CONV_PREAMBLE= ====== %TITLE% ======
     CONV_POSTAMBLE=
     CONV_ACRONYM_LINK=%ACRONYM%
     CONV_ANCHOR_LINK=<html><span style="color:red;">%ANCHOR%</span></html>
@@ -1737,6 +1759,25 @@ Pulling all of the above together, we have ended up with the following translati
     # There's two spaces and an '*' on the next line.
     CONV_LIST_ON=  *
     CONV_LIST_OFF=
-    CONV_WIKI_LINK=[[%PAGE_NAME%]]
+    CONV_WIKI_LINK=[[qlwiki:%PAGE_NAME%]]
     CONV_YOUTUBE_LINK={{https://youtu.be/%VIDEO_ID%|Watch this video on You Tube}}
 
+Points to Note for DokuWiki Conversions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following points should be kept in mind when converting to DokuWiki format:
+
+-   Wiki pages are stored as separate plain text files and do not live in any form of database. Wiki namespaces are represented as folders. So pages in a namespace are simply text files within a directory.
+-   Pages *should* be kept in a namespace. In the above example file, I'm using the 'qlwiki' namespace for all my Wiki Page links. This means that in my web server's document root, I need to create a directory named ``data\pages\qlwiki`` and make sure that it is owned by the web server user (``apache``) and group (also ``apache``) and has the required read and write permissions to the user and group.
+-   The top level page on any Wiki is named 'start' and lives outside of all namespaces. It lives, therefore in the folder ``data/pages/start.txt`` under the web server's document root directory.
+-   Pages should be created with the name of the page, in lower case, and with spaces replaced by underscores. Make sure that you run the ``rwapWiki`` utility with the appropriate output filename. The 'Dilwyn Jones' page, for example, needs to be named 'dilwyn_jones.txt'. And obviously, needs to be copied to the document root ``data/pages/qlwiki`` directory as well.
+
+Once the files are all converted, we need edit the existing 'start' page to create a link to the newly converted 'Sinclair QL Home Computer' page, which was the old Wiki's main page, as per the following examples:
+
+..  code-block:: none
+
+    Click [[qlwiki:Sinclair QL Home Computer|here]] to access the QL Wiki's main page.
+    
+Or something similar!
+
+You don't have to worry about spaces, capitals etc, the DokuWiki will cater for this.
