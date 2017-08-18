@@ -1,4 +1,4 @@
-CONV_PREAMBLE=
+CONV_PREAMBLE= ====== %TITLE% ======
 CONV_POSTAMBLE=
 CONV_ACRONYM_LINK=%ACRONYM%
 CONV_ANCHOR_LINK=<html><span style="color:red;">%ANCHOR%</span></html>
@@ -24,7 +24,7 @@ CONV_DEFN_LIST_DESC_OFF=
 CONV_FORCE_LINE_FEED_ON=\\
 # There's a space at the end of the next line.
 CONV_FORCE_LINE_FEED_OFF= 
-CONV_URL_LINK=[[%URL%"|%LINK_TEXT%]]
+CONV_URL_LINK=[[%URL%|%LINK_TEXT%]]
 CONV_H1_PREAMBLE= ======
 CONV_H1_POSTAMBLE= ======
 CONV_H2_PREAMBLE= =====
