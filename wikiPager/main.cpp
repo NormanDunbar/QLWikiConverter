@@ -45,7 +45,7 @@ ifstream *mIfs;             // Input file aka argv[1].
 int main(int argc, char *argv[])
 {
     cerr << endl
-         << "rwapPager - version: " << VERSION << endl;
+         << "wikiPager - version: " << VERSION << endl;
 
     // Validate parameters.
     if (argc < 2) {
