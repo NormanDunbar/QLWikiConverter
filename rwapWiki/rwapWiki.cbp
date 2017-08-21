@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="/home/norman/SourceCode/RwapWiki/rwapWiki/bin/Debug/test.txt /home/norman/SourceCode/RwapWiki/rwapWiki/bin/Debug/convert.txt &gt;/home/norman/SourceCode/RwapWiki/rwapWiki/bin/Debug/test.html" />
+				<Option parameters="C:\SourceCode\temp\QLWikiConverter\Pages\Dilwyn-Jones.en.txt C:\SourceCode\temp\QLWikiConverter\rwapWiki\convert.DOKUWIKI.txt &gt;C:\SourceCode\temp\QLWikiConverter\WD\Dilwyn-Jones.txt" />
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
@@ -22,6 +22,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="C:\SourceCode\temp\QLWikiConverter\Pages\Dilwyn-Jones.en.txt C:\SourceCode\temp\QLWikiConverter\rwapWiki\convert.DOKUWIKI.txt" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++11" />
@@ -43,6 +44,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
