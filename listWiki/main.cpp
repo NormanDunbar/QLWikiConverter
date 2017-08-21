@@ -10,13 +10,27 @@
 // The final record's output DOES NOT have a trailing line of asterisks.
 //
 //
-// rwapPager input_file
+// listWiki input_file look_for [> output_file]
 //
-// Each record in the input file, will be written out to a separate
-// text file named "PageTitle.LanguageCode.txt"
+// Each page, which contains at least on of the "look_for" features
+// will be listed and details of the "look_for" will be displayed.
 //
-// These files can then be read by rwapWiki to produce output pages
-// converted to some other use.
+// Look_For is one, only, of the following:
+//
+// ACRONYM, ANCHOR,
+// BLOCKQUOTE, BOLD,
+// CITATION, CODEBLOCK,
+// DEFINITIONLIST,
+// FORCEDLINEFEED,
+// LINK,
+// HEADING1, HEADING2, HEADING3, HR,
+// IMAGE, IMAGEGALLERY, INLINECODE, ITALIC,
+// ORDEREDLIST,
+// REDIRECTION, REFERNECE,
+// TABLE,
+// UNORDEREDLIST,
+// PAGELINK,
+// VIDEOLINK.
 //
 //
 // Norman Dunbar.
@@ -24,19 +38,6 @@
 
 #include "main.h"
 
-using namespace std;
-
-//------------------------------------------------------------------
-// Globals.
-// Yes, I know! Don't start! Otherwise I'll use a GOTO as well!
-//------------------------------------------------------------------
-
-uint32_t lineNumber = 0;    // Input file, current line number.
-ifstream *mIfs;             // Input file aka argv[1].
-
-#define ERR_OK 0            // No errors.
-#define ERR_BP 1            // Bad parameter - Cannot open input file.
-#define ERR_BF 2            // Input file isn't as expected format.
 
 
 //------------------------------------------------------------------
@@ -45,14 +46,13 @@ ifstream *mIfs;             // Input file aka argv[1].
 int main(int argc, char *argv[])
 {
     cerr << endl
-         << "wikiPager - version: " << VERSION << endl;
+         << "listWiki - version: " << VERSION << endl;
 
     // Validate parameters.
-    if (argc < 2) {
-        cout << "Not enough parameters supplied." << endl
-             << "USAGE:" << endl << endl
-             << "\twikiPager input_file" << endl;
-        return 1;
+    if (argc < 3) {
+        cout << "Not enough parameters supplied." << endl;
+        usage();
+        return ERR_BP;
     }
 
     // Looks good, let's go!
@@ -65,6 +65,30 @@ int main(int argc, char *argv[])
         return ERR_BP;
     }
 
+    // Get the feature to look for and convert to a search string.
+    string param2 = argv[2];
+
+    // Upper case it.
+    for (string::iterator x = param2.begin(); x != param2.end(); x++) {
+        *x = toupper(*x);
+    }
+
+    // Is it a valid choice?
+    paramMapIter i = lookForThese.find(param2);
+    if (i == lookForThese.end()) {
+        cerr << "ERROR: '" << param2 << "' is not a valid option." << endl;
+        usage();
+        return ERR_BP;
+    }
+
+    // It's valid, extract the look for stuff from the second
+    // member of the std::pair. It's a std::map thing!
+    lookForThis = i->second;
+
+    cout << "Searching for " << param2 << "(s), in file: '"
+         << argv[1] << "'" << endl << endl;
+
+    // Go look!
     return jfdi();
 }
 
@@ -92,7 +116,6 @@ int jfdi()
     string pageLang;                // Wiki page language code.
     string pageTitle;               // Wiki Page title.
     string textFile;                // Output file name.
-    ofstream *mOfs = NULL;          // Output file.
 
     // Makes sure we can call aLine->at(0).
     aLine->assign("Hello World!");
@@ -110,15 +133,15 @@ int jfdi()
 
     // We have the first record's separator line. From here
     // until EOF, read the following two lines (lang & title)
-    // Create an output file, then write this record's content
-    // to it. Finish at the next separator or at EOF.
+    // Create an output file name, then scan this record's content
+    // for the desired feature of the Wiki.
     while (mIfs->good()) {
 
         // A new record has been found.
         // Get the language code for this page & check it.
         readInputFile(&pageLang);
         if (pageLang.substr(0, 9) != "wikilang:") {
-            cerr << "wikiPager: Sync error at line " << lineNumber
+            cerr << "listWiki: Sync error at line " << lineNumber
                  << ". Expected 'wikilang: ' but found '"
                  << pageLang.substr(0, 10) << "'." << endl;
             return ERR_BF;
@@ -127,7 +150,7 @@ int jfdi()
         // Get the page name for this page & check it.
         readInputFile(&pageTitle);
         if (pageTitle.substr(0, 9) != "wikipage:") {
-            cerr << "wikiPager: Sync error at line " << lineNumber
+            cerr << "listWiki: Sync error at line " << lineNumber
                  << ". Expected 'wikipage: ' but found '"
                  << pageTitle.substr(0, 10) << "'." << endl;
             return ERR_BF;
@@ -143,22 +166,15 @@ int jfdi()
             }
         }
 
-        // Create a new output file.
+        // Create the expected output file name as would be
+        // created by 'wikiPager'.
         textFile = pageTitle.substr(10) + "." +
                    pageLang.substr(10) + ".txt";
-
-        cout << "Writing: '" << textFile << "'." << endl;
-
-        mOfs = new ofstream(textFile);
-        if (!mOfs->good()) {
-            cerr << "Cannot open '" << textFile << "' for writing." << endl;
-            return ERR_BF;
-        }
 
         // Read the first content line & check it.
         readInputFile(aLine);
         if (aLine->substr(0, 9) != "wikitext:") {
-            cerr << "wikiPager: Sync error at line " << lineNumber
+            cerr << "listWiki: Sync error at line " << lineNumber
                  << ". Expected 'wikitext: ' but found '"
                  << aLine->substr(0, 10) << "'." << endl;
             return ERR_BF;
@@ -175,7 +191,7 @@ int jfdi()
                 break;
             }
 
-            // Empty lines are a PITA!
+            // Empty lines are ignored.
             if (!aLine->empty()) {
 
                 // Remove Windows CR characters.
@@ -194,20 +210,42 @@ int jfdi()
 
             }
 
-            // So far, so good, write to the output file.
-            *mOfs << *aLine << endl;
+            // Can we find the desired Wiki feature?
+            if (lookForThis.lookAtStartOfLine) {
+                // Look at the start of the line only.
+                for (vsi x = lookForThis.findThis.begin(); x != lookForThis.findThis.end(); x++) {
+                    if (aLine->length() < (*x).length()) {
+                        // Shorter than the text we want, ignore.
+                        continue;
+                    }
+
+                    if (aLine->substr(0, (*x).length()) == *x) {
+                        // Found it. Subtract 2 as the content starts on line 3.
+                        cout << textFile << ": Line: " << lineNumber - 2 << ", \"" << *aLine << '"' << endl;
+                    }
+                }
+            } else {
+                // Look anywhere in the line.
+                for (vsi x = lookForThis.findThis.begin(); x != lookForThis.findThis.end(); x++) {
+                    if (aLine->length() < (*x).length()) {
+                        // Shorter than the text we want, ignore.
+                        continue;
+                    }
+
+                    if (aLine->find(*x) != string::npos) {
+                        // Found it. Subtract 2 as the content starts on line 3.
+                        cout << textFile << ": Line: " << lineNumber - 2 << ", \"" << *aLine << '"' << endl;
+                    }
+                }
+            }
 
             // Fetch next line of the page text.
             readInputFile(aLine);
 
         } // end while (true)
 
-        // Close the current output file.
-        if (mOfs->is_open()) {
-            mOfs->close();
-            delete mOfs;
-            mOfs = NULL;
-        }
+        // Finished with this textFile, reset lineNumber.
+        lineNumber = 0;
 
     } // end while (mIfs->good())
 
@@ -234,4 +272,29 @@ bool readInputFile(string *aLine) {
     }
 
     return mIfs->good();
+}
+
+
+//------------------------------------------------------------------
+// Display details of how to use the utility if we encounter a lack
+// of parameters, or, an incorrect one.
+//------------------------------------------------------------------
+void usage() {
+    cerr << "USAGE: " << endl << endl
+         << "\tlistWiki input_file look_for [ > output_file ]" << endl << endl
+         << "LOOK_FOR is one of the following:" << endl << endl
+         << "\tACRONYM, ANCHOR," << endl
+         << "\tBLOCKQUOTE, BOLD," << endl
+         << "\tCITATION, CODEBLOCK," << endl
+         << "\tDEFINITIONLIST," << endl
+         << "\tFORCEDLINEFEED," << endl
+         << "\tLINK," << endl
+         << "\tHEADING, HR," << endl
+         << "\tIMAGE, IMAGEGALLERY, INLINECODE, ITALIC," << endl
+         << "\tORDEREDLIST," << endl
+         << "\tREDIRECTION, REFERNECE," << endl
+         << "\tTABLE," << endl
+         << "\tUNORDEREDLIST," << endl
+         << "\tPAGELINK," << endl
+         << "\tVIDEOLINK." << endl;
 }

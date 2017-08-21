@@ -43,8 +43,9 @@
 
 
 # Gnu G++ Stuff from CodeBlocks.
-rwapWiki/bin/
-wikiPager/bin
+rwapWiki/bin/*
+wikiPager/bin/*
+listWiki/bin/*
 
 #Other non-essential stuff.
 *.pdf

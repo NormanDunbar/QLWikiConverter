@@ -278,6 +278,32 @@ If a line had any special characters at the start, it is processed (see below) a
 
 The following section outlines, in some details, the processing of each different type of feature that gets carried out, and converted, from the original Wiki source code.
 
+ListWiki
+--------
+
+This utility reads a conversion file, created by ``wikiPager``, and attempts to find all occurrences of a particular Wiki Feature, such as citations, acronyms etc. The full list is:
+
+-   ACRONYM, ANCHOR
+-   BLOCKQUOTE, BOLD
+-   CITATION, CODEBLOCK
+-   DEFINITIONLIST
+-   FORCEDLINEFEED
+-   HEADING, HR
+-   IMAGE, IMAGEGALLERY, INLINECODE, ITALIC
+-   LINK
+-   ORDEREDLIST
+-   PAGELINK
+-   REDIRECTION, REFERENCE
+-   TABLE
+-   UNORDEREDLIST
+-   VIDEOLINK
+
+The code doesn't get it right each and every time, but it's useful in finding stuff that might not be acting correctly when a file is converted.
+
+While the utility reads the output file from the ``content.sql`` script , it displays its finding as if it had been scanning the individual files output by the ``wikiPager`` utility, with the correct line numbers etc.
+
+
+
 What Gets Converted
 ===================
 
