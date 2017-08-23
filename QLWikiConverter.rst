@@ -12,11 +12,13 @@ Currently the QL Wiki, amongst others, is hosted and maintained by Rich of RWAP 
 
 To this end, a number of suggestions have been put forward on the matter (read the whole topic at the link above) and conversion to another format was suggested. Where and how (or who) would be hosting the converted Wiki is/was/has yet to be decided, as has the format - there are Wikis aplenty out there!
 
-To make the task of converting the existing, and not really well known, *WiClear* Wiki (`http://wiclear.free.fr/ <http://wiclear.free.fr/>_`) source code from the format used by WiClear to some other format, I wrote this utility. It is possibly more important as the WiClear software has not been updated since 2007 and who knows what bugs or security problems exist?
+To make the task of converting the existing, and not really well known, *WiClear* Wiki (`http://wiclear.free.fr/ <http://wiclear.free.fr/>`_) source code from the format used by WiClear to some other format, I wrote this utility. It is possibly more important as the WiClear software has not been updated since 2007 and who knows what bugs or security problems exist?
 
 *What other format* being the question. There have been a few suggested and a couple of trials have seemingly taken place. The utility, ``rwapWiki`` attempts to solve this problem by allowing ahem, *almost* any other format you desire - provided a translation file can be created for it.
 
 This document attempts to explain how the system works, what it converts and how. This might make writing new translation files a little easier. The utility is supplied with a single, text, HTML translation file which works *reasonably* well - see the section on *Problem Areas Identified* below.
+
+    **Update:** As of 18th August 2017, a new example file is also supplied. This one is ``convert.DOKUWIKI.txt`` and converts the WiClear source to that required by the DokuWiki system. The creation of this new file is described below in the section *A Worked Example - DokuWiki*.
 
 
 WorkFlow
@@ -834,9 +836,21 @@ Of these, only the first field is mandatory, the rest are optional.
 
 The source is the URL, somewhere on the internet, where the actual image file can be found. Images in the Wiki are all links to a URL and are not loaded from local (to the server) storage. Alt is the alt text for the image, align is a single character that defines left or right alignment, case is ignored and valid values are taken from 'lLgG' for left and 'rRdD' for right. The Wiki author is French and allows French 'Droit' and 'Gauche' as well as English.
 
+    **NOTE**: It appears that some images in the Wiki are aligned with 'i' or 'I'. These are not documented.
+
 The long_description is either some text the describes the image, or the URL of a text file, somewhere on the internet, where the descriptive text is to be found. Width and height define how the image will be displayed on the Wiki page, when viewed in a browser, and ??? is an undocumented field that appears to accept the text "POPUP" and opens the image, if clicked, in a separate window. This field is unused in ``rwapWiki``.
 
-The translation variable used to convert the above into the output format is named ``CONV_IMAGE_LINK`` and the following substitution variables are permitted:
+The translation variables used to convert the above into the output format are:
+
+
+-   ``CONV_IMAGE_LINK``
+-   ``CONV_IMAGE_LINK_LEFT``
+-   ``CONV_IMAGE_LINK_RIGHT``
+-   ``CONV_IMAGE_LINK_CENTRE``
+
+The latter three are required for some Wiki systems that use different ways to align images left, right or centred. If your desired output already caters for alignment, HTML for example, then any of the latter three which are left blank, will ignore that variable, and use the first one, ``CONV_IMAGE_LINK`` instead.
+
+The following substitution variables are permitted:
 
 -   %SRC% which is the url where the actual image file is found.
 -   %ALT_TEXT% which is the alt text for the image, if present.
