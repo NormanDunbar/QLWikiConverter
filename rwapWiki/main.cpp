@@ -1434,7 +1434,47 @@ void doImages(string *aLine) {
         }
 
         // Now we need to stuff it into the replacement text.
-        string newLink = findVariable("CONV_IMAGE_LINK");
+        // However, which link do we use? There are 4.
+        // Check the alignment.
+        string newLink;
+        char alignChar;
+
+        string::size_type textStart = linkStuff[2].find_last_not_of("\"");
+        if (textStart != string::npos) {
+            alignChar = linkStuff[2].at(textStart);
+        }
+
+        if (chunks > 2) {
+            // What alignment are we using?
+            switch (linkStuff[2].substr(linkStuff[2].size()-2).at(0)) {
+                case 'l':
+                case 'L':
+                case 'g':
+                case 'G':
+                    newLink = findVariable("CONV_IMAGE_LINK_LEFT");
+                    break;
+
+                case 'r':
+                case 'R':
+                case 'd':
+                case 'D':
+                    newLink = findVariable("CONV_IMAGE_LINK_RIGHT");
+                    break;
+
+                case 'c':
+                case 'C':
+                    newLink = findVariable("CONV_IMAGE_LINK_CENTRE");
+                    break;
+
+                default:
+                    newLink = findVariable("CONV_IMAGE_LINK");
+                    cerr << "Weird image alignment [" << linkStuff[2] << "] at line " << lineNumber << endl;
+            }
+
+        } else {
+            // No alignment, use the default translation variable.
+            newLink = findVariable("CONV_IMAGE_LINK");
+        }
 
         // Output the Image URL in case we need to download it.
         cerr << "IMAGE LINK at line: " << lineNumber << " " << linkStuff[0] << endl;
@@ -1444,7 +1484,7 @@ void doImages(string *aLine) {
 
         // Replace all occurrences of %SRC% with the correct text.
         // MANDATORY.
-        string::size_type textStart = newLink.find("%SRC%");
+        textStart = newLink.find("%SRC%");
         while (textStart != string::npos) {
             newLink.replace(textStart, 5, linkStuff[0]);
             textStart = newLink.find("%SRC%");
@@ -1480,8 +1520,11 @@ void doImages(string *aLine) {
             // Replace all occurrences of %ALIGN_EXPAND% with the correct text.
             // The text is in double quotes, and is one character long but we
             // expand this to left or right accordingly.
+            // The alignment text is 'align="x"' where "x" is one of the valid options.
+            // Or not, as the case may be!
+
             string alignText;
-            char alignChar = linkStuff[2].at(1);    // Double quoted.
+            // We have alignChar from above.
             if ((alignChar == 'l') ||
                 (alignChar == 'L') ||
                 (alignChar == 'g') ||
