@@ -1057,7 +1057,13 @@ The following table lists all the currently used translation variables and gives
 +-----------------------------+-------------------------------------------------------+
 | CONV_HR_ON                  | Starts a horizontal rule.                             |
 +-----------------------------+-------------------------------------------------------+
-| CONV_IMAGE_LINK             | Converts an image link.                               |
+| CONV_IMAGE_LINK             | Converts an image link. (inline, usually.)            |
++-----------------------------+-------------------------------------------------------+
+| CONV_IMAGE_LINK_LEFT        | Converts a left aligned image link.                   |
++-----------------------------+-------------------------------------------------------+
+| CONV_IMAGE_LINK_RIGHT       | Converts a right aligned image link.                  |
++-----------------------------+-------------------------------------------------------+
+| CONV_IMAGE_LINK_CENTRE      | Converts a centered image link.                       |
 +-----------------------------+-------------------------------------------------------+
 | CONV_INLINE_CODE_OFF        | Ends an inline code section.                          |
 +-----------------------------+-------------------------------------------------------+
