@@ -2,27 +2,27 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="rwapWiki" />
+		<Option title="fixHeadings" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/rwapWiki" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/fixHeadings" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="C:\SourceCode\temp\QLWikiConverter\Pages\Dilwyn-Jones.en.txt C:\SourceCode\temp\QLWikiConverter\rwapWiki\convert.DOKUWIKI.txt &gt;C:\SourceCode\temp\QLWikiConverter\WD\Dilwyn-Jones.txt" />
+				<Option parameters="/home/norman/SourceCode/RwapWiki/wikiPager/content.out blockquote" />
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/rwapWiki" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/fixHeadings" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="C:\SourceCode\temp\QLWikiConverter\Pages\Dilwyn-Jones.en.txt C:\SourceCode\temp\QLWikiConverter\rwapWiki\convert.DOKUWIKI.txt" />
+				<Option parameters="/home/norman/SourceCode/RwapWiki/wikiPager/content.out citation" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++11" />
@@ -36,16 +36,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="convert.DOKUWIKI.txt" />
-		<Unit filename="convert.HTML.txt" />
-		<Unit filename="convert_template.txt" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
 		<Unit filename="version.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
-			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

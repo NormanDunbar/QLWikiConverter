@@ -46,6 +46,7 @@
 rwapWiki/bin/*
 wikiPager/bin/*
 listWiki/bin/*
+fixHeadings/bin/*
 
 #Other non-essential stuff.
 *.pdf

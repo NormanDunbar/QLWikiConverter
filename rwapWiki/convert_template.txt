@@ -40,6 +40,20 @@
 #----------------------------------------------------------------------------------------
 CONV_PREAMBLE=
 CONV_POSTAMBLE=
+#----------------------------------------------------------------------------------------
+#
+# And for page name conversions, and page name links, how to handle puntuation.
+# Valid values are: DROP, KEEP, REPLACE
+# If REPLACE, you need CONV_PAGENAME_PUNCTUATION_REPLACE_WITH too.
+CONV_PAGENAME_PUNCTUATION=
+CONV_PAGENAME_PUNCTUATION_REPLACE_WITH=
+#----------------------------------------------------------------------------------------
+#
+# There are spaces in page names too.
+# Valid values are: DROP, KEEP, REPLACE
+# If REPLACE, you need CONV_PAGENAME_SPACES_REPLACE_WITH too.
+CONV_PAGENAME_SPACES=REPLACE
+CONV_PAGENAME_SPACES_REPLACE_WITH=
 #========================================================================================
 #
 #
@@ -295,8 +309,16 @@ CONV_ANCHOR_LINK=
 #
 # When converting, the %ALIGN% text can be a single character, or you can specify
 # %ALIGN_EXPAND% to convert [lLgG] to "left" and [rRdD] to "right".
+#
+#
+# NOTE: If CONV_IMAGE_LINK_LEFT, CONV_IMAGE_LINK_RIGHT and CONV_IMAGE_LINK_CENTRE are
+#       empty, then CONV_IMAGE_LINK will be used for that image link. Some Wikis, for
+#       example need different link formats. HTML doesn't.
 #----------------------------------------------------------------------------------------
 CONV_IMAGE_LINK=
+CONV_IMAGE_LINK_LEFT=
+CONV_IMAGE_LINK_RIGHT=
+CONV_IMAGE_LINK_CENTRE=
 #========================================================================================
 
 
