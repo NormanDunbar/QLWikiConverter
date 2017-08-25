@@ -8,66 +8,22 @@
 // Norman Dunbar.
 // 10th July 2017.
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cstdint>
-#include <algorithm>
-#include <sstream>
-#include <map>
-#include <vector>
-
-#include "version.h"
 #include "main.h"
-
-using namespace std;
-
-//------------------------------------------------------------------
-// Globals.
-// Yes, I know! Don't start! Otherwise I'll use a GOTO as well!
-//------------------------------------------------------------------
-
-uint32_t lineNumber = 0;    // Input file, current line number.
-ifstream *mIfs;             // Input file aka argv[1].
-ifstream *mCfs;             // Conversion file aka argv[2].
-bool inBold;                // Are we in a possible multi-line bold string?
-bool inItalic;              // Are we in a possible multi-line italic string?
-bool inCode;                // Are we in (multi-line?) inline code?
-bool inParagraph;           // Are we in a paragraph?
-
-const int ERR_OK = 0;       // No errors.
-const int ERR_BP = 1;       // Bad Parameter error.
-const int ERR_BC = 2;       // Bad conversion error.
-
-// Variables table - for conversion.
-map <string, string> variableMap;
-map<string, string>::iterator variableEntry;
-
-//--------------------------------------------------------------------------------
-// NOTE TO SELF:
-//--------------------------------------------------------------------------------
-// The page title is actually, or normally, the file name minus the
-// language code and .txt extension. So an input file name of
-// Dilwyn-Jones.en.txt would be for the page with the title
-// Dilwyn Jones. Unfortunately, we replace spaces and punctuation
-// with hyphens to make legal file names but can we be sure that
-// we are able to do the reverse? In all cases?
-//
-// No, we cannot do this. There's a page named "ACT - the Adventure Creation Tool"
-// which has multiple spaces and a hyphen already. We cannot really go back. We
-// wouldn't know which hyphen was a space and which should be a hyphen afterwards.
-//
-// However, if we strip out all the multiple hyphens, and replace with a single
-// space, it might just work. Maybe? Perhaps? Hmmm.
-//--------------------------------------------------------------------------------
-
-string pageTitle;
 
 //------------------------------------------------------------------
 // It all kicks off here.
 //------------------------------------------------------------------
 int main(int argc, char *argv[])
 {
+
+    // Assume it will all work.
+    int result = ERR_OK;
+
+    // Assume the worst - We have no page name
+    // in the input file.
+    bool goodFile = false;
+
+
     cerr << endl
          << "rwapWiki - version: " << VERSION << endl;
 
@@ -76,7 +32,8 @@ int main(int argc, char *argv[])
         cout << "Not enough parameters supplied." << endl
              << "USAGE:" << endl << endl
              << "\trwapWiki input_file conversion_file [> output_file]" << endl;
-        return 1;
+        result = ERR_BP;
+        goto allDone;
     }
 
     // Looks good, let's go!
@@ -86,15 +43,24 @@ int main(int argc, char *argv[])
     if (!mCfs->good()) {
         cerr << "File: '" << argv[2] << "' not found." << endl
              << "Cannot continue." << endl;
-        return ERR_BP;
+            result = ERR_BP;
+            goto allDone;
     } else {
         // Read the conversion parameters.
         if (!readConversionFile()) {
-            cerr << "File: '" << argv[2] << "' cannot be read." << endl
+            cerr << "File: '" << argv[2] << "' cannot be read, or" << endl
+                 << "some variables cannot be found in it." << endl
                  << "Cannot continue." << endl;
-            return ERR_BP;
+            result = ERR_BP;
+            goto allDone;
         }
+
+        // All ok, don't need the file now.
+        mCfs->close();
+        delete mCfs;
+        mCfs = NULL;
     }
+
 
     // Get the input file first.
     lineNumber = 0;
@@ -108,49 +74,61 @@ int main(int argc, char *argv[])
     //Show where we are - in case we have lots of files being done.
     cerr << "Converting '" << argv[1] << "'." << endl;
 
-    // Attempt to convert back from a file name to a page title.
-    // Convert any hyphens to spaces - which should be ok.
-    // Bear in mind that we could have a full path or a relative
-    // one and strip out the language code as well.
+    // Read the first line. It should be in the format:
+    // PageName: xxxx xxxx xxxx <EOL>
+    // If not, we are using the wrong file type.
     //
-    // "/full/path/Page-Title.language.txt" would become "Page Title".
-    //
-    // And so on. It's crude, but might work for HTML conversions at least.
-    pageTitle = string(argv[1]);
-    for (string::iterator x = pageTitle.begin(); x != pageTitle.end(); x++) {
-        if (*x == '-') {
-            *x = ' ';
+    // Now find out.
+    readInputFile(&pageTitle);
+    if (pageTitle.length() > 10) {
+        if (pageTitle.substr(0, 9) == "PageName:") {
+            goodFile = true;
+            pageTitle = pageTitle.substr(10);
         }
     }
 
-    // Try Windows separators.
-    string::size_type slashPos;
-    slashPos = pageTitle.find_last_of('\\');
-    if (slashPos != string::npos) {
-        // Strip off the Windows path.
-        pageTitle = pageTitle.substr(slashPos +1, pageTitle.length() - slashPos - 5);
-    } else {
-        // Look for a Unix path separator instead.
-        slashPos = pageTitle.find_last_of('/');
-        if (slashPos != string::npos) {
-            // Strip off the Windows path.
-            pageTitle = pageTitle.substr(slashPos +1, pageTitle.length() - slashPos - 5);
+    // PageName is valid, but ignore Wiki specific ones that we don't need.
+    if (pageTitle == "Editing Help" ||
+        pageTitle == "sandbox" ||
+        pageTitle == "Sandbox Test" ||
+        pageTitle == "Wiki SandBox")
+    {
+        cerr << "Ignoring file '" << argv[1] << "' - Wiki specific page: '"
+             << pageTitle << "'." << endl;
+        goto allDone;
+    }
+
+    // And check.
+    if (!goodFile) {
+        // Invalid file.
+        cerr << "PageTitle not found in file '" << argv[1] << "'." << endl;
+        mIfs->close();
+        delete mIfs;
+        result = ERR_BP;
+
+    }
+
+
+    // Let's do it.
+    result = jfdi();
+
+// Yes folks, I used a goto!
+allDone:
+    if (mIfs) {
+        if (mIfs->is_open()) {
+            mIfs->close();
         }
+        delete mIfs;
     }
 
-    // We have the "filename.language", so locate the dot
-    // before the language which we could just do by slicing off
-    // the last three characters, but someone will use a language
-    // code that differs in length, so let's try to be safe!
-    slashPos = pageTitle.find_last_of('.');
-    if (slashPos != string::npos) {
-        // Strip off the language code and the dot.
-        pageTitle = pageTitle.substr(0, slashPos);
+    if (mCfs) {
+        if (mCfs->is_open()) {
+            mCfs->close();
+        }
+        delete mCfs;
     }
 
-    // At this point, we should have something resembling a page title.
-
-    return jfdi();
+    return result;
 }
 
 
@@ -240,6 +218,7 @@ int jfdi()
         }
 
         // Write out the fully reformatted line.
+        //cout << "AFTER: '"<< *aLine << "'" << endl;
         cout << *aLine << endl;
 
         // Get the next line.
@@ -1254,12 +1233,57 @@ void doWikiPageLink(string *aLine) {
         string pageName = aLine->substr(linkStart + 1, linkEnd - linkStart -1);
         string compressedName = pageName;
 
-        // Replace spaces with hyphens.
-        for (string::iterator x = compressedName.begin(); x != compressedName.end(); x++) {
-            if ((ispunct(*x)) ||
-                (isspace(*x)))
-            {
-                *x = '-';
+        // Process spaces in page names as requested.
+        // DROP, KEEP, REPLACE
+        string replaceSpacesWith = findVariable("CONV_PAGENAME_SPACES_REPLACE_WITH");
+        string howToReplaceSpaces = findVariable("CONV_PAGENAME_SPACES");
+
+        // How do we have to handle spaces in page name links?
+        // KEEP is easy, we do nothing!
+        if (howToReplaceSpaces != "KEEP") {
+            // Must be DROP or REPLACE.
+            if (howToReplaceSpaces == "DROP") {
+                // Drop spaces. Backwards!
+                // Erase() doesn't work with reverse_iterators.
+                // End() returns one past the end, so -- first.
+                for (string::iterator x = --compressedName.end(); x >= compressedName.begin(); x--) {
+                    if (isspace(*x)) {
+                        compressedName.erase(x);
+                    }
+                }
+            } else {
+                // Must be REPLACE.
+                for (string::reverse_iterator x = compressedName.rbegin(); x != compressedName.rend(); x++) {
+                    if (isspace(*x)) {
+                        *x = replaceSpacesWith.at(0);
+                    }
+                }
+            }
+        }
+
+        string replacePunctuationWith = findVariable("CONV_PAGENAME_PUNCTUATION_REPLACE_WITH");
+        string howToReplacePunctuation = findVariable("CONV_PAGENAME_PUNCTUATION");
+
+        // How do we have to handle punctuation in page name links?
+        // KEEP is easy, we do nothing!
+        if (howToReplacePunctuation != "KEEP") {
+            // Must be DROP or REPLACE.
+            if (howToReplacePunctuation == "DROP") {
+                // Drop spaces. Backwards!
+                // Erase() doesn't work with reverse_iterators.
+                // End() returns one past the end, so -- first.
+                for (string::iterator x = --compressedName.end(); x >= compressedName.begin(); x--) {
+                    if (ispunct(*x)) {
+                        compressedName.erase(x);
+                    }
+                }
+            } else {
+                // Must be REPLACE.
+                for (string::reverse_iterator x = compressedName.rbegin(); x != compressedName.rend(); x++) {
+                    if (ispunct(*x)) {
+                        *x = replacePunctuationWith.at(0);
+                    }
+                }
             }
         }
 
@@ -1330,6 +1354,11 @@ void doUrl(string *aLine) {
         cerr << "DoURL(): Invalid link on line " << lineNumber
              << " of input file. The invalid link is '"
              << linkText << "'" << endl;
+    }
+
+    // Make sure that any "www" links are prefixed "http://"
+    if (linkStuff[1].substr(0, 3) == "www") {
+        linkStuff[1] = "http://" + linkStuff[1];
     }
 
     // Replace all occurrences of %LINK_TEXT% with the correct text.
@@ -1437,7 +1466,7 @@ void doImages(string *aLine) {
         // However, which link do we use? There are 4.
         // Check the alignment.
         string newLink;
-        char alignChar;
+        char alignChar = 'l';   // Assume left.
 
         string::size_type textStart = linkStuff[2].find_last_not_of("\"");
         if (textStart != string::npos) {
@@ -1447,6 +1476,8 @@ void doImages(string *aLine) {
         if (chunks > 2) {
             // What alignment are we using?
             switch (linkStuff[2].substr(linkStuff[2].size()-2).at(0)) {
+
+                // Left aligned.
                 case 'l':
                 case 'L':
                 case 'g':
@@ -1454,6 +1485,7 @@ void doImages(string *aLine) {
                     newLink = findVariable("CONV_IMAGE_LINK_LEFT");
                     break;
 
+                // Right aligned.
                 case 'r':
                 case 'R':
                 case 'd':
@@ -1461,9 +1493,17 @@ void doImages(string *aLine) {
                     newLink = findVariable("CONV_IMAGE_LINK_RIGHT");
                     break;
 
+                // Centre aligned? Not sure this is valid though!
                 case 'c':
                 case 'C':
                     newLink = findVariable("CONV_IMAGE_LINK_CENTRE");
+                    break;
+
+                // Inline? Not sure this is valid though, but it occurs!
+                // eg "3D Slime" has it.
+                case 'i':
+                case 'I':
+                    newLink = findVariable("CONV_IMAGE_LINK");
                     break;
 
                 default:
@@ -1631,7 +1671,7 @@ bool readConversionFile() {
     while (mCfs->good()) {
         readConvertLine(&cLine);
 
-        // Strip out comments.
+        // Strip out comments and blank lines.
         if ((cLine.empty() ||
             (cLine.at(0) == '#'))) {
                 continue;
@@ -1679,13 +1719,14 @@ bool readConversionFile() {
         }
     }
 
-    return true;
+    return validateVariables();
 }
 
 
-//
+//------------------------------------------------------------------
 // Search the variables map for a given variable name.
 // Returns a valid iterator if all ok, otherwise returns mVariables.end().
+//------------------------------------------------------------------
 string findVariable(const string variableName) {
 
     map<string, string>::iterator i = variableMap.find(variableName);
@@ -1694,12 +1735,39 @@ string findVariable(const string variableName) {
         // Not found.
         cerr << "FindVariable(): VariableName: " << variableName
               << " not found." << endl;
+        return notFound;
     }
 
     return (*i).second;
 }
 
 
+//------------------------------------------------------------------
+// Check that all the required translation variables are found. and
+//------------------------------------------------------------------
+bool validateVariables() {
+
+    // Assume best case.
+    bool result = true;
+
+    for (vector<string>::iterator x = translationVariables.begin();
+         x != translationVariables.end();
+         x++)
+    {
+        // Find each required variable in those read in. List
+        // everything that we don't find.
+        string gotVariable = findVariable(*x);
+        if (gotVariable == notFound) {
+            cerr << "Translation variable '" << *x
+                 << "' not found in translation file."
+                 << endl;
+
+            result = false;
+        }
+    }
+
+    return result;
+}
 
 //------------------------------------------------------------------
 // Reads the convert file and returns a bool indicating success or not

@@ -33,6 +33,18 @@
 #----------------------------------------------------------------------------------------
 CONV_PREAMBLE=<html><head><title>Sinclair QL Wiki</title><meta charset="UTF-8"></head><body><h1>%TITLE%</h1>
 CONV_POSTAMBLE=</body></html>
+#
+# And for page name conversions, and page name links, how to handle puntuation.
+# DROP, KEEP, REPLACE
+# If REPLACE, you need CONV_PAGENAME_PUNCTUATION_REPLACE_WITH too.
+CONV_PAGENAME_PUNCTUATION=DROP
+CONV_PAGENAME_PUNCTUATION_REPLACE_WITH=
+#
+# Spaces in page names too.
+# DROP, KEEP, REPLACE
+# If REPLACE, you need CONV_PAGENAME_SPACES_REPLACE_WITH too.
+CONV_PAGENAME_SPACES=REPLACE
+CONV_PAGENAME_SPACES_REPLACE_WITH=_
 #========================================================================================
 #
 #
@@ -290,8 +302,8 @@ CONV_ANCHOR_LINK=<abbr title="%TITLE_TEXT%">%ANCHOR%</abbr>
 # %ALIGN_EXPAND% to convert [lLgG] to "left" and [rRdD] to "right".
 #
 #
-# NOTE: If CONV_IMAGE_LINK_LEFT, CONV_IMAGE_LINK_RIGHT and CONV_IMAGE_LINK_CENTRE are 
-#       empty, then CONV_IMAGE_LINK will be used for all image links. Some Wikis, for
+# NOTE: If CONV_IMAGE_LINK_LEFT, CONV_IMAGE_LINK_RIGHT and CONV_IMAGE_LINK_CENTRE are
+#       empty, then CONV_IMAGE_LINK will be used for that image link. Some Wikis, for
 #       example need different link formats. HTML doesn't.
 #----------------------------------------------------------------------------------------
 CONV_IMAGE_LINK=<a href="%SRC%" title="%LONG_DESC%"><img src="%SRC%" alt="%ALT_TEXT%" width="%WIDTH%" height="%HEIGHT%" border="0" align="%ALIGN%"></a>
