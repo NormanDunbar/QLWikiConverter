@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="/home/norman/SourceCode/RwapWiki/wikiPager/content.out blockquote" />
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
@@ -21,6 +22,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="/home/norman/SourceCode/RwapWiki/wikiPager/content.out citation" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++11" />
