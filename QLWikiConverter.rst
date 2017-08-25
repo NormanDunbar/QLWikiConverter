@@ -10,7 +10,7 @@ For full details, see `this topic <http://qlforum.co.uk/viewtopic.php?f=12&t=183
 
 Currently the QL Wiki, amongst others, is hosted and maintained by Rich of RWAP Services. It has been noted that other Wikis etc have foundered on the basis of "something" happening to the one single maintainer. Rich wants to avoid this happening.
 
-To this end, a number of suggestions have been put forward on the matter (read the whole topic at the link above) and conversion to another format was suggested. Where and how (or who) would be hosting the converted Wiki is/was/has yet to be decided, as has the format - there are Wikis aplenty out there!
+To this end, a number of suggestions have been put forward on the matter (read the whole topic at the link above) and translation to another format was suggested. Where and how (or who) would be hosting the converted Wiki is/was/has yet to be decided, as has the format - there are Wikis aplenty out there!
 
 To make the task of converting the existing, and not really well known, *WiClear* Wiki (`http://wiclear.free.fr/ <http://wiclear.free.fr/>`_) source code from the format used by WiClear to some other format, I wrote this utility. It is possibly more important as the WiClear software has not been updated since 2007 and who knows what bugs or security problems exist?
 
@@ -18,7 +18,7 @@ To make the task of converting the existing, and not really well known, *WiClear
 
 This document attempts to explain how the system works, what it converts and how. This might make writing new translation files a little easier. The utility is supplied with a single, text, HTML translation file which works *reasonably* well - see the section on *Problem Areas Identified* below.
 
-    **Update:** As of 18th August 2017, a new example file is also supplied. This one is ``convert.DOKUWIKI.txt`` and converts the WiClear source to that required by the DokuWiki system. The creation of this new file is described below in the section *A Worked Example - DokuWiki*.
+    **Update:** As of 18th August 2017, a new translation file is also supplied. This one is ``convert.DOKUWIKI.txt`` and translates the WiClear source to that required by the DokuWiki system. The creation of this new file is described below in the section *A Worked Example - DokuWiki*.
 
 
 WorkFlow
@@ -38,7 +38,7 @@ The workflow is simple:
 -   Convert the required page files to the desired format.
 -   Use the converted files in some appropriate manner.
 
-The latter stage may well require that you build a conversion file if one is not provided for you.
+The latter stage may well require that you build a translation file if one is not provided for you.
 
 In Detail
 ---------
@@ -95,21 +95,23 @@ In Detail
     
     At present, most of the Wiki is in English, and there are a few pages in French or Dutch languages. These are ignored (sorry) for the rest of this document - I'm doing what the British do best, ignoring every other language in the world!
     
--   The ``Pages`` directory contains the files we wish to convert to *some other format*. The rest of this example will assume HTML is desired, as that's what I did my testing with! The utility ``rwapWiki`` is the one which reads each page file, and creates an output in the desired format. To do this, it has to know what to convert the original Wiki source code into for the various features of the Wiki source language. Details of what is converted are to be found below, as are details on how to build your own conversion file.
+-   The ``Pages`` directory contains the files we wish to convert to *some other format*. The rest of this example will assume HTML is desired, as that's what I did my testing with! The utility ``rwapWiki`` is the one which reads each page file, and creates an output in the desired format. To do this, it has to know what to convert the original Wiki source code into for the various features of the Wiki source language. Details of what is converted are to be found below, as are details on how to build your own translation file.
 
     ..  code-block:: none
 
         mkdir HTML
         /path/to/rwapWiki Pages/inputfile.en.txt /path/to/convert.HTML.txt >HTML/inputfile.html
     
-    The file ``inputfile.en.txt`` in the ``Pages`` directory will be converted according to the rules in ``convert.HTML.txt`` and written to standard output, where it is redirected to the file ``inputfile.html`` in the newly created ``HTML`` directory. The output file should be named similarly to the input file, only the ``.en.txt`` extensions are changed to ``.html`` (in this case) as that is what the conversion file, ``convert.HTML.txt`` decrees.
+    The file ``inputfile.en.txt`` in the ``Pages`` directory will be converted according to the rules in ``convert.HTML.txt`` and written to standard output, where it is redirected to the file ``inputfile.html`` in the newly created ``HTML`` directory. The output file should be named similarly to the input file, only the ``.en.txt`` extensions are changed to ``.html`` (in this case) as that is what the translation file, ``convert.HTML.txt`` decrees.
     
     Repeat as necessary for every single file in the Pages directory, or at least, for the ones you are interested in.
+    
+    **NOTE**: if your output format depends on a certain format of filename, such as DokuWiki does (no punctuation, spaces replaced by underscore, all lower case) then it is your responsibility to make this happen and redirect the output from ``rwapWiki`` to the desired filename. ``RwapWiki`` itself does not create an output file, it merely writes to 'standard output' aka the screen.
 
 -   In this case, we have converted the page files to HTML, so we can use a browser to examine the results. Normally, the Wiki starts by displaying the first topic, with happened to be the page with the title 'Sinclair QL Home Computer', so we must point our browser at the file ``HTML/Sinclair-QL-Home-Computer.html`` and follow the links from there.
 
-Batching the Conversion
------------------------
+Batching the translation
+------------------------
 
 Converting each and every page in the above manner could get a little tiresome. There has to be a better way - and there is. On Linux, it is a simple matter. Windows, as per the norm, seems to go out of its way to make life difficult. Read on.
 
@@ -135,7 +137,7 @@ Windows
 
 This is definitely not as simple as it is on Linux!
 
-First we need a small batch file to do the conversion for a single file, this is ``PageIt.cmd``:
+First we need a small batch file to do the translation for a single file, this is ``PageIt.cmd``:
 
 ..  code-block:: batch
 
@@ -171,9 +173,9 @@ Once completed, Open ``HTML/Sinclair-QL-Home-Computer.html`` in your browser, an
 Problem Areas Identified
 ========================
 
-The following list outlines a number of conversion problems that I have come across in testing. I'm assuming that there are others and that some of them will perhaps, not apply in other conversion formats. Testing has been done on HTML conversions - so far!
+The following list outlines a number of translation problems that I have come across in testing. I'm assuming that there are others and that some of them will perhaps, not apply in other translation formats. Testing has been done on HTML translations - so far!
 
-It's plainly obvious that no conversion program will be 100% able to convert everything, but having something converted with a couple of foibles is much better than having to convert everything by hand.
+It's plainly obvious that no translation program will be 100% able to convert everything, but having something converted with a couple of foibles is much better than having to convert everything by hand.
 
 Wiki Page Links
 ---------------
@@ -207,9 +209,9 @@ These cannot be converted. Sorry. However, as there are none in the QL Wiki, it'
 Images
 ------
 
-The original Wiki required that images were set up as a URL linking to images that existed *somewhere on the internet*, there was no apparent ability to load images from local files. The conversion process will list all the images it finds, but will not (can not) download them. Image links in the converted files will refer to the original locations - or as decreed by the conversion's translation file.
+The original Wiki required that images were set up as a URL linking to images that existed *somewhere on the internet*, there was no apparent ability to load images from local files. The translation process will list all the images it finds, but will not (can not) download them. Image links in the converted files will refer to the original locations - or as decreed by the translation file.
 
-Equally, the description for an image (the text that appears when you hover over it) will either be some descriptive text, or, a link to a text file *somewhere on the internet* where the descriptive text can be found in the named file. Again, the conversion program will list the descriptive text or filenames as appropriate as part of the conversion.
+Equally, the description for an image (the text that appears when you hover over it) will either be some descriptive text, or, a link to a text file *somewhere on the internet* where the descriptive text can be found in the named file. Again, the translation program will list the descriptive text or filenames as appropriate as part of the translation.
 
 If you decide to download the individual images locally, you will obviously need to edit the generated HTML files to change the "src=" attribute on the "<img>" tags accordingly. Please look in the IMAGES/wget_list.txt file for a full list of all the images that are linked to in the QL Wiki (as of 28th July 2017.) This file can be used as follows:
 
@@ -260,7 +262,7 @@ When complete, you should have over 1,000 separate pages, each on containing a s
 RwapWiki
 --------
 
-This utility reads a conversion file containing special bits of text etc, or blanks, that will be used when certain features of the Wiki source language are detected in the input file. The conversion file is described below, in some detail, and will not be discussed here any further.
+This utility reads a translation file containing special bits of text etc, or blanks, (translation variables) that will be used when certain features of the Wiki source language are detected in the input file. The translation file is described below, in some detail, and will not be discussed here any further.
 
 The input file is opened, and read line by line. For each line read, the following processes are carried out:
 
@@ -283,7 +285,7 @@ The following section outlines, in some details, the processing of each differen
 ListWiki
 --------
 
-This utility reads a conversion file, created by ``wikiPager``, and attempts to find all occurrences of a particular Wiki Feature, such as citations, acronyms etc. The full list is:
+This utility reads a file, created by running the ``content.sql`` script against the MySQL database holding the Wiki content. It attempts to find all occurrences of *one* particular Wiki Feature (at a time), such as citations, acronyms etc. The full list of what it can look for is:
 
 -   ACRONYM, ANCHOR
 -   BLOCKQUOTE, BOLD
@@ -302,12 +304,12 @@ This utility reads a conversion file, created by ``wikiPager``, and attempts to 
 
 The code doesn't get it right each and every time, but it's useful in finding stuff that might not be acting correctly when a file is converted.
 
-While the utility reads the output file from the ``content.sql`` script , it displays its finding as if it had been scanning the individual files output by the ``wikiPager`` utility, with the correct line numbers etc.
+While the utility reads the output file from the ``content.sql`` script , it displays its finding as if it had been scanning the individual files output by the ``wikiPager`` utility, with the correct line numbers etc as it is assumed that anything discovered by this utility, will require to be fixed in the individual page files created by ``wikiPager`` prior to translation by ``rwapWiki``.
 
 
 
-What Gets Converted
-===================
+What Gets Translated
+====================
 
 Line Starts
 -----------
@@ -319,7 +321,7 @@ When a line start is processed, we cannot be in a paragraph any longer, so if we
 Headings
 ~~~~~~~~
 
-Heading lines start with one, two or three exclamation marks (!). These indicate the heading level, with '!!!' indicating level 1 and '!' indicating level 3. Only three levels of heading are permitted. There may be embedded formatting such as bold or italic, so after conversion here, the line is processed for any valid embedded formatting. (See below for details).
+Heading lines start with one, two or three exclamation marks (!). These indicate the heading level, with '!!!' indicating level 1 and '!' indicating level 3. Only three levels of heading are permitted. There may be embedded formatting such as bold or italic, so after translation here, the line is further processed for any valid embedded formatting. (See below for details).
 
 A heading from the input file will resemble the following, but note that I have added spaces to make the reading easier:
 
@@ -335,18 +337,18 @@ This shows a level 2 heading, so the line is reformatted to be as follows:
 
     <CONV_H2_PREAMBLE>Heading Text<CONV_H2_POSTAMBLE>
     
-The 'CONV' variables are read from the conversion file. In the case of HTML these will be ``<h2>`` and ``</h2>`` as you would expect. Similar variables exist for the level 1 and level 3 headings.
+The 'CONV' variables are read from the translation file. In the case of HTML these will be ``<h2>`` and ``</h2>`` as you would expect. Similar variables exist for the level 1 and level 3 headings.
 
 Horizontal Rules
 ~~~~~~~~~~~~~~~~
 
-No special processing is required for horizontal rules, we simply discard the input line - which consists of 4 or more equals signs (=) in a row followed by a line feed - and set the line to contain only the following variables from the conversion file:
+No special processing is required for horizontal rules, we simply discard the input line - which consists of 4 or more equals signs (=) in a row followed by a line feed - and set the line to contain only the following variables from the translation file:
 
 ..  code-block:: none
 
     <CONV_HR_ON><CONV_HR_OFF>
     
-For the example HTML conversion, this will be blank for ``CONV_HR_OFF`` and ``<br>`` for ``CONV_HR_ON``.
+For the example HTML translation, this will be blank for ``CONV_HR_OFF`` and ``<br>`` for ``CONV_HR_ON``.
 
 Block Quotes
 ~~~~~~~~~~~~
@@ -368,7 +370,7 @@ All we do with each of the lines is to strip off the leading '>' and convert it 
     
 Where '...' represents the block quoted text.
 
-    **NOTE**: The double arrow at the start of the second line above is *not* part of the conversion, it merely indicates that the code line has had to be split to fit it onto the page and that it should be all on a single line.
+    **NOTE**: The double arrow at the start of the second line above is *not* part of the translation, it merely indicates that the code line has had to be split to fit it onto the page and that it should be all on a single line.
 
 We have two prefix variables and two suffix variables to content with as some output formats may require an prefix/suffix for the block quote, and an prefix/suffix for each line of text within. HTML requires this, as follows:
 
@@ -508,7 +510,7 @@ The remainder of the potential *Line Includes* codes and processing are also val
 Embedded Formatting
 -------------------
 
-Lines with special characters at the beginning, see *Line Starts* above, may also contain some form of embedded formatting too. The utility processes each line start line, after replacing whatever was necessary with conversion variables, to check for and process the following embedded formats:
+Lines with special characters at the beginning, see *Line Starts* above, may also contain some form of embedded formatting too. The utility processes each line start line, after replacing whatever was necessary with translation variables, to check for and process the following embedded formats:
 
 -   Bold
 -   Italic
@@ -716,7 +718,7 @@ and is converted to the following:
 
     yada yada <CONV_FORCE_LINE_FEED_ON><CONV_FORCE_LINE_FEED_OFF> text after the linefeed ...
     
-There may be more than one forced line in a single Wiki source line, so all of them are replaced. In the example HTML conversion file, ``CONV_FORCE_LINE_FEED_ON`` is set to ``<br>`` and ``CONV_FORCE_LINE_FEED_OFF`` is blank.
+There may be more than one forced line in a single Wiki source line, so all of them are replaced. In the example HTML translation file, ``CONV_FORCE_LINE_FEED_ON`` is set to ``<br>`` and ``CONV_FORCE_LINE_FEED_OFF`` is blank.
 
 Citations
 ~~~~~~~~~
@@ -738,7 +740,7 @@ or this:
 
 The utility processes these and converts them by reading the variables ``CONV_CITATION_LINK``  and ``CONV_CITATION_NOSOURCE_LINK`` and scanning both for the text '%CITATION%' and, optionally, '%SOURCE%', and for each occurrence found, replaces the substitution text with the appropriate part of the Wiki source line's citation text.  
 
-The example HTML conversion uses the following as the ``CONV_CITATION_LINK`` and ``CONV_CITATION_NOSOURCE_LINK`` translation variables, for the two permitted translation options:
+The example HTML translation uses the following as the ``CONV_CITATION_LINK`` and ``CONV_CITATION_NOSOURCE_LINK`` translation variables, for the two permitted translation options:
 
 ..  code-block:: none
 
@@ -764,7 +766,7 @@ References are created in the Wiki as follows:
     
 There is, as can be seen, one part to a reference. ``RwapWiki`` processes this as '%REFERENCE%' and converts it by reading the variable ``CONV_REFERENCE_LINK`` and scanning it for the text '%REFERENCE%', and for each occurrence found, replaces the text '%REFERENCE%' with the appropriate part of the Wiki source's reference code. 
 
-The example HTML conversion uses the following as the ``CONV_REFERENCE_LINK`` replacement text:
+The example HTML translation uses the following as the ``CONV_REFERENCE_LINK`` replacement text:
 
 ..  code-block:: none
 
@@ -785,9 +787,9 @@ Anchors are created in the Wiki as follows:
 
     ... ~~anchor|title~~ ...
     
-There are, as can be seen, two parts to an anchor, the anchor text and the title text. The conversion utility, ``rwapWiki`` processes these and converts them by reading the variable ``CONV_ANCHOR_LINK`` and scanning it for the text '%ANCHOR%' and '%TITLE_TEXT%', and for each occurrence, replaces the found text with the appropriate part of the Wiki source's anchor code. 
+There are, as can be seen, two parts to an anchor, the anchor text and the title text. The translation utility, ``rwapWiki`` processes these and converts them by reading the variable ``CONV_ANCHOR_LINK`` and scanning it for the text '%ANCHOR%' and '%TITLE_TEXT%', and for each occurrence, replaces the found text with the appropriate part of the Wiki source's anchor code. 
 
-The example HTML conversion uses the following as the ``CONV_ANCHOR_LINK`` replacement text:
+The example HTML translation uses the following as the ``CONV_ANCHOR_LINK`` replacement text:
 
 ..  code-block:: none
 
@@ -814,7 +816,7 @@ Acronyms are created in the Wiki as follows:
     
 There are, as can be seen, two parts to a acronym. ``RwapWiki`` processes this as '%ACRONYM%' and '%TITLE_TEXT%' and converts them by reading the variable ``CONV_ACRONYM_LINK`` and scanning it for the text '%ACRONYM%' and '%TITLE_TEXT%', and for each occurrence found, replaces it with the appropriate part of the Wiki source's acronym code. 
 
-The example HTML conversion uses the following as the ``CONV_REFERENCE_LINK`` replacement text:
+The example HTML translation uses the following as the ``CONV_REFERENCE_LINK`` replacement text:
 
 ..  code-block:: none
 
@@ -834,14 +836,13 @@ An image, in the Wiki source, is defined as follows:
     
 Of these, only the first field is mandatory, the rest are optional. 
 
-The source is the URL, somewhere on the internet, where the actual image file can be found. Images in the Wiki are all links to a URL and are not loaded from local (to the server) storage. Alt is the alt text for the image, align is a single character that defines left or right alignment, case is ignored and valid values are taken from 'lLgG' for left and 'rRdD' for right. The Wiki author is French and allows French 'Droit' and 'Gauche' as well as English.
+The ``source`` is the URL, somewhere on the internet, where the actual image file can be found. Images in the Wiki are all links to a URL and are *not* loaded from local (to the web-server) storage. ``Alt`` is the alt text for the image, ``align`` is the text ``align="?"`` where '?' is a single character that defines the image alignment. Letter case is ignored and documented values are taken from 'lLgG' for left and 'rRdD' for right. The Wiki author is French and allows French 'Droit' and 'Gauche' as well as English.
 
-    **NOTE**: It appears that some images in the Wiki are aligned with 'i' or 'I'. These are not documented.
+    **NOTE**: It appears that some images in the Wiki are aligned with 'i' or 'I'. These are not documented. I've also taken the liberty of checking for 'c' and 'C' in centralising images. I'm not sure if it's valid though - but then again, 'i' and 'I' are not documented either! It is assumed that the latter are "inline" and these will use the ``CONV_IMAGE_LINK`` translation variable to inline them, as will anything that is not specifically aligned to the left, right, centre or inline.    
 
-The long_description is either some text the describes the image, or the URL of a text file, somewhere on the internet, where the descriptive text is to be found. Width and height define how the image will be displayed on the Wiki page, when viewed in a browser, and ??? is an undocumented field that appears to accept the text "POPUP" and opens the image, if clicked, in a separate window. This field is unused in ``rwapWiki``.
+The ``long_description`` is either some text the describes the image, or the URL of a text file, somewhere on the internet, where the descriptive text is to be found. ``Width`` and ``height`` define how the image will be displayed on the Wiki page, when viewed in a browser, and ``???`` is another undocumented field that appears to accept the text "POPUP" and opens the image, if clicked, in a separate window. This field is unused in ``rwapWiki``.
 
-The translation variables used to convert the above into the output format are:
-
+The list of translation variables used to convert the above into the output format are:
 
 -   ``CONV_IMAGE_LINK``
 -   ``CONV_IMAGE_LINK_LEFT``
@@ -1687,23 +1688,32 @@ And here we find a problem, WiClear allows indented lists, and so does DokuWiki,
 
 Wiki Page Link
 ~~~~~~~~~~~~~~
-Internal page links, which are links to other wiki pages, are very similar in DokuWiki to the WiClear syntax. The only difference is that DokuWiki uses '[[' and ']]' rather than just '[' and ']'. The following will set up internal links correctly:
+When you create a page link in a DokuWiki page, the page name linked to is converted internally by DokuWiki by:
+
+-   Lower casing the name;
+-   Replacing spaces with underscores;
+-   Deleting any punctuation characters.
+
+This gives it a filename to work with, it then goes off and displays that filename if the link is clicked. So, the link to a page named ``DJToolkit (DJTK)`` will be replaced by a link to ``djtoolkit_djtk`` internally, and that's the name of the page file that will be loaded if the link is clicked.
+
+Additionally, when a non-existent page is linked to in a DokuWiki setup, the link appears red until the page is created, whereupon it becomes green. This can help identify problems and/or missing pages.  
+
+Page links are very similar in DokuWiki to the WiClear syntax. The only difference is that DokuWiki uses '[[' and ']]' rather than just '[' and ']'. The following will set up internal links correctly:
 
 ..  code-block:: none
 
-    CONV_WIKI_LINK=[[%PAGE_NAME%]]
+    CONV_PAGENAME_PUNCTUATION=DROP
+    CONV_PAGENAME_PUNCTUATION_REPLACE_WITH=
+    CONV_PAGENAME_SPACES=KEEP
+    CONV_PAGENAME_SPACES_REPLACE_WITH=
+
+These will cause any punctuation in page links to be dropped while spaces will be kept. This matches what DokuWiki will do by default, however, we need to be sure that our links match DokuWiki processing, so the above are necessary. Once we have the punctuation and spaces sorted, the following will set up the correct links to use when we find a link to another Wiki page:    
     
-The bonus feature of DokuWiki here is that the page name is converted to lower case and spaces etc, are replaced by underscores. This means that, hopefully, page links should work regardless of the Operating System in use. Additionally, when a non-existent page is linked to in a DokuWiki setup, the link appears red until the page is create, whereupon it becomes green. This can help identify problems and/or missing pages.  
-
-However, rather than having all your pages in one place, DokuWiki allows the use of 'namespaces' to allow some separation of your Wiki topics. You could have a Linux namespace as well as a Qdos one. Obviously all the pages from the QL Wiki would go into a namespace of QL Wiki - wouldn't they?
-
-All you need to do there is set up the following for a Wiki Page Link:
-
 ..  code-block:: none
-
-    CONV_WIKI_LINK=[[qlwiki:%PAGE_NAME%]]
-
-And that's all there is to it. All your Wiki pages are now deemed to live in the 'qlwiki' namespace.    
+    
+    CONV_WIKI_LINK=[[qlwiki:%COMPRESSED_NAME%]]
+    
+Because DokuWiki allows the use of 'namespaces' to allow some separation of your Wiki topics, I have used a namespace of ``qlwiki`` for the new Wiki pages. You could have other namespaces as well as a ``qlwiki`` one. Obviously all the pages from the QL Wiki would go into a namespace of QL Wiki - won't they?
 
 
 You Tube Video
@@ -1742,6 +1752,10 @@ Pulling all of the above together, we have ended up with the following translati
 
     CONV_PREAMBLE= ====== %TITLE% ======
     CONV_POSTAMBLE=
+    CONV_PAGENAME_PUNCTUATION=DROP
+    CONV_PAGENAME_PUNCTUATION_REPLACE_WITH=
+    CONV_PAGENAME_SPACES=KEEP
+    CONV_PAGENAME_SPACES_REPLACE_WITH=
     CONV_ACRONYM_LINK=%ACRONYM%
     CONV_ANCHOR_LINK=<html><span style="color:red;">%ANCHOR%</span></html>
     CONV_BLOCK_QUOTE_PREAMBLE=
@@ -1766,7 +1780,7 @@ Pulling all of the above together, we have ended up with the following translati
     CONV_FORCE_LINE_FEED_ON=\\
     # There's a space at the end of the next line.
     CONV_FORCE_LINE_FEED_OFF= 
-    CONV_URL_LINK=[[%URL%"|%LINK_TEXT%]]
+    CONV_URL_LINK=[[%URL%|%LINK_TEXT%]]
     CONV_H1_PREAMBLE= ======
     CONV_H1_POSTAMBLE= ======
     CONV_H2_PREAMBLE= =====
@@ -1776,6 +1790,9 @@ Pulling all of the above together, we have ended up with the following translati
     CONV_HR_ON= ----
     CONV_HR_OFF=
     CONV_IMAGE_LINK={{%SRC%?%WIDTH%x%HEIGHT%|%LONG_DESC%}}
+    CONV_IMAGE_LINK_LEFT={{%SRC%?%WIDTH%x%HEIGHT%  |%LONG_DESC%}}
+    CONV_IMAGE_LINK_RIGHT={{  %SRC%?%WIDTH%x%HEIGHT%|%LONG_DESC%}}
+    CONV_IMAGE_LINK_CENTRE={{  %SRC%?%WIDTH%x%HEIGHT%  |%LONG_DESC%}}
     CONV_INLINE_CODE_ON=''%%
     CONV_INLINE_CODE_OFF=%%''
     CONV_ITALIC_ON=//
@@ -1799,18 +1816,19 @@ Pulling all of the above together, we have ended up with the following translati
     # There's two spaces and an '*' on the next line.
     CONV_LIST_ON=  *
     CONV_LIST_OFF=
-    CONV_WIKI_LINK=[[qlwiki:%PAGE_NAME%]]
+    CONV_WIKI_LINK=[[qlwiki:%COMPRESSED_NAME%]]
     CONV_YOUTUBE_LINK={{https://youtu.be/%VIDEO_ID%|Watch this video on You Tube}}
 
-Points to Note for DokuWiki Conversions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Points to Note for DokuWiki translations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following points should be kept in mind when converting to DokuWiki format:
 
 -   Wiki pages are stored as separate plain text files and do not live in any form of database. Wiki namespaces are represented as folders. So pages in a namespace are simply text files within a directory.
 -   Pages *should* be kept in a namespace. In the above example file, I'm using the 'qlwiki' namespace for all my Wiki Page links. This means that in my web server's document root, I need to create a directory named ``data\pages\qlwiki`` and make sure that it is owned by the web server user (``apache``) and group (also ``apache``) and has the required read and write permissions to the user and group.
--   The top level page on any Wiki is named 'start' and lives outside of all namespaces. It lives, therefore in the folder ``data/pages/start.txt`` under the web server's document root directory.
--   Pages should be created with the name of the page, in lower case, and with spaces replaced by underscores. Make sure that you run the ``rwapWiki`` utility with the appropriate output filename. The 'Dilwyn Jones' page, for example, needs to be named 'dilwyn_jones.txt'. And obviously, needs to be copied to the document root ``data/pages/qlwiki`` directory as well.
+-   The top level page on any Wiki is named 'start' and lives outside of all namespaces. It lives, therefore in the file ``data/pages/start.txt`` under the web server's document root directory.
+-   Pages should be created with the name of the page, in lower case, and with spaces replaced by underscores. Punctuation is removed completely. Make sure that you run the ``rwapWiki`` utility with the appropriate output filename. The 'Dilwyn Jones' page, for example, needs to be named 'dilwyn_jones.txt'. And obviously, needs to be copied to the document root ``data/pages/qlwiki`` directory as well.
+-   DokuWiki headings cannot contain links to pages. This is different to the original WiClear Wiki, which did allow such things. The ``Keyboards`` page demonstrates this.
 
 Once the files are all converted, we need edit the existing 'start' page to create a link to the newly converted 'Sinclair QL Home Computer' page, which was the old Wiki's main page, as per the following examples:
 
