@@ -72,6 +72,8 @@ paramMap lookForThese = {
 #define ERR_BP 1            // Bad parameter - Cannot open input file.
 #define ERR_BF 2            // Input file isn't as expected format.
 
+bool wgetWanted = false;    // Do we want an image file for use with wget?
+
 
 //------------------------------------------------------------------
 // Function prototypes.

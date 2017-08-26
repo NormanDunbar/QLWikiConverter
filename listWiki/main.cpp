@@ -81,11 +81,33 @@ int main(int argc, char *argv[])
         return ERR_BP;
     }
 
+    // If we are looking for images, do we want normal or wget output?
+    if (param2 == "IMAGE") {
+        if (argc == 4) {
+            string wget = argv[3];
+            // Upper case last parameter.
+            for (string::iterator x = wget.begin(); x != wget.end(); x++) {
+                *x = toupper(*x);
+            }
+
+            // Check.
+            if (wget != "WGET") {
+                cerr << "ERROR: '" << wget << "' is not a valid option for IMAGE searches." << endl;
+                usage();
+                return ERR_BP;
+            }
+
+            // Valid. Set the wget flag.
+            wgetWanted = true;
+        }
+    }
+
+
     // It's valid, extract the look for stuff from the second
     // member of the std::pair. It's a std::map thing!
     lookForThis = i->second;
 
-    cout << "Searching for " << param2 << "(s), in file: '"
+    cerr << "Searching for " << param2 << "(s), in file: '"
          << argv[1] << "'" << endl << endl;
 
     // Go look!
@@ -234,7 +256,24 @@ int jfdi()
 
                     if (aLine->find(*x) != string::npos) {
                         // Found it. Subtract 2 as the content starts on line 3.
-                        cout << textFile << ": Line: " << lineNumber - 2 << ", \"" << *aLine << '"' << endl;
+                        // Normal output:
+                        if (!wgetWanted) {
+                            cout << textFile << ": Line: " << lineNumber - 2 << ", \"" << *aLine << '"' << endl;
+                        } else {
+                            // Wget output. We definitely have a startPos.
+                            string::size_type startPos = aLine->find(*x);
+
+                            // Look for a pipe to indicate the end of the image URL.
+                            string::size_type endPos = aLine->find("|", startPos + 2);
+
+                            // No pipe, look for the closing "))" instead. Must be found.
+                            if (endPos == string::npos) {
+                                endPos = aLine->find("))", startPos + 2);
+                            }
+
+                            // Write out in wget format.
+                            cout << aLine->substr(startPos + 2, endPos - startPos - 2) << endl;
+                        }
                     }
                 }
             }
@@ -281,7 +320,7 @@ bool readInputFile(string *aLine) {
 //------------------------------------------------------------------
 void usage() {
     cerr << "USAGE: " << endl << endl
-         << "\tlistWiki input_file look_for [ > output_file ]" << endl << endl
+         << "\tlistWiki input_file look_for [ wget ] [ > output_file ]" << endl << endl
          << "LOOK_FOR is one of the following:" << endl << endl
          << "\tACRONYM, ANCHOR," << endl
          << "\tBLOCKQUOTE, BOLD," << endl
@@ -296,5 +335,7 @@ void usage() {
          << "\tTABLE," << endl
          << "\tUNORDEREDLIST," << endl
          << "\tPAGELINK," << endl
-         << "\tVIDEOLINK." << endl;
+         << "\tVIDEOLINK." << endl
+         << "\tNote: 'wget' is only allowed on IMAGE searches and outputs a list" << endl
+         << "\tof images only suitable for running as input to the wget utility." << endl;
 }
